@@ -1,0 +1,51 @@
+gjots2 (2.3.4-2) unstable; urgency=low
+
+  * Update to the new Python Policy (Closes: #380817).
+  * debian/watch: Added watch file. 
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Wed,  2 Aug 2006 11:27:41 +0200
+
+gjots2 (2.3.4-1) unstable; urgency=low
+
+  * New upstream release (Closes: #347518, #339427).
+  * debian/copyright: Updated address of Free Software Foundation.
+  * debian/control:
+    + Updated to Standards-Version 3.7.2.
+    + Fixed "Should be "arch: all"" (Closes: #355819).
+  * Fixed hyphen-used-as-minus-sign in manpage:
+    + share/man/man1/docbook2gjots.1
+    + share/man/man1/gjots2docbook.1
+  * Fixed manpage-has-errors-from-man in manpage:
+    + share/man/man1/docbook2gjots.1
+    + share/man/man1/gjots2docbook.1
+    + share/man/man1/gjots2html.1
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Mon, 10 Jul 2006 16:43:59 +0200
+
+gjots2 (2.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Updated to Standards-Version 3.6.2.
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Tue, 12 Jul 2005 14:06:50 +0200
+
+gjots2 (2.1.1-3) unstable; urgency=low
+
+  * Bug fix: "Missing deps on mpage for printing" (Closes: bug#306402).
+  * Forwarded patch upstream: replaces option "-seascape" (which is not
+    recognized) by option "--orientation=seascape".
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Tue, 10 May 2005 14:28:22 +0200
+
+gjots2 (2.1.1-2) unstable; urgency=low
+
+  * Bug fix: "Help inaccessible" (Closes: bug#303978). 
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Wed, 13 Apr 2005 13:24:40 +0200
+
+gjots2 (2.1.1-1) unstable; urgency=low
+
+  * Initial Release (Closes: bug#278689).
+
+ -- Khalid El Fathi <invent@edena-fr.org>  Wed, 22 Dec 2004 11:12:54 +0100
+

@@ -1,0 +1,2 @@
+?package(gjots2):needs="X11" section="Apps/Tools"\
+  title="gjots2" command="/usr/bin/gjots2"

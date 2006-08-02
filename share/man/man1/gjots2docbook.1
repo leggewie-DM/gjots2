@@ -39,7 +39,7 @@ item titles in the
 .B gjotsfile
 being converted to chapter or section headings in DOCBOOK. There is no
 reason why your gjotsfile should not contain valid DOCBOOK XML - and
-that is why the -e and -p options are provided.
+that is why the \-e and \-p options are provided.
 .P
 If the file does not start with <?xml ...> then appropriate lines will
 be added as follows:
@@ -59,7 +59,7 @@ man, ps, pdf etc files eg:
 .RS
 .nf
 .ft CW
-gjots2docbook -b ~/.gjotsfile >gjotsfile.xml
+gjots2docbook \-b ~/.gjotsfile >gjotsfile.xml
 .br
 docbook2pdf gjotsfile.xml
 .fi
@@ -89,8 +89,8 @@ Written by Bob Hepple <bhepple@freeshell.org>
 .SH "COPYRIGHT"
 Copyright (c) 2002 Robert Hepple
 .br
-This  is  free software; see the source for copying condi­
-tions.  There is NO warranty; not even for MERCHANTABILITY
+This  is  free software; see the source for copying conditions.
+There is NO warranty; not even for MERCHANTABILITY
 or FITNESS FOR A PARTICULAR PURPOSE.
 .SH "SEE ALSO"
 .BR gjots (1),
