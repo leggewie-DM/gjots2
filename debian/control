@@ -4,7 +4,8 @@ Priority: optional
 Maintainer: Khalid El Fathi <invent@edena-fr.org>
 Build-Depends: debhelper (>= 5.0.37.2)
 Build-Depends-Indep: python-all-dev (>= 2.3.5-11), python-support (>= 0.3)
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
+Homepage: http://bhepple.freeshell.org/gjots/
 
 Package: gjots2
 Architecture: all
@@ -29,5 +30,3 @@ Description: A simple jotter (outline processor) for X11/gtk-gnome
  easily reorder your thoughts and structure them appropriately.
  .
  It's a bit like the KDE program kjots but it uses the GTK-2 library.
- .
- Homepage: http://bhepple.freeshell.org/gjots/

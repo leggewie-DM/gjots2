@@ -1,3 +1,19 @@
+gjots2 (2.3.4-2.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * debian/watch
+    - cleaned up from commented lines
+    - fixed (Closes: #449861)
+  * debian/control
+    - moved Homepage field to source stanza
+    - bump Standard-Version to 3.7.3
+  * debian/rules
+    - added removal of compiled python source files (Closes: #424322)
+    - cleaned up from commented dh_* calls and other lines
+    - switch building from binary-arch to binary-indep
+
+ -- Sandro Tosi <matrixhasu@gmail.com>  Sat, 05 Apr 2008 12:18:56 +0200
+
 gjots2 (2.3.4-2) unstable; urgency=low
 
   * Update to the new Python Policy (Closes: #380817).
