@@ -1,0 +1,1105 @@
+# Messages master file for gjots2.
+# Copyright (C) 2005-2006 Bob Hepple
+# This file is distributed under the same license as the gjots2 package.
+# Bob Hepple <bhepple@freeshell.org>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-12-24 15:29+1000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../gjots2.desktop.in.h:1
+msgid "Store and organise your random notes"
+msgstr ""
+
+#: ../gjots2.desktop.in.h:2
+msgid "Gjots2 Jotter"
+msgstr ""
+
+#: ../gjots.glade2:10
+msgid "gjots"
+msgstr ""
+
+#: ../gjots.glade2:53
+msgid "_New"
+msgstr ""
+
+#: ../gjots.glade2:98
+msgid "Import items from a gjots file"
+msgstr ""
+
+#: ../gjots.glade2:99
+msgid "_Import"
+msgstr ""
+
+#: ../gjots.glade2:120
+msgid "Export selected items to a gjots file"
+msgstr ""
+
+#: ../gjots.glade2:121
+msgid "_Export"
+msgstr ""
+
+#: ../gjots.glade2:162
+msgid "Toggle the read-only flag if possible"
+msgstr ""
+
+#: ../gjots.glade2:163
+msgid "_Read-only"
+msgstr ""
+
+#: ../gjots.glade2:179
+msgid "Exit gjots"
+msgstr ""
+
+#: ../gjots.glade2:180
+msgid "_Quit"
+msgstr ""
+
+#: ../gjots.glade2:288
+msgid "_Toolbars"
+msgstr ""
+
+#: ../gjots.glade2:297
+msgid "Toggles the main toolbar"
+msgstr ""
+
+#: ../gjots.glade2:298
+msgid "To_p Toolbar"
+msgstr ""
+
+#: ../gjots.glade2:308
+msgid "Toggles tree tool bar"
+msgstr ""
+
+#: ../gjots.glade2:309
+msgid "Tre_e Toolbar"
+msgstr ""
+
+#: ../gjots.glade2:325
+msgid "Show the related icon text"
+msgstr ""
+
+#: ../gjots.glade2:326
+msgid "Show _Icon Text"
+msgstr ""
+
+#: ../gjots.glade2:341
+msgid "Status _Bar"
+msgstr ""
+
+#: ../gjots.glade2:357 ../gjots.glade2:1695
+msgid "Show all items below the current item"
+msgstr ""
+
+#: ../gjots.glade2:358
+msgid "_Show All"
+msgstr ""
+
+#: ../gjots.glade2:379
+msgid "Hide all items except the top level"
+msgstr ""
+
+#: ../gjots.glade2:380
+msgid "_Hide All"
+msgstr ""
+
+#: ../gjots.glade2:405
+msgid "_Tree"
+msgstr ""
+
+#: ../gjots.glade2:414
+msgid "Create a new page"
+msgstr ""
+
+#: ../gjots.glade2:415
+msgid "_New Page"
+msgstr ""
+
+#: ../gjots.glade2:436
+msgid "Create a new child "
+msgstr ""
+
+#: ../gjots.glade2:437
+msgid "New _Child"
+msgstr ""
+
+#: ../gjots.glade2:464 ../gjots.glade2:1525
+msgid "Move selection up"
+msgstr ""
+
+#: ../gjots.glade2:465
+msgid "_Up"
+msgstr ""
+
+#: ../gjots.glade2:486 ../gjots.glade2:1543
+msgid "Move selection down"
+msgstr ""
+
+#: ../gjots.glade2:487
+msgid "_Down"
+msgstr ""
+
+#: ../gjots.glade2:508 ../gjots.glade2:1561
+msgid "Selection becomes a sibling to their parent"
+msgstr ""
+
+#: ../gjots.glade2:509
+msgid "P_romote"
+msgstr ""
+
+#: ../gjots.glade2:530 ../gjots.glade2:1579
+msgid "Selection becomes a child of the previous item"
+msgstr ""
+
+#: ../gjots.glade2:531
+msgid "D_emote"
+msgstr ""
+
+#: ../gjots.glade2:558
+msgid "Make a new item from the current selection"
+msgstr ""
+
+#: ../gjots.glade2:559
+msgid "_Split Item"
+msgstr ""
+
+#: ../gjots.glade2:580
+msgid "Merge current items into the first one"
+msgstr ""
+
+#: ../gjots.glade2:581
+msgid "_Merge Items"
+msgstr ""
+
+#: ../gjots.glade2:608 ../gjots.glade2:1713
+msgid "Popup the sort tree dialog"
+msgstr ""
+
+#: ../gjots.glade2:609
+msgid "S_ort Tree"
+msgstr ""
+
+#: ../gjots.glade2:634
+msgid "Te_xt"
+msgstr ""
+
+#: ../gjots.glade2:643
+msgid "Format the current paragraph"
+msgstr ""
+
+#: ../gjots.glade2:644
+msgid "_Format"
+msgstr ""
+
+#: ../gjots.glade2:666
+msgid "Add a time/date stamp (see preferences)"
+msgstr ""
+
+#: ../gjots.glade2:667
+msgid "_Time stamp"
+msgstr ""
+
+#: ../gjots.glade2:688
+msgid "Edit current item in an external editor"
+msgstr ""
+
+#: ../gjots.glade2:689
+msgid "_External Edit"
+msgstr ""
+
+#: ../gjots.glade2:710
+msgid "Popup the sort text dialog"
+msgstr ""
+
+#: ../gjots.glade2:711
+msgid "_Sort Text"
+msgstr ""
+
+#: ../gjots.glade2:822 ../gjots.glade2:1165 ../gjots.glade2:1468
+msgid "New Page"
+msgstr ""
+
+#: ../gjots.glade2:842 ../gjots.glade2:1486
+msgid "New Child"
+msgstr ""
+
+#: ../gjots.glade2:868 ../gjots.glade2:1526
+msgid "Up"
+msgstr ""
+
+#: ../gjots.glade2:888 ../gjots.glade2:1544
+msgid "Down"
+msgstr ""
+
+#: ../gjots.glade2:908
+msgid "Promote"
+msgstr ""
+
+#: ../gjots.glade2:928
+msgid "Demote"
+msgstr ""
+
+#: ../gjots.glade2:954 ../gjots.glade2:1638
+msgid "Merge Items"
+msgstr ""
+
+#: ../gjots.glade2:980 ../gjots.glade2:1696
+msgid "Show All"
+msgstr ""
+
+#: ../gjots.glade2:1000 ../gjots.glade2:1678
+msgid "Hide All"
+msgstr ""
+
+#: ../gjots.glade2:1026 ../gjots.glade2:1714 ../Gjots/sortDialog.py:307
+msgid "Sort Tree"
+msgstr ""
+
+#: ../gjots.glade2:1052
+msgid "Import"
+msgstr ""
+
+#: ../gjots.glade2:1072
+msgid "Export"
+msgstr ""
+
+#: ../gjots.glade2:1105
+msgid "Read the online manual (using gjots)"
+msgstr ""
+
+#: ../gjots.glade2:1106
+msgid "_Read manual"
+msgstr ""
+
+#: ../gjots.glade2:1164
+msgid "Create a new gjots document"
+msgstr ""
+
+#: ../gjots.glade2:1182
+msgid "Open an existing gjots document"
+msgstr ""
+
+#: ../gjots.glade2:1183
+msgid "Open"
+msgstr ""
+
+#: ../gjots.glade2:1200
+msgid "Save gjots document"
+msgstr ""
+
+#: ../gjots.glade2:1201
+msgid "Save"
+msgstr ""
+
+#: ../gjots.glade2:1218
+msgid "Print this document"
+msgstr ""
+
+#: ../gjots.glade2:1219 ../gjots.glade2:3031
+msgid "Print"
+msgstr ""
+
+#: ../gjots.glade2:1258
+msgid "Cut selected items"
+msgstr ""
+
+#: ../gjots.glade2:1259
+msgid "Cut"
+msgstr ""
+
+#: ../gjots.glade2:1276
+msgid "Copy selected items"
+msgstr ""
+
+#: ../gjots.glade2:1277
+msgid "Copy"
+msgstr ""
+
+#: ../gjots.glade2:1294
+msgid "Paste selected items"
+msgstr ""
+
+#: ../gjots.glade2:1295
+msgid "Paste"
+msgstr ""
+
+#: ../gjots.glade2:1334
+msgid "Wrap the current paragraph to the current line length"
+msgstr ""
+
+#: ../gjots.glade2:1335
+msgid "Wrap"
+msgstr ""
+
+#: ../gjots.glade2:1352
+msgid "Invoke an external editor on the current item"
+msgstr ""
+
+#: ../gjots.glade2:1353
+msgid "Ext.Ed."
+msgstr ""
+
+#: ../gjots.glade2:1370
+msgid "Add a time/date stamp (see prefs)"
+msgstr ""
+
+#: ../gjots.glade2:1371
+msgid "Date"
+msgstr ""
+
+#: ../gjots.glade2:1388
+msgid "Popup the find and replace dialog"
+msgstr ""
+
+#: ../gjots.glade2:1389 ../gjots.glade2:2739
+msgid "Find"
+msgstr ""
+
+#: ../gjots.glade2:1406
+msgid "Popup the sort dialog"
+msgstr ""
+
+#: ../gjots.glade2:1407 ../gjots.glade2:3493
+msgid "Sort"
+msgstr ""
+
+#: ../gjots.glade2:1424
+msgid "Open gjots preferences window"
+msgstr ""
+
+#: ../gjots.glade2:1425
+msgid "Prefs"
+msgstr ""
+
+#: ../gjots.glade2:1467
+msgid "Create a new item"
+msgstr ""
+
+#: ../gjots.glade2:1485
+msgid "Create a new child"
+msgstr ""
+
+#: ../gjots.glade2:1562
+msgid "Back"
+msgstr ""
+
+#: ../gjots.glade2:1580
+msgid "Forward"
+msgstr ""
+
+#: ../gjots.glade2:1619
+msgid "Split the text selection into a new item"
+msgstr ""
+
+#: ../gjots.glade2:1620
+msgid "Split Item"
+msgstr ""
+
+#: ../gjots.glade2:1637
+msgid "Merge selected items together"
+msgstr ""
+
+#: ../gjots.glade2:1677
+msgid "Hide all items except for the top level"
+msgstr ""
+
+#: ../gjots.glade2:1917
+msgid "Copyright Bob Hepple 2002-2006"
+msgstr ""
+
+#: ../gjots.glade2:1918
+msgid "http://bhepple.freeshell.org/gjots2"
+msgstr ""
+
+#: ../gjots.glade2:1922
+msgid "translator_credits"
+msgstr ""
+
+#: ../gjots.glade2:1928
+msgid "window1"
+msgstr ""
+
+#: ../gjots.glade2:1949 ../gjots.glade2:2002 ../gjots.glade2:2080
+msgid "label1"
+msgstr ""
+
+#: ../gjots.glade2:1979
+msgid "label2"
+msgstr ""
+
+#: ../gjots.glade2:2168
+msgid "Try again"
+msgstr ""
+
+#: ../gjots.glade2:2181
+msgid "Read only"
+msgstr ""
+
+#: ../gjots.glade2:2201
+msgid "gjots: preferences"
+msgstr ""
+
+#: ../gjots.glade2:2232
+msgid "Choose a font for the text panel"
+msgstr ""
+
+#: ../gjots.glade2:2253
+msgid "Date format:"
+msgstr ""
+
+#: ../gjots.glade2:2277
+msgid "Format for the timestamp function (see strftime(3))"
+msgstr ""
+
+#: ../gjots.glade2:2282
+msgid "%F"
+msgstr ""
+
+#: ../gjots.glade2:2300
+msgid ""
+"External program to edit a page (%s is replaced by the name of the temporary "
+"edit file)"
+msgstr ""
+
+#: ../gjots.glade2:2305
+msgid "xterm -e vi %s"
+msgstr ""
+
+#: ../gjots.glade2:2323
+msgid "External editor"
+msgstr ""
+
+#: ../gjots.glade2:2347
+msgid "Text Line Length: "
+msgstr ""
+
+#: ../gjots.glade2:2371
+msgid "Line length for paragraph wrapping"
+msgstr ""
+
+#: ../gjots.glade2:2394
+msgid "Text formatter: "
+msgstr ""
+
+#: ../gjots.glade2:2418
+msgid ""
+"External program to pipe text for formatting (%d is replaced by the current "
+"line width)"
+msgstr ""
+
+#: ../gjots.glade2:2423
+msgid "fmt -w %d "
+msgstr ""
+
+#: ../gjots.glade2:2441
+msgid "Current text font"
+msgstr ""
+
+#: ../gjots.glade2:2446
+msgid "Courier 10 Pitch 10"
+msgstr ""
+
+#: ../gjots.glade2:2526
+msgid "Select Font"
+msgstr ""
+
+#: ../gjots.glade2:2574
+msgid "abcdefghijk ABCDEFGHIJK"
+msgstr ""
+
+#: ../gjots.glade2:2586
+msgid "Find & replace"
+msgstr ""
+
+#: ../gjots.glade2:2624
+msgid "Find:"
+msgstr ""
+
+#: ../gjots.glade2:2648
+msgid "Replace:"
+msgstr ""
+
+#: ../gjots.glade2:2672
+msgid "String to search for"
+msgstr ""
+
+#: ../gjots.glade2:2698
+msgid "String to replace"
+msgstr ""
+
+#: ../gjots.glade2:2759
+msgid "Close"
+msgstr ""
+
+#: ../gjots.glade2:2779
+msgid "Replace"
+msgstr ""
+
+#: ../gjots.glade2:2799
+msgid "Replace All"
+msgstr ""
+
+#: ../gjots.glade2:2819
+msgid "Cancel"
+msgstr ""
+
+#: ../gjots.glade2:2839
+msgid "Clear"
+msgstr ""
+
+#: ../gjots.glade2:2912
+msgid "Don't ignore case"
+msgstr ""
+
+#: ../gjots.glade2:2914
+msgid "Match case"
+msgstr ""
+
+#: ../gjots.glade2:2934
+msgid "Find string is a regular expression (see 'man 7 regex')"
+msgstr ""
+
+#: ../gjots.glade2:2936
+msgid "Regular Expression"
+msgstr ""
+
+#: ../gjots.glade2:2955
+msgid "Search backwards"
+msgstr ""
+
+#: ../gjots.glade2:2957
+msgid "Backwards"
+msgstr ""
+
+#: ../gjots.glade2:2978
+msgid "Searches entire file not just this entry"
+msgstr ""
+
+#: ../gjots.glade2:2980
+msgid "Global"
+msgstr ""
+
+#: ../gjots.glade2:3003
+msgid " Options "
+msgstr ""
+
+#: ../gjots.glade2:3079
+msgid "e.g. lpr: "
+msgstr ""
+
+#: ../gjots.glade2:3100
+msgid "print command (can be a shell expression)"
+msgstr ""
+
+#: ../gjots.glade2:3128
+msgid " Print command "
+msgstr ""
+
+#: ../gjots.glade2:3179
+msgid "Print the current page"
+msgstr ""
+
+#: ../gjots.glade2:3181
+msgid "Page"
+msgstr ""
+
+#: ../gjots.glade2:3199
+msgid "Print the selected pages or text"
+msgstr ""
+
+#: ../gjots.glade2:3201
+msgid "Selection"
+msgstr ""
+
+#: ../gjots.glade2:3220
+msgid "Print the entire gjots file"
+msgstr ""
+
+#: ../gjots.glade2:3222
+msgid "All"
+msgstr ""
+
+#: ../gjots.glade2:3245
+msgid " Print Range "
+msgstr ""
+
+#: ../gjots.glade2:3302
+msgid "Feeds a page before every new gjots item"
+msgstr ""
+
+#: ../gjots.glade2:3304
+msgid "Page feeds"
+msgstr ""
+
+#: ../gjots.glade2:3321
+msgid "Print the gjots item titles in bold"
+msgstr ""
+
+#: ../gjots.glade2:3323
+msgid "Bold titles"
+msgstr ""
+
+#: ../gjots.glade2:3342
+msgid "Auto Number"
+msgstr ""
+
+#: ../gjots.glade2:3373
+msgid "Auto-number format: "
+msgstr ""
+
+#: ../gjots.glade2:3393
+msgid "eg. 1 for 1.2.1, a"
+msgstr ""
+
+#: ../gjots.glade2:3424
+msgid " Print formatting "
+msgstr ""
+
+#: ../gjots.glade2:3544
+msgid "Sort in ascending order"
+msgstr ""
+
+#: ../gjots.glade2:3546
+msgid "Ascending"
+msgstr ""
+
+#: ../gjots.glade2:3567
+msgid "Sort in descending order"
+msgstr ""
+
+#: ../gjots.glade2:3569
+msgid "Descending"
+msgstr ""
+
+#: ../gjots.glade2:3591
+msgid "Sort in alphabetic order"
+msgstr ""
+
+#: ../gjots.glade2:3593
+msgid "Alphabetic"
+msgstr ""
+
+#: ../gjots.glade2:3614
+msgid "Sort in numeric order"
+msgstr ""
+
+#: ../gjots.glade2:3616
+msgid "Numeric"
+msgstr ""
+
+#: ../gjots.glade2:3642
+msgid " Sort Parameters "
+msgstr ""
+
+#: ../gjots.glade2:3693
+msgid "How many sublevels to sort (0 for none; -1 for 'all')"
+msgstr ""
+
+#: ../gjots.glade2:3717
+msgid " Sort Sublevels "
+msgstr ""
+
+#: ../gjots.glade2:3788
+msgid "Select File"
+msgstr ""
+
+#: ../gjots2:14
+msgid ""
+"Usage: gjots [OPTIONS] [FILENAME]\n"
+"A gnome-2/X11 jotter\n"
+"\n"
+"OPTIONS:\n"
+"-h, --help:                         this help\n"
+"-d, --debug:                        debug trace to stdout\n"
+"-g 123x456, --geometry=123x456:     initial geometry (X x Y)\n"
+"-p, --purge-password\t\t\t\tdon't remember password\n"
+"-r, --readonly:                     no editing (or locking)\n"
+"-V, --version:                      print the version and exit\n"
+"\n"
+"FILENAME:\n"
+"\tgjots data filename (default is $HOME/.gjotsfile)\n"
+msgstr ""
+
+#: ../gjots2:39
+#, python-format
+msgid "%s requires python%s or higher."
+msgstr ""
+
+#: ../gjots2:49
+#, python-format
+msgid "%s requires pygtk-%s."
+msgstr ""
+
+#: ../gjots2:62
+#, python-format
+msgid "%s: Warning: running modules from %s\n"
+msgstr ""
+
+#: ../gjots2:75
+msgid "Use -h for help\n"
+msgstr ""
+
+#: ../gjots2:89
+#, python-format
+msgid "%s version %s"
+msgstr ""
+
+#: ../Gjots/gui.py:96
+#, python-format
+msgid "External formatter \"%s\" is not installed - can't format"
+msgstr ""
+
+#: ../Gjots/gui.py:326
+msgid "not initialised"
+msgstr ""
+
+#: ../Gjots/gui.py:543 ../Gjots/gui.py:584 ../Gjots/gui.py:588
+#: ../Gjots/gui.py:630 ../Gjots/gui.py:634 ../Gjots/gui.py:690
+#: ../Gjots/gui.py:695 ../Gjots/gui.py:904 ../Gjots/gui.py:913
+#: ../Gjots/gui.py:995 ../Gjots/gui.py:1004 ../Gjots/gui.py:1037
+#: ../Gjots/gui.py:1042 ../Gjots/gui.py:1068 ../Gjots/gui.py:1349
+#: ../Gjots/gui.py:1837 ../Gjots/gui.py:1856 ../Gjots/gui.py:1885
+#: ../Gjots/gui.py:1908 ../Gjots/file.py:439 ../Gjots/file.py:444
+#: ../Gjots/sortDialog.py:247 ../Gjots/sortDialog.py:252
+#: ../Gjots/printDialog.py:110 ../Gjots/printDialog.py:115
+msgid "Nothing selected"
+msgstr ""
+
+#: ../Gjots/gui.py:547 ../Gjots/gui.py:593 ../Gjots/gui.py:638
+#: ../Gjots/gui.py:700 ../Gjots/gui.py:799 ../Gjots/gui.py:1073
+#: ../Gjots/gui.py:1841 ../Gjots/sortDialog.py:263
+msgid "No parent!"
+msgstr ""
+
+#: ../Gjots/gui.py:551 ../Gjots/gui.py:604
+msgid "No child!"
+msgstr ""
+
+#: ../Gjots/gui.py:554 ../Gjots/gui.py:598
+msgid "Can't go any further"
+msgstr ""
+
+#: ../Gjots/gui.py:561 ../Gjots/gui.py:718
+msgid "Internal error!"
+msgstr ""
+
+#: ../Gjots/gui.py:642
+msgid "Can't go further!"
+msgstr ""
+
+#: ../Gjots/gui.py:838
+msgid "Text cut"
+msgstr ""
+
+#: ../Gjots/gui.py:849
+msgid "Text copied"
+msgstr ""
+
+#: ../Gjots/gui.py:861
+msgid "Text pasted"
+msgstr ""
+
+#: ../Gjots/gui.py:870
+msgid "All text selected"
+msgstr ""
+
+#: ../Gjots/gui.py:876
+msgid "All tree items selected"
+msgstr ""
+
+#: ../Gjots/gui.py:884
+msgid "Nothing selected!"
+msgstr ""
+
+#: ../Gjots/gui.py:908
+msgid "Can't merge the root item"
+msgstr ""
+
+#: ../Gjots/gui.py:917
+msgid "Nothing to merge"
+msgstr ""
+
+#: ../Gjots/gui.py:924
+msgid "Can't merge items that have children"
+msgstr ""
+
+#: ../Gjots/gui.py:954
+#, python-format
+msgid "%d items merged"
+msgstr ""
+
+#: ../Gjots/gui.py:999
+msgid "Can't delete the root item"
+msgstr ""
+
+#: ../Gjots/gui.py:1029
+#, python-format
+msgid "%d tree items cut"
+msgstr ""
+
+#: ../Gjots/gui.py:1056
+#, python-format
+msgid "%d tree items copied"
+msgstr ""
+
+#: ../Gjots/gui.py:1063
+msgid "Nothing to paste"
+msgstr ""
+
+#: ../Gjots/gui.py:1079
+msgid "Tree items pasted"
+msgstr ""
+
+#: ../Gjots/gui.py:1097
+msgid "Can't write "
+msgstr ""
+
+#: ../Gjots/gui.py:1107
+#, python-format
+msgid "Can't run '%s'"
+msgstr ""
+
+#: ../Gjots/gui.py:1116
+msgid "Can't read "
+msgstr ""
+
+#: ../Gjots/gui.py:1124
+msgid "text changed by external editor"
+msgstr ""
+
+#: ../Gjots/gui.py:1126
+msgid "text not changed by external editor"
+msgstr ""
+
+#: ../Gjots/gui.py:1144
+msgid ": Error"
+msgstr ""
+
+#: ../Gjots/gui.py:1157
+#, python-format
+msgid "Can't lock file %s: already locked by process %d"
+msgstr ""
+
+#: ../Gjots/gui.py:1263
+msgid ": Save?"
+msgstr ""
+
+#: ../Gjots/gui.py:1264
+msgid "Save current work?"
+msgstr ""
+
+#: ../Gjots/gui.py:1285
+msgid "New file"
+msgstr ""
+
+#: ../Gjots/gui.py:1301
+msgid "Open file ..."
+msgstr ""
+
+#: ../Gjots/gui.py:1310
+msgid "No changes to save"
+msgstr ""
+
+#: ../Gjots/gui.py:1314 ../Gjots/gui.py:1334
+msgid "Saved."
+msgstr ""
+
+#: ../Gjots/gui.py:1316 ../Gjots/gui.py:1336 ../Gjots/file.py:429
+msgid "Not saved."
+msgstr ""
+
+#: ../Gjots/gui.py:1330
+msgid "Nothing to save"
+msgstr ""
+
+#: ../Gjots/gui.py:1332 ../Gjots/file.py:606
+msgid "Save as ..."
+msgstr ""
+
+#: ../Gjots/gui.py:1346
+msgid "Import from ..."
+msgstr ""
+
+#: ../Gjots/gui.py:1357
+msgid "Export to ..."
+msgstr ""
+
+#: ../Gjots/gui.py:1613 ../Gjots/gui.py:1616
+#, python-format
+msgid "%s: Warning: opening gjots2 manual from %s\n"
+msgstr ""
+
+#: ../Gjots/gui.py:1780
+msgid "pygtk-2.2 is required for this application!"
+msgstr ""
+
+#: ../Gjots/gui.py:1786
+msgid ""
+"gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
+"event."
+msgstr ""
+
+#: ../Gjots/gui.py:1845
+msgid "Can't go further"
+msgstr ""
+
+#: ../Gjots/gui.py:1874
+msgid "Tree is empty!"
+msgstr ""
+
+#: ../Gjots/gui.py:2015
+#, python-format
+msgid "%s: bad geometry specification: %s\n"
+msgstr ""
+
+#: ../Gjots/gui.py:2179
+msgid "New...>>>"
+msgstr ""
+
+#: ../Gjots/gui.py:2235
+msgid ": version "
+msgstr ""
+
+#: ../Gjots/find.py:154
+msgid "Bad regular expression"
+msgstr ""
+
+#: ../Gjots/find.py:198 ../Gjots/find.py:251
+msgid "Not found"
+msgstr ""
+
+#: ../Gjots/find.py:200
+msgid "Found"
+msgstr ""
+
+#: ../Gjots/find.py:254
+msgid "Replace?"
+msgstr ""
+
+#: ../Gjots/find.py:267
+#, python-format
+msgid "%d substitutions"
+msgstr ""
+
+#: ../Gjots/file.py:250
+msgid "Enter password for "
+msgstr ""
+
+#: ../Gjots/file.py:252
+msgid "gjots: Enter Password"
+msgstr ""
+
+#: ../Gjots/file.py:254
+msgid "Password: "
+msgstr ""
+
+#: ../Gjots/file.py:255
+msgid "Confirm: "
+msgstr ""
+
+#: ../Gjots/file.py:263
+msgid "Password was not confirmed"
+msgstr ""
+
+#: ../Gjots/file.py:270
+msgid "Could not find the ccrypt program - please install it and try again"
+msgstr ""
+
+#: ../Gjots/file.py:299
+msgid "Could not find the gpg program - please install it and try again"
+msgstr ""
+
+#: ../Gjots/file.py:324
+msgid "Could not find the openssl program - please install it and try again"
+msgstr ""
+
+#: ../Gjots/file.py:387
+msgid "Can't open \""
+msgstr ""
+
+#: ../Gjots/file.py:390
+msgid "Bad password"
+msgstr ""
+
+#: ../Gjots/file.py:393
+msgid "File cannot be locked"
+msgstr ""
+
+#: ../Gjots/file.py:430
+msgid "Can't write to "
+msgstr ""
+
+#: ../Gjots/file.py:433
+msgid "Can't lock file"
+msgstr ""
+
+#: ../Gjots/file.py:544
+#, python-format
+msgid "%s is not readable"
+msgstr ""
+
+#: ../Gjots/file.py:554
+#, python-format
+msgid "%s: no permission"
+msgstr ""
+
+#: ../Gjots/file.py:556
+#, python-format
+msgid "%s: locked by process number %d"
+msgstr ""
+
+#: ../Gjots/file.py:558
+msgid "gjots: can't lock file."
+msgstr ""
+
+#: ../Gjots/file.py:618
+msgid "That file is already open!"
+msgstr ""
+
+#: ../Gjots/file.py:626
+#, python-format
+msgid "%s is locked by pid %d"
+msgstr ""
+
+#: ../Gjots/file.py:629
+msgid "Can't make a lockfile in "
+msgstr ""
+
+#: ../Gjots/file.py:641
+#, python-format
+msgid "%s is not writable"
+msgstr ""
+
+#: ../Gjots/file.py:643
+#, python-format
+msgid "gjots: %s already exists."
+msgstr ""
+
+#: ../Gjots/file.py:644
+#, python-format
+msgid "overwrite %s?"
+msgstr ""
+
+#: ../Gjots/sortDialog.py:103
+msgid "_get_settings: Cant find sortAscendingRadioButton"
+msgstr ""
+
+#: ../Gjots/sortDialog.py:139
+msgid "Internal error"
+msgstr ""
+
+#: ../Gjots/sortDialog.py:221
+msgid "Nothing to sort!"
+msgstr ""
+
+#: ../Gjots/sortDialog.py:311
+msgid "Sort Text"
+msgstr ""

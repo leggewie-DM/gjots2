@@ -1,0 +1,110 @@
+2006-1-24     Bob Hepple <bhepple@freeshell.org> Version 2.3.3
+	* First Russian version (LANG=ru). Translator is Sergey
+	Bezdenezhnyh <sib-mail@mtu-net.ru>
+	* Add no/nb versions of gjots2.gjots
+	
+2006-1-19    Bob Hepple <bhepple@freeshell.org> Version 2.3.2
+	* First Norwegian version (LANG=nb_NO.utf8). Translator is Robert
+	Emil Berge <robert@aldebaran.no>
+	
+2006-01-08    Bob Hepple <bhepple@freeshell.org> Version 2.3.1
+	* First French version using message and manual files from Rui
+	Nibau (RNB) rui.nibau@omacronides.com
+
+2006-01-03    Bob Hepple <bhepple@freeshell.org> Version 2.3.0
+	* Internationalisation (I18N) support. Translators are invited to
+	contact the author. Note that French and Hungarian are already
+	under way.
+	
+2005-12-22    Bob Hepple <bhepple@freeshell.org> Version 2.2.1
+	* Bug 1250753 fixed - gjots crashes when demoting a newly created item
+
+	* Bug 1376011 fixed - Merge destroys the tree.
+	
+	* Bug 1387036 fixed - UTF-8 encoding required in gjots2html output
+	
+2005-06-19    Gabriel Munoz <munozga@gmail.com> Version 2.2.0
+	
+	* The menus and toolbars have been re-organized for consistency.
+	
+	* Added different icons for many of the tool buttons.
+
+	* Added options for viewing icons/text/both on the toolbars.
+	* A context menu has been added when right-clicking the tree.
+	
+	* Tree sorting and text sorting has been separated.
+	
+	* The cut, copy, and paste commands have been consolidated to do
+	the right thing with tree items and text based on what has the
+	user focus.
+	
+	* We are now using a clipboard that will make copying and pasting
+	from other applications into gjots2 and within gjots2 easier (and
+	as it should be expected).
+	
+	* Made it easier for people to run gjots2 from its source directory.
+	
+	* Fixed hiding the toolbars to remove them from the screen, rather
+	than just removing the icons and leaving dead screen space.
+	
+	* Fixed the export dialog cancel button to actually cancel the
+	operation.
+	
+	* Fixed to handle the window manager close event so that gjots2
+	will always have a clean exit and no changes will be lost.
+	
+	* Lots of code cleanup, e.g. removal of dead code.
+	
+	* Added a "Gjots FAQ" section to the documentation.
+	
+	* Many bug fixes for stability were made.
+	
+2004-12-09    <bhepple@freeshell.org> Version 2.1.1
+
+	* setup.py fixed
+	
+	* Installation doco improved 
+	
+	* The sort dialog is not able to restore its settings - a bug in libglade? 
+
+2004-11-30    <bhepple@freeshell.org> Version 2.1.0
+
+	* Added "Merge Items" - combine selected items into one
+	
+	* Added "Split Item" - split item into 2
+	
+	* Added "Sort" function - sort items or text
+	
+	* Added "Print" function - print selected text or items
+	
+	* Added "Show All" function - explode the tree
+	
+	* Added "Hide All" function - implode the tree
+	
+	* "Remember password" option - no need to type the password (twice) when saving an encrypted file 
+
+2004-06-01    <bhepple@freeshell.org> Version 2.0.1
+
+	* (Bug & fix (thanks!) sent in by Andreas Reimer) gui.py:434:
+	self._warp(newnode) Caused an error message on "New Item", changed
+	it to self._warp(new_child)
+
+	* (Bug & fix (thanks!) sent in by Andreas Reimer) gui.py:1081 was:
+	self.gui.msg("No changes to save"), changed to self.msg("...")
+
+	* (Bug sent in by Andreas Reimer & Thomas Zajic): file.py:228: on
+	write_file() a reference to body[-1] caused an error. changed to:
+	
+		if body and not body[-1] == '\n'
+
+	* (Bug sent in by Thomas Zajic): hard-coded references to "/usr"
+	should be replaced with something more adjustable to allow
+	installation "anywhere". Also added setup.py and uninstall.sh for
+	systems without RPM or emerge.
+
+	* Added setup.py and uninstall.sh for non-RPM, non-emerge systems
+
+	* Reduced python requirement to 2.2 (untested - please confirm if it works for you!)
+
+2004-05-22    <bhepple@freeshell.org> Version 2.0.0
+	* Initial release of gjots2 for Python/GTK-2 

@@ -1,0 +1,236 @@
+#!/bin/sh
+#
+# Copyright (C) 1997-2002 Bob Hepple
+# 
+# A simple script to convert a gjots file to an HTML page - with table of contents
+# etc
+#
+# This program is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later
+# version.
+# 
+# This program is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the Free
+# Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
+# 02139, USA.
+#
+# This would probably be easier for most people to understand if it
+# were in perl(1)... but it's in sh, awk and m4. Anyone want to
+# rewrite it?
+
+usage() {
+	echo "Usage: $PROG [-l] [-c] [-t \"title text\"] [filename]
+Converts a gjots file to html (on stdout)
+
+	-l:	adds <HR> lines after each section
+	-c:	adds a link to the TABLE OF CONTENTS after each section
+	-t \"title text\":
+		adds a title to the page
+"
+}
+
+PROG=`basename $0`
+ADD_HR='""'
+ADD_CLINK='""'
+ADD_TITLE='""'
+
+ARGS=`getopt -o hlct: -- "$@"`
+[ $? != 0 ] && echo "use -h for usage" >&2 && exit 1
+
+eval set -- "$ARGS"
+
+while true; do
+	case $1 in
+	-l) ADD_HR='"yes"'; shift;;
+	-c) ADD_CLINK='"yes"'; shift;;
+	-t) ADD_TITLE="\"$2\""; shift 2;;
+	-h) usage; exit 0;;
+	--) shift; break;;
+	*)  echo "$PROG: internal error" >&2 ; exit 1;;
+	esac
+done
+
+#echo "ADD_HR=$ADD_HR" >&2
+#echo "ADD_CLINK=$ADD_CLINK" >&2
+#echo "ADD_TITLE=$ADD_TITLE" >&2
+#echo "ARGS=$@" >&2
+#exit 0
+
+FILENAME=""
+[ -r $1 ] && FILENAME=$1
+
+writeHeader() {
+
+# Quote the here-document terminator word to disable shell variable expansion:
+cat <<"EOF"
+m4_divert(-1)
+m4_changecom(`[[[[')m4_dnl to protect the # character
+m4_changequote({{{{,}}}})
+m4_define({{{{_Start_TOC}}}},{{{{<P>
+<UL>
+m4_define({{{{_H1_num}}}},0)m4_dnl
+m4_define({{{{_H2_num}}}},0)m4_dnl
+m4_define({{{{_H3_num}}}},0)m4_dnl
+m4_define({{{{_H4_num}}}},0)m4_dnl
+m4_divert(1)}}}})
+
+m4_define({{{{_H1}}}}, {{{{
+m4_divert(0)m4_dnl
+m4_ifelse(_H4_num,0,,{{{{      </UL>
+}}}})m4_dnl
+m4_ifelse(_H3_num,0,,{{{{    </UL>
+}}}})m4_dnl
+m4_ifelse(_H2_num,0,,{{{{  </UL>
+}}}})m4_dnl
+m4_divert(-1)
+m4_define({{{{_H1_num}}}},m4_incr(_H1_num))m4_dnl
+m4_define({{{{_H2_num}}}},0)
+m4_define({{{{_H3_num}}}},0)
+m4_define({{{{_H4_num}}}},0)
+m4_define({{{{_TOC_label}}}},{{{{_H1_num. $1}}}})
+m4_divert(0)  <LI><A HREF="#_TOC_label">_TOC_label</A>
+m4_divert(1)<H2><A NAME="_TOC_label">_TOC_label</A></H2>}}}})
+
+m4_define({{{{_H2}}}}, {{{{m4_divert(0)m4_dnl
+m4_ifelse(_H4_num,0,,{{{{      </UL>
+}}}})m4_dnl
+m4_ifelse(_H3_num,0,,{{{{    </UL>
+}}}})m4_dnl
+m4_ifelse(_H2_num,0,{{{{  <UL>
+}}}})m4_dnl
+m4_divert(-1)
+m4_define({{{{_H2_num}}}},m4_incr(_H2_num))
+m4_define({{{{_H3_num}}}},0)
+m4_define({{{{_H4_num}}}},0)
+m4_define({{{{_TOC_label}}}},{{{{_H1_num._H2_num $1}}}})
+m4_divert(0)    <LI><A HREF="#_TOC_label">_TOC_label</A>
+m4_divert(1)<H3><A NAME="_TOC_label">_TOC_label</A></H3>}}}})
+
+m4_define({{{{_H3}}}}, {{{{m4_divert(0)m4_dnl
+m4_ifelse(_H4_num,0,,{{{{      </UL>
+}}}})m4_dnl
+m4_ifelse(_H3_num,0,{{{{    <UL>
+}}}})m4_dnl
+m4_divert(-1)
+m4_define({{{{_H3_num}}}},m4_incr(_H3_num))
+m4_define({{{{_H4_num}}}},0)
+m4_define({{{{_TOC_label}}}},{{{{_H1_num._H2_num._H3_num $1}}}})
+m4_divert(0)      <LI><A HREF="#_TOC_label">_TOC_label</A>
+m4_divert(1)<H4><A NAME="_TOC_label">_TOC_label</A></H4>}}}})
+
+m4_define({{{{_H4}}}}, {{{{m4_divert(0)m4_dnl
+m4_ifelse(_H4_num,0,{{{{      <UL>
+}}}})m4_dnl
+m4_divert(-1)
+m4_define({{{{_H4_num}}}},m4_incr(_H4_num))
+m4_define({{{{_TOC_label}}}},{{{{_H1_num._H2_num._H3_num._H4_num $1}}}})
+m4_divert(0)        <LI><A HREF="#_TOC_label">_TOC_label</A>
+m4_divert(1)<H5><A NAME="_TOC_label">_TOC_label</A></H5>}}}})
+
+m4_define({{{{_End_TOC}}}},{{{{m4_divert(0)m4_dnl
+m4_ifelse(_H4_num,0,,{{{{        </UL>
+}}}})m4_dnl
+m4_ifelse(_H3_num,0,,{{{{    </UL>
+}}}})m4_dnl
+m4_ifelse(_H2_num,0,,{{{{  </UL>
+}}}})m4_dnl
+</UL>
+<P>}}}})
+m4_divert m4_dnl
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML> 
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+EOF
+
+cat <<EOF
+  <TITLE>$FILENAME</TITLE>
+</HEAD>
+<BODY>
+
+EOF
+} # writeHeader
+
+writeBody() {
+AWKFILE=/tmp/gjots2html.tmp$$.awk 
+
+# Leave the here-document terminator unquoted to enable shell variable expansion:
+# $ \ ` and , need escaping with \:
+cat >$AWKFILE <<EOF
+BEGIN {
+	level = 1
+	add_hr = $ADD_HR
+	add_clink = $ADD_CLINK
+	add_title = $ADD_TITLE
+	print_title=1
+	#printf("add_hr=%s\n", add_hr) | "cat 1>&2"
+	#printf("add_clink=%s\n", add_clink) | "cat 1>&2"
+	#printf("add_title=%s\n", add_title) | "cat 1>&2"
+	if (add_title != "") {
+		printf("<H1>%s</H1><P>\n", add_title)
+	}
+	print "<A NAME=\"Contents\">Contents</A><P>_Start_TOC\n<PRE>\n"
+}
+
+{
+	if (\$0 ~ /^\\\\NewEntry/) { 
+		print_title=1
+	} else if (\$0 ~ /^\\\\NewFolder/) { 
+		level++
+		if (level > 4) {
+			print "gjots2html: Too many levels of folder for this poor utility. Extend me!" >/dev/tty
+			exit 1
+		}
+	} else if (\$0 ~ /^\\\\EndFolder/) { 
+		level--
+	} else {
+		gsub(/&/,"\\\\&amp;")
+		gsub(/"/,"\\\\&quot;")
+		gsub(/</,"\\\\&lt;")
+		gsub(/>/,"\\\\&gt;")
+		if (print_title) {
+			printf("</PRE>\n")
+			if (add_clink == "yes") {
+				printf("<P><A HREF=\"#Contents\">Contents</A><P>")
+			}
+			if (add_hr == "yes") {
+				printf("<HR>\n")
+			}
+			printf("_H%d(%s)\n<PRE>\n",level, \$0)
+			print_title=0
+		} else {
+			print
+		}
+	}
+}
+
+END { print "</PRE>\n"; }
+EOF
+
+cat $FILENAME | awk -f $AWKFILE
+rm $AWKFILE
+
+} # writeBody
+
+writeTrailer() {
+cat <<"EOF"
+</BODY>
+</HTML>
+_End_TOC
+EOF
+} # writeTrailer
+
+# This is the main program (!):
+(
+		writeHeader
+		writeBody
+		writeTrailer
+) | m4 -P 

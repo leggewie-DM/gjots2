@@ -1,0 +1,1124 @@
+# translation of gjots2.po to
+# Messages master file for gjots2.
+# Copyright (C) 2005-2006 Bob Hepple
+# This file is distributed under the same license as the gjots2 package.
+# Bob Hepple <bhepple@freeshell.org>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gjots2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-12-24 15:29+1000\n"
+"PO-Revision-Date: 2006-01-16 15:35+0100\n"
+"Last-Translator: Robert Emil Berge\n"
+"Language-Team:  <nb@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11\n"
+
+#: ../gjots2.desktop.in.h:1
+msgid "Store and organise your random notes"
+msgstr "Organiser og ta vare på dine uordnede notater"
+
+#: ../gjots2.desktop.in.h:2
+msgid "Gjots2 Jotter"
+msgstr "Gjots2 Jotter"
+
+#: ../gjots.glade2:10
+msgid "gjots"
+msgstr "gjots"
+
+#: ../gjots.glade2:53
+msgid "_New"
+msgstr "_Ny"
+
+#: ../gjots.glade2:98
+msgid "Import items from a gjots file"
+msgstr "Importer elementer fra en gjots-fil"
+
+#: ../gjots.glade2:99
+msgid "_Import"
+msgstr "_Importer"
+
+#: ../gjots.glade2:120
+msgid "Export selected items to a gjots file"
+msgstr "Eksporter valgte elementer til en gjots fil"
+
+#: ../gjots.glade2:121
+msgid "_Export"
+msgstr "_Eksporter"
+
+#: ../gjots.glade2:162
+msgid "Toggle the read-only flag if possible"
+msgstr "Skift flagget for skrivebeskyttelse hvis mulig"
+
+#: ../gjots.glade2:163
+msgid "_Read-only"
+msgstr "_Skrivebeskyttet"
+
+#: ../gjots.glade2:179
+msgid "Exit gjots"
+msgstr "Avslutt gjots"
+
+#: ../gjots.glade2:180
+msgid "_Quit"
+msgstr "_Avslutt"
+
+#: ../gjots.glade2:288
+msgid "_Toolbars"
+msgstr "_Verktøylinjer"
+
+#: ../gjots.glade2:297
+msgid "Toggles the main toolbar"
+msgstr "Skrur av/på hoved-verktøylinjen"
+
+#: ../gjots.glade2:298
+msgid "To_p Toolbar"
+msgstr "Ø_verste verktøylinje"
+
+#: ../gjots.glade2:308
+msgid "Toggles tree tool bar"
+msgstr "Skrur av/på tree-verktøylinjen"
+
+#: ../gjots.glade2:309
+msgid "Tre_e Toolbar"
+msgstr "_Tre-verktøylinje"
+
+#: ../gjots.glade2:325
+msgid "Show the related icon text"
+msgstr "Vis tilhørende ikontekst"
+
+#: ../gjots.glade2:326
+msgid "Show _Icon Text"
+msgstr "Vis ikontekst"
+
+#: ../gjots.glade2:341
+msgid "Status _Bar"
+msgstr "Status_linje"
+
+#: ../gjots.glade2:357 ../gjots.glade2:1695
+msgid "Show all items below the current item"
+msgstr "Vis alle elementer under valgte element"
+
+#: ../gjots.glade2:358
+msgid "_Show All"
+msgstr "Vis _alt"
+
+#: ../gjots.glade2:379
+msgid "Hide all items except the top level"
+msgstr "Skjul alle elementer utenom øverste nivå"
+
+#: ../gjots.glade2:380
+msgid "_Hide All"
+msgstr "_Skjul alt"
+
+#: ../gjots.glade2:405
+msgid "_Tree"
+msgstr "_Tre"
+
+#: ../gjots.glade2:414
+msgid "Create a new page"
+msgstr "Lag nytt element"
+
+#: ../gjots.glade2:415
+msgid "_New Page"
+msgstr "_Nytt element"
+
+#: ../gjots.glade2:436
+msgid "Create a new child "
+msgstr "Lag et nytt underelement"
+
+#: ../gjots.glade2:437
+msgid "New _Child"
+msgstr "Nytt _underelement"
+
+#: ../gjots.glade2:464 ../gjots.glade2:1525
+msgid "Move selection up"
+msgstr "Flytt valgte elementer opp"
+
+#: ../gjots.glade2:465
+msgid "_Up"
+msgstr "_Opp"
+
+#: ../gjots.glade2:486 ../gjots.glade2:1543
+msgid "Move selection down"
+msgstr "Flytt valgte elementer ned"
+
+#: ../gjots.glade2:487
+msgid "_Down"
+msgstr "_Ned"
+
+#: ../gjots.glade2:508 ../gjots.glade2:1561
+msgid "Selection becomes a sibling to their parent"
+msgstr "Utvalg kommer på samme nivå som overelement"
+
+#: ../gjots.glade2:509
+msgid "P_romote"
+msgstr "_Forfrem"
+
+#: ../gjots.glade2:530 ../gjots.glade2:1579
+msgid "Selection becomes a child of the previous item"
+msgstr "Utvalg blir underelement til elementet før"
+
+#: ../gjots.glade2:531
+msgid "D_emote"
+msgstr "_Degrader"
+
+#: ../gjots.glade2:558
+msgid "Make a new item from the current selection"
+msgstr "Lag et nytt element fra utvalg"
+
+#: ../gjots.glade2:559
+msgid "_Split Item"
+msgstr "Del _element"
+
+#: ../gjots.glade2:580
+msgid "Merge current items into the first one"
+msgstr "Slå sammen valgte elementer inn i det første"
+
+#: ../gjots.glade2:581
+msgid "_Merge Items"
+msgstr "_Slå sammen elementer"
+
+#: ../gjots.glade2:608 ../gjots.glade2:1713
+msgid "Popup the sort tree dialog"
+msgstr "Åpne dialogvindu for å sortere treet"
+
+#: ../gjots.glade2:609
+msgid "S_ort Tree"
+msgstr "So_rter treet"
+
+#: ../gjots.glade2:634
+msgid "Te_xt"
+msgstr "Te_kst"
+
+#: ../gjots.glade2:643
+msgid "Format the current paragraph"
+msgstr "Formater gjeldende avsnitt"
+
+#: ../gjots.glade2:644
+msgid "_Format"
+msgstr "_Formater"
+
+#: ../gjots.glade2:666
+msgid "Add a time/date stamp (see preferences)"
+msgstr "Sett inn tid/dato (see innstillinger)"
+
+#: ../gjots.glade2:667
+msgid "_Time stamp"
+msgstr "_Tidsstempel"
+
+#: ../gjots.glade2:688
+msgid "Edit current item in an external editor"
+msgstr "Rediger gjeldende element i et eksternt skriveprogram"
+
+#: ../gjots.glade2:689
+msgid "_External Edit"
+msgstr "_Rediger eksternt"
+
+#: ../gjots.glade2:710
+msgid "Popup the sort text dialog"
+msgstr "Åpne dialogvindu for å sortere tekst"
+
+#: ../gjots.glade2:711
+msgid "_Sort Text"
+msgstr "_Sorter tekst"
+
+#: ../gjots.glade2:822 ../gjots.glade2:1165 ../gjots.glade2:1468
+msgid "New Page"
+msgstr "Nytt element"
+
+#: ../gjots.glade2:842 ../gjots.glade2:1486
+msgid "New Child"
+msgstr "Nytt underelement"
+
+#: ../gjots.glade2:868 ../gjots.glade2:1526
+msgid "Up"
+msgstr "Opp"
+
+#: ../gjots.glade2:888 ../gjots.glade2:1544
+msgid "Down"
+msgstr "Ned"
+
+#: ../gjots.glade2:908
+msgid "Promote"
+msgstr "Forfrem"
+
+#: ../gjots.glade2:928
+msgid "Demote"
+msgstr "Degrader"
+
+#: ../gjots.glade2:954 ../gjots.glade2:1638
+msgid "Merge Items"
+msgstr "Slå sammen elementer"
+
+#: ../gjots.glade2:980 ../gjots.glade2:1696
+msgid "Show All"
+msgstr "Vis alt"
+
+#: ../gjots.glade2:1000 ../gjots.glade2:1678
+msgid "Hide All"
+msgstr "Skjul alt"
+
+#: ../gjots.glade2:1026 ../gjots.glade2:1714 ../Gjots/sortDialog.py:307
+msgid "Sort Tree"
+msgstr "Sorter treet"
+
+#: ../gjots.glade2:1052
+msgid "Import"
+msgstr "Importer"
+
+#: ../gjots.glade2:1072
+msgid "Export"
+msgstr "Eksporter"
+
+#: ../gjots.glade2:1105
+msgid "Read the online manual (using gjots)"
+msgstr "Les manualen fra internet (med gjots)"
+
+#: ../gjots.glade2:1106
+msgid "_Read manual"
+msgstr "Les manualen"
+
+#: ../gjots.glade2:1164
+msgid "Create a new gjots document"
+msgstr "Lag et nytt gjots-dokument"
+
+#: ../gjots.glade2:1182
+msgid "Open an existing gjots document"
+msgstr "Åpne et eksisterende gjots-dokument"
+
+#: ../gjots.glade2:1183
+msgid "Open"
+msgstr "Åpne"
+
+#: ../gjots.glade2:1200
+msgid "Save gjots document"
+msgstr "Lagre gjots-dokumentet"
+
+#: ../gjots.glade2:1201
+msgid "Save"
+msgstr "Lagre"
+
+#: ../gjots.glade2:1218
+msgid "Print this document"
+msgstr "Skriv ut dette dokumentet"
+
+#: ../gjots.glade2:1219 ../gjots.glade2:3031
+msgid "Print"
+msgstr "Skriv ut"
+
+#: ../gjots.glade2:1258
+msgid "Cut selected items"
+msgstr "Klipp ut valgte elementer"
+
+#: ../gjots.glade2:1259
+msgid "Cut"
+msgstr "Klipp ut"
+
+#: ../gjots.glade2:1276
+msgid "Copy selected items"
+msgstr "Kopier valgte elementer"
+
+#: ../gjots.glade2:1277
+msgid "Copy"
+msgstr "Kopier"
+
+#: ../gjots.glade2:1294
+msgid "Paste selected items"
+msgstr "Lim inn valgte elementer"
+
+#: ../gjots.glade2:1295
+msgid "Paste"
+msgstr "Lim inn"
+
+#: ../gjots.glade2:1334
+msgid "Wrap the current paragraph to the current line length"
+msgstr "Bryt gjeldene avsnitt til valgt linjelengde"
+
+#: ../gjots.glade2:1335
+msgid "Wrap"
+msgstr "Bryt"
+
+#: ../gjots.glade2:1352
+msgid "Invoke an external editor on the current item"
+msgstr "Start et eksternt skriveprogram for gjeldene element"
+
+#: ../gjots.glade2:1353
+msgid "Ext.Ed."
+msgstr "Ekst.prg."
+
+#: ../gjots.glade2:1370
+msgid "Add a time/date stamp (see prefs)"
+msgstr "Sett inn stempel for tid/dato (se innstillinger)"
+
+#: ../gjots.glade2:1371
+msgid "Date"
+msgstr "Dato"
+
+#: ../gjots.glade2:1388
+msgid "Popup the find and replace dialog"
+msgstr "Åpne dialogvinduet for finn/erstatt"
+
+#: ../gjots.glade2:1389 ../gjots.glade2:2739
+msgid "Find"
+msgstr "Finn"
+
+#: ../gjots.glade2:1406
+msgid "Popup the sort dialog"
+msgstr "Åpne dialogvinduet for å sortere"
+
+#: ../gjots.glade2:1407 ../gjots.glade2:3493
+msgid "Sort"
+msgstr "Sorter"
+
+#: ../gjots.glade2:1424
+msgid "Open gjots preferences window"
+msgstr "Åpne vinduet for gjots innstillinger"
+
+#: ../gjots.glade2:1425
+msgid "Prefs"
+msgstr "Innstillinger"
+
+#: ../gjots.glade2:1467
+msgid "Create a new item"
+msgstr "Lag et nytt element"
+
+#: ../gjots.glade2:1485
+msgid "Create a new child"
+msgstr "Lag et nytt underelement"
+
+#: ../gjots.glade2:1562
+msgid "Back"
+msgstr "Tilbake"
+
+#: ../gjots.glade2:1580
+msgid "Forward"
+msgstr "Fram"
+
+#: ../gjots.glade2:1619
+msgid "Split the text selection into a new item"
+msgstr "Skill ut tekstutvalget til et nytt element"
+
+#: ../gjots.glade2:1620
+msgid "Split Item"
+msgstr "Del element"
+
+#: ../gjots.glade2:1637
+msgid "Merge selected items together"
+msgstr "Slå sammen valgte elementer"
+
+#: ../gjots.glade2:1677
+msgid "Hide all items except for the top level"
+msgstr "Skjul alle elementer utenom øverste nivå"
+
+#: ../gjots.glade2:1917
+msgid "Copyright Bob Hepple 2002-2006"
+msgstr "Copyright Bob Hepple 2002-2006"
+
+#: ../gjots.glade2:1918
+msgid "http://bhepple.freeshell.org/gjots2"
+msgstr "http://bhepple.freeshell.org/gjots2"
+
+#: ../gjots.glade2:1922
+msgid "translator_credits"
+msgstr "oversetter_medvirkning"
+
+#: ../gjots.glade2:1928
+msgid "window1"
+msgstr "vindu1"
+
+#: ../gjots.glade2:1949 ../gjots.glade2:2002 ../gjots.glade2:2080
+msgid "label1"
+msgstr "merkelapp1"
+
+#: ../gjots.glade2:1979
+msgid "label2"
+msgstr "merkelapp2"
+
+#: ../gjots.glade2:2168
+msgid "Try again"
+msgstr "Prøv igjen"
+
+#: ../gjots.glade2:2181
+msgid "Read only"
+msgstr "Skrivebeskyttet"
+
+#: ../gjots.glade2:2201
+msgid "gjots: preferences"
+msgstr "gjots: innstillinger"
+
+#: ../gjots.glade2:2232
+msgid "Choose a font for the text panel"
+msgstr "Velg en skrifttype for tekstpanelet"
+
+#: ../gjots.glade2:2253
+msgid "Date format:"
+msgstr "Datoformat:"
+
+#: ../gjots.glade2:2277
+msgid "Format for the timestamp function (see strftime(3))"
+msgstr "Format for datostempelfunksjonen (se strftime(3))"
+
+#: ../gjots.glade2:2282
+msgid "%F"
+msgstr "%F"
+
+#: ../gjots.glade2:2300
+msgid ""
+"External program to edit a page (%s is replaced by the name of the temporary "
+"edit file)"
+msgstr "Eksternt program for å redigere et element (%s blir byttet ut med en midlertidig fil for redigering)"
+
+#: ../gjots.glade2:2305
+msgid "xterm -e vi %s"
+msgstr "xterm -e vi %s"
+
+#: ../gjots.glade2:2323
+msgid "External editor"
+msgstr "Eksternt skriveprogram"
+
+#: ../gjots.glade2:2347
+msgid "Text Line Length: "
+msgstr "Linjelengde for tekst:"
+
+#: ../gjots.glade2:2371
+msgid "Line length for paragraph wrapping"
+msgstr "Linjelengde for avsnittsbryting"
+
+#: ../gjots.glade2:2394
+msgid "Text formatter: "
+msgstr "Tekstformatering:"
+
+#: ../gjots.glade2:2418
+msgid ""
+"External program to pipe text for formatting (%d is replaced by the current "
+"line width)"
+msgstr "Eksternt program for formatering (%d blir byttet ut med valgt linjelengde)"
+
+#: ../gjots.glade2:2423
+msgid "fmt -w %d "
+msgstr "fmt -w %d"
+
+#: ../gjots.glade2:2441
+msgid "Current text font"
+msgstr "Valgt skrifttype"
+
+#: ../gjots.glade2:2446
+msgid "Courier 10 Pitch 10"
+msgstr "Courier 10 Pitch 10"
+
+#: ../gjots.glade2:2526
+msgid "Select Font"
+msgstr "Velg skrifttype"
+
+#: ../gjots.glade2:2574
+msgid "abcdefghijk ABCDEFGHIJK"
+msgstr "abcdefghijk ABCDEFGHIJK"
+
+#: ../gjots.glade2:2586
+msgid "Find & replace"
+msgstr "Finn og erstatt"
+
+#: ../gjots.glade2:2624
+msgid "Find:"
+msgstr "Finn:"
+
+#: ../gjots.glade2:2648
+msgid "Replace:"
+msgstr "Erstatt:"
+
+#: ../gjots.glade2:2672
+msgid "String to search for"
+msgstr "Tekst å søke etter"
+
+#: ../gjots.glade2:2698
+msgid "String to replace"
+msgstr "Tekst å erstatte med"
+
+#: ../gjots.glade2:2759
+msgid "Close"
+msgstr "Lukk"
+
+#: ../gjots.glade2:2779
+msgid "Replace"
+msgstr "Erstatt"
+
+#: ../gjots.glade2:2799
+msgid "Replace All"
+msgstr "Erstatt alle"
+
+#: ../gjots.glade2:2819
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../gjots.glade2:2839
+msgid "Clear"
+msgstr "Nullstill"
+
+#: ../gjots.glade2:2912
+msgid "Don't ignore case"
+msgstr "Ikke overse store og små bokstaver"
+
+#: ../gjots.glade2:2914
+msgid "Match case"
+msgstr "Bruk kapitalisering"
+
+#: ../gjots.glade2:2934
+msgid "Find string is a regular expression (see 'man 7 regex')"
+msgstr "Søketekst er et regulært uttrykk (se man 7 regex)"
+
+#: ../gjots.glade2:2936
+msgid "Regular Expression"
+msgstr "Regulært uttrykk"
+
+#: ../gjots.glade2:2955
+msgid "Search backwards"
+msgstr "Søk bakover"
+
+#: ../gjots.glade2:2957
+msgid "Backwards"
+msgstr "Bakover"
+
+#: ../gjots.glade2:2978
+msgid "Searches entire file not just this entry"
+msgstr "Søker i hele filen, ikke bare dette elementet"
+
+#: ../gjots.glade2:2980
+msgid "Global"
+msgstr "Globalt"
+
+#: ../gjots.glade2:3003
+msgid " Options "
+msgstr "Innstillinger"
+
+#: ../gjots.glade2:3079
+msgid "e.g. lpr: "
+msgstr "f.eks. lpr:"
+
+#: ../gjots.glade2:3100
+msgid "print command (can be a shell expression)"
+msgstr "Utskriftkommando (kan være et skallutrykk)"
+
+#: ../gjots.glade2:3128
+msgid " Print command "
+msgstr "Utskriftskommando"
+
+#: ../gjots.glade2:3179
+msgid "Print the current page"
+msgstr "Skriv ut gjeldene element"
+
+#: ../gjots.glade2:3181
+msgid "Page"
+msgstr "Element"
+
+#: ../gjots.glade2:3199
+msgid "Print the selected pages or text"
+msgstr "Skriv ut valgte elementer eller valgt tekst"
+
+#: ../gjots.glade2:3201
+msgid "Selection"
+msgstr "Utvalg"
+
+#: ../gjots.glade2:3220
+msgid "Print the entire gjots file"
+msgstr "Skriv ut hele gjots-filen"
+
+#: ../gjots.glade2:3222
+msgid "All"
+msgstr "Alt"
+
+#: ../gjots.glade2:3245
+msgid " Print Range "
+msgstr "Utskriftsrekkevidde"
+
+#: ../gjots.glade2:3302
+msgid "Feeds a page before every new gjots item"
+msgstr "Mater ut en blank side før hvert element"
+
+#: ../gjots.glade2:3304
+msgid "Page feeds"
+msgstr "Blanke forsider"
+
+#: ../gjots.glade2:3321
+msgid "Print the gjots item titles in bold"
+msgstr "Skriv ut gjots elementtitler med fet skrift"
+
+#: ../gjots.glade2:3323
+msgid "Bold titles"
+msgstr "Fete titler"
+
+#: ../gjots.glade2:3342
+msgid "Auto Number"
+msgstr "Autonumrering"
+
+#: ../gjots.glade2:3373
+msgid "Auto-number format: "
+msgstr "Autonumererings-format"
+
+#: ../gjots.glade2:3393
+msgid "eg. 1 for 1.2.1, a"
+msgstr "f.eks. 1 for 1.2.1, a"
+
+#: ../gjots.glade2:3424
+msgid " Print formatting "
+msgstr "Utskriftsformat"
+
+#: ../gjots.glade2:3544
+msgid "Sort in ascending order"
+msgstr "Sorter i stigende rekkefølge"
+
+#: ../gjots.glade2:3546
+msgid "Ascending"
+msgstr "Stigende"
+
+#: ../gjots.glade2:3567
+msgid "Sort in descending order"
+msgstr "Sorter i synkende rekkefølge"
+
+#: ../gjots.glade2:3569
+msgid "Descending"
+msgstr "Synkende"
+
+#: ../gjots.glade2:3591
+msgid "Sort in alphabetic order"
+msgstr "Sorter alfabetisk"
+
+#: ../gjots.glade2:3593
+msgid "Alphabetic"
+msgstr "Alfabetisk"
+
+#: ../gjots.glade2:3614
+msgid "Sort in numeric order"
+msgstr "Sorter numerisk"
+
+#: ../gjots.glade2:3616
+msgid "Numeric"
+msgstr "Numerisk"
+
+#: ../gjots.glade2:3642
+msgid " Sort Parameters "
+msgstr "Sorteringsparametre"
+
+#: ../gjots.glade2:3693
+msgid "How many sublevels to sort (0 for none; -1 for 'all')"
+msgstr "Antall undernivåer som skal sorteres (0 for ingen; -1 for 'alle')"
+
+#: ../gjots.glade2:3717
+msgid " Sort Sublevels "
+msgstr "Sorter undernivåer"
+
+#: ../gjots.glade2:3788
+msgid "Select File"
+msgstr "Velg fil"
+
+#: ../gjots2:14
+msgid ""
+"Usage: gjots [OPTIONS] [FILENAME]\n"
+"A gnome-2/X11 jotter\n"
+"\n"
+"OPTIONS:\n"
+"-h, --help:                         this help\n"
+"-d, --debug:                        debug trace to stdout\n"
+"-g 123x456, --geometry=123x456:     initial geometry (X x Y)\n"
+"-p, --purge-password\t\t\t\tdon't remember password\n"
+"-r, --readonly:                     no editing (or locking)\n"
+"-V, --version:                      print the version and exit\n"
+"\n"
+"FILENAME:\n"
+"\tgjots data filename (default is $HOME/.gjotsfile)\n"
+msgstr ""
+"Bruk: gjots [VALG] [FILNAVN]\n"
+"Et gnome-2/X11 jotter-program\n"
+"\n"
+"VALG:\n"
+"-h, --help:                         denne hjelpebeskjeden\n"
+"-d, --debug:                        feilsøkingsinformasjon til stdout\n"
+"-g 123x456, --geometry=123x456:     vindustørelse ved programstart (X x Y)\n"
+"-p, --purge-password\t\t\t\tikke husk passord\n"
+"-r, --readonly:                     ingen redigering (eller låsing)\n"
+"-V, --version:                      skriv programversjon og avslutt\n"
+"\n"
+"FILNAVN:\n"
+"\tgjots data filenavn (standard er $HOME/.gjotsfile)\n"
+
+#: ../gjots2:39
+#, python-format
+msgid "%s requires python%s or higher."
+msgstr "%s krever python%s eller høyere."
+
+#: ../gjots2:49
+#, python-format
+msgid "%s requires pygtk-%s."
+msgstr "%s krever pygtk-%s."
+
+#: ../gjots2:62
+#, python-format
+msgid "%s: Warning: running modules from %s\n"
+msgstr "%s: Advarsel: kjører moduler fra %s\n"
+
+#: ../gjots2:75
+msgid "Use -h for help\n"
+msgstr "Bruk -h for hjelp\n"
+
+#: ../gjots2:89
+#, python-format
+msgid "%s version %s"
+msgstr "%s versjon %s"
+
+#: ../Gjots/gui.py:96
+#, python-format
+msgid "External formatter \"%s\" is not installed - can't format"
+msgstr "Eksternt formateringsprogram \"%s\" er ikke installert - kan ikke formatere"
+
+#: ../Gjots/gui.py:326
+msgid "not initialised"
+msgstr "ikke initialisert"
+
+#: ../Gjots/gui.py:543 ../Gjots/gui.py:584 ../Gjots/gui.py:588
+#: ../Gjots/gui.py:630 ../Gjots/gui.py:634 ../Gjots/gui.py:690
+#: ../Gjots/gui.py:695 ../Gjots/gui.py:904 ../Gjots/gui.py:913
+#: ../Gjots/gui.py:995 ../Gjots/gui.py:1004 ../Gjots/gui.py:1037
+#: ../Gjots/gui.py:1042 ../Gjots/gui.py:1068 ../Gjots/gui.py:1349
+#: ../Gjots/gui.py:1837 ../Gjots/gui.py:1856 ../Gjots/gui.py:1885
+#: ../Gjots/gui.py:1908 ../Gjots/file.py:439 ../Gjots/file.py:444
+#: ../Gjots/sortDialog.py:247 ../Gjots/sortDialog.py:252
+#: ../Gjots/printDialog.py:110 ../Gjots/printDialog.py:115
+msgid "Nothing selected"
+msgstr "Ingenting er valgt"
+
+#: ../Gjots/gui.py:547 ../Gjots/gui.py:593 ../Gjots/gui.py:638
+#: ../Gjots/gui.py:700 ../Gjots/gui.py:799 ../Gjots/gui.py:1073
+#: ../Gjots/gui.py:1841 ../Gjots/sortDialog.py:263
+msgid "No parent!"
+msgstr "Overelement finnes ikke!"
+
+#: ../Gjots/gui.py:551 ../Gjots/gui.py:604
+msgid "No child!"
+msgstr "Underelement finnes ikke!"
+
+#: ../Gjots/gui.py:554 ../Gjots/gui.py:598
+msgid "Can't go any further"
+msgstr "Kan ikke gå videre"
+
+#: ../Gjots/gui.py:561 ../Gjots/gui.py:718
+msgid "Internal error!"
+msgstr "Intern feil!"
+
+#: ../Gjots/gui.py:642
+msgid "Can't go further!"
+msgstr "Kan ikke gå videre!"
+
+#: ../Gjots/gui.py:838
+msgid "Text cut"
+msgstr "Utklipt tekst"
+
+#: ../Gjots/gui.py:849
+msgid "Text copied"
+msgstr "Kopiert tekst"
+
+#: ../Gjots/gui.py:861
+msgid "Text pasted"
+msgstr "Limt inn tekst"
+
+#: ../Gjots/gui.py:870
+msgid "All text selected"
+msgstr "Hele den valgte teksten"
+
+#: ../Gjots/gui.py:876
+msgid "All tree items selected"
+msgstr "Alle valgte tre-elementer"
+
+#: ../Gjots/gui.py:884
+msgid "Nothing selected!"
+msgstr "Ingenting er valgt!"
+
+#: ../Gjots/gui.py:908
+msgid "Can't merge the root item"
+msgstr "Kan ikke slå sammen rot-elementet"
+
+#: ../Gjots/gui.py:917
+msgid "Nothing to merge"
+msgstr "Ingenting å slå sammen"
+
+#: ../Gjots/gui.py:924
+msgid "Can't merge items that have children"
+msgstr "Kan ikke slå sammen elementer som har underelementer"
+
+#: ../Gjots/gui.py:954
+#, python-format
+msgid "%d items merged"
+msgstr "%d elementer slått sammen"
+
+#: ../Gjots/gui.py:999
+msgid "Can't delete the root item"
+msgstr "Kan ikke slette rot-elementet"
+
+#: ../Gjots/gui.py:1029
+#, python-format
+msgid "%d tree items cut"
+msgstr "%d tre-elementer klippet ut"
+
+#: ../Gjots/gui.py:1056
+#, python-format
+msgid "%d tree items copied"
+msgstr "%d tre-elementer kopiert"
+
+#: ../Gjots/gui.py:1063
+msgid "Nothing to paste"
+msgstr "Ingenting å lime inn"
+
+#: ../Gjots/gui.py:1079
+msgid "Tree items pasted"
+msgstr "Tre-elementer limt inn"
+
+#: ../Gjots/gui.py:1097
+msgid "Can't write "
+msgstr "Kan ikke skrive"
+
+#: ../Gjots/gui.py:1107
+#, python-format
+msgid "Can't run '%s'"
+msgstr "Kan ikke kjøre '%s'"
+
+#: ../Gjots/gui.py:1116
+msgid "Can't read "
+msgstr "Kan ikke lese"
+
+#: ../Gjots/gui.py:1124
+msgid "text changed by external editor"
+msgstr "tekst redigert med eksternt skriveprogram"
+
+#: ../Gjots/gui.py:1126
+msgid "text not changed by external editor"
+msgstr "Tekst som ikke er redigert med eksternt skriveprogram"
+
+#: ../Gjots/gui.py:1144
+msgid ": Error"
+msgstr ": Feil"
+
+#: ../Gjots/gui.py:1157
+#, python-format
+msgid "Can't lock file %s: already locked by process %d"
+msgstr "Kan ikke låse filen %s: allerede låst av prosess %d"
+
+#: ../Gjots/gui.py:1263
+msgid ": Save?"
+msgstr ": Lagre?"
+
+#: ../Gjots/gui.py:1264
+msgid "Save current work?"
+msgstr "Lagre forandringer?"
+
+#: ../Gjots/gui.py:1285
+msgid "New file"
+msgstr "Ny fil"
+
+#: ../Gjots/gui.py:1301
+msgid "Open file ..."
+msgstr "Åpne fil ..."
+
+#: ../Gjots/gui.py:1310
+msgid "No changes to save"
+msgstr "Ingen forandringer å lagre"
+
+#: ../Gjots/gui.py:1314 ../Gjots/gui.py:1334
+msgid "Saved."
+msgstr "Lagret."
+
+#: ../Gjots/gui.py:1316 ../Gjots/gui.py:1336 ../Gjots/file.py:429
+msgid "Not saved."
+msgstr "Ikke lagret."
+
+#: ../Gjots/gui.py:1330
+msgid "Nothing to save"
+msgstr "Ingenting å lagre"
+
+#: ../Gjots/gui.py:1332 ../Gjots/file.py:606
+msgid "Save as ..."
+msgstr "Lagre som ..."
+
+#: ../Gjots/gui.py:1346
+msgid "Import from ..."
+msgstr "Importer fra ..."
+
+#: ../Gjots/gui.py:1357
+msgid "Export to ..."
+msgstr "Eksporter til ..."
+
+#: ../Gjots/gui.py:1613 ../Gjots/gui.py:1616
+#, python-format
+msgid "%s: Warning: opening gjots2 manual from %s\n"
+msgstr "%s: Advarser: åpner gjots2-manualen fra %s\n"
+
+#: ../Gjots/gui.py:1780
+msgid "pygtk-2.2 is required for this application!"
+msgstr "pygtk-2.2 kreves for dette programmet!"
+
+#: ../Gjots/gui.py:1786
+msgid ""
+"gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
+"event."
+msgstr ""
+"gjots2: advarsel: Utvalgslisten er NULL. Hopper over tre-utvalg forandret\n"
+"hendelse."
+
+#: ../Gjots/gui.py:1845
+msgid "Can't go further"
+msgstr "Kan ikke gå videre"
+
+#: ../Gjots/gui.py:1874
+msgid "Tree is empty!"
+msgstr "Treet er tomt!"
+
+#: ../Gjots/gui.py:2015
+#, python-format
+msgid "%s: bad geometry specification: %s\n"
+msgstr "%s: feil spesifikasjon av vindustørelse: %s\n"
+
+#: ../Gjots/gui.py:2179
+msgid "New...>>>"
+msgstr "Ny...>>>"
+
+#: ../Gjots/gui.py:2235
+msgid ": version "
+msgstr ": versjon "
+
+#: ../Gjots/find.py:154
+msgid "Bad regular expression"
+msgstr "Feilaktig regulært uttrykk"
+
+#: ../Gjots/find.py:198 ../Gjots/find.py:251
+msgid "Not found"
+msgstr "Ikke funnet"
+
+#: ../Gjots/find.py:200
+msgid "Found"
+msgstr "Funnet"
+
+#: ../Gjots/find.py:254
+msgid "Replace?"
+msgstr "Erstatt?"
+
+#: ../Gjots/find.py:267
+#, python-format
+msgid "%d substitutions"
+msgstr "%d erstatninger"
+
+#: ../Gjots/file.py:250
+msgid "Enter password for "
+msgstr "Skriv inn passord for"
+
+#: ../Gjots/file.py:252
+msgid "gjots: Enter Password"
+msgstr "gjots: Skriv inn passord"
+
+#: ../Gjots/file.py:254
+msgid "Password: "
+msgstr "Passord:"
+
+#: ../Gjots/file.py:255
+msgid "Confirm: "
+msgstr "Bekreft:"
+
+#: ../Gjots/file.py:263
+msgid "Password was not confirmed"
+msgstr "Passordet ble ikke bekreftet"
+
+#: ../Gjots/file.py:270
+msgid "Could not find the ccrypt program - please install it and try again"
+msgstr "Kunne ikke finne programmet ccrypt - installer det og forsøk igjen"
+
+#: ../Gjots/file.py:299
+msgid "Could not find the gpg program - please install it and try again"
+msgstr "Kunne ikke finne programmet gpg - installer det og forsøk igjen"
+
+#: ../Gjots/file.py:324
+msgid "Could not find the openssl program - please install it and try again"
+msgstr "Kunne ikke finne programmet openssl - installer det og forsøk igjen"
+
+#: ../Gjots/file.py:387
+msgid "Can't open \""
+msgstr "Kan ikke opne \""
+
+#: ../Gjots/file.py:390
+msgid "Bad password"
+msgstr "Feilaktig passord"
+
+#: ../Gjots/file.py:393
+msgid "File cannot be locked"
+msgstr "Filen kan ikke låses"
+
+#: ../Gjots/file.py:430
+msgid "Can't write to "
+msgstr "Kan ikke skrive til"
+
+#: ../Gjots/file.py:433
+msgid "Can't lock file"
+msgstr "Kan ikke låse filen"
+
+#: ../Gjots/file.py:544
+#, python-format
+msgid "%s is not readable"
+msgstr "%s er ikke lesbar"
+
+#: ../Gjots/file.py:554
+#, python-format
+msgid "%s: no permission"
+msgstr "%s: ikke tilgang"
+
+#: ../Gjots/file.py:556
+#, python-format
+msgid "%s: locked by process number %d"
+msgstr "%s: låst av prosess nummer %d"
+
+#: ../Gjots/file.py:558
+msgid "gjots: can't lock file."
+msgstr "gjots: kan ikke låse fil."
+
+#: ../Gjots/file.py:618
+msgid "That file is already open!"
+msgstr "Den filen er allerede åpen!"
+
+#: ../Gjots/file.py:626
+#, python-format
+msgid "%s is locked by pid %d"
+msgstr "%s er låst av pid %d"
+
+#: ../Gjots/file.py:629
+msgid "Can't make a lockfile in "
+msgstr "Kan ikke lage en låsefil i"
+
+#: ../Gjots/file.py:641
+#, python-format
+msgid "%s is not writable"
+msgstr "%s er ikke skrivbar"
+
+#: ../Gjots/file.py:643
+#, python-format
+msgid "gjots: %s already exists."
+msgstr "gjots: %s finnes allerede."
+
+#: ../Gjots/file.py:644
+#, python-format
+msgid "overwrite %s?"
+msgstr "skrive over %s?"
+
+#: ../Gjots/sortDialog.py:103
+msgid "_get_settings: Cant find sortAscendingRadioButton"
+msgstr "_get_settings: Kan ikke finne sortAscendingRadioButton"
+
+#: ../Gjots/sortDialog.py:139
+msgid "Internal error"
+msgstr "Intern feil"
+
+#: ../Gjots/sortDialog.py:221
+msgid "Nothing to sort!"
+msgstr "Ingenting å sortere!"
+
+#: ../Gjots/sortDialog.py:311
+msgid "Sort Text"
+msgstr "Sorter tekst"
+
+

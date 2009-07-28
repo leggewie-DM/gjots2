@@ -1,0 +1,187 @@
+#!/bin/sh
+#
+# Copyright (C) 1997-2002 Bob Hepple
+# 
+# A simple script to convert a gjots file to an HTML page - with table of contents
+# etc
+#
+# This program is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later
+# version.
+# 
+# This program is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the Free
+# Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
+# 02139, USA.
+#
+
+# A quick hack, that's all. I thought it would be truly hideous but
+# it's turned out only moderately ugly. Of course, it doesn't do a
+# thorough job on the XML/SGML/DOCBOOK syntax but it seems to cover
+# most practical cases.
+
+usage() {
+	echo "Usage: $PROG [ filename ]
+Converts a DOCBOOK XML file to gjots format (on stdout).
+
+gjots items and folders are created on the following DOCBOOK elements:
+
+preface, chapter, section, sect1, sect2, sect3, sect4
+
+Presently, the DOCBOOK elements _must_ have a title eg.:
+
+    <chapter><title>any text to form the title</title>
+
+Similarly the end of each section must live on its own line:
+
+    </chapter>
+
+Invalid XML will break this program - no checking of XML syntax or
+validation against the DTD is done. Make sure the DOCBOOK file is
+valid before processing with $PROG - perhaps by passing through
+jade(1) or nsgmls(1) without errors."
+
+}
+
+abend() {
+	echo "$PROG: $1" >&2
+	echo "(Use -h for usage)" >&2
+	exit 1
+}
+
+PROG=`basename $0`
+DOC_TYPE='"unknown"'
+ADD_PARA='"yes"'
+HAS_PREFACE='""'
+ENCODE_SPECIALS='"yes"'
+
+ARGS=`getopt -o h -- "$@"`
+[ $? != 0 ] && echo "use -h for usage" >&2 && exit 1
+
+eval set -- "$ARGS"
+
+while true; do
+	case $1 in
+		-h) usage; exit 0;;
+		--) shift; break;;
+		*)  echo "$PROG: internal error" >&2 ; exit 1;;
+	esac
+done
+
+FILENAME=""
+[ -r $1 ] && FILENAME=$1
+
+writeBody() {
+AWKFILE=/tmp/docbook2gjots.tmp$$.awk 
+
+# Leave the here-document terminator unquoted to enable shell variable expansion:
+# $ \ ` and , need escaping with \:
+cat >$AWKFILE <<EOF
+BEGIN {
+	IGNORECASE = 1 # for all regular expressions!
+	level = 0
+	main_element = 0
+	folder_open = 0
+	need_title = 0
+	folder_start_regexp = "^[ 	]*(.*)(<preface>|<chapter>|<section>|<sect1>|<sect2>|<sect3>|<sect4>)(.*)[ 	]*\$"
+	folder_end_regexp = "^[ 	]*(,*)(</preface>|</chapter>|</section>|</sect1>|</sect2>|</sect3>|</sect4>)(.*)[ 	]*\$"
+	title_start_regexp = "^[ 	]*(.*)(<title>)[ 	]*(.*)[ 	]*\$"
+	title_end_regexp = "^[ 	]*(.*)[ 	]*(</title>)(.*)[ 	]*\$"
+}
+
+function manage_folder() {
+	while (folder_open > level) {
+		printf("\\\\EndFolder\\n", level)
+		folder_open--
+	}
+	while (folder_open < level) {
+		printf("\\\\NewFolder\\n", level)
+		folder_open++
+	}
+}
+
+{
+	while (\$0) {
+		if (\$0 ~ folder_start_regexp) {
+			#print "folder_start:",\$0
+			left = gensub(folder_start_regexp, "\\\\1", 1)
+			if (left)
+				print left
+
+			manage_folder()
+			\$0 = gensub(folder_start_regexp, "\\\\3", 1)
+			need_title = 1
+			level++
+
+		} else if (\$0 ~ folder_end_regexp) {
+			#print "folder_end:",\$0
+			left = gensub(folder_end_regexp, "\\\\1", 1)
+			if (left)
+				print left
+
+			level--
+			if (level < 0) {
+				print "XML error"
+				exit 1
+			}
+			\$0 = gensub(folder_end_regexp, "\\\\3", 1)
+
+		} else if (need_title && \$0 ~ title_start_regexp) {
+			#print "title_start:",\$0
+
+			# dubius XML parsing here - we need to assume that the
+			# title text comes immediately after the <chapter> etc tag
+			# and is all on one line (although not necessarily on the
+			# same line as the <title> or </title> tags. This is a
+			# quick and dirty hack after all, not a proper XML parsing
+			# effort.
+
+			left = gensub(title_start_regexp, "\\\\1", 1)
+			if (left)
+				print left
+
+			\$0 = gensub(title_start_regexp, "\\\\3", 1)
+			title=""
+			while (\$0 !~ title_end_regexp) {
+				if (!title)
+					title = gensub("^[ 	]*(.*)[ 	]*", "\\\\1", 1)
+				getline
+			}
+
+			if (!title)
+				title = gensub(title_end_regexp, "\\\\1", 1)
+
+			\$0 = gensub(title_end_regexp, "\\\\3", 1)
+
+			printf("\\\\NewEntry\\n%s\\n\\n", title)
+			need_title = 0
+		} else {
+			print gensub("^[ 	]*(.*)$", "\\\\1", 1)
+			\$0 = ""
+		}
+	}
+}
+
+END { 
+}
+
+EOF
+
+# NB - we are using gawk in order to access the gensub() function:
+cat $FILENAME | gawk -f $AWKFILE
+rm $AWKFILE
+
+} # writeBody
+
+# This is the main program (!):
+(
+		writeBody
+)

@@ -1,0 +1,234 @@
+#!/bin/sh
+#
+# Copyright (C) 1997-2002 Bob Hepple
+# 
+# A simple script to convert a gjots file to an HTML page - with table of contents
+# etc
+#
+# This program is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later
+# version.
+# 
+# This program is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the Free
+# Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
+# 02139, USA.
+#
+
+usage() {
+	echo "Usage: $PROG -a | -b [-e] [-P] [-p] [ filename ]
+Converts a gjots file to DOCBOOK XML (on stdout)
+	-a: make an article
+	-b: make a book
+	-e: don't encode special characters eg < -> &lt;
+	-p: don't change blank lines to </para><para> markers 
+	-P: first section is a preface rather than a chapter (book only)
+
+Either -a or -b must be given but not both. Items in the root element should 
+contain <bookinfo> or <artheader>. If the file does not start with <?xml ...> 
+then appropriate lines will be added. The -e and -p options are provided in 
+case your gjots file is already partially in docbook format.
+
+If properly installed, the docbook utilities can then be used to create HTML, 
+man, ps, pdf etc files eg:
+
+$PROG -b ~/.gjotsfile >gjotsfile.xml
+docbook2pdf gjotsfile.xml
+
+It may be necessary to fine-tune the docbook formatting to access all features."
+}
+
+abend() {
+	echo "$PROG: $1" >&2
+	echo "(Use -h for usage)" >&2
+	exit 1
+}
+
+PROG=`basename $0`
+DOC_TYPE='"unknown"'
+ADD_PARA='"yes"'
+HAS_PREFACE='""'
+ENCODE_SPECIALS='"yes"'
+
+ARGS=`getopt -o abepPh -- "$@"`
+[ $? != 0 ] && echo "use -h for usage" >&2 && exit 1
+
+eval set -- "$ARGS"
+
+while true; do
+	case $1 in
+		-a) DOC_TYPE='"article"'; shift;;
+		-b) DOC_TYPE='"book"'; shift;;
+		-e) ENCODE_SPECIALS='""'; shift;;
+		-p) ADD_PARA='""'; shift;;
+		-P) HAS_PREFACE='"yes"'; shift;;
+		-h) usage; exit 0;;
+		--) shift; break;;
+		*)  echo "$PROG: internal error" >&2 ; exit 1;;
+	esac
+done
+
+if [ "$DOC_TYPE" = '"unknown"' ]; then
+	abend "must give either -a or -b options"
+fi
+
+if [ "$DOC_TYPE" = '"article"' ] ; then
+	if [ "$HAS_PREFACE" = '"yes"' ]; then
+		abend "-P option is only valid with -b"
+	fi
+fi
+
+FILENAME=""
+[ -r $1 ] && FILENAME=$1
+
+
+writeBody() {
+AWKFILE=/tmp/gjots2docbook.tmp$$.awk 
+
+# Leave the here-document terminator unquoted to enable shell variable expansion:
+# $ \ ` and , need escaping with \:
+cat >$AWKFILE <<EOF
+BEGIN {
+	level = 1
+	add_para = $ADD_PARA
+	has_preface = $HAS_PREFACE
+	doc_type = $DOC_TYPE
+	encode_specials = $ENCODE_SPECIALS
+	xml_done = 0
+	docbook_done = 0
+	main_element = 0
+	title_open = 0
+	print_title=1
+}
+
+function print_indent() {
+	for (iterator = 0; iterator < level; iterator++)
+		printf("    ")
+}
+
+function close_title() {
+	if (!title_open) {
+		return
+	}
+
+	print_indent()
+	print "</para>"
+
+	while (title_open >= level) {
+		title_element = "section"
+		if (doc_type == "book") {
+			if ( title_open == 1 ) {
+				if ( has_preface ) {
+					title_element = "preface"
+				} else {
+					title_element = "chapter"
+				}
+			}
+		}
+		print_indent()
+		printf("</%s>\\n", title_element)
+		title_open--;
+	}
+	has_preface = 0
+}
+
+function open_title(title) {
+	if (title_open) {
+		close_title()
+	}
+	title_element = "section"
+	if (doc_type == "book") {
+		if ( level == 1 ) {
+			if ( has_preface ) {
+				title_element = "preface"
+			} else {
+				title_element = "chapter"
+			}
+		}
+	}
+	print_indent()
+	printf("<%s><title>%s</title>\\n", title_element, title)
+	print_indent()
+	print "<para>"
+	title_open = level
+}
+
+{
+	if ( ! xml_done ) {
+		xml_done = 1
+		if ( \$0 ~ "<\\?xml" || \$0 ~ "<\\?XML" ) {
+			print \$0
+			next
+		} else {
+			print "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+		}
+	}
+
+	if ( ! docbook_done) {
+		docbook_done = 1
+		if ( \$0 ~  "<DOCTYPE" || \$0 ~ "<doctype" ) {
+			print \$0
+			next
+		} else {
+			printf("<!DOCTYPE %s PUBLIC \"-//OASIS//DTD DocBook XML V4.1.2//EN\">\n",doc_type)
+		}
+	}
+		
+	if (!main_element) {
+		main_element=1
+		printf("<%s>\\n", doc_type)
+	}
+
+	if (\$0 ~ /^\\\\NewEntry/) { 
+		print_title=1
+	} else if (\$0 ~ /^\\\\NewFolder/) { 
+		level++
+	} else if (\$0 ~ /^\\\\EndFolder/) { 
+		level--
+	} else {
+		if (encode_specials) {
+			gsub(/&/,"\\\\&amp;")
+			gsub(/"/,"\\\\&quot;")
+			gsub(/</,"\\\\&lt;")
+			gsub(/>/,"\\\\&gt;")
+		}
+		if (print_title) {
+			open_title(\$0)
+			print_title=0
+		} else if ( add_para && \$0 ~ "^[ 	]*\$") {
+			print_indent()
+			print "</para><para>"
+		} else {
+			print_indent()
+			print
+		}
+	}
+}
+
+END { 
+	while (level) {
+		close_title()
+		level--;
+	}
+	printf("</%s>\n",doc_type)
+}
+
+EOF
+
+cat $FILENAME | awk -f $AWKFILE
+rm $AWKFILE
+
+} # writeBody
+
+# This is the main program (!):
+(
+		writeBody
+)

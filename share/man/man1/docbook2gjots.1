@@ -1,0 +1,102 @@
+.\" Copyright (c) 2002 Robert Hepple
+.TH DOCBOOK2GJOTS 1 \" -*- nroff -*-
+.SH NAME
+docbook2gjots \- Convert a DOCBOOK file to gjots format (on 
+.BR stdout )
+.SH SYNOPSIS
+.hy 0
+.na
+.B docbook2gjots
+[
+.I DOCBOOK-file
+]
+.ad b
+.hy 1
+.SH DESCRIPTION
+.B docbook2gjots
+converts a DOCBOOK XML file into gjots format.
+.P
+.B docbook2gjots
+uses
+.BR gawk (1)
+to perform the conversion.
+.P
+.BR <preface> , 
+.BR <chapter> ,  
+.BR <section> ,  
+.BR <sect1> ,  
+.BR <sect2> ,  
+.BR <sect3> 
+and  
+.BR <sect4>
+tags are used to define
+.B NewEntry
+and
+.B NewFolder
+boundaries. They should definitely have 
+.BR <title> 
+tags.
+.P
+This is a quick and dirty hack using
+.BR gawk (1)
+and does no formal checking of XML or SGML syntax nor does it validate
+against the DOCBOOK DTD. Consequently, if the syntax of the file is
+broken the conversion will probably fail.
+.P
+It is intended that a round-trip can be made so that
+.BR gjots (1)
+can be used as a tool at all stages of DOCBOOK production - mainly as
+an outline processor to help the author organise and order the work.
+A document may well start its life in
+.BR gjots (1)
+as the initial thoughts are marshalled. As the document forms up, it
+can be converted to DOCBOOK with the following command which
+automatically adds tags such as 
+.BR <?xml...> , 
+.B <para> 
+etc:
+.P
+.RS
+.nf
+.ft CW
+gjots2docbook -b file.gjots >file.xml
+.br
+docbook2pdf file.xml
+.fi
+.RE
+.P
+Or, starting with an existing DOCBOOK file:
+.P
+.RS
+.nf
+.ft CW
+docbook2gjots file.xml >file.gjots
+.fi
+.RE
+.P
+In the latter case, the document will already have a lot of DOCBOOK
+tags so to convert back to docbook, add the -e and -p options:
+.P
+.RS
+.nf
+.ft CW
+gjots2docbook -b -p -e file.gjots >file.xml
+.br
+docbook2pdf file.xml
+.fi
+.RE
+.P
+.SH "AUTHOR"
+Written by Bob Hepple <bhepple@freeshell.org>
+.P
+.RB http://bhepple.freeshell.org/gjots
+.SH "COPYRIGHT"
+Copyright (c) 2002 Robert Hepple
+.br
+This  is  free software; see the source for copying condi­
+tions.  There is NO warranty; not even for MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+.SH "SEE ALSO"
+.BR gjots (1),
+.BR gjots2html (1),
+.BR gjots2docbook (1)

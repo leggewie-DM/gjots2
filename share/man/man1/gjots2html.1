@@ -1,0 +1,59 @@
+.\" Copyright (c) 2002 Robert Hepple
+.TH GJOTS2HTML 1 \" -*- nroff -*-
+.SH NAME
+gjots2html \- Convert a gjotsfile to HTML (on 
+.BR stdout )
+.SH SYNOPSIS
+.hy 0
+.na
+.B gjots2html
+{
+.B \-lc
+]
+[
+.B \-t
+.I title
+]
+[
+.I gjotsfile
+]
+.ad b
+.hy 1
+.SH DESCRIPTION
+.B gjots2html
+converts a gjotsfile into HTML with a table of contents.
+.P
+Presently up to 4 levels of table of contents subject tree are
+supported.
+.P
+.B gjotsfile
+uses
+.BR m4 (1)
+and
+.BR awk (1)
+.SH OPTIONS
+.TP
+.B \-l
+adds 
+.I <HR> 
+lines after each section.
+.TP
+.B \-c
+adds a link to the TABLE OF CONTENTS after each section.
+.TP
+.BI \-t " title"
+adds a title to the page
+.SH "AUTHOR"
+Written by Bob Hepple <bhepple@freeshell.org>
+.P
+.RB http://bhepple.freeshell.org/gjots
+.SH "COPYRIGHT"
+Copyright (c) 2002 Robert Hepple
+.br
+This  is  free software; see the source for copying condi­
+tions.  There is NO warranty; not even for MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+.SH "SEE ALSO"
+.BR gjots (1),
+.BR gjots2docbook (1),
+.BR docbook2gjots (1)

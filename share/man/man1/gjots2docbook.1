@@ -1,0 +1,98 @@
+.\" Copyright (c) 2002 Robert Hepple
+.TH GJOTS2DOCBOOK 1 \" -*- nroff -*-
+.SH NAME
+gjots2docbook \- Convert a gjotsfile to DOCBOOK (on 
+.BR stdout )
+.SH SYNOPSIS
+.hy 0
+.na
+.B gjots2docbook
+.BR \-a | \-b
+[
+.B \-e
+]
+[
+.B \-P
+]
+[
+.B \-p
+]
+[
+.I gjotsfile
+]
+.ad b
+.hy 1
+.SH DESCRIPTION
+.B gjots2docbook
+converts a gjotsfile into DOCBOOK XML.
+.P
+.B gjots2docbook
+uses
+.BR awk (1)
+to perform the conversion.
+.P
+.B gjots2docbook
+does not create them so the first element in the file should contain
+any <bookinfo> or <artheader> element. Similarly, <bibliographic>
+elements are not created. In fact the output is very simplistic with
+item titles in the
+.B gjotsfile
+being converted to chapter or section headings in DOCBOOK. There is no
+reason why your gjotsfile should not contain valid DOCBOOK XML - and
+that is why the -e and -p options are provided.
+.P
+If the file does not start with <?xml ...> then appropriate lines will
+be added as follows:
+.P
+.RS
+.nf
+.ft CW
+<?xml version="1.0" encoding="UTF-8"?>
+.br
+<!DOCTYPE doc_type PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN">
+.fi
+.RE
+.P
+If properly installed, the docbook utilities can then be used to create HTML, 
+man, ps, pdf etc files eg:
+.P
+.RS
+.nf
+.ft CW
+gjots2docbook -b ~/.gjotsfile >gjotsfile.xml
+.br
+docbook2pdf gjotsfile.xml
+.fi
+.RE
+.P
+It may be necessary to fine-tune the docbook formatting to access all features.
+.SH OPTIONS
+.TP
+.B \-a
+makes a DOCBOOK article
+.TP
+.B \-b
+makes a DOCBOOK book
+.TP
+.B \-e
+don't encode special characters eg < -> &lt;
+.TP
+.B \-p
+don't change blank lines to </para><para> markers 
+.TP
+.B \-P
+first section is a preface rather than a chapter (book only)
+.SH "AUTHOR"
+Written by Bob Hepple <bhepple@freeshell.org>
+.P
+.RB http://bhepple.freeshell.org/gjots
+.SH "COPYRIGHT"
+Copyright (c) 2002 Robert Hepple
+.br
+This  is  free software; see the source for copying condi­
+tions.  There is NO warranty; not even for MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+.SH "SEE ALSO"
+.BR gjots (1),
+.BR gjots2html (1),
+.BR docbook2gjots (1)

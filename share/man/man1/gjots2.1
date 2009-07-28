@@ -1,0 +1,186 @@
+.\" Copyright (c) 2004 Robert Hepple
+.\" $Id: gjots2.1,v 1.4 2004/11/30 08:01:16 bhepple Exp $
+.TH GJOTS2 1 \" -*- nroff -*-
+.SH NAME
+gjots2 \- A gnome-2/X11 jotter
+.SH SYNOPSIS
+.hy 0
+.na
+.B gjots2
+.RB "[\|" "options" "\|]"
+.I gjotsfile 
+.ad b
+.hy 0
+.SH DESCRIPTION
+.B gjots2
+is a fairly simple jotter application for your desktop. It displays
+your data organised in a tree with each leaf being your text.
+.P
+Getting data into 
+.BR gjots2
+is fairly easy - you can type it in, directly import 
+.B kjots
+files, cut and paste text or use an editor to convert other text files to
+the simple
+.B gjots2
+format (see below for details). You can also convert an existing
+DOCBOOK file into
+.B gjots2
+format with
+.BR docbook2gjots (1).
+.P
+.B gjots2
+files can be simply converted into HTML using
+.BR gjots2html (1)
+or into DOCBOOK with
+.BR gjots2docbook (1)
+.P
+Sensitive data can be encrypted by 
+.BR ccrypt "(1), " openssl "(1) or " gpg (1)
+simply by saving with an appropriate file suffix and providing a password:
+.P
+.RS
+.TP 10
+.B ccrypt
+ .cpt
+.TP 10
+.B openssl
+ .ssl
+.TP 10
+.B gpg
+ .gpg
+.RE
+.P
+Don't forget your passwords. Obviously, the appropriate encryption
+utility must have been installed.
+.P
+Simple text formatting is provided with the usual cut & paste
+operations and paragraph formatting (line wrapping) according to the
+line length set in 
+.I "Settings->Preferences."
+Lines are formatted by pressing
+the
+.I Wrap
+button or ^L. This requires the
+.BR fmt (1)
+command which is in the
+.I sys-apps/textutils
+pacakge (on
+.BR Gentoo ).
+.P
+An external editor (configured in 
+.IR "Settings->Preferences" )
+can be invoked by pressing the 
+.B "Ext.Ed"
+button. 
+.B gjots2
+is suspended while the editing is carried on.
+.P
+File locking is implemented by a lockfile
+.RI ( .#filename )
+in the same directory as the
+file being edited. Multiple users can open the file readonly but only
+one user can open the file for writing. Since the locking is done with
+a lockfile even NFS-mounted files can be protected.
+.SH OPTIONS
+.TP
+.B \-\-help
+Prints help.
+.TP
+\fB\-g\fR, \fB\-\-geometry\fR \fIWIDTHxHEIGHT\fR[\fI+X+Y\fR]
+Initial window geometry for
+.B gjots2.
+Note that the X and Y components are presently ignored.
+.TP
+\fB\-p\fR, \fB\-\-purge-password\fR
+When opening an encrypted file,
+.B gjots
+now remembers the password for subsequent writes. To restore the old behaviour where
+.B gjots
+purged the password, use this option.
+.TP
+\fB\-r\fR, \fB\-\-readonly\fR
+Opens the gjotsfile in readonly mode (with no locking and no ability
+to write)
+.TP
+\fB\-d\fR, \fB\-\-debug\fR
+Produces a trace of program execution possiby useful in debugging
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Print the version and quit
+.SH "FILES"
+.BI $HOME/.gjotsfile
+The default data file
+.TP
+\&`\fBdirname \fP\fIfilename\fP`\fI/.#\fP`\fBbasename\fP \fIfilename\fP`
+The lock file for the file called 
+.IR filename .
+.SH "FILE FORMAT"
+.B gjots2
+uses the same format as 
+.BR kjots (1)
+but with the addition of a hierarchy of
+items. The keywords need to be at the start of line to be recognised.
+Only 3 keywords are presently used:
+.TP 15
+\fB\\NewEntry\fR
+Starts a new entry
+.TP 15
+\fB\\NewFolder\fR
+Promotes the current item to a folder
+.TP 15
+\fB\\EndFolder\fR
+Ends a folder
+.P
+The first line in every entry is used as the 'title' for the tree.
+.P
+In a future release the \fB\\Option\fR keyword may be added.
+.SH "EXAMPLE"
+.nf
+\\NewEntry 
+title1
+this is the stuff that goes into title1
+
+\\NewFolder
+\\NewEntry 
+title3
+title 3's stuff
+
+\\EndFolder
+.fi
+.SH "AUTHOR"
+Written by Bob Hepple <bhepple@freeshell.org>
+.P
+.RB http://bhepple.freeshell.org/gjots
+.SH "COPYRIGHT"
+Copyright (c) 2002 Robert Hepple
+.br
+This is free software; see the source for copying conditions. There is
+NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+.SH "SEE ALSO"
+.BR gjots2html (1),
+.BR gjots2docbook (1),
+.BR docbook2gjots (1).
+.P
+Also, see the
+.BR gjots2 (1)
+README, probably as something like:
+.P
+.RS
+.nf
+.ft CW
+gjots /usr/share/doc/gjots-0.8/gjots2.gjots
+.ft
+.RE
+.P
+or
+.P
+.RS
+.nf
+.ft CW
+netscape /usr/share/doc/gjots-0.8/gjots2.html
+.ft
+.fi
+.RE
+.P
