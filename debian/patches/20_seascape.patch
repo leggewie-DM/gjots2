@@ -1,0 +1,11 @@
+--- gjots2-2.3.4.orig/lib/gui.py
++++ gjots2-2.3.4/lib/gui.py
+@@ -291,7 +291,7 @@
+ 			self.client.set_string(self.text_formatter_path, "fmt -w %d")
+ 
+ 		if not self.client.get_string(self.print_command_path):
+-			self.client.set_string(self.print_command_path, "if type gv; then GV='gv -seascape'; else if type ggv; then GV=ggv; else lpr $1; exit; fi; fi; T=/tmp/.tmp.$$;mpage -f -2 -I1 -P- $1 > $T;($GV $T; rm $T)&")
++			self.client.set_string(self.print_command_path, "if type gv; then GV='gv --orientation=seascape'; else if type ggv; then GV=ggv; else lpr $1; exit; fi; fi; T=/tmp/.tmp.$$;mpage -f -2 -I1 -P- $1 > $T;($GV $T; rm $T)&")
+ 
+ 		if not self.client.get_string(self.external_editor_path):
+ 			if os.system("type nedit >/dev/null 2>&1") == 0:
