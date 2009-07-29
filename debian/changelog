@@ -1,3 +1,16 @@
+gjots2 (2.3.8-0ubuntu1) karmic; urgency=low
+
+  * New Upstream Version
+    - display sidebar icons properly (Closes: #446696, LP: #115132)
+  * move changes currently made directly to the source into proper patches,
+    but don't actually use 20_seascape.patch
+  * debian/control
+    - recommend instead of depending on mpage and gv (Closes: #475404)
+    - fix description, gjots is not a mindmap tool (Closes: #424724)
+    - update to standard 3.8.2 and debhelper 5
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Wed, 29 Jul 2009 01:43:19 +0200
+
 gjots2 (2.3.4-2.1) unstable; urgency=low
 
   * Non-maintainer upload.

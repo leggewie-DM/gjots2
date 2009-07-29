@@ -1,7 +1,8 @@
 Source: gjots2
 Section: gnome
 Priority: optional
-Maintainer: Khalid El Fathi <invent@edena-fr.org>
+Maintainer: Ubuntu Motu <ubuntu-motu@lists.ubuntu.com>
+XSBC-Original-Maintainer: Khalid El Fathi <invent@edena-fr.org>
 Build-Depends: debhelper (>= 5.0.37.2), quilt
 Build-Depends-Indep: python-all-dev (>= 2.3.5-11), python-support (>= 0.3)
 Standards-Version: 3.8.2
