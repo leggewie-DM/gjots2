@@ -9,7 +9,8 @@ Homepage: http://bhepple.freeshell.org/gjots/
 
 Package: gjots2
 Architecture: all
-Depends: ${python:Depends}, gv, mpage, python-glade2, python-gnome2
+Depends: ${python:Depends}, python-glade2, python-gnome2
+Recommends: gv, mpage
 Provides: ${python:Provides}
 XB-Python-Version: ${python:Versions}
 Description: A simple jotter (outline processor) for X11/gtk-gnome
@@ -24,9 +25,5 @@ Description: A simple jotter (outline processor) for X11/gtk-gnome
  I use it for all my notes on Unix, my personal bits and pieces, recipes and
  even PINs and passwords (encrypted with ccrypt(1), openssl(1) or gpg(1)).
  I also use it to write DOCBOOK XML documents.
- .
- You can use it to "mind-map" your compositions - write down all your thoughts
- and then start organizing them into a tree. By manipulating the tree you can
- easily reorder your thoughts and structure them appropriately.
  .
  It's a bit like the KDE program kjots but it uses the GTK-2 library.
