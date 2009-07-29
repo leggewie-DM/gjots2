@@ -72,16 +72,60 @@ class gjots_gui:
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		cursor_mark = self.textBuffer.get_insert()
+		next_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
 		end_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
-		next_one = self.textBuffer.get_iter_at_mark(cursor_mark)
-		if end_iter.ends_line() and next_one.ends_line():
+		if end_iter.ends_line():
 			return end_iter
 		while 1:
-			if not next_one.forward_char():
+			if not next_iter.forward_char():
 				return end_iter
-			if end_iter.ends_line() and next_one.ends_line():
+			if end_iter.ends_line() and next_iter.ends_line():
 				return end_iter
 			end_iter.forward_char()
+			
+	def _start_of_url(self):
+		"""
+		Look for a continuous sequence of characters in a single line
+		that might be a url. Word marker is \n \t or space. Returns a
+		TextBuffer iterator.
+		"""
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		cursor_mark = self.textBuffer.get_insert()
+		start_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
+		this_char = start_iter.get_char()
+		if this_char == ' ' or this_char == '\t' or this_char == '\n':
+			return start_iter
+
+		while 1:
+			if start_iter.starts_line():
+				return start_iter
+			if not start_iter.backward_char():
+				return start_iter
+			this_char = start_iter.get_char()
+			if this_char == ' ' or this_char == '\t' or this_char == '\n':
+				start_iter.forward_char()
+				return start_iter
+
+	def _end_of_url(self):
+		"""
+		Word marker is \n \t or space
+		"""
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		cursor_mark = self.textBuffer.get_insert()
+		end_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
+		next_char = end_iter.get_char()
+		if next_char == ' ' or next_char == '\t' or next_char == '\n':
+			return end_iter
+		while 1:
+			if end_iter.ends_line():
+				return end_iter
+			if not end_iter.forward_char():
+				return end_iter
+			next_char = end_iter.get_char()
+			if next_char == ' ' or next_char == '\t' or next_char == '\n':
+				return end_iter
 			
 	def do_format_paragraph(self):
 		if self.trace:
@@ -291,7 +335,7 @@ class gjots_gui:
 			self.client.set_string(self.text_formatter_path, "fmt -w %d")
 
 		if not self.client.get_string(self.print_command_path):
-			self.client.set_string(self.print_command_path, "if type gv; then GV='gv -seascape'; else if type ggv; then GV=ggv; else lpr $1; exit; fi; fi; T=/tmp/.tmp.$$;mpage -f -2 -I1 -P- $1 > $T;($GV $T; rm $T)&")
+			self.client.set_string(self.print_command_path, "gjots2lpr $1")
 
 		if not self.client.get_string(self.external_editor_path):
 			if os.system("type nedit >/dev/null 2>&1") == 0:
@@ -457,10 +501,13 @@ class gjots_gui:
 		if next:
 			return next
 
-		parent = self.treestore.iter_parent(iter)
-		if not parent:
-			return None
-		return self.treestore.iter_next(parent)
+		while 1:
+			iter = self.treestore.iter_parent(iter)
+			if not iter:
+				return None
+			next = self.treestore.iter_next(iter)
+			if next:
+				return next
 		
 	def new_node(self, parent, sibling, title, body):
 		# bit too verbose to trace:
@@ -659,9 +706,12 @@ class gjots_gui:
 		f.seek(0, 0)
 		last_selected = self.gjotsfile.readItem(f, start=parent, parent=grandparent)
 
-		# Now, reselect the items:
+		# Now, reselect the items (on_tree_selection_changed is
+        # disabled, so we also need to manually set self.current_item!):
+		self.current_item = None
 		this = self.treestore.iter_next(parent)
 		while this:
+			if not self.current_item: self.current_item = this
 			next = self.treestore.iter_next(this)
 			if self.same_iter(this, last_selected):
 				next = None
@@ -749,12 +799,16 @@ class gjots_gui:
 		parent_path = self.treestore.get_path(newParent)
 		self.treeView.expand_row(parent_path, 0)
 
-		# Now, reselect the items:
+		# Now, reselect the items (on_tree_selection_changed is
+        # disabled, so we also need to manually set self.current_item!):
 		if last_item:
 			this = self.treestore.iter_next(last_item)
 		else:
 			this = self.treestore.iter_children(newParent)
+
+		self.current_item = None
 		while this:
+			if not self.current_item: self.current_item = this
 			next = self.treestore.iter_next(this)
 			if self.same_iter(this, last_selected):
 				next = None
@@ -974,7 +1028,8 @@ class gjots_gui:
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
-		self._show_all(self.current_item)
+		if self.current_item:
+			self._show_all(self.current_item)
 		return
 
 	def _do_hide_all(self):
@@ -1085,7 +1140,9 @@ class gjots_gui:
 		self.msg("")
 		first_selected = self.get_first_selected_iter()
 		if not first_selected:
+			self.msg("Nothing selected")
 			return
+		self.sync_text_buffer()
 		body = self.get_node_value(first_selected)
 		if not body:
 			return
@@ -1619,9 +1676,10 @@ class gjots_gui:
 		else:  # run from the system share directory - try to find a locale version:
 			gjots_file_base = self.prefix + "/share/doc/gjots2-" + gjots_version + "/gjots2"
 			for env in "LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG":
-				locale = os.environ[env]
-				locale_lang = locale[0:2]
+				locale_lang = ""
 				try:
+					locale = os.environ[env]
+					locale_lang = locale[0:2]
 					gjots_file = gjots_file_base + "." + locale + ".gjots"
 					if os.access(gjots_file, os.R_OK):
 						break
@@ -1670,6 +1728,55 @@ class gjots_gui:
 			return 1
 		return 0 # allow further signal propagation
 
+	def _get_browser(self):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		if self.browser:
+			return self.browser
+		browser_list = [ "firefox", "konqueror", "epiphany", "opera", "dillo", None ]
+		browser = os.getenv("BROWSER")
+		if not browser:
+			# see if there's one already running:
+			for browser in browser_list:
+				if browser and os.system("ps -ef |grep " + browser + " | grep -v grep >/dev/null 2>&1") == 0:
+					break
+		if not browser:
+			# see if there's an executable one:
+			for browser in browser_list:
+				if browser and os.system("type " + browser + " >/dev/null 2>&1") == 0:
+					break
+		self.browser = browser
+		return browser
+	
+	def _run_browser_on(self, url):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		browser = self._get_browser()
+		if browser:
+			os.system(browser + " '" + url + "' &")
+		else:
+			self.msg("Can't run a browser")
+		return 0
+		
+	def on_textView_button_press_event(self, widget, key_event):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+			print "keyval=", key_event.keyval
+			print "state=", key_event.state
+		if key_event.type == gtk.gdk._2BUTTON_PRESS:
+			cursor_mark = self.textBuffer.get_insert()
+			start_iter = self._start_of_url()
+			end_iter = self._end_of_url()
+			word = self.textBuffer.get_text(start_iter, end_iter)
+			# print ("word=\"%s\"\n" % word)
+			matchobj = re.compile("^https*://").search(word)
+			if matchobj:
+				self.textBuffer.select_range(end_iter, start_iter)
+					
+				self._run_browser_on(word)
+				return 1
+		return 0 # allow further signal propagation
+
 	# button_press is not caught here
 	def on_textView_button_release_event(self, widget, event):
 		if self.trace:
@@ -1714,9 +1821,19 @@ class gjots_gui:
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.first_selected = None
-		self.treeView.get_selection().selected_foreach(self._foreach_findfirst, self)
+		selection = self.treeView.get_selection()
+		if not selection: return None
+		selection.selected_foreach(self._foreach_findfirst, self)
 		return self.first_selected
-	
+
+	def get_cursor_iter(self):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		path, column = self.treeView.get_cursor()
+		print "get_cursor_iter: path = ", path
+		if not path: return None
+		return self.treestore.get_iter(path)
+
 	def _foreach_findlast(self, model, path, iter, self2):
 		self.last_selected = iter
 			
@@ -1736,7 +1853,6 @@ class gjots_gui:
 		self.dirtyflag = "* "
 		self.msg("")
 		self.current_dirty = 1
-		path = self.treestore.get_path(self.get_first_selected_iter())
 		if not self.current_item:
 			return
 
@@ -1788,6 +1904,7 @@ class gjots_gui:
 		self.sync_text_buffer()
 			
 		treeiter = self.get_first_selected_iter()
+			
 		if treeiter:
 			if self.trace:
 				print "Title =", self.treestore.get_value(treeiter, 0)
@@ -1801,6 +1918,7 @@ class gjots_gui:
 			# NB with 2 items selected, selection_list is:
 			# (<gtk.TreeStore object (GtkTreeStore) at 0x404f14b4>, [(0, 1), (0, 2)])
 			first_selected = self.get_first_selected_iter()
+			if not first_selected: return
 			selection = self.treeView.get_selection()
 			try:
 				selection_list = selection.get_selected_rows()
@@ -1820,9 +1938,8 @@ class gjots_gui:
 				iter_parent = self.treestore.iter_parent(iter)
 				if not self.same_iter(iter_parent, parent):
 					selection.unselect_iter(iter)
-			
-		self.current_item = treeiter
-		self.current_dirty = 0
+			self.current_item = treeiter
+			self.current_dirty = 0
 
 		# Now put the cursor into the right place
 		#self.textView.grab_focus()
@@ -1931,7 +2048,7 @@ class gjots_gui:
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
-		iter = self.get_first_selected_iter()
+		iter = self.current_item
 		if not iter:
 			self.msg(_("Nothing selected"))
 			return
@@ -1944,8 +2061,8 @@ class gjots_gui:
 	def on_tree_key_press_event(self, widget, key_event):
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
-			print "keyval=", key_event.keyval
-			print "state=", key_event.state
+			print "key_event.keyval=", key_event.keyval
+			print "key_event.state=", key_event.state
 
 		modifier =  key_event.state & gtk.gdk.MODIFIER_MASK
 		if modifier == gtk.gdk.CONTROL_MASK:
@@ -1996,8 +2113,8 @@ class gjots_gui:
 	def on_tree_button_press_event(self, treeview, event):
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
-			print "button_event.button=", button_event.button
-			print "button_event.state=", button_event.state
+			print "event.button=", event.button
+			print "event.state=", event.state
 		# event.button 1 left-click
 		# event.button 2 middle-click
 		# event.button 3 right-click
@@ -2145,6 +2262,7 @@ class gjots_gui:
 			# text display callbacks:
 			"on_textView_key_press_event":  self.on_textView_key_press_event,
 			"on_textView_button_release_event": self.on_textView_button_release_event,
+			"on_textView_button_press_event": self.on_textView_button_press_event,
 			"on_textView_move_cursor":					self.on_textView_move_cursor,
 
 			# tree callbacks
@@ -2159,7 +2277,7 @@ class gjots_gui:
 		self.progName = progName
 		self.geometry = geometry
 		
-		gladefile = "gjots.glade2"
+		gladefile = "gjots.glade3"
 		self.gui_filename = gladefile
 		self.password = ""
 		
@@ -2226,6 +2344,7 @@ class gjots_gui:
 		self.readOnly_handler = self.readOnly_widget.connect("activate", self.on_readOnly_trigger)
 		self._setup_gconf()
 		self.cut_text = None
+		self.browser = None
 		
 		# not working ... any clues? ... anyone? ...
 		#icon = gtk.IconSource()

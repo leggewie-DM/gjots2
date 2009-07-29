@@ -11,9 +11,11 @@ gjots2html \- Convert a gjotsfile to HTML (on
 .B \-lc
 ]
 [
-.B \-t
-.I title
+.BI \-t " title"
 ]
+[
+.BI \-i " level"
+}
 [
 .I gjotsfile
 ]
@@ -23,7 +25,7 @@ gjots2html \- Convert a gjotsfile to HTML (on
 .B gjots2html
 converts a gjotsfile into HTML with a table of contents.
 .P
-Presently up to 4 levels of table of contents subject tree are
+Presently up to 8 levels of table of contents subject tree are
 supported.
 .P
 .B gjotsfile
@@ -43,12 +45,16 @@ adds a link to the TABLE OF CONTENTS after each section.
 .TP
 .BI \-t " title"
 adds a title to the page
+.TP
+.BI \-i " level"
+Creates the table of contents down to that level of heading. The default is
+to include all headings.
 .SH "AUTHOR"
 Written by Bob Hepple <bhepple@freeshell.org>
 .P
 .RB http://bhepple.freeshell.org/gjots
 .SH "COPYRIGHT"
-Copyright (c) 2002 Robert Hepple
+Copyright (c) 2002-2008 Robert Hepple
 .br
 This  is  free software; see the source for copying condi­
 tions.  There is NO warranty; not even for MERCHANTABILITY
@@ -56,4 +62,5 @@ or FITNESS FOR A PARTICULAR PURPOSE.
 .SH "SEE ALSO"
 .BR gjots (1),
 .BR gjots2docbook (1),
-.BR docbook2gjots (1)
+.BR docbook2gjots (1),
+.BR gjots2html.py (1)

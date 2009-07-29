@@ -11,7 +11,7 @@
                  Куинсленд
                  Австралия
                  
-                 Версия 2.3.4
+                 Версия 2.3.8
 
 
       bhepple@freeshell.org
@@ -76,11 +76,21 @@ gnome-python, bonobo-python, pyorbit или gtk для установленно�
 
 Во время написания программы, у меня были установлены пакеты (на Gentoo):
 
-	x11-libs/gtk+-2.6.10-r1
-	gnome-base/libglade-2.5.1
-	dev-python/pygtk-2.6.2
-	dev-python/gnome-python-2.10.0 (pulls in pyorbit)
-	dev-python/pyorbit-2.0.1
+    dev-python/gnome-python-2.22.0 (2)
+    dev-python/gnome-python-desktop-2.22.0 (0)
+    gnome-base/gnome-common-2.20.0 (3)
+    gnome-base/gnome-keyring-2.22.3 (0)
+    gnome-base/gnome-mime-data-2.18.0 (0)
+    gnome-base/gnome-vfs-2.22.0 (2)
+    gnome-base/libgnome-2.22.0 (0)
+    gnome-base/libgnomecanvas-2.20.1.1 (0)
+    gnome-base/libgnomeui-2.22.1 (0)
+    x11-themes/gnome-icon-theme-2.22.0 (0)
+    dev-python/pygtk-2.12.1-r2 (2)
+    x11-libs/gtk+-2.12.11 (2)
+    gnome-base/libglade-2.6.3 (2.0)
+    dev-python/pyorbit-2.14.3 (0)
+    gnome-base/orbit-2.14.13 (2)
 	
 Скорее всего, в системах, основанных на пакетах rpm (RedHat, Mandrake/Mandriva, SuSE), 
 все будет похоже (пожалуйста, сообщите). Fedora Core требует наличия пакета 
@@ -121,7 +131,7 @@ app-office/gjots2 ~x86
 
 После этого:	
 
-VERSION=2.3.4
+VERSION=2.3.8
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -136,7 +146,7 @@ emerge gjots2
 
 Просто сделайте следующее:
 
-VERSION=2.3.4
+VERSION=2.3.8
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 rpm -i gjots2-${VERSION}-1.noarch.rpm
 
@@ -153,7 +163,7 @@ pyorbit-2.0.1-4
 \NewEntry
 Из исходных кодов
 
-VERSION=2.3.4
+VERSION=2.3.8
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 При установке из исходных кодов, после разархивирования 

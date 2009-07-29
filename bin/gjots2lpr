@@ -1,0 +1,249 @@
+#!/bin/sh
+#
+# Copyright (C) 1997-2007 Bob Hepple
+# 
+
+# A simple script to print some ascii text - if possible by conversion
+# to PS or PDF and then invoking a suitable viewer. Otherwise, just
+# print through pr
+
+# $Id: gjots2lpr,v 1.1.2.5 2008/11/07 05:53:21 bhepple Exp $
+
+# This program is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later
+# version.
+# 
+# This program is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the Free
+# Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
+# 02139, USA.
+
+usage() {
+	echo "Usage: $PROG [-pt ] [ filename ... ]
+
+Prints a text file - if possible using postscript or PDF and available
+pre-viewers and printer dialog. It looks for and uses whatever utilities it can
+find on the system.
+
+If 'filename' is not given then STDIN is printed.
+
+-1: 1 page per sheet
+-2: 2 page per sheet
+-4: 4 page per sheet
+-p: convert to PDF rather than PS
+-t: stick to ASCII text - don't convert to postscript
+
+The following environment parameters are recognised and have default values:
+
+GJOTS_LPR: xpp, gtklp, kprinter or lpr
+GJOTS_TXT2PS: \"$A2PS_DEFAULTS\", \"$MPAGE_DEFAULTS\" or \"$ENSCRIPT_DEFAULTS\"
+GJOTS_PS2PDF: ps2pdf
+GJOTS_PSVIEWER: gv, kghostview, ggv or ghostview
+GJOTS_PDFVIEWER: acroread, kpdf or xpdf
+GJOTS_PRETTY: \"$PR_DEFAULTS\"
+GJOTS_TXTVIEWER: \"$XDIALOG_DEFAULTS\" or \"$XMESSAGE_DEFAULTS\"
+"
+}
+
+check_env() {
+	# note that we cleverly check only $1 in case there's a bunch of options:
+	RET=""
+	if [ "$1" ]; then
+		if type $1 >/dev/null 2>&1; then
+			RET="$@"
+		else
+			RET=""
+		fi
+	fi
+	echo $RET
+}
+
+PROG=`basename $0`
+TEXTONLY=""
+PDFONLY=""
+TEMP="/tmp/.tmp.$$"
+RM_LIST=""
+trap "rm -f \$RM_LIST" EXIT
+PAGE_UP=-2
+ARGS=`getopt -o 124htp -- "$@"`
+DO_USAGE=""
+[ $? != 0 ] && echo "use -h for usage" >&2 && exit 1
+
+eval set -- "$ARGS"
+
+while true; do
+	case $1 in
+		-[124]) PAGE_UP=$1; shift;;
+		-t) TEXTONLY="true"; shift;;
+		-p) PDFONLY="true"; shift;;
+		-h) usage; DO_USAGE="yes"; break;;
+		--) shift; break;;
+		*)  echo "$PROG: internal error" >&2 ; exit 1;;
+	esac
+done
+
+MPAGE_DEFAULTS="mpage -f $PAGE_UP -I1 -P-"
+ENSCRIPT_DEFAULTS="enscript -p - $PAGE_UP -I1"
+A2PS_DEFAULTS="a2ps --margin=1 -B $PAGE_UP -o -"
+PR_DEFAULTS="pr -o 1 -T"
+XDIALOG_DEFAULTS="Xdialog --ok-label Print --textbox - 80 120"
+XMESSAGE_DEFAULTS="xmessage -buttons Cancel:1,Print:0 -file -"
+
+GJOTS_LPR=$(check_env $GJOTS_LPR)
+GJOTS_TXT2PS=$(check_env $GJOTS_TXT2PS)
+GJOTS_PS2PDF=$(check_env $GJOTS_PS2PDF)
+GJOTS_PSVIEWER=$(check_env $GJOTS_PSVIEWER)
+GJOTS_PDFVIEWER=$(check_env $GJOTS_PDFVIEWER)
+GJOTS_TXTVIEWER=$(check_env $GJOTS_TXTVIEWER)
+GJOTS_PRETTY=$(check_env $GJOTS_PRETTY)
+
+[ "$DO_USAGE" ] && usage && exit 0
+
+# Get input files
+TTXT=$TEMP.txt
+RM_LIST="$TTXT"
+cat $@ >$TTXT
+
+# Find a printing program
+LPR=lpr
+if [ "$GJOTS_LPR" ]; then
+	LPR="$GJOTS_LPR"
+else
+	if [ "$DISPLAY" ]; then
+		if type xpp >/dev/null 2>&1; then
+			LPR=xpp
+		elif type gtklp >/dev/null 2>&1; then
+			LPR=gtklp
+		elif type kprinter >/dev/null 2>&1; then
+			LPR=kprinter
+		fi
+	fi
+fi
+
+# Find a text to postscript converter:
+if [ "$GJOTS_TXT2PS" ]; then
+	TXT2PS="$GJOTS_TXT2PS"
+else
+	TXT2PS=""
+	if type a2ps >/dev/null 2>&1; then
+		TXT2PS="$A2PS_DEFAULTS"
+	elif type mpage >/dev/null 2>&1; then
+		TXT2PS="$MPAGE_DEFAULTS"
+	elif type enscript >/dev/null 2>&1; then
+		TXT2PS="$ENSCRIPT_DEFAULTS"
+	fi
+fi
+
+# Find a PS previewer:
+if [ "$GJOTS_LPR" ]; then
+	PSVIEWER="$GJOTS_PSVIEWER"
+else
+	PSVIEWER=""
+	if [ "$DISPLAY" -a -z "$TEXTONLY" ] ; then
+		if type gv >/dev/null 2>&1; then
+			PSVIEWER="gv"
+		elif type kghostview >/dev/null 2>&1; then
+			PSVIEWER=kghostview
+		elif type kpdf >/dev/null 2>&1; then
+			PSVIEWER=kpdf
+		elif type ggv >/dev/null 2>&1; then
+			PSVIEWER="ggv"
+		elif type ghostview >/dev/null 2>&1; then
+			PSVIEWER=ghostview
+		fi
+	fi
+fi
+
+# If there's no PS viewer, maybe we can convert to pdf
+PDFVIEWER=""
+PS2PDF=""
+if [ "$DISPLAY" -a -z "$TEXTONLY" -a -n "$TXT2PS" ] ; then
+	# We need a PS to PDF converter:
+	if [ "$GJOTS_PS2PDF" ]; then
+		PS2PDF="$GJOTS_PS2PDF"
+	else
+		if type ps2pdf >/dev/null 2>&1; then
+			PS2PDF=ps2pdf
+		fi
+	fi
+
+	# find a PS previewer:
+	if [ -n "$PS2PDF" ]; then
+		if [ "$GJOTS_PDFVIEWER" ]; then
+			PDFVIEWER="$GJOTS_PDFVIEWER"
+		else
+			if type acroread >/dev/null 2>&1; then
+				PDFVIEWER=acroread
+			elif type kpdf >/dev/null 2>&1; then
+				PDFVIEWER=kpdf
+			elif type xpdf >/dev/null 2>&1; then
+				PDFVIEWER=xpdf
+			fi
+		fi
+	fi
+fi
+
+if [ "$PDFONLY" -a "$PDFVIEWER" ]; then
+	PSVIEWER=""
+fi
+
+# Convert text to postscript & fire up a viewer if possible:
+if [ -z "$TEXTONLY" -a "$TXT2PS" ]; then
+    TPS=$TEMP.ps
+    TPDF=$TEMP.pdf
+	RM_LIST="$RM_LIST $TPS $TPDF"
+	$TXT2PS $TTXT > $TPS
+    if [ "$PSVIEWER" ]; then
+		$PSVIEWER $TPS
+	elif [ "$PDFVIEWER" -a "$PS2PDF" ]; then
+		# Convert to pdf & fire up a pdf viewer:
+		$PS2PDF $TPS $TPDF
+		$PDFVIEWER $TPDF
+	else
+		# if all else fails, just print the PS file
+		$LPR $TPS
+	fi
+	exit 0
+fi
+
+# We can't convert to postscript, just use text:
+PRETTY="cat"
+if type pr >/dev/null 2>&1; then
+	PRETTY="$PR_DEFAULTS"
+fi
+ 
+if [ "$DISPLAY" ]; then
+	# find a text previewer that can return 0 for "Print" and something else
+	# for Cancel:
+	if [ "$GJOTS_TXTVIEWER" ]; then
+		TXTVIEWER="$GJOTS_TXTVIEWER"
+	else
+		if type Xdialog >/dev/null 2>&1; then
+			TXTVIEWER="$XDIALOG_DEFAULTS"
+		elif type xmessage >/dev/null 2>&1; then
+			TXTVIEWER="$XMESSAGE_DEFAULTS"
+		fi
+	fi
+
+	if [ "$TXTVIEWER" ]; then
+		cat $TTXT |$TXTVIEWER
+		if [ $? = 0 ]; then 
+			$PRETTY $TTXT | $LPR
+		fi
+		exit 0
+	fi
+fi
+
+# if all else fails, just print the thing:
+$PRETTY $TTXT | $LPR
+
+# Local variables
+# fill-column 79

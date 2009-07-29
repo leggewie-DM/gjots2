@@ -1,9 +1,64 @@
-2006-1-24     Bob Hepple <bhepple@freeshell.org> Version 2.3.3
+2008-11-08    <bhepple@freeshell.org> Version 2.3.8
+	* Updated dependency list in gjots2.gjots
+	* Add -1 -2 -4 options to gjots2lpr
+	* When `find' dialog pops up, make the 'search for' text selected
+	so that it can be overwritten by just typing - no need to select
+	and clear it.
+	* Clean up 'invoke browser on url double-click'
+	* Extend gjots2html to 8 levels (and cleanup)
+	* Fix bugs reported by Redhat:
+	* https://bugzilla.redhat.com/show_bug.cgi?id=464476: If gjots2 is
+	not attached to a terminal (i.e. started from the Gnome menu as
+	opposed to a command shell), it is not possible to open a gpg
+	encrypted file.
+	* https://bugzilla.redhat.com/show_bug.cgi?id=464510:
+	vulnerability when processing a password.
+
+2007-07-28    <bhepple@freeshell.org> Version 2.3.7
+	* Changed to using glade-3 for UI - gjots.glade3 is now the XML
+	file to load - this fixed the problems in the toolbar and menu
+	icons
+
+	* On double-clicking a http[s] URL, a browser is sought and run -
+	preference is given to the setting of the BROWSER environment
+	variable if set, then to an already running browser from the list
+	"firefox", "konqueror", "epiphany", "opera", "dillo" and finally,
+	to a runnable browser from the list. The URL is selected.
+
+	* Removed the "New Page" and "Open" buttons from the top toolbar
+	as they are not the most useful
+
+	* Improved the coverage of the manual a little
+
+	* Added a script to simplify printing a bit - gjots2lpr
+
+	* Fixed a scoping problem when constructing the manual file name
+	with a locale
+	
+2007-07-09    <bhepple@freeshell.org> Version 2.3.6
+	* Added trace function enabled with the -t/--trace option
+
+2007-07-08    <bhepple@freeshell.org>
+	* Fixed bug in get_linear_next function that caused _find_next to
+	stop searching too soon
+
+2007-06-07	Bob Hepple <bhepple@freeshell.org> Version 2.3.5
+	* various crashes fixed in gui.py
+	* gjots2emacs added
+	* Czech translation by Martin Sin <martin.sin@zshk.cz>
+	
+2006-03-05      Bob Hepple <bhepple@freeshell.org> Version 2.3.4
+	* Italian translation by Raimondo Giammanco <rongten@member.fsf.org>
+	
+2006-02-26      Bob Hepple <bhepple@freeshell.org> Version 2.3.4
+	* fix bug when accessing manual
+
+2006-01-24     Bob Hepple <bhepple@freeshell.org> Version 2.3.3
 	* First Russian version (LANG=ru). Translator is Sergey
 	Bezdenezhnyh <sib-mail@mtu-net.ru>
 	* Add no/nb versions of gjots2.gjots
 	
-2006-1-19    Bob Hepple <bhepple@freeshell.org> Version 2.3.2
+2006-01-19    Bob Hepple <bhepple@freeshell.org> Version 2.3.2
 	* First Norwegian version (LANG=nb_NO.utf8). Translator is Robert
 	Emil Berge <robert@aldebaran.no>
 	
