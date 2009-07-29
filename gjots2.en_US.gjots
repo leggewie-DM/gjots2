@@ -83,14 +83,24 @@ eg.
 
 	export PYTHONPATH=/usr/local/lib/python2.3/site-packages/
 
-As at this writing, I have the following installed (on Gentoo):
+As at this writing (gjots-2.3.8), I have the following installed (on Gentoo):
 
-	x11-libs/gtk+-2.6.10-r1
-	gnome-base/libglade-2.5.1
-	dev-python/pygtk-2.6.2
-	dev-python/gnome-python-2.10.0 (pulls in pyorbit)
-	dev-python/pyorbit-2.0.1
-	
+    dev-python/gnome-python-2.22.0 (2)
+    dev-python/gnome-python-desktop-2.22.0 (0)
+    gnome-base/gnome-common-2.20.0 (3)
+    gnome-base/gnome-keyring-2.22.3 (0)
+    gnome-base/gnome-mime-data-2.18.0 (0)
+    gnome-base/gnome-vfs-2.22.0 (2)
+    gnome-base/libgnome-2.22.0 (0)
+    gnome-base/libgnomecanvas-2.20.1.1 (0)
+    gnome-base/libgnomeui-2.22.1 (0)
+    x11-themes/gnome-icon-theme-2.22.0 (0)
+    dev-python/pygtk-2.12.1-r2 (2)
+    x11-libs/gtk+-2.12.11 (2)
+    gnome-base/libglade-2.6.3 (2.0)
+    dev-python/pyorbit-2.14.3 (0)
+    gnome-base/orbit-2.14.13 (2)
+
 Presumably rpm-based systems (RedHat, Mandrake/Mandriva, SuSE) are similar
 (please advise). Apparently, Fedora also requires gnome-python2-gconf.
 
@@ -175,11 +185,11 @@ cd'ing to it do this:
 Uninstall with the uninstall.sh script provided here.
 
 On some systems, you may have permission problems with system-wide
-installations from source. All new directories installed should
-have permissions 0755, and all installed files should have
-permissions 0644, with the exception of 'docbook2gjots', 'gjots2',
-'gjots2docbook', and 'gjots2html', which should have permissions
-0755.
+installations from source. All new directories installed should have
+permissions 0755, and all installed files should have permissions
+0644, with the exception of 'docbook2gjots', 'gjots2',
+'gjots2docbook', 'gjots2emacs' and 'gjots2html', which should have
+permissions 0755.
 \EndFolder
 \NewEntry
 Contributing
@@ -328,9 +338,10 @@ demoted to a plain item.
 
 On the top toolbar, we have:
 
-"New Page", "Open", and "Save" are all the usual things.
+"Save" is the usual thing.
 
-The 'Print' button pops up the Print dialog.
+The 'Print' button pops up the Print dialog. See the "Printing" item
+one level up from here.
 
 "Cut", "Paste" and "Copy" have dual functionality, thus, they
 operate on both text and tree items based on whether the text or
@@ -349,7 +360,13 @@ can accept a filename as an argument - personally, I prefer
 
 The "Date" button puts a date stamp into the file at the current
 position. You can adjust the format of the date stamp in the
-Preferences dialog.
+Preferences dialog - it uses the date format from strftime(3) -
+please check the manual for full details. Some popular choices:
+
+    %F          : (2002-11-03) ... this is the default
+    %c          : Sun 03 Nov 2002 10:33:22 AM EST
+    (%d %b %y)  : (03 Nov 02)
+    %d/%m/%Y    : 28/07/2007
 
 The "Find" button pops up the find & replace dialog. 
 
@@ -438,60 +455,33 @@ and a few enhancements:
 	page feed after every gjots item and 
 	auto numbering (not actually implemented yet)
 
-The present default for "Print command" attempts to print via a
-pre-viewer on the system and expands to:
+The print command that ships with 2.3.7 and later is "gjots2lpr" which
+is a simple script to try to find useful printing tools and to use
+them. The default operation is to pass the text through "a2ps" and to
+view the result with "gv". If these programs are not installed, others
+are sought - see "gjots2lpr -h" for more details.
 
-if type gv; then
-	GV='gv -seascape'
+Before 2.6.7 the default print comman was rather long, but it expanded
+to the following which is supposed to do something similar:
+
+if type gv; then 
+  GV='gv -seascape'
 else 
-	if type ggv; then 
-		GV=ggv
-	else # no preview command found, just print it
-		lpr $1
-		exit
-	fi
-fi
+  if type ggv; then 
+    GV=ggv; 
+  else 
+    lpr $1
+    exit
+  fi
+fi 
 T=/tmp/.tmp.$$
 mpage -f -2 -I1 -P- $1 > $T
 ($GV $T; rm $T)&
-
-Apart from being a little complex for a one-liner this suffers from
-not knowing about other postscript viewers (eg kghostview, evince,
-etc) or about new incompatible versions, for example, gv-3.6.1 does
-not recognise -seascape, it needs --seascape.
-
-Until there is some standard mechanism for previewing printer output
-in X (across kde, gnome and others!!) we'll rely on you, gentle user,
-to customise this to suit your own requirements and installation.
 
 Some possible suggestions for the "Print command" instead of the default:
 
 To simply send the raw output directly to the printer:
 lpr $1
-
-To use a previewer program, set "Print command" like this:
-GV='gv -seascape';  T=/tmp/.tmp.$$;mpage -f -2 -I1 -P- $1 > $T;($GV $T; rm $T)&
-
-That assumes gv-3.5.8. To use a different previewer or different
-options, modify the GV parameter as follows:
-
-# to use gv-3.6.1 as the previewer: 
-GV='gv --seascape'
-
-# to use ggv as the previewer:
-GV='ggv'
-
-# to use kghostview as the previewer:
-GV='kghostview'
-
-# to use evince as the previewer(not tested):
-GV='evince'
-
-Note that ggv, kghostview and evince (?) have no command-line
-options to invert the image so you'll have to do that by pointing
-and clicking. Dumb or what?
-
-Me? I use gv.
 \NewEntry
 Preferences
 
@@ -508,11 +498,12 @@ xterm -e vi %s
 emacsclient %s
 
 Date format - format string to feed to strftime(3) for use in
-date stamp. Do a "man strftime" for details. (%F) e.g.: 
+date stamp. Do a "man strftime" for details. e.g.: 
 
-	%F		: (2002-11-03)
-	%c		: Sun 03 Nov 2002 10:33:22 AM EST
-	(%d %b %y)	: (03 Nov 02)
+    %F          : (2002-11-03) ... this is the default
+    %c          : Sun 03 Nov 2002 10:33:22 AM EST
+    (%d %b %y)  : (03 Nov 02)
+    %d/%m/%Y    : 28/07/2007
 
 Font - the font to be used for the text display. The controls and
 tree still use the default GTK-2 fonts.
@@ -658,6 +649,24 @@ A supplementary channel (eg. stdin=0, stdout=1 stderr=3
 stdpasswd=3) for ccrypt to read passwords would be a better
 solution (but ccrypt does not provide it).
 \NewEntry
+URL handling
+
+If you double-click on a URL then your browser is activated and
+the URL is selected.
+
+Only http[s]://... URLs are recognised.
+
+The BROWSER environment parameter is obeyed in selecting which browser to
+run. If that's not set then an already-running browser from the list below
+is selected. If none of them are already running then the first one from
+the list that can be found is run.
+
+	firefox
+	konqueror
+	epiphany
+	opera
+	dillo
+\NewEntry
 Utilities
 \NewFolder
 \NewEntry
@@ -682,6 +691,18 @@ docbook2gjots
 Converts DOCBOOK XML into gjots2 - see the man page for full details
 
 See the man page for more details.
+\NewEntry
+gjots2emacs
+
+gjots2emacs converts a gjotsfile to a format more or less suitable for
+emacs' outline mode.
+
+Usage: gjots2emacs [filename]
+Converts a gjots file to emacs outline mode (on stdout). The emacs
+outline-regexp is defaulted to ===>+
+
+    -b base: base string for outline-regexp (default '===')
+    -F char: marker for headers in outline-regexp (default '>')
 \EndFolder
 \EndFolder
 \NewEntry
@@ -706,6 +727,8 @@ As of version 2.3.0, gjots2 is internationalized and
 ready for translations. If you would like to see your
 language supported, please contact the mailing list on
 <gjots2-devel@lists.sourceforge.net>
+
+Check the webpage for localisations already complete.
 
 gjots2
 ======
@@ -760,7 +783,9 @@ Platforms
 
 Tested on the following platforms:
   Gentoo Linux i386
-  Ubuntu 4.10
+  Ubuntu Feisty
+
+Older version were tested on:
   Mandrake 10.1
   Fedora Core 3, 4
   Novell Linux Desktop 9
@@ -856,11 +881,24 @@ Logo by:
 	DSP Popeck <wokoglopulator@yahoo.com>, 2002
 
 Frech translation by:
-	Rui Nibau <rui.nibau@omacronides.com>, 2005
+	Rui Nibau <rui.nibau@omacronides.com>
+
+Norwegian translation by:
+    Robert Emil Berge <filoktetes@linuxophic.org>
+
+Russian tranlsation by:
+    Sergey Bezdenezhnyh <sib-mail@mtu-net.ru>
+
+Italian tranlation by:
+    Raimondo Giammanco <rongten@member.fsf.org>
+
+Czech translation by:
+    Martin Sin <martin.sin@zshk.cz>
+
 \NewEntry
 Licence (GPL)
 
-Copyright (C) 2005 Robert Hepple
+Copyright (C) 2007 Robert Hepple
 Copyright (C) 2002 DSP Popeck
 
 		    GNU GENERAL PUBLIC LICENSE

@@ -1,0 +1,123 @@
+#!/bin/sh
+#
+# Copyright (C) 1997-2002 Bob Hepple
+# 
+# A simple script to convert a gjots file to an HTML page - with table of contents
+# etc
+#
+# This program is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later
+# version.
+# 
+# This program is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the Free
+# Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
+# 02139, USA.
+#
+# This would probably be easier for most people to understand if it
+# were in perl(1)... but it's in sh, awk and m4. Anyone want to
+# rewrite it?
+
+usage() {
+	echo "Usage: $PROG [filename]
+Converts a gjots file to emacs outline mode (on stdout). The emacs
+outline-regexp is defaulted to ===>+
+
+    -b base: base string for outline-regexp (default '===')
+    -F char: marker for headers in outline-regexp (default '>')
+"
+}
+
+PROG=`basename $0`
+BASE="==="
+MARKER=">"
+
+ARGS=`getopt -o F:h -- "$@"`
+[ $? != 0 ] && echo "use -h for usage" >&2 && exit 1
+
+eval set -- "$ARGS"
+
+while true; do
+	case $1 in
+	-h) usage; exit 0;;
+    -b) BASE="$2"; shift 2;;
+    -F) MARKER="$2"; shift 2;;
+	--) shift; break;;
+	*)  echo "$PROG: internal error" >&2 ; exit 1;;
+	esac
+done
+
+FILENAME=""
+[ -r $1 ] && FILENAME=$1
+
+writeBody() {
+AWKFILE=/tmp/gjots2html.tmp$$.awk 
+
+# Leave the here-document terminator unquoted to enable shell variable
+# expansion: $ \ ` and , need escaping with \:
+cat >$AWKFILE <<EOF
+BEGIN {
+	level = 1
+    marker = "$MARKER"
+    base="$BASE"
+	level_hdr = base marker
+	print_title=0
+}
+
+{
+	if (\$0 ~ /^\\\\NewEntry/) { 
+		print_title=1
+	} else if (\$0 ~ /^\\\\NewFolder/) { 
+		level++
+		level_hdr = level_hdr marker
+	} else if (\$0 ~ /^\\\\EndFolder/) {
+		if (level > 1) {
+		    level--
+		    level_hdr = substr(level_hdr, 1, length(level_hdr) - 1)
+        }
+	} else {
+		if (print_title) {
+			printf("%s %s\n",level_hdr, \$0)
+			print_title=0
+		} else {
+			print
+		}
+	}
+}
+
+EOF
+
+cat $FILENAME | awk -f $AWKFILE
+rm $AWKFILE
+
+} # writeBody
+
+writeTrailer() {
+    cat <<EOF
+
+$BASE$MARKER Setting up emacs:
+REM Local Variables:
+REM fill-column:70
+REM mode: outline
+REM eval:(make-variable-buffer-local 'outline-regexp)
+REM eval:(setq outline-regexp "$BASE$MARKER+")
+REM eval:(auto-fill-mode 1)
+REM eval:(goto-char (point-min))
+REM eval:(hide-other)
+REM End:
+EOF
+}
+
+# This is the main program (!):
+(
+		writeBody
+		writeTrailer
+)

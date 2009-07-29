@@ -56,13 +56,23 @@ Vous pourriez avoir besoin d'installer (ou de ré-installer) libglade, pygtk, gn
 
 	export PYTHONPATH=/usr/local/lib/python2.3/site-packages/
 
-A l'heure où j'écris ses lignes, ma configuration est la suivante (sur une Gentoo) :
+A l'heure où j'écris ses lignes (gjots-2.3.8), ma configuration est la suivante (sur une Gentoo) :
 
-	x11-libs/gtk+-2.6.10-r1
-	gnome-base/libglade-2.5.1
-	dev-python/pygtk-2.6.2
-	dev-python/gnome-python-2.10.0 (pulls in pyorbit)
-	dev-python/pyorbit-2.0.1
+    dev-python/gnome-python-2.22.0 (2)
+    dev-python/gnome-python-desktop-2.22.0 (0)
+    gnome-base/gnome-common-2.20.0 (3)
+    gnome-base/gnome-keyring-2.22.3 (0)
+    gnome-base/gnome-mime-data-2.18.0 (0)
+    gnome-base/gnome-vfs-2.22.0 (2)
+    gnome-base/libgnome-2.22.0 (0)
+    gnome-base/libgnomecanvas-2.20.1.1 (0)
+    gnome-base/libgnomeui-2.22.1 (0)
+    x11-themes/gnome-icon-theme-2.22.0 (0)
+    dev-python/pygtk-2.12.1-r2 (2)
+    x11-libs/gtk+-2.12.11 (2)
+    gnome-base/libglade-2.6.3 (2.0)
+    dev-python/pyorbit-2.14.3 (0)
+    gnome-base/orbit-2.14.13 (2)
 
 Les distributions à base de rpm (RedHat, Mandrake/Mandriva, SuSE) ont certainement des paquetages similaires (m'avertir si ce n'est pas le cas). Apparemement, Fedora nécessite en plus gnome-python2-gconf.
 

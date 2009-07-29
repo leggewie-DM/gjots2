@@ -2,6 +2,20 @@
 
 import sys, os, getopt
 import gettext
+import linecache
+
+def traceit(frame, event, arg):
+    if event == "line" or event == "call":
+        lineno = frame.f_lineno
+        filename = frame.f_globals["__file__"]
+        if (filename.endswith(".pyc") or
+            filename.endswith(".pyo")):
+            filename = filename[:-1]
+        name = frame.f_globals["__name__"]
+        line = linecache.getline(filename, lineno)
+        print "%s:%s:%s: %s" % (event, name, lineno, line.rstrip())
+    return traceit
+
 gettext.install('gjots2', '/usr/share/locale')
 
 def ver2str(ver):
@@ -16,7 +30,8 @@ A gnome-2/X11 jotter
 
 OPTIONS:
 -h, --help:                         this help
--d, --debug:                        debug trace to stdout
+-d, --debug:                        debug to stdout
+-t, --trace:                        trace lines as they execute
 -g 123x456, --geometry=123x456:     initial geometry (X x Y)
 -p, --purge-password				don't remember password
 -r, --readonly:                     no editing (or locking)
@@ -45,8 +60,8 @@ if __name__ == '__main__':
 	try:
 	    import pygtk
 	except ImportError, err:
-	    sys.stderr.write(err)
-	    sys.stderr.write(_("%s requires pygtk-%s.") % (progName, ver2str(pygtkver)))
+	    print err
+	    sys.stderr.write(_("%s requires pygtk-%s.\n") % (progName, ver2str(pygtkver)))
 	    sys.exit(1)
 	else:
 	    pygtk.require("2.0")
@@ -56,7 +71,7 @@ if __name__ == '__main__':
 	#
 	# developer should use local version executed from the current directory:
 	localdir=os.curdir + "/lib"
-	if os.access(localdir, os.F_OK) and os.access("gjots.glade2", os.F_OK):
+	if os.access(localdir, os.F_OK) and os.access("gjots.glade3", os.F_OK):
 		prefix = localdir
 		sys.path = [ localdir ] + sys.path
 		sys.stderr.write(_("%s: Warning: running modules from %s\n") % (progName, localdir))
@@ -69,7 +84,7 @@ if __name__ == '__main__':
 	from version import *
 
 	try:
-	    opts, args = getopt.getopt(sys.argv[1:], "hdrg:V", ["help", "debug", "readonly", "geometry=", "version"])
+	    opts, args = getopt.getopt(sys.argv[1:], "hdrtg:V", ["help", "debug", "readonly", "trace", "geometry=", "version"])
 	except getopt.GetoptError, errmsg:
 		sys.stderr.write("%s: %s\n" % (progName, errmsg))
 		sys.stderr.write(_("Use -h for help\n"))
@@ -96,6 +111,8 @@ if __name__ == '__main__':
 			geometry = a
 		if o in ("-d", "--debug"):
 			debug = 1
+		if o in ("-t", "--trace"):
+			sys.settrace(traceit)
 
 	if len(args):
 		filename = args[0]

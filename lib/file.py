@@ -307,10 +307,10 @@ class gjotsfile:
 
 		self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
 		if mode == "r":
-			f = os.popen("echo " + self.gui.password + " | gpg --cipher-algo 3DES --decrypt --passphrase-fd 0 " + filename + " 2>&1", "r")
+			f = os.popen("echo \"" + self.gui.password + "\" | gpg --batch --no-tty --cipher-algo 3DES --decrypt --passphrase-fd 0 " + filename + " 2>/dev/null", "r")
 		else:
 			scratch = tempfile.mktemp()
-			f = os.popen("cat > " + scratch + "; echo " + self.gui.password + " | gpg --cipher-algo 3DES -o - --symmetric --passphrase-fd 0 " + scratch + "> " + filename + " 2>/dev/null; rm " + scratch, "w")
+			f = os.popen("cat > " + scratch + "; echo \"" + self.gui.password + "\" | gpg --batch --no-tty --cipher-algo 3DES -o - --symmetric --passphrase-fd 0 " + scratch + "> " + filename + " 2>/dev/null; rm " + scratch, "w")
 		blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 		if self.gui.purge_password:
 			self.gui.password = blank
@@ -332,10 +332,10 @@ class gjotsfile:
 
 		self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
 		if mode == "r":
-			f = os.popen("echo " + self.gui.password + " | openssl des3 -d -pass stdin -in " + filename + " 2>&1", "r")
+			f = os.popen("echo \"" + self.gui.password + "\" | openssl des3 -d -pass stdin -in " + filename + " 2>&1", "r")
 		else:
 			scratch = tempfile.mktemp()
-			f = os.popen("cat > " + scratch + "; echo " + self.gui.password + " | openssl des3 -pass stdin -in " + scratch + " -out " + filename + " 2>&2; rm " + scratch, "w")
+			f = os.popen("cat > " + scratch + "; echo \"" + self.gui.password + "\" | openssl des3 -pass stdin -in " + scratch + " -out " + filename + " 2>&2; rm " + scratch, "w")
 		blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 		if self.gui.purge_password:
 			self.gui.password = blank

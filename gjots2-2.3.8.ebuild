@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /cvsroot/gjots2/gjots/gjots2.ebuild,v 1.7.2.12 2006/02/23 09:05:53 bhepple Exp $
+# $Header: /cvsroot/gjots2/gjots/gjots2.ebuild,v 1.7.2.15 2007/07/28 12:11:45 bhepple Exp $
 
 inherit python gnome.org
 
@@ -28,13 +28,13 @@ MAKEOPTS="${MAKEOPTS} -j1"
 
 src_install() {
 	cd ${S}
-	dobin bin/gjots2 bin/gjots2html bin/gjots2html.py bin/gjots2docbook bin/docbook2gjots
+	dobin bin/gjots2 bin/gjots2html bin/gjots2html.py bin/gjots2docbook bin/docbook2gjots bin/gjots2emacs bin/gjots2lpr
 
 	insinto /usr/lib/gjots2
 	doins lib/*.py
 
 	insinto /usr/share/gjots2
-	doins gjots.glade2
+	doins gjots.glade3
 
 	insinto /usr/share/gjots2
 	doins gjots.png gjots2-hide-all.png gjots2-merge-items.png gjots2-new-child.png gjots2-new-page.png gjots2-show-all.png gjots2-split-item.png
@@ -56,7 +56,9 @@ src_install() {
 	doins gjots2.no.gjots
 	doins gjots2.nb.gjots
 	doins gjots2.ru.gjots
-	doins gjots2.it.gjots
+# not available:
+#	doins gjots2.it.gjots
+#	doins gjots2.cs.gjots
 
 	insinto /usr/share/locale/en_US/LC_MESSAGES
 	doins po/en_US/LC_MESSAGES/gjots2.mo
@@ -74,6 +76,9 @@ src_install() {
 
 	insinto /usr/share/locale/it/LC_MESSAGES
 	doins po/it/LC_MESSAGES/gjots2.mo
+
+	insinto /usr/share/locale/cs/LC_MESSAGES
+	doins po/cs/LC_MESSAGES/gjots2.mo
 }
 
 pkg_postinst() {
