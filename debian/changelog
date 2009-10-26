@@ -1,15 +1,19 @@
-gjots2 (2.3.8-0ubuntu1) karmic; urgency=low
+gjots2 (2.3.8-1) unstable; urgency=low
 
-  * New Upstream Version
+  * Take over maintenance of gjots2 from Khalid El Fathi (Closes: #547057)
+    and acknowledge previous NMU uploads.  Thank you, Khalid and Sandro for
+    your work on this package.
+  * New Upstream Version (LP: #406574)
     - display sidebar icons properly (Closes: #446696, LP: #115132)
   * move changes currently made directly to the source into proper patches,
     but don't actually use 20_seascape.patch
   * debian/control
     - recommend instead of depending on mpage and gv (Closes: #475404)
     - fix description, gjots is not a mindmap tool (Closes: #424724)
-    - update to standard 3.8.2 and debhelper 5
+    - update to standard 3.8.3 and debhelper 5
+    - set Vcs information
 
- -- Rolf Leggewie <foss@rolf.leggewie.biz>  Wed, 29 Jul 2009 01:43:19 +0200
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Mon, 26 Oct 2009 15:24:13 +0900
 
 gjots2 (2.3.4-2.1) unstable; urgency=low
 
@@ -77,4 +81,3 @@ gjots2 (2.1.1-1) unstable; urgency=low
   * Initial Release (Closes: bug#278689).
 
  -- Khalid El Fathi <invent@edena-fr.org>  Wed, 22 Dec 2004 11:12:54 +0100
-

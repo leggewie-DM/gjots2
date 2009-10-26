@@ -74,7 +74,6 @@ binary-indep: build install
 	dh_compress --exclude=gjots2.gjots
 	dh_fixperms
 	dh_pysupport -pgjots2 /usr/lib/gjots2/
-	dh_python
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
