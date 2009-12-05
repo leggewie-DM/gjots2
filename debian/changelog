@@ -1,3 +1,9 @@
+gjots2 (2.3.8-2) unstable; urgency=low
+
+  * radically simplify rules file
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Sat, 05 Dec 2009 18:36:09 +0100
+
 gjots2 (2.3.8-1) unstable; urgency=low
 
   * Take over maintenance of gjots2 from Khalid El Fathi (Closes: #547057)
