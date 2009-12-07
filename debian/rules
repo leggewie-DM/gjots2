@@ -1,83 +1,13 @@
 #!/usr/bin/make -f
+%:
+	dh $@
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+override_dh_install: 
+	dh_install
 
-include /usr/share/quilt/quilt.make
+	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/AUTHORS
+	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/INSTALL
+	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/COPYING
+	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/ChangeLog
 
-CFLAGS = -Wall -g
-
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -O0
-else
-	CFLAGS += -O2
-endif
-
-configure: configure-stamp
-configure-stamp:
-	dh_testdir
-	# Add here commands to configure the package.
-
-	touch configure-stamp
-
-
-build: patch build-stamp
-
-build-stamp: configure-stamp 
-	dh_testdir
-
-	# Add here commands to compile the package.
-	#$(MAKE)
-	#docbook-to-man debian/gjots2.sgml > gjots2.1
-
-	touch build-stamp
-
-clean: unpatch
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp configure-stamp
-
-	# Add here commands to clean up after the build process.
-	#-$(MAKE) clean
-
-	find . -name *\.py[co] -exec rm -f {} \;
-	[ ! -d build ] || rm -rf build
-
-	dh_clean 
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k 
-	dh_installdirs
-
-	# Add here commands to install the package into debian/gjots2.
-	python setup.py install --prefix=$(CURDIR)/debian/gjots2/usr
-	rm $(CURDIR)/debian/gjots2/usr/share/doc/gjots2/AUTHORS
-	rm $(CURDIR)/debian/gjots2/usr/share/doc/gjots2/INSTALL
-	rm $(CURDIR)/debian/gjots2/usr/share/doc/gjots2/COPYING
-	rm $(CURDIR)/debian/gjots2/usr/share/doc/gjots2/ChangeLog
-
-
-# Build architecture-dependent files here.
-binary-arch: build install
-
-# Build architecture-independent files here.
-binary-indep: build install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs ChangeLog
-	dh_installdocs
-	dh_installmenu
-	dh_installman
-	dh_strip
-	dh_compress --exclude=gjots2.gjots
-	dh_fixperms
-	dh_pysupport -pgjots2 /usr/lib/gjots2/
-	dh_installdeb
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure
+	mv $(CURDIR)/debian/gjots2/usr/share/doc/gjots2-* $(CURDIR)/debian/gjots2/usr/share/doc/gjots2
