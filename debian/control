@@ -11,7 +11,7 @@ Vcs-Git: git://git.debian.org/collab-maint/gjots2.git
 
 Package: gjots2
 Architecture: all
-Depends: ${python:Depends}, python-glade2, python-gnome2
+Depends: ${python:Depends}, ${misc:Depends}, python-glade2, python-gnome2
 Recommends: gv, mpage
 Provides: ${python:Provides}
 XB-Python-Version: ${python:Versions}
