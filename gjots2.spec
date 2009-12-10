@@ -1,6 +1,6 @@
-# $Id: gjots2.spec,v 1.12.2.16 2007/07/28 12:11:45 bhepple Exp $
+# $Id: gjots2.spec,v 1.12.2.17 2009/08/09 11:31:51 bhepple Exp $
 
-#   Copyright (C) 2002-2005 Robert Hepple 
+#   Copyright (C) 2002-2009 Robert Hepple 
 #
 #   This program is free software; you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -17,7 +17,7 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 2.3.8
+%define ver 2.3.9
 %define rel 1
 %define prefix /usr
 
@@ -57,7 +57,7 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-2.3.8
+#	buildroot=/var/tmp/root-gjots2-2.3.9
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib

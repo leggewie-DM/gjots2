@@ -1259,6 +1259,20 @@ class gjots_gui:
 		w.set_sensitive(writeable)
 		w = self.xml.get_widget("demoteMenuItem")
 		w.set_sensitive(writeable)
+		w = self.xml.get_widget("undoMenuItem")
+		if self.has_gtksourceview:
+			w.set_sensitive(writeable)
+		else:
+			w.set_sensitive(False)
+		w = self.xml.get_widget("redoMenuItem")
+		if self.has_gtksourceview:
+			w.set_sensitive(writeable)
+		else:
+			w.set_sensitive(False)
+		w = self.xml.get_widget("undoMenuItem")
+		w.set_sensitive(writeable)
+		w = self.xml.get_widget("redoMenuItem")
+		w.set_sensitive(writeable)
 		w = self.xml.get_widget("cutMenuItem")
 		w.set_sensitive(writeable)
 		w = self.xml.get_widget("pasteMenuItem")
@@ -1452,6 +1466,20 @@ class gjots_gui:
 		return self.on_quit_trigger(widget)
 
 # Edit menu callbacks:
+	def on_undo_trigger(self, widget):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		self.msg("")
+		if self.textView.is_focus():
+			self.textBuffer.undo()
+
+	def on_redo_trigger(self, widget):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		self.msg("")
+		if self.textView.is_focus():
+			self.textBuffer.redo()
+
 	def on_cut_trigger(self, widget):
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
@@ -2217,6 +2245,8 @@ class gjots_gui:
 			"on_quit_trigger":              self.on_quit_trigger,
 
 			# Edit menu:
+			"on_undo_trigger":              self.on_undo_trigger,
+			"on_redo_trigger":              self.on_redo_trigger,
 			"on_cut_trigger":               self.on_cut_trigger,
 			"on_copy_trigger":              self.on_copy_trigger,
 			"on_paste_trigger":             self.on_paste_trigger,
@@ -2305,7 +2335,16 @@ class gjots_gui:
 			for name, file in self.icons.iteritems():
 				self.icons[name] = "./pixmaps/" + self.icons[name]
 
-		self.xml = gtk.glade.XML(self.gui_filename, "gjots", domain="gjots2")
+		override = {}
+		try:
+			import gtksourceview
+			override["GtkTextView"] = gtksourceview.SourceView
+			override["GtkTextBuffer"] = gtksourceview.SourceBuffer
+			self.has_gtksourceview = True
+		except:
+			self.has_gtksourceview = False
+			pass
+		self.xml = gtk.glade.XML(self.gui_filename, "gjots", "gjots2", override)
 		self.xml.signal_autoconnect(callbacks)
 		self.treestore = None
 		self.gjots = self.xml.get_widget("gjots")
@@ -2335,7 +2374,16 @@ class gjots_gui:
 		# do this with signals ...
 		self.current_dirty = 0
 		
-		self.textBuffer = gtk.TextBuffer()
+		try:
+			import gtksourceview
+			self.textBuffer = gtksourceview.SourceBuffer()
+			self.textBuffer.set_text = lambda *args: not not (
+				self.textBuffer.begin_not_undoable_action(),
+				apply(gtksourceview.SourceBuffer.set_text, [self.textBuffer] + list(args)),
+				self.textBuffer.end_not_undoable_action(),
+			)
+		except:
+			self.textBuffer = gtk.TextBuffer()
 		self.textView.set_buffer(self.textBuffer)
 		self.textBuffer.set_text("", 0)
 		self.textBuffer_changed_handler = self.textBuffer.connect("changed", self.on_textBuffer_changed)

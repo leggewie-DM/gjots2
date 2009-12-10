@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 2.3.8
+                 Version 2.3.9
 
 
       bhepple@freeshell.org
@@ -82,26 +82,21 @@ eg.
 
 	export PYTHONPATH=/usr/local/lib/python2.3/site-packages/
 
-As at this writing (gjots-2.3.8), I have the following installed (on Gentoo):
+As at this writing (gjots-2.3.9), I have the following installed (on Fedora-10):
 
-    dev-python/gnome-python-2.22.0 (2)
-    dev-python/gnome-python-desktop-2.22.0 (0)
-    gnome-base/gnome-common-2.20.0 (3)
-    gnome-base/gnome-keyring-2.22.3 (0)
-    gnome-base/gnome-mime-data-2.18.0 (0)
-    gnome-base/gnome-vfs-2.22.0 (2)
-    gnome-base/libgnome-2.22.0 (0)
-    gnome-base/libgnomecanvas-2.20.1.1 (0)
-    gnome-base/libgnomeui-2.22.1 (0)
-    x11-themes/gnome-icon-theme-2.22.0 (0)
-    dev-python/pygtk-2.12.1-r2 (2)
-    x11-libs/gtk+-2.12.11 (2)
-    gnome-base/libglade-2.6.3 (2.0)
-    dev-python/pyorbit-2.14.3 (0)
-    gnome-base/orbit-2.14.13 (2)
-
-Presumably rpm-based systems (RedHat, Mandrake/Mandriva, SuSE) are similar
-(please advise). Apparently, Fedora also requires gnome-python2-gconf.
+    glade3-libgladeui-3.4.5-4.fc10
+    gnome-python2-2.22.3-1.fc10
+    gnome-python2-gconf-2.22.3-1.fc10
+    gtk2-2.14.7-7.fc10
+    gtksourceview-1.8.5-5.fc10
+    libglade2-2.6.3-1.fc10
+    libgnome-2.24.1-7.fc10
+    libgnomecanvas-2.20.1.1-2.fc9
+    libgnomeui-2.24.0-2.fc10
+    pygtk2-2.13.0-2.fc10.i386
+    pygtk2-libglade-2.13.0-2.fc10
+    pygtk2-libglade-2.13.0-2.fc10.i386
+    pygtksourceview-2.4.0-1.fc10.i386
 
 Make sure the python packages are installed in the site-packages
 directory for the version of python that you are using (do a "python
@@ -112,15 +107,17 @@ directory for the version of python that you are using (do a "python
 If they're not there then you may need to re-install them - for
 example, it happened to me when python got upgraded from 2.2 to
 2.3 - /usr/lib/python2.X/site-packages directory is not
-automatically updated.) I then had to
+automatically updated.) I then had to (on gentoo) do this:
 
 	emerge unmerge libglade pygtk gnome-python bonobo-python pyorbit
 	emerge libglade pygtk gnome-python bonobo-python pyorbit
 
-gjots2 was written with glade-2 so if you want to change or fix the
+gjots2 was written with glade-3 so if you want to change or fix the
 code you will need to install it too.  Otherwise, it's just python!
 \NewEntry
 Gentoo 
+
+Note: 2.6.8 and earlier were tested on gentoo. 2.6.9 and on were not.
 
 Until and unless gjots2 has an official ebuild (look in
 /usr/portage/app-office) you'll have to do this:
@@ -141,7 +138,7 @@ app-office/gjots2 ~x86
 
 Then:	
 
-VERSION=2.3.8
+VERSION=2.3.9
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -156,24 +153,16 @@ RPM-based systems
 
 Just do this:
 
-VERSION=2.3.8
+VERSION=2.3.9
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 rpm -i gjots2-${VERSION}-1.noarch.rpm
 
 Of course, you may need to install dependencies first such as
 pygtk, libglade, etc
-
-On my Fedora core 4 system I have these prerequisites:
-gtk2-2.6.7-4
-libglade2-2.5.1-2
-pygtk2-2.6.0-2
-gnome-python2-2.10.0-1
-gnome-python2-gconf-2.10.0-1
-pyorbit-2.0.1-4
 \NewEntry
 From the tarball source
 
-VERSION=2.3.8
+VERSION=2.3.9
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and
@@ -330,7 +319,8 @@ the root item.
 "Show All" expands all the children of the currently selected
 items (recursively).
 
-"Sort Tree" brings up the sort dialog box where you can sort elements based on a given criteria.
+"Sort Tree" brings up the sort dialog box where you can sort elements
+based on a given criteria.
 
 When a folder loses all of its child items it gets automatically 
 demoted to a plain item.
@@ -341,6 +331,9 @@ On the top toolbar, we have:
 
 The 'Print' button pops up the Print dialog. See the "Printing" item
 one level up from here.
+
+The "Undo" and "Redo" functions only operate on the text buffer, not on
+the tree. They are only available if the gtksourceview library is available.
 
 "Cut", "Paste" and "Copy" have dual functionality, thus, they
 operate on both text and tree items based on whether the text or
@@ -572,8 +565,8 @@ The format of the file is the normal gjots2 format.
 \NewEntry
 gjots2 file format
 
-The same as gjots which is the same as kjots but with a
-hierarchy:
+The same as gjots which is plain text but with a hierarchy introduced
+by some keywords:
 
     \NewEntry
     title1
@@ -863,6 +856,34 @@ Merging items
 Spliting items
 
 Printing
+\NewEntry
+Q: What's the difference between the old C version (gjots-0.X) and the new python version gjots-2.X.X
+
+A: At the 2.0.0 release, these were the differences (for development
+since then see the CHANGES logs):
+
+Unicode support in the data files - so I can make notes in
+Russian - maybe Turkish, Arabic, who knows what will work.
+Reports solicited and most welcome!
+
+The potential for LOTE support in the program itself - any
+volunteers for I18N and L10N?
+
+Drag and Drop in the tree view to simplify organisation.
+
+gconf support with GTK-2 themes.
+
+Sorting items and/or text
+
+Merging items
+
+Spliting items
+
+Printing
+\NewEntry
+Q: Why do the Undo and Redo functions not work?
+
+A: Have you got the gtksourceview libraries installed?
 
 \EndFolder
 \NewEntry
