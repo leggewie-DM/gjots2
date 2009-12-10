@@ -33,7 +33,7 @@
                     <signal name="clicked" handler="on_newPage_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -46,7 +46,7 @@
                     <signal name="clicked" handler="on_newChild_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -58,10 +58,6 @@
                       </widget>
                     </child>
                   </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="homogeneous">False</property>
-                  </packing>
                 </child>
                 <child>
                   <widget class="GtkToolButton" id="upButton">
@@ -73,7 +69,7 @@
                     <signal name="clicked" handler="on_up_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -86,7 +82,7 @@
                     <signal name="clicked" handler="on_down_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -99,7 +95,7 @@
                     <signal name="clicked" handler="on_promote_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -112,7 +108,7 @@
                     <signal name="clicked" handler="on_demote_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -124,10 +120,6 @@
                       </widget>
                     </child>
                   </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="homogeneous">False</property>
-                  </packing>
                 </child>
                 <child>
                   <widget class="GtkToolButton" id="splitItemButton">
@@ -139,7 +131,7 @@
                     <signal name="clicked" handler="on_splitItem_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -152,7 +144,7 @@
                     <signal name="clicked" handler="on_mergeItems_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -164,10 +156,6 @@
                       </widget>
                     </child>
                   </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="homogeneous">False</property>
-                  </packing>
                 </child>
                 <child>
                   <widget class="GtkToolButton" id="hideAllButton">
@@ -179,7 +167,7 @@
                     <signal name="clicked" handler="on_hideAll_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -192,7 +180,7 @@
                     <signal name="clicked" handler="on_showAll_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -205,7 +193,7 @@
                     <signal name="clicked" handler="on_sortTree_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
               </widget>
@@ -233,7 +221,7 @@
                     <signal name="clicked" handler="on_save_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -246,7 +234,7 @@
                     <signal name="clicked" handler="on_print_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -258,10 +246,6 @@
                       </widget>
                     </child>
                   </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="homogeneous">False</property>
-                  </packing>
                 </child>
                 <child>
                   <widget class="GtkToolButton" id="cutButton">
@@ -273,7 +257,7 @@
                     <signal name="clicked" handler="on_cut_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -286,7 +270,7 @@
                     <signal name="clicked" handler="on_copy_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -299,7 +283,7 @@
                     <signal name="clicked" handler="on_paste_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -311,10 +295,6 @@
                       </widget>
                     </child>
                   </widget>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="homogeneous">False</property>
-                  </packing>
                 </child>
                 <child>
                   <widget class="GtkToolButton" id="wrapButton">
@@ -326,7 +306,7 @@
                     <signal name="clicked" handler="on_format_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -339,7 +319,7 @@
                     <signal name="clicked" handler="on_externalEdit_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -352,7 +332,7 @@
                     <signal name="clicked" handler="on_timeStamp_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -365,7 +345,7 @@
                     <signal name="clicked" handler="on_find_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -378,7 +358,7 @@
                     <signal name="clicked" handler="on_sort_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
@@ -391,7 +371,7 @@
                     <signal name="clicked" handler="on_prefs_trigger"/>
                   </widget>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
                   </packing>
                 </child>
               </widget>
@@ -495,7 +475,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator8">
+                          <widget class="GtkSeparatorMenuItem" id="separator1">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -523,7 +503,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator1">
+                          <widget class="GtkSeparatorMenuItem" id="separator2">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -555,6 +535,34 @@
                     <property name="use_underline">True</property>
                     <child>
                       <widget class="GtkMenu" id="edit1_menu">
+                        <child>
+                          <widget class="GtkImageMenuItem" id="undoMenuItem">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Undo</property>
+                            <property name="use_underline">True</property>
+                            <signal name="activate" handler="on_undo_trigger"/>
+                            <accelerator key="Z" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="menu-item-image33">
+                                <property name="stock">gtk-undo</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="redoMenuItem">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Redo</property>
+                            <property name="use_underline">True</property>
+                            <signal name="activate" handler="on_redo_trigger"/>
+                            <accelerator key="Y" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="menu-item-image34">
+                                <property name="stock">gtk-redo</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
                         <child>
                           <widget class="GtkImageMenuItem" id="cutMenuItem">
                             <property name="visible">True</property>
@@ -691,7 +699,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator4">
+                          <widget class="GtkSeparatorMenuItem" id="separator3">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -767,7 +775,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator2">
+                          <widget class="GtkSeparatorMenuItem" id="separator6">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -836,7 +844,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator3">
+                          <widget class="GtkSeparatorMenuItem" id="separator9">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -871,7 +879,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator6">
+                          <widget class="GtkSeparatorMenuItem" id="separator11">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -1023,12 +1031,12 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator11">
+                          <widget class="GtkSeparatorMenuItem" id="separator12">
                             <property name="visible">True</property>
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkMenuItem" id="selectAllMenuItem">
+                          <widget class="GtkMenuItem" id="selectAllMenuItem1">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="label" translatable="yes">Select _All</property>
@@ -1051,7 +1059,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator12">
+                          <widget class="GtkSeparatorMenuItem" id="separator13">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -1062,7 +1070,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_newPage_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image1">
                                 <property name="visible">True</property>
                                 <property name="pixbuf">gjots2-new-page.png</property>
                               </widget>
@@ -1076,7 +1084,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_newChild_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image2">
                                 <property name="visible">True</property>
                                 <property name="pixbuf">gjots2-new-child.png</property>
                               </widget>
@@ -1084,7 +1092,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator13">
+                          <widget class="GtkSeparatorMenuItem" id="separator14">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -1095,7 +1103,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_up_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image3">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-go-up</property>
                                 <property name="icon_size">1</property>
@@ -1110,7 +1118,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_down_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image4">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-go-down</property>
                                 <property name="icon_size">1</property>
@@ -1125,7 +1133,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_promote_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image5">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-go-back</property>
                                 <property name="icon_size">1</property>
@@ -1140,7 +1148,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_demote_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image6">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-go-forward</property>
                                 <property name="icon_size">1</property>
@@ -1149,7 +1157,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator14">
+                          <widget class="GtkSeparatorMenuItem" id="separator15">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -1160,7 +1168,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_mergeItems_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image7">
                                 <property name="visible">True</property>
                                 <property name="pixbuf">gjots2-merge-items.png</property>
                               </widget>
@@ -1179,7 +1187,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_showAll_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image8">
                                 <property name="visible">True</property>
                                 <property name="pixbuf">gjots2-show-all.png</property>
                               </widget>
@@ -1193,7 +1201,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_hideAll_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image9">
                                 <property name="visible">True</property>
                                 <property name="pixbuf">gjots2-hide-all.png</property>
                               </widget>
@@ -1201,7 +1209,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator15">
+                          <widget class="GtkSeparatorMenuItem" id="separator17">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -1212,7 +1220,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_sortTree_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image10">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-sort-ascending</property>
                                 <property name="icon_size">1</property>
@@ -1221,7 +1229,7 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator16">
+                          <widget class="GtkSeparatorMenuItem" id="separator18">
                             <property name="visible">True</property>
                           </widget>
                         </child>
@@ -1232,7 +1240,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_import_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image11">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-cdrom</property>
                                 <property name="icon_size">1</property>
@@ -1247,7 +1255,7 @@
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="on_export_trigger"/>
                             <child internal-child="image">
-                              <widget class="GtkImage" id="image1143">
+                              <widget class="GtkImage" id="image12">
                                 <property name="visible">True</property>
                                 <property name="stock">gtk-close</property>
                                 <property name="icon_size">1</property>
@@ -1337,6 +1345,7 @@
                         <child>
                           <widget class="GtkScrolledWindow" id="treeScrolledWindow">
                             <property name="visible">True</property>
+                            <property name="can_focus">False</property>
                             <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                             <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                             <child>
@@ -1357,11 +1366,13 @@
                           </widget>
                           <packing>
                             <property name="resize">False</property>
+                            <property name="shrink">True</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkScrolledWindow" id="textScrolledWindow">
                             <property name="visible">True</property>
+                            <property name="can_focus">False</property>
                             <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                             <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                             <property name="shadow_type">GTK_SHADOW_IN</property>
@@ -1377,6 +1388,10 @@
                               </widget>
                             </child>
                           </widget>
+                          <packing>
+                            <property name="resize">True</property>
+                            <property name="shrink">True</property>
+                          </packing>
                         </child>
                       </widget>
                       <packing>
@@ -1419,6 +1434,8 @@
     <property name="comments" translatable="yes">http://bhepple.freeshell.org/gjots2</property>
     <property name="authors">Bob Hepple
 Gabriel Munoz
+
+
 
 
 </property>
@@ -1554,6 +1571,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-ok</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_generalOK_clicked"/>
               </widget>
             </child>
@@ -1563,6 +1581,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-yes</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_generalYes_clicked"/>
               </widget>
               <packing>
@@ -1575,6 +1594,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-no</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_generalNo_clicked"/>
               </widget>
               <packing>
@@ -1587,6 +1607,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-cancel</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_generalCancel_clicked"/>
               </widget>
               <packing>
@@ -1600,6 +1621,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label" translatable="yes">Try again</property>
                 <property name="use_underline">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_generalTryagain_clicked"/>
               </widget>
               <packing>
@@ -1613,6 +1635,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label" translatable="yes">Read only</property>
                 <property name="use_underline">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_generalReadonly_clicked"/>
               </widget>
               <packing>
@@ -1653,6 +1676,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="tooltip" translatable="yes">Choose a font for the text panel</property>
                 <property name="label">gtk-select-font</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_fontButton_clicked"/>
               </widget>
               <packing>
@@ -1819,6 +1843,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-ok</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_prefsOK_clicked"/>
               </widget>
             </child>
@@ -1830,6 +1855,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-cancel</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_prefsCancel_clicked"/>
               </widget>
               <packing>
@@ -1861,6 +1887,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="can_default">True</property>
+        <property name="response_id">0</property>
         <signal name="clicked" handler="on_fontCancel_clicked"/>
       </widget>
     </child>
@@ -1868,6 +1895,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
       <widget class="GtkButton" id="fontApply">
         <property name="can_focus">True</property>
         <property name="can_default">True</property>
+        <property name="response_id">0</property>
         <signal name="clicked" handler="on_fontApply_clicked"/>
       </widget>
     </child>
@@ -1876,6 +1904,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="can_default">True</property>
+        <property name="response_id">0</property>
         <signal name="clicked" handler="on_fontOK_clicked"/>
       </widget>
     </child>
@@ -1973,6 +2002,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">Find</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <signal name="clicked" handler="on_findStartButton_clicked"/>
                   </widget>
                   <packing>
@@ -1986,6 +2016,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">Close</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <signal name="clicked" handler="on_findCloseButton_clicked"/>
                   </widget>
                   <packing>
@@ -2001,6 +2032,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">Replace</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <signal name="clicked" handler="on_replaceStartButton_clicked"/>
                   </widget>
                   <packing>
@@ -2016,6 +2048,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">Replace All</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <signal name="clicked" handler="on_replaceAllButton_clicked"/>
                   </widget>
                   <packing>
@@ -2031,6 +2064,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">Cancel</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <signal name="clicked" handler="on_findCancelButton_clicked"/>
                   </widget>
                   <packing>
@@ -2048,6 +2082,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">Clear</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <signal name="clicked" handler="on_findClearButton_clicked"/>
                   </widget>
                   <packing>
@@ -2099,6 +2134,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="tooltip" translatable="yes">Don't ignore case</property>
                     <property name="label" translatable="yes">Match case</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <property name="draw_indicator">True</property>
                   </widget>
                   <packing>
@@ -2112,6 +2148,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="tooltip" translatable="yes">Find string is a regular expression (see 'man 7 regex')</property>
                     <property name="label" translatable="yes">Regular Expression</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <property name="draw_indicator">True</property>
                   </widget>
                   <packing>
@@ -2126,6 +2163,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="tooltip" translatable="yes">Search backwards</property>
                     <property name="label" translatable="yes">Backwards</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <property name="draw_indicator">True</property>
                   </widget>
                   <packing>
@@ -2144,6 +2182,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                     <property name="tooltip" translatable="yes">Searches entire file not just this entry</property>
                     <property name="label" translatable="yes">Global</property>
                     <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
                     <property name="draw_indicator">True</property>
                   </widget>
                   <packing>
@@ -2255,6 +2294,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                         <property name="tooltip" translatable="yes">Print the current page</property>
                         <property name="label" translatable="yes">Page</property>
                         <property name="use_underline">True</property>
+                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
@@ -2269,6 +2309,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                         <property name="tooltip" translatable="yes">Print the selected pages or text</property>
                         <property name="label" translatable="yes">Selection</property>
                         <property name="use_underline">True</property>
+                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">printPageRadioButton</property>
                       </widget>
@@ -2285,6 +2326,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                         <property name="tooltip" translatable="yes">Print the entire gjots file</property>
                         <property name="label" translatable="yes">All</property>
                         <property name="use_underline">True</property>
+                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">printPageRadioButton</property>
                       </widget>
@@ -2336,6 +2378,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                             <property name="tooltip" translatable="yes">Feeds a page before every new gjots item</property>
                             <property name="label" translatable="yes">Page feeds</property>
                             <property name="use_underline">True</property>
+                            <property name="response_id">0</property>
                             <property name="draw_indicator">True</property>
                           </widget>
                           <packing>
@@ -2349,6 +2392,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                             <property name="tooltip" translatable="yes">Print the gjots item titles in bold</property>
                             <property name="label" translatable="yes">Bold titles</property>
                             <property name="use_underline">True</property>
+                            <property name="response_id">0</property>
                             <property name="draw_indicator">True</property>
                           </widget>
                           <packing>
@@ -2363,6 +2407,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                             <property name="can_focus">True</property>
                             <property name="label" translatable="yes">Auto Number</property>
                             <property name="use_underline">True</property>
+                            <property name="response_id">0</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_printAutoNumberheckButton_toggled"/>
                           </widget>
@@ -2432,6 +2477,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-ok</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_printOKButton_clicked"/>
               </widget>
             </child>
@@ -2443,6 +2489,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-cancel</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_printCancelButton_clicked"/>
               </widget>
               <packing>
@@ -2487,6 +2534,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                         <property name="tooltip" translatable="yes">Sort in ascending order</property>
                         <property name="label" translatable="yes">Ascending</property>
                         <property name="use_underline">True</property>
+                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
@@ -2501,6 +2549,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                         <property name="tooltip" translatable="yes">Sort in descending order</property>
                         <property name="label" translatable="yes">Descending</property>
                         <property name="use_underline">True</property>
+                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">sortAscendingRadioButton</property>
                       </widget>
@@ -2518,6 +2567,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                         <property name="tooltip" translatable="yes">Sort in alphabetic order</property>
                         <property name="label" translatable="yes">Alphabetic</property>
                         <property name="use_underline">True</property>
+                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
@@ -2534,6 +2584,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                         <property name="tooltip" translatable="yes">Sort in numeric order</property>
                         <property name="label" translatable="yes">Numeric</property>
                         <property name="use_underline">True</property>
+                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">sortAlphabeticRadioButton</property>
                       </widget>
@@ -2622,6 +2673,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-ok</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_sortOKButton_clicked"/>
               </widget>
             </child>
@@ -2633,6 +2685,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
                 <property name="border_width">5</property>
                 <property name="label">gtk-cancel</property>
                 <property name="use_stock">True</property>
+                <property name="response_id">0</property>
                 <signal name="clicked" handler="on_sortCancelButton_clicked"/>
               </widget>
               <packing>
@@ -2654,13 +2707,13 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
     <property name="title" translatable="yes">Select File</property>
     <property name="modal">True</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="show_fileops">True</property>
     <signal name="key_press_event" handler="on_fileselection_key_press_event"/>
     <child internal-child="cancel_button">
       <widget class="GtkButton" id="fileselectionCancelButton">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="can_default">True</property>
+        <property name="response_id">0</property>
         <signal name="clicked" handler="on_fileselectionCancelButton_clicked"/>
       </widget>
     </child>
@@ -2669,6 +2722,7 @@ Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="can_default">True</property>
+        <property name="response_id">0</property>
         <signal name="clicked" handler="on_fileselectionOkButton_clicked"/>
       </widget>
     </child>

@@ -1,5 +1,5 @@
 .\" Copyright (c) 2004 Robert Hepple
-.\" $Id: gjots2.1,v 1.4 2004/11/30 08:01:16 bhepple Exp $
+.\" $Id: gjots2.1,v 1.4.4.1 2009/08/09 11:31:51 bhepple Exp $
 .TH GJOTS2 1 \" -*- nroff -*-
 .SH NAME
 gjots2 \- A gnome-2/X11 jotter
@@ -18,9 +18,7 @@ your data organised in a tree with each leaf being your text.
 .P
 Getting data into 
 .BR gjots2
-is fairly easy - you can type it in, directly import 
-.B kjots
-files, cut and paste text or use an editor to convert other text files to
+is fairly easy - you can type it in, cut and paste text or use an editor to convert other text files to
 the simple
 .B gjots2
 format (see below for details). You can also convert an existing
@@ -117,11 +115,9 @@ The lock file for the file called
 .IR filename .
 .SH "FILE FORMAT"
 .B gjots2
-uses the same format as 
-.BR kjots (1)
-but with the addition of a hierarchy of
-items. The keywords need to be at the start of line to be recognised.
-Only 3 keywords are presently used:
+uses a simple text file format with the addition of a hierarchy of
+items introduced by keywords. The keywords need to be at the start of
+line to be recognised. Only 3 keywords are presently used:
 .TP 15
 \fB\\NewEntry\fR
 Starts a new entry
