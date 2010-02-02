@@ -1,3 +1,4 @@
 10_manpages.patch
 #20_seascape.patch
 30_docpath.patch
+40_disable-manual-in-GUI.patch

@@ -1,0 +1,18 @@
+Author: Rolf Leggewie
+Comment: stop-gap measure until a proper fix has been found (patch not applicable upstream)
+         https://bugs.launchpad.net/ubuntu/+source/gjots2/+bug/257842
+         http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=470536
+
+Index: gjots2/gjots.glade3
+===================================================================
+--- gjots2.orig/gjots.glade3	2010-02-02 03:39:57.000000000 +0100
++++ gjots2/gjots.glade3	2010-02-02 03:40:20.000000000 +0100
+@@ -1276,7 +1276,7 @@
+                       <widget class="GtkMenu" id="helpMenuItem_menu">
+                         <child>
+                           <widget class="GtkImageMenuItem" id="readManualMenuItem">
+-                            <property name="visible">True</property>
++                            <property name="visible">False</property>
+                             <property name="tooltip" translatable="yes">Read the online manual (using gjots)</property>
+                             <property name="label" translatable="yes">_Read manual</property>
+                             <property name="use_underline">True</property>
