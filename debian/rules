@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 %:
-	dh $@
+	dh --with quilt $@
 
 override_dh_install: 
 	dh_install
@@ -9,5 +9,3 @@ override_dh_install:
 	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/INSTALL
 	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/COPYING
 	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/ChangeLog
-
-	mv $(CURDIR)/debian/gjots2/usr/share/doc/gjots2-* $(CURDIR)/debian/gjots2/usr/share/doc/gjots2
