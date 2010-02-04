@@ -1,3 +1,15 @@
+gjots2 (2.3.9-2) unstable; urgency=low
+
+  * debian/control: 
+    - drop build-time dependency on python-all-dev and make lintian happy
+    - bump policy to 3.8.4
+  * add debian/README.source
+  * debian/patches: disable manual entry under Help menu.
+    (Closes: #470536, LP: #257842)
+  * debian/rules: make sure that quilt actually patches the source
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Thu, 04 Feb 2010 12:04:09 +0100
+
 gjots2 (2.3.9-1) unstable; urgency=low
 
   * New upstream release
