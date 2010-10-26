@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Rolf Leggewie <foss@rolf.leggewie.biz>
 Build-Depends: debhelper (>= 7.0.50~)
 Build-Depends-Indep: python-support (>= 0.3)
-Standards-Version: 3.8.4
+Standards-Version: 3.9.2
 Homepage: http://bhepple.freeshell.org/gjots/
 Vcs-Browser: http://git.debian.org/?p=collab-maint/gjots2.git
 Vcs-Git: git://git.debian.org/collab-maint/gjots2.git
