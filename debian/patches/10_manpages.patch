@@ -72,9 +72,9 @@
 +.BR docbook2gjots (1)
 --- gjots2-2.3.4.orig/share/man/man1/gjots2html.1
 +++ gjots2-2.3.4/share/man/man1/gjots2html.1
-@@ -50,8 +50,8 @@
+@@ -56,8 +56,8 @@
  .SH "COPYRIGHT"
- Copyright (c) 2002 Robert Hepple
+ Copyright (c) 2002-2011 Robert Hepple
  .br
 -This  is  free software; see the source for copying condi­
 -tions.  There is NO warranty; not even for MERCHANTABILITY

@@ -1,7 +1,9 @@
---- gjots2-2.3.4.orig/setup.py
-+++ gjots2-2.3.4/setup.py
-@@ -34,12 +34,12 @@
-       scripts = ['bin/gjots2','bin/gjots2docbook','bin/docbook2gjots','bin/gjots2html'],
+Index: gjots2/setup.py
+===================================================================
+--- gjots2.orig/setup.py	2011-01-15 22:17:38.000000000 +0100
++++ gjots2/setup.py	2011-01-16 22:09:44.000000000 +0100
+@@ -34,13 +34,13 @@
+       scripts = ['bin/gjots2','bin/gjots2docbook','bin/docbook2gjots','bin/gjots2html','bin/gjots2lpr'],
  	  data_files = [('lib/gjots2',['lib/__init__.py', 'lib/file.py', 'lib/general.py', 'lib/prefs.py', 'lib/common.py', 'lib/find.py', 'lib/gui.py', 'lib/prefs.py', 'lib/version.py', 'lib/printDialog.py', 'lib/sortDialog.py']),
  					('share/man/man1', ['share/man/man1/gjots2.1','share/man/man1/gjots2docbook.1','share/man/man1/docbook2gjots.1','share/man/man1/gjots2html.1']),
 -					('share/doc/gjots2-' + gjots_version, ['gjots2.gjots','AUTHORS','README','INSTALL', 'COPYING', 'ChangeLog']),
@@ -10,12 +12,37 @@
 -					('share/doc/gjots2-' + gjots_version, ['gjots2.no.gjots']),
 -					('share/doc/gjots2-' + gjots_version, ['gjots2.nb.gjots']),
 -					('share/doc/gjots2-' + gjots_version, ['gjots2.ru.gjots']),
+-					('share/doc/gjots2-' + gjots_version, ['gjots2.es.gjots']),
 +					('share/doc/gjots2', ['gjots2.gjots','AUTHORS','README','INSTALL', 'COPYING', 'ChangeLog']),
 +					('share/doc/gjots2', ['gjots2.en_US.gjots']),
 +					('share/doc/gjots2', ['gjots2.fr.gjots']),
 +					('share/doc/gjots2', ['gjots2.no.gjots']),
 +					('share/doc/gjots2', ['gjots2.nb.gjots']),
 +					('share/doc/gjots2', ['gjots2.ru.gjots']),
++					('share/doc/gjots2', ['gjots2.es.gjots']),
  					('share/pixmaps', ['gjots.png']),
- 					('share/gjots2', ['gjots.glade2']),
+ 					('share/gjots2', ['gjots.glade3']),
  					('share/gjots2', ['gjots.png']),
+Index: gjots2/share/man/man1/gjots2.1
+===================================================================
+--- gjots2.orig/share/man/man1/gjots2.1	2011-01-16 23:55:46.000000000 +0100
++++ gjots2/share/man/man1/gjots2.1	2011-01-17 00:45:54.000000000 +0100
+@@ -173,17 +173,7 @@
+ .RS
+ .nf
+ .ft CW
+-gjots /usr/share/doc/gjots-0.8/gjots2.gjots
++gjots /usr/share/doc/gjots/gjots2.gjots
+ .ft
+ .RE
+ .P
+-or
+-.P
+-.RS
+-.nf
+-.ft CW
+-netscape /usr/share/doc/gjots-0.8/gjots2.html
+-.ft
+-.fi
+-.RE
+-.P
