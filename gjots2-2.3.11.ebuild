@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /cvsroot/gjots2/gjots/gjots2.ebuild,v 1.7.2.15 2007/07/28 12:11:45 bhepple Exp $
+# $Header: /cvsroot/gjots2/gjots/gjots2.ebuild,v 1.7.2.16 2010/11/23 11:37:04 bhepple Exp $
 
 inherit python gnome.org
 
@@ -79,6 +79,9 @@ src_install() {
 
 	insinto /usr/share/locale/cs/LC_MESSAGES
 	doins po/cs/LC_MESSAGES/gjots2.mo
+
+	insinto /usr/share/locale/es/LC_MESSAGES
+	doins po/es/LC_MESSAGES/gjots2.mo
 }
 
 pkg_postinst() {

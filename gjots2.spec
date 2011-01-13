@@ -1,4 +1,4 @@
-# $Id: gjots2.spec,v 1.12.2.17 2009/08/09 11:31:51 bhepple Exp $
+# $Id: gjots2.spec,v 1.12.2.20 2010/11/20 06:51:32 bhepple Exp $
 
 #   Copyright (C) 2002-2009 Robert Hepple 
 #
@@ -17,9 +17,14 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 2.3.10
+%define ver 2.3.11
 %define rel 1
 %define prefix /usr
+
+%define _source_filedigest_algorithm md5
+%define _binary_filedigest_algorithm md5
+%define _source_payload nil
+%define _binary_payload nil
 
 Summary: A note jotter. Organise your ideas, notes, facts in a hierarchy.
 Name: gjots2
@@ -34,8 +39,10 @@ BuildRoot: %{_tmppath}/root-%{name}-%{version}
 Prefix: %{_prefix}
 BuildArch: noarch
 
-Requires: python >= 2.3, pygtk2 >= 2.4.0, gnome-python2 >= 2.0.2
-Requires: libglade2 >= 2.4, gnome-python2-gconf >= 2.6.0
+Requires: gnome-python2-desktop
+Requires: pygtk2
+Requires: pygtk2-libglade
+Requires: gnome-python2-gconf
 
 %description
 
@@ -57,7 +64,7 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-2.3.10
+#	buildroot=/var/tmp/root-gjots2-2.3.11
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib
@@ -75,7 +82,8 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 						%{buildroot}%{_datadir}/locale/no/LC_MESSAGES \
 						%{buildroot}%{_datadir}/locale/nb/LC_MESSAGES \
 						%{buildroot}%{_datadir}/locale/cs/LC_MESSAGES \
-						%{buildroot}%{_datadir}/locale/ru/LC_MESSAGES
+						%{buildroot}%{_datadir}/locale/ru/LC_MESSAGES \
+						%{buildroot}%{_datadir}/locale/es/LC_MESSAGES
 
 %{__install} -m0755 bin/gjots2 bin/gjots2docbook bin/gjots2html bin/gjots2emacs bin/gjots2html.py bin/docbook2gjots bin/gjots2lpr %{buildroot}%{_bindir}/
 %{__install} -m0755 lib/*.py %{buildroot}%{_libdir}/%{name}/
@@ -99,6 +107,7 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 %{__install} -m0644 po/nb/LC_MESSAGES/gjots2.mo %{buildroot}%{_datadir}/locale/nb/LC_MESSAGES
 %{__install} -m0644 po/cs/LC_MESSAGES/gjots2.mo %{buildroot}%{_datadir}/locale/cs/LC_MESSAGES
 %{__install} -m0644 po/ru/LC_MESSAGES/gjots2.mo %{buildroot}%{_datadir}/locale/ru/LC_MESSAGES
+%{__install} -m0644 po/es/LC_MESSAGES/gjots2.mo %{buildroot}%{_datadir}/locale/es/LC_MESSAGES
 
 %clean
 rm -rf $RPM_BUILD_ROOT

@@ -1,1 +1,1 @@
-gjots_version="2.3.10"
+gjots_version="2.3.11"
