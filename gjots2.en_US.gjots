@@ -74,30 +74,39 @@ If possible, use RPM or emerge (Gentoo) - they allow easy
 uninstallation and more package management than setup.py
 \NewFolder
 \NewEntry
+RPM-based systems
+
+Just do this:
+
+VERSION=_VERSION_
+wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
+yum install gjots2-${VERSION}-1.noarch.rpm
+
+\NewEntry
 Prerequisites
 
-You may need to install (or re-install) libglade, pygtk,
-gnome-python, bonobo-python, pyorbit or gtk for your current
-version of python or possibly you can just set your PYTHONPATH
-eg.
+Let rpm take the strain ... otherwise ...
 
-	export PYTHONPATH=/usr/local/lib/python2.3/site-packages/
+You may need to install (or re-install) libglade, pygtk, gnome-python,
+or gtk for your current version of python or possibly you can just set
+your PYTHONPATH eg.
 
-As at this writing (gjots-2.3.9), I have the following installed (on Fedora-10):
+	export PYTHONPATH=/usr/local/lib/python2.6/site-packages/
 
-    glade3-libgladeui-3.4.5-4.fc10
-    gnome-python2-2.22.3-1.fc10
-    gnome-python2-gconf-2.22.3-1.fc10
-    gtk2-2.14.7-7.fc10
-    gtksourceview-1.8.5-5.fc10
-    libglade2-2.6.3-1.fc10
-    libgnome-2.24.1-7.fc10
-    libgnomecanvas-2.20.1.1-2.fc9
-    libgnomeui-2.24.0-2.fc10
-    pygtk2-2.13.0-2.fc10.i386
-    pygtk2-libglade-2.13.0-2.fc10
-    pygtk2-libglade-2.13.0-2.fc10.i386
-    pygtksourceview-2.4.0-1.fc10.i386
+As at this writing (gjots-2.3.11), I have the following installed (on Fedora-13):
+
+    glade3-libgladeui
+    gnome-python2
+    gnome-python2-gconf
+    gtk2
+    gtksourceview
+    libglade2
+    libgnome
+    libgnomecanvas
+    libgnomeui
+    pygtk2
+    pygtk2-libglade
+    pygtksourceview
 
 Make sure the python packages are installed in the site-packages
 directory for the version of python that you are using (do a "python
@@ -150,17 +159,6 @@ ebuild ${CAT}/gjots2-${VERSION}.ebuild digest
 emerge gjots2
 
 \NewEntry
-RPM-based systems
-
-Just do this:
-
-VERSION=_VERSION_
-wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
-rpm -i gjots2-${VERSION}-1.noarch.rpm
-
-Of course, you may need to install dependencies first such as
-pygtk, libglade, etc
-\NewEntry
 From the tarball source
 
 VERSION=_VERSION_
@@ -184,6 +182,10 @@ permissions 0755.
 Contributing
 
 We have two mailing lists setup for development and support of gjots:
+
+<NOTE: these are SPAM-infested - I rarely look at them! better send to
+bhepple@freeshell.org>
+
   Gjots Developers <gjots2-devel@lists.sourceforge.net>:
     http://lists.sourceforge.net/lists/listinfo/gjots2-devel
 
@@ -215,9 +217,8 @@ Note that to protect the GPL license I will need to include
 your name and email address in the Authors and License
 section.
 
-If you want to contribute please get in touch with the development
-mailing list <gjots2-devel@lists.sourceforge.net>, to make sure
-work is not duplicated.
+If you want to contribute please get in touch with me at
+bhepple@freeshell.org, to make sure work is not duplicated.
 
 For general ideas, please see "Planned Features".
 \NewEntry
@@ -233,18 +234,14 @@ Or use an argument - gjots2 accepts a single file, eg:
 	gjots2 todo.gjots
 
 These options are available:
+-h, --help:                         this help
+-d, --debug:                        debug to stdout
+-t, --trace:                        trace lines as they execute
+-g 123x456, --geometry=123x456:     initial geometry (X x Y)
+-p, --purge-password                scrub password as soon as it's used
+-r, --readonly:                     no editing (or locking)
+-V, --version:                      print the version and exit
 
-       --help Prints the standard gnome help items.
-
-       -g, --geometry WIDTHxHEIGHT[+X+Y]
-              Initial window geometry for gjots2.  Note that the X
-              and Y components are presently ignored.
-
-       -r, --readonly
-	      Open file in readonly mode (does no locking)
-
-       -d, --debug
-              Produce copious debugging information
 \NewEntry
 Open and save
 
@@ -702,7 +699,8 @@ outline-regexp is defaulted to ===>+
 Development status
 
 
-If you have ideas on how to improve gjots2, please email to gjots2-users@lists.sourceforge.net
+If you have ideas on how to improve gjots2, please email to
+bhepple@freeshell.org
 
 
 
@@ -719,7 +717,7 @@ Localisation
 As of version 2.3.0, gjots2 is internationalized and
 ready for translations. If you would like to see your
 language supported, please contact the mailing list on
-<gjots2-devel@lists.sourceforge.net>
+bhepple@freeshell.org
 
 Check the webpage for localisations already complete.
 
@@ -775,19 +773,15 @@ The sort dialog can't set itself to the values stored in gconf.
 Platforms
 
 Tested on the following platforms:
-  Gentoo Linux i386
-  Ubuntu Feisty
+  Fedora-13
 
 Older version were tested on:
+  Gentoo Linux i386
   Mandrake 10.1
   Fedora Core 3, 4
   Novell Linux Desktop 9
   SUSE 9.2, 9.3
-
-We are always looking for help in people who can reliably test
-gjots versions on your favorite distribution. Drop us a message
-<gjots2-devel@lists.sourceforge.net> and we will be glad to add
-your tested distro.
+  Ubuntu Feisty
 
 Some of these platforms may require updated packages. Refer to our
 FAQ for a discussion of these issues.
@@ -807,7 +801,8 @@ A: You are using a buggy version of libglade2. Upgrade libglade
 to a version >= 2.4.1. We recommed you update this package through
 your distribution package manager.
 \NewEntry
-Q: I receive the error ImportError: No module named distutils.core when building gjots2 from source.
+Q: I receive the error ImportError: No module named distutils.core when
+building gjots2 from source.
 
 A: Your distribution has effectively *broken* the python installation
 by not including the distutils modules, which are part of the python
@@ -834,31 +829,8 @@ Q: How do you get gjots2 to run under Novell Linux Desktop?
 
 A: You will have to install gnome-python (and its dependencies).
 \NewEntry
-Q: What's the difference between the old C version (gjots-0.X) and the new python version gjots-2.X.X
-
-A: At the 2.0.0 release, these were the differences (for development
-since then see the CHANGES logs):
-
-Unicode support in the data files - so I can make notes in
-Russian - maybe Turkish, Arabic, who knows what will work.
-Reports solicited and most welcome!
-
-The potential for LOTE support in the program itself - any
-volunteers for I18N and L10N?
-
-Drag and Drop in the tree view to simplify organisation.
-
-gconf support with GTK-2 themes.
-
-Sorting items and/or text
-
-Merging items
-
-Spliting items
-
-Printing
-\NewEntry
-Q: What's the difference between the old C version (gjots-0.X) and the new python version gjots-2.X.X
+Q: What's the difference between the old C version (gjots-0.X) and the
+new python version gjots-2.X.X
 
 A: At the 2.0.0 release, these were the differences (for development
 since then see the CHANGES logs):
@@ -896,25 +868,28 @@ Authors
 
 Written by:
 	Bob Hepple <bhepple@freeshell.org>
+
+Assistance from:
 	Gabriel Munoz <munozga@gmail.com>
+	Jiahua Huang <jhuangjiahua@gmail.com>
 
 Logo by:
 	DSP Popeck <wokoglopulator@yahoo.com>, 2002
 
-Frech translation by:
+French translation by:
 	Rui Nibau <rui.nibau@omacronides.com>
 
 Norwegian translation by:
-    Robert Emil Berge <filoktetes@linuxophic.org>
+    	Robert Emil Berge <filoktetes@linuxophic.org>
 
 Russian tranlsation by:
-    Sergey Bezdenezhnyh <sib-mail@mtu-net.ru>
+    	Sergey Bezdenezhnyh <sib-mail@mtu-net.ru>
 
 Italian tranlation by:
-    Raimondo Giammanco <rongten@member.fsf.org>
+    	Raimondo Giammanco <rongten@member.fsf.org>
 
 Czech translation by:
-    Martin Sin <martin.sin@zshk.cz>
+    	Martin Sin <martin.sin@zshk.cz>
 
 \NewEntry
 Licence (GPL)

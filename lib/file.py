@@ -249,7 +249,7 @@ class gjotsfile:
 		dirname, basename = os.path.split(filename)
 		prompt = _("Enter password for ") + basename
 		while 1:
-			general = general_dialog(self.gui, _("gjots: Enter Password"), prompt, OK|CANCEL,
+			general = general_dialog(self.gui, _("gjots2: Enter Password"), prompt, OK|CANCEL,
 									 num_fields, secretp, feedback,
 									 _("Password: "), password,
 									 _("Confirm: "),  confirm)
@@ -386,7 +386,7 @@ class gjotsfile:
 		except IOError:
 			self.gui.msg(_('Can\'t open "') + basename + '"')
 			return ""
-		except PasswordselectionError:
+		except PasswordError:
 			self.gui.msg(_("Bad password"))
 			return ""
 		except LockingError:
@@ -481,15 +481,16 @@ class gjotsfile:
 	def on_fileselectionOkButton_clicked(self, widget):
 		if self.gui.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.prompt_filename = self.xml.get_widget("fileselection").get_filename()
+		self.prompt_filename = self.fileselection_dialog.get_filename()
 		self.fileselectionValue = OK
+		self.fileselection_readonly = self.xml.get_widget("fileselectionReadonly").get_active()
 
 	def get_value(self):
 		if self.gui.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return self.prompt_filename
 	
-	def file_dialog(self, title):
+	def _file_dialog(self, title, mode):
 		"""
 		File selection dialog
 		"""
@@ -498,21 +499,35 @@ class gjotsfile:
 
 		callbacks = {
 			# File selector popup:
-			"on_fileselection_key_press_event":			self.on_fileselection_key_press_event,
-			"on_fileselectionCancelButton_clicked":		self.on_fileselectionCancelButton_clicked,
-			"on_fileselectionOkButton_clicked":			self.on_fileselectionOkButton_clicked,
+			"on_fileselection_key_press_event":     self.on_fileselection_key_press_event,
+			"on_fileselectionCancelButton_clicked": self.on_fileselectionCancelButton_clicked,
+			"on_fileselectionOkButton_clicked":     self.on_fileselectionOkButton_clicked,
 		}
 
 		self.name = "fileselection"
 		self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-		self.xml.signal_autoconnect(callbacks)
-		
-		self.xml.get_widget(self.name).set_title(title)
+		self.fileselection_dialog = self.xml.get_widget(self.name)
+		self.fileselection_dialog.set_title(title)
+
+		self.fileselection_dialog.add_filter(self.gui.file_filter)
+
+		all_filter = gtk.FileFilter()
+		all_filter.add_pattern("*")
+		all_filter.set_name("All files")
+		self.fileselection_dialog.add_filter(all_filter)
+
+		self.fileselection_dialog.set_action(mode)
+		self.fileselection_dialog.show()
 		self.fileselectionValue = WAITING
+		if mode == gtk.FILE_CHOOSER_ACTION_SAVE:
+			self.fileselection_dialog.set_do_overwrite_confirmation(True)
+			self.xml.get_widget("fileselectionReadonly").hide()
+
+		self.xml.signal_autoconnect(callbacks)
 		while self.fileselectionValue == WAITING:
 			gtk.main_iteration()
 
-		self.xml.get_widget(self.name).destroy()
+		self.fileselection_dialog.destroy()
 
 	def read_file(self, prompt, filename, readonly, import_after):
 		"""
@@ -527,8 +542,8 @@ class gjotsfile:
 		if self.gui.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
-		if prompt:
-			self.file_dialog(prompt)
+		if prompt and not filename:
+			self._file_dialog(prompt, gtk.FILE_CHOOSER_ACTION_OPEN)
 			if self.fileselectionValue != OK or not self.prompt_filename:
 				return ""
 		else:
@@ -537,13 +552,19 @@ class gjotsfile:
 			self.prompt_filename = filename
 
 		dirname, basename = os.path.split(self.prompt_filename)
-		if import_after:
+		if import_after or self.fileselection_readonly:
 			readonly = 1
 			
 		if not os.access(self.prompt_filename, os.R_OK):
 			self.gui.err_msg(_("%s is not readable") % basename)
 			return ""
 		
+		gtk.recent_manager_get_default().add_full(
+			"file://" + self.prompt_filename, 
+			{"mime_type": "application/gjots",
+			 "app_name": "gjots2",
+			 "app_exec": "gjots2"})
+
 		# lock the file
 		while not readonly:
 			reason, pid = self.lock_file(self.prompt_filename)
@@ -555,7 +576,7 @@ class gjotsfile:
 			else:
 				msg = _("%s: locked by process number %d") % (basename, pid)
 			general = general_dialog(self.gui,
-									 title = _("gjots: can't lock file."),
+									 title = _("gjots2: can't lock file."),
 									 prompt = msg,
 									 buttons = TRYAGAIN | CANCEL | READONLY,
 									 secretp = 0,
@@ -571,14 +592,37 @@ class gjotsfile:
 				readonly = 1
 				
 		retval = self._do_load(self.prompt_filename, import_after)
+		self.filename_timestamp = 0
 		if retval:
 			if not import_after:
 				self.filename = self.prompt_filename
+				self.filename_timestamp = os.stat(self.filename).st_mtime
+				if readonly:
+					self.gui.set_readonly(1, quietly=1)
 		else:
 			self.unlock_file(self.prompt_filename)
 			self.filename = ""
 			self.gui.set_readonly(0, quietly=1)
 		return retval
+
+	def _check_timestamp(self, filename, timestamp):
+		if timestamp:
+			dirname, basename = os.path.split(filename)
+			try:
+				s = os.stat(filename)
+			except:
+				return 0
+
+			if s.st_mtime > self.filename_timestamp:
+				general = general_dialog(self.gui, _("gjots2: %s changed") % basename,
+										 _("'%s' has changed since it was read.\noverwrite anyway?") % basename, YES|CANCEL,
+										 0, 0, "",
+										 "", "",
+										 "",  "")
+				if general.get_value() == OK:
+					return 0
+				return 1
+		return 0
 	
 	def write_file(self, prompt = "", exporting=0):
 		"""
@@ -606,9 +650,9 @@ class gjotsfile:
 				prompt = _("Save as ...")
 
 		retval = ""
-		while 1: # use while simply so that we can use break:
+		while 1: # use 'while' simply so that we can use break:
 			if prompt:
-				self.file_dialog(prompt)
+				self._file_dialog(prompt, gtk.FILE_CHOOSER_ACTION_SAVE)
 				if self.fileselectionValue == OK and self.prompt_filename:
 					dirname, basename = os.path.split(self.prompt_filename)
 
@@ -617,20 +661,31 @@ class gjotsfile:
 						if exporting:
 							self.gui.err_msg(_("That file is already open!"))
 							return ""
+						if self._check_timestamp(self.filename, 
+												 self.filename_timestamp):
+							return ""
 						retval = self._do_store(self.filename, exporting)
+						if not exporting:
+							try:
+								s = os.stat(self.filename)
+								self.filename_timestamp = s.st_mtime
+							except:
+								pass
 						break
 
 					reason, pid = self.lock_file(self.prompt_filename)
 
 					if reason == 2:
-						self.gui.err_msg(_("%s is locked by pid %d") % (basename, pid))
+						self.gui.err_msg(_("%s is locked by pid %d") % 
+										 (basename, pid))
 						return ""
 					if reason == 1:
-						self.gui.err_msg(_("Can't make a lockfile in ") + dirname)
+						self.gui.err_msg(_("Can't make a lockfile in ") + 
+										 dirname)
 						return ""
 
 					# We know that the directory is writable, so we can
-					# create a file here See if it already exists, if so,
+					# create a file here. See if it already exists, if so,
 					# is it writable, if so should we overwrite it?:
 					try:
 						f = open(self.prompt_filename)
@@ -640,12 +695,13 @@ class gjotsfile:
 							self.unlock_file(self.prompt_filename)
 							self.gui.err_msg(_("%s is not writable") % basename)
 							return ""
-						general = general_dialog(self.gui, _("gjots: %s already exists.") % basename,
+						general = general_dialog(self.gui, 
+												 _("gjots2: %s already exists.") % basename,
 												 _("overwrite %s?") % basename, YES|CANCEL,
 												 0, 0, "",
 												 "", "",
 												 "",  "")
-						if not general.get_value() == YES:
+						if not general.get_value() == OK:
 							self.unlock_file(self.prompt_filename)
 							return ""
 					except IOError:
@@ -659,17 +715,35 @@ class gjotsfile:
 							self.close()
 							self.filename = self.prompt_filename
 							self.gui.set_title(basename)
+							try:
+								s = os.stat(self.filename)
+								self.filename_timestamp = s.st_mtime
+							except:
+								pass
 					break
 				else:  # self.fileselectionValue != OK
 					return ""
 			else: # just save the sucker
 				# assert exporting == 0
+				if self._check_timestamp(self.filename, self.filename_timestamp):
+					return ""
 				retval = self._do_store(self.filename, exporting)
+				try:
+					s = os.stat(self.filename)
+					self.filename_timestamp = s.st_mtime
+				except:
+					pass
 				break
 
 # developers may want to enable this to check the before & after file images:
 #		if self.gui.dev:
 #			os.system("meld " + self.prompt_filename + " " + self.prompt_filename + "~")
+		
+		gtk.recent_manager_get_default().add_full(
+			"file://" + self.filename, 
+			{"mime_type": "application/gjots",
+			 "app_name": "gjots2",
+			 "app_exec": "gjots2"})
 		return retval
 			
 	def __init__(self, gui):
@@ -679,7 +753,12 @@ class gjotsfile:
 		self.prompt_filename = ""
 		self.filename = ""
 		self.fileselectionValue = OK
+		self.fileselection_readonly = False
+		self.file_filter = None
 
 # Local variables:
-# eval:(setq compile-command "cd ..; ./gjots2 j")
+# eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
+# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq tab-width 4)
+# eval:(setq python-indent 4)
 # End:

@@ -1,3 +1,23 @@
+2010-12-19    <bhepple@freeshell.org> Version 2.3.11
+	* Initial work on Spanish language support
+	* Recent files support
+	* Read-only mode makes inoperative tool buttons disappear
+	* Set font dialog fixed
+	* Preferences moved under Edit menu item
+	* RPMs are installable on RHEL/Centos-5.5 (ie use md5 etc)
+	* Dialogs now respond better to keyboard eg Enter = OK
+	* If a file's timestamp changes while gjots2 is editing it then
+	you are told about it and asked to confirm an overwrite.
+	* 'Find' of an item now scrolls the treeview to that item
+	* Add 'Find Next' menu item (^G)
+	
+2010-06-28    <bhepple@freeshell.org> Version 2.3.10
+	* gtksourceview2 is supported. Smaller toolbar logos are used.
+	
+2009-08-10    <bhepple@freeshell.org> Version 2.3.9
+	* An Undo/Redo function was added for the text buffer using
+	gtksourceview.
+	
 2008-11-08    <bhepple@freeshell.org> Version 2.3.8
 	* Updated dependency list in gjots2.gjots
 	* Add -1 -2 -4 options to gjots2lpr

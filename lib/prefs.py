@@ -56,7 +56,6 @@ class font_dialog:
 		self.value = WAITING
 		while self.value == WAITING:
 			gtk.main_iteration()
-		self.destroy()
 
 class prefs_dialog:
 	def destroy(self):
@@ -69,8 +68,8 @@ class prefs_dialog:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		f = font_dialog(self.gui)
 		if f.value == OK:
-			self.gui.client.set_string(self.gui.text_font_path, f.fontselectiondialog.get_font_name())
-			self.fontName_entry.set_text(self.gui.client.get_string(self.gui.text_font_path))
+			self.fontName_entry.set_text(f.fontselectiondialog.get_font_name())
+		f.destroy()
 		
 	def on_prefsOK_clicked(self, widget):
 		if self.gui.trace:
@@ -169,5 +168,8 @@ class prefs_dialog:
 		self.fontName_entry.set_text        (self.gui.client.get_string(self.gui.text_font_path))
 
 # Local variables:
-# eval:(setq compile-command "cd ..; ./gjots2 j")
+# eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
+# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq tab-width 4)
+# eval:(setq python-indent 4)
 # End:

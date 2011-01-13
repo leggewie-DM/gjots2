@@ -12,7 +12,6 @@ class general_dialog:
 	def on_generalField1_key_press_event(self, widget, event):
 		if self.gui.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		
 		if event.keyval == 65307: # Escape
 			self.generalValue = CANCEL;
 			return 1
@@ -24,7 +23,7 @@ class general_dialog:
 			
 		if event.keyval == 65421 or event.keyval == 65293: # KP_Enter / Return
 			if self.generalNumFields > 1:
-				generalDialog = gtk_widget_get_toplevel(widget);
+				#generalDialog = gtk_widget_get_toplevel(widget);
 				self.xml.get_widget("generalField2").grab_focus()
 			else:
 				self.generalValue = OK;
@@ -34,13 +33,12 @@ class general_dialog:
 	def on_generalField2_key_press_event(self, widget, event):
 		if self.gui.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		
 		if event.keyval == 65307: # Escape
 			self.generalValue = CANCEL;
 			return 1
 
 		if event.keyval == 65289: # tab
-			self.xml.get_widget("generalField2").grab_focus()
+			self.xml.get_widget("generalField1").grab_focus()
 			return 1
 			
 		if event.keyval == 65421 or event.keyval == 65293: # KP_Enter / Return
@@ -52,11 +50,6 @@ class general_dialog:
 		if self.gui.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.generalValue = OK
-
-	def on_generalYes_clicked(self, widget):
-		if self.gui.trace:
-			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.generalValue = YES
 
 	def on_generalNo_clicked(self, widget):
 		if self.gui.trace:
@@ -106,7 +99,6 @@ class general_dialog:
 			"on_generalField1_key_press_event":			self.on_generalField1_key_press_event,
 			"on_generalField2_key_press_event":			self.on_generalField2_key_press_event,
 			"on_generalOK_clicked":						self.on_generalOK_clicked,
-			"on_generalYes_clicked":					self.on_generalYes_clicked,
 			"on_generalNo_clicked":						self.on_generalNo_clicked,
 			"on_generalCancel_clicked":					self.on_generalCancel_clicked,
 			"on_generalTryagain_clicked":				self.on_generalTryagain_clicked,
@@ -151,21 +143,18 @@ class general_dialog:
 		else:
 			self.xml.get_widget("generalFeedback").hide()
 
-		if (buttons & YES):
-			self.xml.get_widget("generalYes").show()
+		if (buttons & YES or buttons & OK):
+			self.xml.get_widget("generalOK").show()
+			if (buttons & YES):
+				self.xml.get_widget("generalOK").set_label(_("Yes"))
 		else:
-			self.xml.get_widget("generalYes").hide()
+			self.xml.get_widget("generalOK").hide()
 			
 		if (buttons & NO):
 			self.xml.get_widget("generalNo").show()
 		else:
 			self.xml.get_widget("generalNo").hide()
 
-		if (buttons & OK):
-			self.xml.get_widget("generalOK").show()
-		else:
-			self.xml.get_widget("generalOK").hide()
-			
 		if (buttons & CANCEL):
 			self.xml.get_widget("generalCancel").show()
 		else:
@@ -182,6 +171,7 @@ class general_dialog:
 			self.xml.get_widget("generalTryagain").hide()
 			
 		self.generalValue = WAITING
+
 		while self.generalValue == WAITING:
 			gtk.main_iteration()
 
@@ -194,5 +184,8 @@ class general_dialog:
 		self.xml.get_widget(self.name).destroy()
 
 # Local variables:
-# eval:(setq compile-command "cd ..; ./gjots2 j")
+# eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
+# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq tab-width 4)
+# eval:(setq python-indent 4)
 # End:

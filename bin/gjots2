@@ -129,3 +129,10 @@ if __name__ == '__main__':
 
 	gtk.main()
 
+
+# Local variables:
+# eval:(setq compile-command "./gjots2 test.gjots")
+# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq tab-width 4)
+# eval:(setq python-indent 4)
+# End:

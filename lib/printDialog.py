@@ -194,5 +194,8 @@ class print_dialog:
 # print_dialog
 
 # Local variables:
-# eval:(setq compile-command "cd ..; ./gjots2 j")
+# eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
+# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq tab-width 4)
+# eval:(setq python-indent 4)
 # End:

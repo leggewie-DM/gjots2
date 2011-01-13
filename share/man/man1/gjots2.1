@@ -1,5 +1,5 @@
 .\" Copyright (c) 2004 Robert Hepple
-.\" $Id: gjots2.1,v 1.4.4.1 2009/08/09 11:31:51 bhepple Exp $
+.\" $Id: gjots2.1,v 1.4.4.2 2010/10/31 08:31:00 bhepple Exp $
 .TH GJOTS2 1 \" -*- nroff -*-
 .SH NAME
 gjots2 \- A gnome-2/X11 jotter
@@ -62,9 +62,13 @@ the
 button or ^L. This requires the
 .BR fmt (1)
 command which is in the
+.I coreutils
+package in 
+.B fedora
+and in the
 .I sys-apps/textutils
-pacakge (on
-.BR Gentoo ).
+directory on
+.BR Gentoo .
 .P
 An external editor (configured in 
 .IR "Settings->Preferences" )
@@ -102,7 +106,10 @@ Opens the gjotsfile in readonly mode (with no locking and no ability
 to write)
 .TP
 \fB\-d\fR, \fB\-\-debug\fR
-Produces a trace of program execution possiby useful in debugging
+debug to stdout
+.TP
+\fB\-t\fR, \fB\-\-trace\fR
+trace lines as they execute
 .TP
 \fB\-V\fR, \fB\-\-version\fR
 Print the version and quit
@@ -149,7 +156,7 @@ Written by Bob Hepple <bhepple@freeshell.org>
 .P
 .RB http://bhepple.freeshell.org/gjots
 .SH "COPYRIGHT"
-Copyright (c) 2002 Robert Hepple
+Copyright (c) 2002-2010 Robert Hepple
 .br
 This is free software; see the source for copying conditions. There is
 NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
