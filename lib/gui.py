@@ -2337,13 +2337,19 @@ class gjots_gui:
 
 		override = {}
 		try:
-			import gtksourceview
-			override["GtkTextView"] = gtksourceview.SourceView
-			override["GtkTextBuffer"] = gtksourceview.SourceBuffer
+			import gtksourceview2
+			override["GtkTextView"] = gtksourceview2.View
+			override["GtkTextBuffer"] = gtksourceview2.Buffer
 			self.has_gtksourceview = True
 		except:
-			self.has_gtksourceview = False
-			pass
+			try:
+				import gtksourceview
+				override["GtkTextView"] = gtksourceview.SourceView
+				override["GtkTextBuffer"] = gtksourceview.SourceBuffer
+				self.has_gtksourceview = True
+			except:
+				self.has_gtksourceview = False
+				pass
 		self.xml = gtk.glade.XML(self.gui_filename, "gjots", "gjots2", override)
 		self.xml.signal_autoconnect(callbacks)
 		self.treestore = None
@@ -2375,15 +2381,25 @@ class gjots_gui:
 		self.current_dirty = 0
 		
 		try:
-			import gtksourceview
-			self.textBuffer = gtksourceview.SourceBuffer()
+			import gtksourceview2
+			self.textBuffer = gtksourceview2.Buffer()
 			self.textBuffer.set_text = lambda *args: not not (
 				self.textBuffer.begin_not_undoable_action(),
-				apply(gtksourceview.SourceBuffer.set_text, [self.textBuffer] + list(args)),
+				apply(gtksourceview2.Buffer.set_text, [self.textBuffer] + list(args)),
 				self.textBuffer.end_not_undoable_action(),
 			)
 		except:
-			self.textBuffer = gtk.TextBuffer()
+			try:
+				import gtksourceview
+				self.textBuffer = gtksourceview.SourceBuffer()
+				self.textBuffer.set_text = lambda *args: not not (
+					self.textBuffer.begin_not_undoable_action(),
+					apply(gtksourceview.SourceBuffer.set_text, [self.textBuffer] + list(args)),
+					self.textBuffer.end_not_undoable_action(),
+				)
+			except:
+				self.textBuffer = gtk.TextBuffer()
+
 		self.textView.set_buffer(self.textBuffer)
 		self.textBuffer.set_text("", 0)
 		self.textBuffer_changed_handler = self.textBuffer.connect("changed", self.on_textBuffer_changed)

@@ -17,7 +17,7 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 2.3.9
+%define ver 2.3.10
 %define rel 1
 %define prefix /usr
 
@@ -57,7 +57,7 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-2.3.9
+#	buildroot=/var/tmp/root-gjots2-2.3.10
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib
