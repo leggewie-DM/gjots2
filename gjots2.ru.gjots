@@ -11,7 +11,7 @@
                  Куинсленд
                  Австралия
                  
-                 Версия 2.3.9
+                 Версия 2.3.10
 
 
       bhepple@freeshell.org
@@ -131,7 +131,7 @@ app-office/gjots2 ~x86
 
 После этого:	
 
-VERSION=2.3.9
+VERSION=2.3.10
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -146,7 +146,7 @@ emerge gjots2
 
 Просто сделайте следующее:
 
-VERSION=2.3.9
+VERSION=2.3.10
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 rpm -i gjots2-${VERSION}-1.noarch.rpm
 
@@ -163,7 +163,7 @@ pyorbit-2.0.1-4
 \NewEntry
 Из исходных кодов
 
-VERSION=2.3.9
+VERSION=2.3.10
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 При установке из исходных кодов, после разархивирования 
