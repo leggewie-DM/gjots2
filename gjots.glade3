@@ -21,7 +21,7 @@
                   <widget class="GtkMenu" id="file1_menu">
                     <child>
                       <widget class="GtkImageMenuItem" id="newMenuItem">
-                        <property name="label" translatable="yes">gtk-new</property>
+                        <property name="label">gtk-new</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -31,7 +31,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="openMenuItem">
-                        <property name="label" translatable="yes">gtk-open</property>
+                        <property name="label">gtk-open</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -53,7 +53,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="saveMenuItem">
-                        <property name="label" translatable="yes">gtk-save</property>
+                        <property name="label">gtk-save</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -63,7 +63,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="saveAsMenuItem">
-                        <property name="label" translatable="yes">gtk-save-as</property>
+                        <property name="label">gtk-save-as</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -115,7 +115,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="printMenuItem">
-                        <property name="label" translatable="yes">gtk-print</property>
+                        <property name="label">gtk-print</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -144,7 +144,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="quitMenuItem">
-                        <property name="label" translatable="yes">gtk-quit</property>
+                        <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Exit gjots</property>
                         <property name="use_underline">True</property>
@@ -167,7 +167,7 @@
                   <widget class="GtkMenu" id="edit1_menu">
                     <child>
                       <widget class="GtkImageMenuItem" id="undoMenuItem">
-                        <property name="label" translatable="yes">gtk-undo</property>
+                        <property name="label">gtk-undo</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -178,7 +178,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="redoMenuItem">
-                        <property name="label" translatable="yes">gtk-redo</property>
+                        <property name="label">gtk-redo</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -189,7 +189,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="cutMenuItem">
-                        <property name="label" translatable="yes">gtk-cut</property>
+                        <property name="label">gtk-cut</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -199,7 +199,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="copyMenuItem">
-                        <property name="label" translatable="yes">gtk-copy</property>
+                        <property name="label">gtk-copy</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -209,7 +209,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="pasteMenuItem">
-                        <property name="label" translatable="yes">gtk-paste</property>
+                        <property name="label">gtk-paste</property>
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="use_underline">True</property>
@@ -225,7 +225,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="selectAllMenuItem">
-                        <property name="label" translatable="yes">gtk-select-all</property>
+                        <property name="label">gtk-select-all</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -240,7 +240,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="findMenuItem">
-                        <property name="label" translatable="yes">gtk-find</property>
+                        <property name="label">gtk-find</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -270,7 +270,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="prefsMenuItem">
-                        <property name="label" translatable="yes">gtk-preferences</property>
+                        <property name="label">gtk-preferences</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -415,7 +415,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="upMenuItem">
-                        <property name="label" translatable="yes">gtk-go-up</property>
+                        <property name="label">gtk-go-up</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Move selection up</property>
                         <property name="use_underline">True</property>
@@ -426,7 +426,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="downMenuItem">
-                        <property name="label" translatable="yes">gtk-go-down</property>
+                        <property name="label">gtk-go-down</property>
                         <property name="visible">True</property>
                         <property name="tooltip" translatable="yes">Move selection down</property>
                         <property name="use_underline">True</property>
@@ -635,7 +635,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="aboutMenuItem">
-                        <property name="label" translatable="yes">gtk-about</property>
+                        <property name="label">gtk-about</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
@@ -1132,7 +1132,7 @@
     <property name="window_position">mouse</property>
     <property name="icon">gjots.png</property>
     <property name="type_hint">dialog</property>
-    <property name="copyright" translatable="yes">Copyright Bob Hepple 2002-2010</property>
+    <property name="copyright" translatable="yes">Copyright Bob Hepple 2002-2011</property>
     <property name="comments" translatable="yes">http://bhepple.freeshell.org/gjots2</property>
     <property name="authors">Bob Hepple
 Gabriel Munoz
@@ -1311,7 +1311,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             <property name="layout_style">end</property>
             <child>
               <widget class="GtkButton" id="generalOK">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="can_focus">False</property>
                 <property name="receives_default">False</property>
                 <property name="border_width">5</property>
@@ -1331,7 +1331,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             </child>
             <child>
               <widget class="GtkButton" id="generalNo">
-                <property name="label" translatable="yes">gtk-no</property>
+                <property name="label">gtk-no</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="border_width">5</property>
@@ -1346,7 +1346,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             </child>
             <child>
               <widget class="GtkButton" id="generalCancel">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
                 <property name="border_width">5</property>
@@ -1421,7 +1421,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             <property name="row_spacing">10</property>
             <child>
               <widget class="GtkButton" id="fontButton">
-                <property name="label" translatable="yes">gtk-select-font</property>
+                <property name="label">gtk-select-font</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
@@ -1591,7 +1591,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             <property name="layout_style">end</property>
             <child>
               <widget class="GtkButton" id="prefsOK">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -1608,7 +1608,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             </child>
             <child>
               <widget class="GtkButton" id="prefsCancel">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -2254,7 +2254,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             <property name="layout_style">end</property>
             <child>
               <widget class="GtkButton" id="printOKButton">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -2271,7 +2271,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             </child>
             <child>
               <widget class="GtkButton" id="printCancelButton">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -2461,7 +2461,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             <property name="layout_style">end</property>
             <child>
               <widget class="GtkButton" id="saveOKButton">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -2480,7 +2480,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             </child>
             <child>
               <widget class="GtkButton" id="saveCancelButton">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -2550,7 +2550,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             <property name="layout_style">end</property>
             <child>
               <widget class="GtkButton" id="fileselectionOkButton">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2565,7 +2565,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
             </child>
             <child>
               <widget class="GtkButton" id="fileselectionCancelButton">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2592,7 +2592,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
     <property name="visible">True</property>
     <child>
       <widget class="GtkImageMenuItem" id="cutContextMenuItem">
-        <property name="label" translatable="yes">gtk-cut</property>
+        <property name="label">gtk-cut</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
@@ -2602,7 +2602,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
     </child>
     <child>
       <widget class="GtkImageMenuItem" id="copyContextMenuItem">
-        <property name="label" translatable="yes">gtk-copy</property>
+        <property name="label">gtk-copy</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
@@ -2612,7 +2612,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
     </child>
     <child>
       <widget class="GtkImageMenuItem" id="pasteContextMenuItem">
-        <property name="label" translatable="yes">gtk-paste</property>
+        <property name="label">gtk-paste</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
@@ -2640,7 +2640,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
     </child>
     <child>
       <widget class="GtkImageMenuItem" id="findContextMenuItem">
-        <property name="label" translatable="yes">gtk-find</property>
+        <property name="label">gtk-find</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
@@ -2689,7 +2689,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
     </child>
     <child>
       <widget class="GtkImageMenuItem" id="upContextMenuItem">
-        <property name="label" translatable="yes">gtk-go-up</property>
+        <property name="label">gtk-go-up</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
@@ -2699,7 +2699,7 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
     </child>
     <child>
       <widget class="GtkImageMenuItem" id="downContextMenuItem">
-        <property name="label" translatable="yes">gtk-go-down</property>
+        <property name="label">gtk-go-down</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>

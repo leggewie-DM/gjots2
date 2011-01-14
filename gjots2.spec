@@ -1,4 +1,4 @@
-# $Id: gjots2.spec,v 1.12.2.20 2010/11/20 06:51:32 bhepple Exp $
+# $Id: gjots2.spec,v 1.12.2.21 2011/01/01 12:52:34 bhepple Exp $
 
 #   Copyright (C) 2002-2009 Robert Hepple 
 #
@@ -17,7 +17,7 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 2.3.11
+%define ver 2.3.12
 %define rel 1
 %define prefix /usr
 
@@ -64,7 +64,7 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-2.3.11
+#	buildroot=/var/tmp/root-gjots2-2.3.12
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib
@@ -114,6 +114,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS INSTALL README COPYING ChangeLog gjots2.gjots gjots2.en_US.gjots gjots2.fr.gjots gjots2.nb.gjots gjots2.no.gjots gjots2.ru.gjots
+%doc AUTHORS INSTALL README COPYING ChangeLog gjots2.gjots gjots2.en_US.gjots gjots2.fr.gjots gjots2.nb.gjots gjots2.no.gjots gjots2.ru.gjots gjots2.es.gjots
 /
 

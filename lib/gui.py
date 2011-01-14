@@ -1780,22 +1780,17 @@ class gjots_gui:
 		elif os.access("./doc/gjots2.gjots", os.R_OK):
 			gjots_file = "./doc/gjots2.gjots"
 			sys.stderr.write(_("%s: Warning: opening gjots2 manual from %s\n") % ("gjots2", gjots_file))
-		else:  # run from the system share directory - try to find a locale version:
-			gjots_file_base = self.prefix + "/share/doc/gjots2-" + gjots_version + "/gjots2"
+		else:
+			# run from the system share directory - try to find a
+			# locale version. Version could be 2.3.11.201012291355:
+			v = gjots_version.split('.')
+			vers = ".".join(v[0:3])
+			gjots_file_base = self.prefix + "/share/doc/gjots2-" + vers + "/gjots2"
 			for env in "LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG":
 				locale_lang = ""
 				try:
 					locale = os.environ[env]
 					locale_lang = locale[0:2]
-					gjots_file = gjots_file_base + "." + locale + ".gjots"
-					if os.access(gjots_file, os.R_OK):
-						break
-					else:
-						gjots_file=""
-				except KeyError:
-					gjots_file=""
-					pass
-				try:
 					gjots_file = gjots_file_base + "." + locale_lang + ".gjots"
 					if os.access(gjots_file, os.R_OK):
 						break
