@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 2.3.11
+                 Version 2.3.12
 
 
       bhepple@freeshell.org
@@ -77,7 +77,7 @@ RPM-based systems
 
 Just do this:
 
-VERSION=2.3.11
+VERSION=2.3.12
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 yum install gjots2-${VERSION}-1.noarch.rpm
 
@@ -147,7 +147,7 @@ app-office/gjots2 ~x86
 
 Then:	
 
-VERSION=2.3.11
+VERSION=2.3.12
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -160,7 +160,7 @@ emerge gjots2
 \NewEntry
 From the tarball source
 
-VERSION=2.3.11
+VERSION=2.3.12
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and
@@ -889,6 +889,9 @@ Italian tranlation by:
 
 Czech translation by:
     	Martin Sin <martin.sin@zshk.cz>
+
+Spanish translation by:
+		Cecilio Salmeron <s.cecilio@gmail.com>
 
 \NewEntry
 Licence (GPL)

@@ -1,7 +1,7 @@
 # Language file for gjots2.
-# Copyright (C) 2005-2010 Bob Hepple
+# Copyright (C) 2005-2011 Bob Hepple
 # This file is distributed under the same license as the gjots2 package.
-# Bob Hepple <bhepple@freeshell.org>, 2010.
+# Bob Hepple <bhepple@freeshell.org>, 2011.
 #
 msgid ""
 msgstr ""
@@ -396,8 +396,8 @@ msgstr "Sort Tree"
 
 #: ../gjots.glade3:1142 ../gjots.glade3:1135
 #, fuzzy
-msgid "Copyright Bob Hepple 2002-2010"
-msgstr "Copyright Bob hepple 2002-2010"
+msgid "Copyright Bob Hepple 2002-2011"
+msgstr "Copyright Bob hepple 2002-2011"
 
 #: ../gjots.glade3:1143 ../gjots.glade3:1136
 msgid "http://bhepple.freeshell.org/gjots2"

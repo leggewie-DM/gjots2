@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /cvsroot/gjots2/gjots/gjots2.ebuild,v 1.7.2.16 2010/11/23 11:37:04 bhepple Exp $
+# $Header: /cvsroot/gjots2/gjots/gjots2.ebuild,v 1.7.2.17 2011/01/01 12:52:34 bhepple Exp $
 
 inherit python gnome.org
 
@@ -56,6 +56,7 @@ src_install() {
 	doins gjots2.no.gjots
 	doins gjots2.nb.gjots
 	doins gjots2.ru.gjots
+	doins gjots2.es.gjots
 # not available:
 #	doins gjots2.it.gjots
 #	doins gjots2.cs.gjots

@@ -394,7 +394,7 @@ msgid "Sort Tree"
 msgstr ""
 
 #: ../gjots.glade3:1142 ../gjots.glade3:1135
-msgid "Copyright Bob Hepple 2002-2010"
+msgid "Copyright Bob Hepple 2002-2011"
 msgstr ""
 
 #: ../gjots.glade3:1143 ../gjots.glade3:1136
