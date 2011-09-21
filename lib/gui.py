@@ -168,6 +168,7 @@ class gjots_gui:
 		if start_iter.forward_char():
 			start_iter.forward_char()
 		self.textBuffer.place_cursor(start_iter)
+		os.unlink(scratch)
 		return
 	
 	def do_time_stamp(self):
@@ -482,6 +483,42 @@ class gjots_gui:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return self.treestore.iter_next(treeiter)
 
+	def _get_deepest_child(self, iter):
+		"""
+		if current has no children return it. Otherwise recurse down
+		the tree and return the last (deepest) child
+		"""
+		while 1:
+			num_children = self.treestore.iter_n_children(iter)
+			if num_children == 0:
+				return iter
+			iter = self.treestore.iter_nth_child(iter, num_children - 1)
+
+	def get_linear_prev(self, iter):
+		"""
+
+		Get the previous tree item - if current has a previous
+		sibling, return it's last (deepest) child. If no more
+		siblings, get the last (deepest) child of the previous sibling
+		of the parent.
+
+		"""
+
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+
+		prev = self._iter_prev(iter)
+		if prev:
+			return self._get_deepest_child(prev)
+
+		while 1:
+			iter = self.treestore.iter_parent(iter)
+			if not iter:
+				return None
+			prev = self._iter_prev(iter)
+			if prev:
+				return self._get_deepest_child(prev)
+		
 	def get_linear_next(self, iter):
 		"""
 
@@ -1605,6 +1642,17 @@ class gjots_gui:
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
+		self.client.set_bool(self.find_backwards_path, 0)
+		if self.find_next():
+			self.msg("Found")
+		else:
+			self.msg("Not found")
+
+	def on_findAgainBackwards_trigger(self, widget):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		self.msg("")
+		self.client.set_bool(self.find_backwards_path, 1)
 		if self.find_next():
 			self.msg("Found")
 		else:
@@ -1854,7 +1902,7 @@ class gjots_gui:
 		browser_list = { 
 			# reminder: this list's order means nothing:
 			# <name of executable>:<what to search for in ps -ef list>
-			"firefox4":"/[x]ulrunner-2/", 
+			"firefox4":"/[x]ulrunner-2/.*firefox-",
 			"google-chrome":"[/]chrome ", 
 			"firefox":"/[x]ulrunner/", 
 			"konqueror":"[k]onqueror", 
@@ -2194,6 +2242,13 @@ class gjots_gui:
 				return
 			iter = next
 
+	def _do_goto_last_absolute(self):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2], vars()
+
+		self._do_show_all()
+		self._do_goto_last_visible()
+
 	def _do_toggle_expand(self):
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
@@ -2212,10 +2267,13 @@ class gjots_gui:
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 			print "key_event.keyval=", key_event.keyval
-			print "key_event.state=", key_event.state
+			print "key_event.state=", key_event.state, "gtk.keysyms.End=", gtk.keysyms.End
 
 		modifier =  key_event.state & gtk.gdk.MODIFIER_MASK
-		if modifier == gtk.gdk.CONTROL_MASK:
+		# why is MOD2_MASK being set? It's 'hyper'. Ignore it. Hmmm,
+		# this only happens on raita. wassup with that?
+		modifier &= ~gtk.gdk.MOD2_MASK
+		if modifier & gtk.gdk.CONTROL_MASK:
 			if key_event.keyval == gtk.keysyms.Up:
 				self._do_move_up()
 				return 1
@@ -2232,7 +2290,13 @@ class gjots_gui:
 				self._do_goto_root()
 				return 1
 			if key_event.keyval == gtk.keysyms.End:
+				self._do_goto_last_absolute()
+				return 1
+			if key_event.keyval == gtk.keysyms.Page_Down:
 				self._do_goto_last_visible()
+				return 1
+			if key_event.keyval == gtk.keysyms.Page_Up:
+				self._do_goto_root()
 				return 1
 
 			# hmmm - these never get a chance because of the 'global' accelerators:
@@ -2307,9 +2371,9 @@ class gjots_gui:
 	def find_next(self):
 		"""
 
-		Returns textBuffer iters for the start and end the next match
-		within the text from the "insert" mark and the end (or
-		beginning ) of the element (or -1 if none).
+		Returns textBuffer iters for the start and end of the next
+		match within the text from the "insert" mark and the end (or
+		beginning) of the element (or -1 if none).
 
 		For regex matches, sets self.match
 
@@ -2323,58 +2387,66 @@ class gjots_gui:
 
 		self.remove_tag()
 		self.hit_start = self.hit_end = -1
-		use_textBuffer = 1
+		# set this to 0 when we can't find anything in the current item:
+		look_in_current_item = 1
 		current_tree_iter = self.get_first_selected_iter()
 		
 		while self.hit_start == -1:
-			if not use_textBuffer:
+			if look_in_current_item:
+				if self.client.get_bool(self.find_backwards_path):
+					start_iter = self.textBuffer.get_start_iter()
+					end_mark = self.textBuffer.get_insert()
+					end_iter = self.textBuffer.get_iter_at_mark(end_mark)
+					self.start_offset = 0
+				else:
+					start_mark = self.textBuffer.get_insert()
+					start_iter = self.textBuffer.get_iter_at_mark(start_mark)
+					end_iter = self.textBuffer.get_end_iter()
+					self.start_offset = start_iter.get_offset()
+				zone = self.textBuffer.get_text(start_iter, end_iter)
+			else:
 				if not self.client.get_bool(self.find_global_path):
 					return 0
-				# we need the next tree item
-				current_tree_iter = self.get_linear_next(current_tree_iter)
+				# we need the next tree item:
+				if self.client.get_bool(self.find_backwards_path):
+					current_tree_iter = self.get_linear_prev(current_tree_iter)
+				else:
+					current_tree_iter = self.get_linear_next(current_tree_iter)
 				if not current_tree_iter:
 					return 0
 				zone = self.get_node_value(current_tree_iter)
 				self.start_offset = 0
-			else:
-				start_mark = self.textBuffer.get_insert()
-				start_iter = self.textBuffer.get_iter_at_mark(start_mark)
-				end_iter = self.textBuffer.get_end_iter()
-				self.start_offset = start_iter.get_offset()
-				zone = self.textBuffer.get_text(start_iter, end_iter)
 			
-			if self.client.get_bool(self.find_regex_path):
-				options = re.M | re.L
-				if not self.client.get_bool(self.find_match_case_path):
-					options = options | re.I
-				try:
-					self.prog = re.compile(self.client.get_string(
-							self.find_text_path), options)
-				except:
-					self.err_msg(_("Bad regular expression"))
-					use_textBuffer = 0
-					continue
+			options = re.M | re.L
+			if not self.client.get_bool(self.find_match_case_path):
+				options = options | re.I
+
+			search_regex = self.client.get_string(self.find_text_path)
+			if not self.client.get_bool(self.find_regex_path):
+				search_regex = re.escape(search_regex)
+
+			try:
+				self.prog = re.compile(search_regex, options)
+			except:
+				self.err_msg(_("Bad regular expression"))
+				look_in_current_item = 0
+				continue
 				
-				self.match = self.prog.search(zone)
-				if self.match:
-					self.hit_start = self.match.start()
-					self.hit_end = self.match.end()
-				else:
-					use_textBuffer = 0
-					continue
+			self.match = None
+			if self.client.get_bool(self.find_backwards_path):
+				for self.match in self.prog.finditer(zone):
+					pass
 			else:
-				find_text = self.client.get_string(self.find_text_path)
-				if not self.client.get_bool(self.find_match_case_path):
-					zone = zone.lower()
-					find_test = find_text.lower()
-				self.hit_start = zone.find(find_text)
-				if self.hit_start < 0:
-					use_textBuffer = 0
-					continue
-				self.hit_end = self.hit_start + len(find_text)
+				self.match = self.prog.search(zone)
+			if self.match:
+				self.hit_start = self.match.start()
+				self.hit_end = self.match.end()
+			else:
+				look_in_current_item = 0
+				continue
 
 			# OK - we got one, now return:
-			if not use_textBuffer:
+			if not look_in_current_item:
 				current_tree_path = self.treestore.get_path(current_tree_iter)
 				self.treeView.expand_to_path(current_tree_path)
 				self.treeView.get_selection().unselect_all()
@@ -2388,7 +2460,10 @@ class gjots_gui:
 			#self.textBuffer.move_mark_by_name("selection_bound", hit_start_iter)
 			self.textBuffer.apply_tag(self.found_tag, hit_start_iter,
                 hit_end_iter)	  
-			self.textBuffer.place_cursor(hit_end_iter)
+			if self.client.get_bool(self.find_backwards_path):
+				self.textBuffer.place_cursor(hit_start_iter)
+			else:
+				self.textBuffer.place_cursor(hit_end_iter)
 			start_mark = self.textBuffer.get_insert()
 			self.textView.scroll_to_mark(start_mark, 0.0 , 1, 1.0, 0.5)
 			return 1
@@ -2523,6 +2598,7 @@ class gjots_gui:
 			"on_selectAll_trigger":         self.on_selectAll_trigger,
 			"on_find_trigger":              self.on_find_trigger,
 			"on_findAgain_trigger":         self.on_findAgain_trigger,
+			"on_findAgainBackwards_trigger": self.on_findAgainBackwards_trigger,
 			
 			# View menu:
 			"on_topToolbarCheck_trigger":   self.on_topToolbarCheck_trigger,

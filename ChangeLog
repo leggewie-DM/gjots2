@@ -1,3 +1,17 @@
+2011-07-06    <bhepple@freeshell.org> Version 2.3.14
+	* Add "Find Previous" menu item S-C-g 
+	* "Find Previous" and "find Next" now set/unset the 'backwards'
+	flag in 'preferences'
+2011-07-04    <bhepple@freeshell.org> Version 2.3.14
+	* Finish implemention of backwards search
+	* Tighten regex for browser to look for xulrunner-2/.*firefox- 
+2011-06-18    <bhepple@freeshell.org> Version 2.3.14
+	* MOD2_MASK was being set on all kb events - mask it out in
+	treeview handler
+	* ^End now goes to absolute last element. ^PgDn now goes to last
+	visible element.
+	* backwards search is implemented - it's backwards in tree but
+	still forwards in text which is actually rather nice
 2011-05-10    <bhepple@freeshell.org> Version 2.3.13
 	* Fixed plain text, match-case find
 	* Added Slovenian translation (thanks to Aleksa Šušulić)
