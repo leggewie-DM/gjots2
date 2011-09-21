@@ -265,6 +265,22 @@
                       </widget>
                     </child>
                     <child>
+                      <widget class="GtkImageMenuItem" id="findAgainBackwardsMenuItem">
+                        <property name="label" translatable="yes">Find Previous</property>
+                        <property name="visible">True</property>
+                        <property name="use_stock">False</property>
+                        <property name="always_show_image">True</property>
+                        <signal name="activate" handler="on_findAgainBackwards_trigger"/>
+                        <accelerator key="G" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="image18">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-media-previous</property>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                    <child>
                       <widget class="GtkSeparatorMenuItem" id="separatormenuitem1">
                         <property name="visible">True</property>
                       </widget>
@@ -1180,6 +1196,7 @@ Gabriel Munoz
 
 
 
+
 </property>
     <property name="translator_credits" translatable="yes">Rui Nibau (fr) &lt;rui.nibau@omacronides.com&gt;
 Robert Emil Berge (no, nb) &lt;filoktetes@linuxophic.org&gt;
@@ -1187,7 +1204,7 @@ Sergey Bezdenezhnyh (ru) &lt;sib-mail@mtu-net.ru&gt;
 Raimondo Giammanco (it) &lt;rongten@member.fsf.org&gt;
 Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
 Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
-Aleksa Šušulić (sl) &lt;susulic@gmail.com&gt;
+Aleksa &#x160;u&#x161;uli&#x107; (sl) &lt;susulic@gmail.com&gt;
 </property>
     <property name="logo">gjots.png</property>
   </widget>
@@ -1319,8 +1336,8 @@ Aleksa Šušulić (sl) &lt;susulic@gmail.com&gt;
                 <property name="border_width">5</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_generalOK_clicked"/>
-                <accelerator key="Return" signal="clicked"/>
                 <accelerator key="KP_Enter" signal="clicked"/>
+                <accelerator key="Return" signal="clicked"/>
               </widget>
               <packing>
                 <property name="expand">False</property>
@@ -1770,8 +1787,8 @@ Aleksa Šušulić (sl) &lt;susulic@gmail.com&gt;
                     <property name="receives_default">False</property>
                     <property name="use_underline">True</property>
                     <signal name="clicked" handler="on_findStartButton_clicked"/>
-                    <accelerator key="Return" signal="clicked"/>
                     <accelerator key="KP_Enter" signal="clicked"/>
+                    <accelerator key="Return" signal="clicked"/>
                   </widget>
                   <packing>
                     <property name="x_options">GTK_FILL</property>
@@ -1932,6 +1949,7 @@ Aleksa Šušulić (sl) &lt;susulic@gmail.com&gt;
                 <child>
                   <widget class="GtkCheckButton" id="backwardsCheckbutton">
                     <property name="label" translatable="yes">Backwards</property>
+                    <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="tooltip" translatable="yes">Search backwards</property>
@@ -2471,8 +2489,8 @@ Aleksa Šušulić (sl) &lt;susulic@gmail.com&gt;
                 <property name="border_width">5</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_sortOKButton_clicked"/>
-                <accelerator key="KP_Enter" signal="clicked"/>
                 <accelerator key="Return" signal="clicked"/>
+                <accelerator key="KP_Enter" signal="clicked"/>
               </widget>
               <packing>
                 <property name="expand">False</property>
@@ -2513,7 +2531,6 @@ Aleksa Šušulić (sl) &lt;susulic@gmail.com&gt;
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="skip_pager_hint">True</property>
-    <property name="has_separator">False</property>
     <signal name="file_activated" handler="on_fileselectionOkButton_clicked"/>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox2">

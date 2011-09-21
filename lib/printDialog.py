@@ -141,6 +141,7 @@ class print_dialog:
 			if page_feed:
 				f.write('')
 		f.close()
+		os.unlink(scratch)
 		self.destroy()
 		return
 		
