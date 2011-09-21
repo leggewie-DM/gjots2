@@ -1,4 +1,4 @@
-# $Id: gjots2.spec,v 1.12.2.22 2011/05/10 05:46:24 bhepple Exp $
+# $Id: gjots2.spec,v 1.12.2.23 2011/07/11 04:47:03 bhepple Exp $
 
 #   Copyright (C) 2002-2009 Robert Hepple 
 #
@@ -17,7 +17,7 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 2.3.14
+%define ver 2.3.15
 %define rel 1
 %define prefix /usr
 
@@ -64,7 +64,7 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-2.3.14
+#	buildroot=/var/tmp/root-gjots2-2.3.15
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib
@@ -84,7 +84,8 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 						%{buildroot}%{_datadir}/locale/cs/LC_MESSAGES \
 						%{buildroot}%{_datadir}/locale/ru/LC_MESSAGES \
 						%{buildroot}%{_datadir}/locale/es/LC_MESSAGES \
-						%{buildroot}%{_datadir}/locale/sl/LC_MESSAGES
+						%{buildroot}%{_datadir}/locale/sl/LC_MESSAGES \
+						%{buildroot}%{_datadir}/locale/de_DE/LC_MESSAGES
 
 %{__install} -m0755 bin/gjots2 bin/gjots2docbook bin/gjots2html bin/gjots2emacs bin/gjots2html.py bin/docbook2gjots bin/gjots2lpr %{buildroot}%{_bindir}/
 %{__install} -m0755 lib/*.py %{buildroot}%{_libdir}/%{name}/
@@ -110,6 +111,7 @@ This is a Python/GTK-2 version of the original gjots program by the same author.
 %{__install} -m0644 po/ru/LC_MESSAGES/gjots2.mo %{buildroot}%{_datadir}/locale/ru/LC_MESSAGES
 %{__install} -m0644 po/es/LC_MESSAGES/gjots2.mo %{buildroot}%{_datadir}/locale/es/LC_MESSAGES
 %{__install} -m0644 po/sl/LC_MESSAGES/gjots2.mo %{buildroot}%{_datadir}/locale/sl/LC_MESSAGES
+%{__install} -m0644 po/de_DE/LC_MESSAGES/gjots2.mo %{buildroot}%{_datadir}/locale/de_DE/LC_MESSAGES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
