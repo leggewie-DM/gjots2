@@ -1,3 +1,7 @@
+2011-07-14    <bhepple@freeshell.org> Version 2.3.15
+	* Added find entry in menubar - needs gtk-2.16 or later
+2011-07-11    <bhepple@freeshell.org> Version 2.3.15
+	* Added German translation thanks to Uwe Steinmann <uwe@steinmann.cx>
 2011-07-06    <bhepple@freeshell.org> Version 2.3.14
 	* Add "Find Previous" menu item S-C-g 
 	* "Find Previous" and "find Next" now set/unset the 'backwards'

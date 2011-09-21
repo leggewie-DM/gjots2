@@ -33,6 +33,9 @@ class find_dialog:
 		w = self.xml.get_widget("findEntry")
 		if w:
 			self.gui.client.set_string(self.gui.find_text_path, w.get_text())
+			m = self.gui.xml.get_widget("menubar_find_entry")
+			if m:
+				m.set_text(w.get_text())
 
 		w = self.xml.get_widget("replaceEntry")
 		if w:
@@ -43,6 +46,7 @@ class find_dialog:
 	def on_findDialog_destroy(self, widget):
 		if self.gui.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
+		self.gui.find_dialog = None
 		return
 	
 	def on_replaceEntry_key_press_event(self, widget, key_event):
@@ -138,6 +142,14 @@ class find_dialog:
 		if w:
 			w.set_text("")
 		return
+	
+	def update_find_entry(self):
+		"Potential for wonderful infinite loops here? "
+		if self.gui.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		m = self.xml.get_widget("findEntry")
+		if m:
+			m.set_text(self.gui.client.get_string(self.gui.find_text_path))
 
 	def _set_readonly(self, mode):
 		if self.gui.trace:

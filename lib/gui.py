@@ -179,6 +179,24 @@ class gjots_gui:
 		self.textBuffer.insert_at_cursor(newstring, len(newstring))
 		return
 	
+	def update_find_entry(self):
+		"Potential for wonderful infinite loops here? "
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		m = self.xml.get_widget("menubar_find_entry")
+		if m:
+			m.set_text(self.client.get_string(self.find_text_path))
+		if self.find_dialog:
+			self.find_dialog.update_find_entry()
+
+	def on_gconf_find_text_changed(self, client, cnxn_id, entry, label):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		if self.trace:
+			print "find_text=", client.get_string(self.find_text_path)
+		self.update_find_entry()
+		return
+	
 	def on_gconf_line_length_changed(self, client, cnxn_id, entry, label):
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
@@ -395,6 +413,7 @@ class gjots_gui:
 
 		# setup notifiers:
 		
+		self.client.notify_add(self.find_text_path, self.on_gconf_find_text_changed, self.gjots)
 		self.client.notify_add(self.line_length_path, self.on_gconf_line_length_changed, self.gjots)
 		self.client.notify_add(self.text_formatter_path, self.on_gconf_text_formatter_changed, self.gjots)
 		self.client.notify_add(self.external_editor_path, self.on_gconf_external_editor_changed, self.gjots)
@@ -1636,7 +1655,7 @@ class gjots_gui:
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
-		find = find_dialog(self)
+		self.find_dialog = find_dialog(self)
 
 	def on_findAgain_trigger(self, widget):
 		if self.trace:
@@ -1653,6 +1672,29 @@ class gjots_gui:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.client.set_bool(self.find_backwards_path, 1)
+		if self.find_next():
+			self.msg("Found")
+		else:
+			self.msg("Not found")
+
+	def on_menubar_find_entry_icon_press(self, widget, icon_pos, event):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+			print "icon_pos=", icon_pos
+		if icon_pos == gtk.ENTRY_ICON_PRIMARY:
+			self.on_findAgainBackwards_trigger(widget)
+		else:
+			self.on_findAgain_trigger(widget)
+
+	def on_menubar_find_entry_changed(self, widget):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		self.client.set_string(self.find_text_path, widget.get_text())
+		
+	def on_menubar_find_entry_activate(self, widget):
+		if self.trace:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		self.client.set_string(self.find_text_path, widget.get_text())
 		if self.find_next():
 			self.msg("Found")
 		else:
@@ -2599,7 +2641,8 @@ class gjots_gui:
 			"on_find_trigger":              self.on_find_trigger,
 			"on_findAgain_trigger":         self.on_findAgain_trigger,
 			"on_findAgainBackwards_trigger": self.on_findAgainBackwards_trigger,
-			
+			"on_menubar_find_entry_icon_press": self.on_menubar_find_entry_icon_press,
+
 			# View menu:
 			"on_topToolbarCheck_trigger":   self.on_topToolbarCheck_trigger,
 			"on_treeToolbarCheck_trigger":  self.on_treeToolbarCheck_trigger,
@@ -2646,6 +2689,10 @@ class gjots_gui:
 			"on_tree_drag_drop":            self.on_tree_drag_drop,
 			"on_tree_key_press_event":      self.on_tree_key_press_event,
 			"on_tree_button_press_event":   self.on_tree_button_press_event,
+
+			# menutoolbar callbacks
+			"on_menubar_find_entry_changed": self.on_menubar_find_entry_changed,
+			"on_menubar_find_entry_activate": self.on_menubar_find_entry_activate,
 		}
 			
 		# create widget tree ...
@@ -2763,6 +2810,9 @@ class gjots_gui:
 		self._wrangle_geometry()
 		self.cut_text = None
 		self.browser = None
+		self.find_dialog = None
+
+		self.update_find_entry()
 
 		self.file_filter = gtk.FileFilter()
 		self.file_filter_pattern = "*.gjots*"

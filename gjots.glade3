@@ -10,659 +10,731 @@
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <child>
-          <widget class="GtkMenuBar" id="menubar1">
+          <widget class="GtkHBox" id="hbox2">
             <property name="visible">True</property>
             <child>
-              <widget class="GtkMenuItem" id="file1">
+              <widget class="GtkMenuBar" id="menubar1">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_File</property>
-                <property name="use_underline">True</property>
                 <child>
-                  <widget class="GtkMenu" id="file1_menu">
+                  <widget class="GtkMenuItem" id="file1">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">_File</property>
+                    <property name="use_underline">True</property>
                     <child>
-                      <widget class="GtkImageMenuItem" id="newMenuItem">
-                        <property name="label">gtk-new</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_new_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="openMenuItem">
-                        <property name="label">gtk-open</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_open_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkMenuItem" id="recentMenuItem">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Recent</property>
-                        <property name="use_underline">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator7">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="saveMenuItem">
-                        <property name="label">gtk-save</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_save_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="saveAsMenuItem">
-                        <property name="label">gtk-save-as</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_saveAs_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator8">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="importMenuItem">
-                        <property name="label" translatable="yes">_Import</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Import items from a gjots file</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_import_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image6">
+                      <widget class="GtkMenu" id="file1_menu">
+                        <child>
+                          <widget class="GtkImageMenuItem" id="newMenuItem">
+                            <property name="label">gtk-new</property>
                             <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_new_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="openMenuItem">
+                            <property name="label">gtk-open</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_open_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkMenuItem" id="recentMenuItem">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Recent</property>
+                            <property name="use_underline">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator7">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="saveMenuItem">
+                            <property name="label">gtk-save</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_save_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="saveAsMenuItem">
+                            <property name="label">gtk-save-as</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_saveAs_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator8">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="importMenuItem">
+                            <property name="label" translatable="yes">_Import</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Import items from a gjots file</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_import_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image6">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="exportMenuItem">
+                            <property name="label" translatable="yes">_Export</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Export selected items to a gjots file</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_export_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image7">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator1">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="printMenuItem">
+                            <property name="label">gtk-print</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_print_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator0">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckMenuItem" id="readOnlyMenuItem">
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Toggle the read-only flag if possible</property>
+                            <property name="label" translatable="yes">_Read-only</property>
+                            <property name="use_underline">True</property>
+                            <signal name="activate" handler="on_readOnly_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator2">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="quitMenuItem">
+                            <property name="label">gtk-quit</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Exit gjots</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_quit_trigger"/>
+                            <accelerator key="Q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                           </widget>
                         </child>
                       </widget>
                     </child>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkMenuItem" id="edit1">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">_Edit</property>
+                    <property name="use_underline">True</property>
                     <child>
-                      <widget class="GtkImageMenuItem" id="exportMenuItem">
-                        <property name="label" translatable="yes">_Export</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Export selected items to a gjots file</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_export_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image7">
+                      <widget class="GtkMenu" id="edit1_menu">
+                        <child>
+                          <widget class="GtkImageMenuItem" id="undoMenuItem">
+                            <property name="label">gtk-undo</property>
                             <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_undo_trigger"/>
+                            <accelerator key="Z" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="redoMenuItem">
+                            <property name="label">gtk-redo</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_redo_trigger"/>
+                            <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="cutMenuItem">
+                            <property name="label">gtk-cut</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_cut_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="copyMenuItem">
+                            <property name="label">gtk-copy</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_copy_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="pasteMenuItem">
+                            <property name="label">gtk-paste</property>
+                            <property name="visible">True</property>
+                            <property name="sensitive">False</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_paste_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator4">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="selectAllMenuItem">
+                            <property name="label">gtk-select-all</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_selectAll_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator5">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="findMenuItem">
+                            <property name="label">gtk-find</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_find_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="findAgainMenuItem">
+                            <property name="label" translatable="yes">Find Next</property>
+                            <property name="visible">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_findAgain_trigger"/>
+                            <accelerator key="G" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image17">
+                                <property name="visible">True</property>
+                                <property name="stock">gtk-media-next</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="findAgainBackwardsMenuItem">
+                            <property name="label" translatable="yes">Find Previous</property>
+                            <property name="visible">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_findAgainBackwards_trigger"/>
+                            <accelerator key="G" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image18">
+                                <property name="visible">True</property>
+                                <property name="stock">gtk-media-previous</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separatormenuitem1">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="prefsMenuItem">
+                            <property name="label">gtk-preferences</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_prefs_trigger"/>
                           </widget>
                         </child>
                       </widget>
                     </child>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkMenuItem" id="view1">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">_View</property>
+                    <property name="use_underline">True</property>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator1">
-                        <property name="visible">True</property>
+                      <widget class="GtkMenu" id="view1_menu">
+                        <child>
+                          <widget class="GtkImageMenuItem" id="showAllMenuItem">
+                            <property name="label" translatable="yes">_Show All</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Show all items below the current item</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_showAll_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image8">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="hideAllMenuItem">
+                            <property name="label" translatable="yes">_Hide All</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Hide all items except the top level</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_hideAll_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image9">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator3">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckMenuItem" id="topToolbarCheckMenuItem">
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Toggles the main toolbar</property>
+                            <property name="label" translatable="yes">To_p Toolbar</property>
+                            <property name="use_underline">True</property>
+                            <property name="active">True</property>
+                            <signal name="activate" handler="on_topToolbarCheck_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckMenuItem" id="treeToolbarCheckMenuItem">
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Toggles tree tool bar</property>
+                            <property name="label" translatable="yes">Tre_e Toolbar</property>
+                            <property name="use_underline">True</property>
+                            <property name="active">True</property>
+                            <signal name="activate" handler="on_treeToolbarCheck_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckMenuItem" id="showIconTextCheckMenuItem">
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Show the related icon text</property>
+                            <property name="label" translatable="yes">Show _Icon Text</property>
+                            <property name="use_underline">True</property>
+                            <signal name="activate" handler="on_showIconText_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckMenuItem" id="statusBarMenuItem">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Status _Bar</property>
+                            <property name="use_underline">True</property>
+                            <property name="active">True</property>
+                            <signal name="activate" handler="on_statusBarMenuItem_trigger"/>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkMenuItem" id="tree1">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">_Tree</property>
+                    <property name="use_underline">True</property>
                     <child>
-                      <widget class="GtkImageMenuItem" id="printMenuItem">
-                        <property name="label">gtk-print</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_print_trigger"/>
+                      <widget class="GtkMenu" id="tree1_menu">
+                        <child>
+                          <widget class="GtkImageMenuItem" id="newPageMenuItem">
+                            <property name="label" translatable="yes">_New Page</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Create a new page</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_newPage_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image10">
+                                <property name="visible">True</property>
+                                <property name="stock">gnome-stock-multiple-file</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="newChildMenuItem">
+                            <property name="label" translatable="yes">New _Child</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Create a new child </property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_newChild_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image11">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator6">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="upMenuItem">
+                            <property name="label">gtk-go-up</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Move selection up</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_up_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="downMenuItem">
+                            <property name="label">gtk-go-down</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Move selection down</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_down_trigger"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="promoteMenuItem">
+                            <property name="label" translatable="yes">P_romote</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Selection becomes a sibling to their parent</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_promote_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image1">
+                                <property name="visible">True</property>
+                                <property name="stock">gtk-go-back</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="demoteMenuItem">
+                            <property name="label" translatable="yes">D_emote</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Selection becomes a child of the previous item</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_demote_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image2">
+                                <property name="visible">True</property>
+                                <property name="stock">gtk-go-forward</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator9">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="splitItemMenuItem">
+                            <property name="label" translatable="yes">_Split Item</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Make a new item from the current selection</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_splitItem_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image12">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="mergeItemsMenuItem">
+                            <property name="label" translatable="yes">_Merge Items</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Merge current items into the first one</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_mergeItems_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image13">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator11">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="sortTreeMenuItem">
+                            <property name="label" translatable="yes">S_ort Tree</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Popup the sort tree dialog</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_sortTree_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image14">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkMenuItem" id="textMenuItem">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Te_xt</property>
+                    <property name="use_underline">True</property>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator0">
-                        <property name="visible">True</property>
+                      <widget class="GtkMenu" id="textMenuItem_menu">
+                        <child>
+                          <widget class="GtkImageMenuItem" id="formatMenuItem">
+                            <property name="label" translatable="yes">_Format</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Format the current paragraph</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_format_trigger"/>
+                            <accelerator key="L" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image15">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="timeStampMenuItem">
+                            <property name="label" translatable="yes">_Time stamp</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Add a time/date stamp (see preferences)</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_timeStamp_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image4">
+                                <property name="visible">True</property>
+                                <property name="stock">gnome-stock-timer</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="externalEditMenuItem">
+                            <property name="label" translatable="yes">_External Edit</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Edit current item in an external editor</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_externalEdit_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image5">
+                                <property name="visible">True</property>
+                                <property name="stock">gtk-edit</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="sortTextMenuItem">
+                            <property name="label" translatable="yes">_Sort Text</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Popup the sort text dialog</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_sortText_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image16">
+                                <property name="visible">True</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkMenuItem" id="helpMenuItem">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">_Help</property>
+                    <property name="use_underline">True</property>
                     <child>
-                      <widget class="GtkCheckMenuItem" id="readOnlyMenuItem">
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Toggle the read-only flag if possible</property>
-                        <property name="label" translatable="yes">_Read-only</property>
-                        <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_readOnly_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator2">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="quitMenuItem">
-                        <property name="label">gtk-quit</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Exit gjots</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_quit_trigger"/>
-                        <accelerator key="Q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                      <widget class="GtkMenu" id="helpMenuItem_menu">
+                        <child>
+                          <widget class="GtkImageMenuItem" id="readManualMenuItem">
+                            <property name="label" translatable="yes">_Read Manual</property>
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Read the online manual (using gjots)</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">False</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_readManual_trigger"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="image3">
+                                <property name="visible">True</property>
+                                <property name="stock">gtk-dialog-info</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="aboutMenuItem">
+                            <property name="label">gtk-about</property>
+                            <property name="visible">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <property name="always_show_image">True</property>
+                            <signal name="activate" handler="on_about_trigger"/>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                   </widget>
                 </child>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">0</property>
+              </packing>
             </child>
             <child>
-              <widget class="GtkMenuItem" id="edit1">
+              <widget class="GtkVSeparator" id="vseparator1">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_Edit</property>
-                <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="edit1_menu">
-                    <child>
-                      <widget class="GtkImageMenuItem" id="undoMenuItem">
-                        <property name="label">gtk-undo</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_undo_trigger"/>
-                        <accelerator key="Z" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="redoMenuItem">
-                        <property name="label">gtk-redo</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_redo_trigger"/>
-                        <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="cutMenuItem">
-                        <property name="label">gtk-cut</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_cut_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="copyMenuItem">
-                        <property name="label">gtk-copy</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_copy_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="pasteMenuItem">
-                        <property name="label">gtk-paste</property>
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_paste_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator4">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="selectAllMenuItem">
-                        <property name="label">gtk-select-all</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_selectAll_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator5">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="findMenuItem">
-                        <property name="label">gtk-find</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_find_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="findAgainMenuItem">
-                        <property name="label" translatable="yes">Find Next</property>
-                        <property name="visible">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_findAgain_trigger"/>
-                        <accelerator key="G" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image17">
-                            <property name="visible">True</property>
-                            <property name="stock">gtk-media-next</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="findAgainBackwardsMenuItem">
-                        <property name="label" translatable="yes">Find Previous</property>
-                        <property name="visible">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_findAgainBackwards_trigger"/>
-                        <accelerator key="G" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image18">
-                            <property name="visible">True</property>
-                            <property name="stock">gtk-media-previous</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separatormenuitem1">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="prefsMenuItem">
-                        <property name="label">gtk-preferences</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_prefs_trigger"/>
-                      </widget>
-                    </child>
-                  </widget>
-                </child>
+                <property name="orientation">vertical</property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">1</property>
+              </packing>
             </child>
             <child>
-              <widget class="GtkMenuItem" id="view1">
+              <widget class="GtkLabel" id="label1">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_View</property>
-                <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="view1_menu">
-                    <child>
-                      <widget class="GtkImageMenuItem" id="showAllMenuItem">
-                        <property name="label" translatable="yes">_Show All</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Show all items below the current item</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_showAll_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image8">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="hideAllMenuItem">
-                        <property name="label" translatable="yes">_Hide All</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Hide all items except the top level</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_hideAll_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image9">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator3">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkCheckMenuItem" id="topToolbarCheckMenuItem">
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Toggles the main toolbar</property>
-                        <property name="label" translatable="yes">To_p Toolbar</property>
-                        <property name="use_underline">True</property>
-                        <property name="active">True</property>
-                        <signal name="activate" handler="on_topToolbarCheck_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkCheckMenuItem" id="treeToolbarCheckMenuItem">
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Toggles tree tool bar</property>
-                        <property name="label" translatable="yes">Tre_e Toolbar</property>
-                        <property name="use_underline">True</property>
-                        <property name="active">True</property>
-                        <signal name="activate" handler="on_treeToolbarCheck_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkCheckMenuItem" id="showIconTextCheckMenuItem">
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Show the related icon text</property>
-                        <property name="label" translatable="yes">Show _Icon Text</property>
-                        <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_showIconText_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkCheckMenuItem" id="statusBarMenuItem">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Status _Bar</property>
-                        <property name="use_underline">True</property>
-                        <property name="active">True</property>
-                        <signal name="activate" handler="on_statusBarMenuItem_trigger"/>
-                      </widget>
-                    </child>
-                  </widget>
-                </child>
+                <property name="label" translatable="yes"> Find: </property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">2</property>
+              </packing>
             </child>
             <child>
-              <widget class="GtkMenuItem" id="tree1">
+              <widget class="GtkEntry" id="menubar_find_entry">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_Tree</property>
-                <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="tree1_menu">
-                    <child>
-                      <widget class="GtkImageMenuItem" id="newPageMenuItem">
-                        <property name="label" translatable="yes">_New Page</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Create a new page</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_newPage_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image10">
-                            <property name="visible">True</property>
-                            <property name="stock">gnome-stock-multiple-file</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="newChildMenuItem">
-                        <property name="label" translatable="yes">New _Child</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Create a new child </property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_newChild_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image11">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator6">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="upMenuItem">
-                        <property name="label">gtk-go-up</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Move selection up</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_up_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="downMenuItem">
-                        <property name="label">gtk-go-down</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Move selection down</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_down_trigger"/>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="promoteMenuItem">
-                        <property name="label" translatable="yes">P_romote</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Selection becomes a sibling to their parent</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_promote_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image1">
-                            <property name="visible">True</property>
-                            <property name="stock">gtk-go-back</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="demoteMenuItem">
-                        <property name="label" translatable="yes">D_emote</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Selection becomes a child of the previous item</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_demote_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image2">
-                            <property name="visible">True</property>
-                            <property name="stock">gtk-go-forward</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator9">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="splitItemMenuItem">
-                        <property name="label" translatable="yes">_Split Item</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Make a new item from the current selection</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_splitItem_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image12">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="mergeItemsMenuItem">
-                        <property name="label" translatable="yes">_Merge Items</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Merge current items into the first one</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_mergeItems_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image13">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator11">
-                        <property name="visible">True</property>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="sortTreeMenuItem">
-                        <property name="label" translatable="yes">S_ort Tree</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Popup the sort tree dialog</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_sortTree_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image14">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                  </widget>
-                </child>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+                <property name="primary_icon_stock">gtk-media-previous</property>
+                <property name="secondary_icon_stock">gtk-media-next</property>
+                <property name="primary_icon_activatable">True</property>
+                <property name="secondary_icon_activatable">True</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+                <signal name="changed" handler="on_menubar_find_entry_changed"/>
+                <signal name="activate" handler="on_menubar_find_entry_activate"/>
+                <signal name="icon_press" handler="on_menubar_find_entry_icon_press"/>
               </widget>
-            </child>
-            <child>
-              <widget class="GtkMenuItem" id="textMenuItem">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Te_xt</property>
-                <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="textMenuItem_menu">
-                    <child>
-                      <widget class="GtkImageMenuItem" id="formatMenuItem">
-                        <property name="label" translatable="yes">_Format</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Format the current paragraph</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_format_trigger"/>
-                        <accelerator key="L" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image15">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="timeStampMenuItem">
-                        <property name="label" translatable="yes">_Time stamp</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Add a time/date stamp (see preferences)</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_timeStamp_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image4">
-                            <property name="visible">True</property>
-                            <property name="stock">gnome-stock-timer</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="externalEditMenuItem">
-                        <property name="label" translatable="yes">_External Edit</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Edit current item in an external editor</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_externalEdit_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image5">
-                            <property name="visible">True</property>
-                            <property name="stock">gtk-edit</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="sortTextMenuItem">
-                        <property name="label" translatable="yes">_Sort Text</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Popup the sort text dialog</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_sortText_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image16">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                  </widget>
-                </child>
-              </widget>
-            </child>
-            <child>
-              <widget class="GtkMenuItem" id="helpMenuItem">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">_Help</property>
-                <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="helpMenuItem_menu">
-                    <child>
-                      <widget class="GtkImageMenuItem" id="readManualMenuItem">
-                        <property name="label" translatable="yes">_Read Manual</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Read the online manual (using gjots)</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_readManual_trigger"/>
-                        <child internal-child="image">
-                          <widget class="GtkImage" id="image3">
-                            <property name="visible">True</property>
-                            <property name="stock">gtk-dialog-info</property>
-                          </widget>
-                        </child>
-                      </widget>
-                    </child>
-                    <child>
-                      <widget class="GtkImageMenuItem" id="aboutMenuItem">
-                        <property name="label">gtk-about</property>
-                        <property name="visible">True</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                        <signal name="activate" handler="on_about_trigger"/>
-                      </widget>
-                    </child>
-                  </widget>
-                </child>
-              </widget>
+              <packing>
+                <property name="position">3</property>
+              </packing>
             </child>
           </widget>
           <packing>
@@ -1159,44 +1231,6 @@ Gabriel Munoz
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </property>
     <property name="translator_credits" translatable="yes">Rui Nibau (fr) &lt;rui.nibau@omacronides.com&gt;
 Robert Emil Berge (no, nb) &lt;filoktetes@linuxophic.org&gt;
@@ -1205,6 +1239,7 @@ Raimondo Giammanco (it) &lt;rongten@member.fsf.org&gt;
 Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
 Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
 Aleksa &#x160;u&#x161;uli&#x107; (sl) &lt;susulic@gmail.com&gt;
+Uwe Steinmann (de) &lt;uwe@steinmann.cx&gt;
 </property>
     <property name="logo">gjots.png</property>
   </widget>
@@ -1336,8 +1371,8 @@ Aleksa &#x160;u&#x161;uli&#x107; (sl) &lt;susulic@gmail.com&gt;
                 <property name="border_width">5</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_generalOK_clicked"/>
-                <accelerator key="KP_Enter" signal="clicked"/>
                 <accelerator key="Return" signal="clicked"/>
+                <accelerator key="KP_Enter" signal="clicked"/>
               </widget>
               <packing>
                 <property name="expand">False</property>
@@ -1787,8 +1822,8 @@ Aleksa &#x160;u&#x161;uli&#x107; (sl) &lt;susulic@gmail.com&gt;
                     <property name="receives_default">False</property>
                     <property name="use_underline">True</property>
                     <signal name="clicked" handler="on_findStartButton_clicked"/>
-                    <accelerator key="KP_Enter" signal="clicked"/>
                     <accelerator key="Return" signal="clicked"/>
+                    <accelerator key="KP_Enter" signal="clicked"/>
                   </widget>
                   <packing>
                     <property name="x_options">GTK_FILL</property>
@@ -2489,8 +2524,8 @@ Aleksa &#x160;u&#x161;uli&#x107; (sl) &lt;susulic@gmail.com&gt;
                 <property name="border_width">5</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_sortOKButton_clicked"/>
-                <accelerator key="Return" signal="clicked"/>
                 <accelerator key="KP_Enter" signal="clicked"/>
+                <accelerator key="Return" signal="clicked"/>
               </widget>
               <packing>
                 <property name="expand">False</property>

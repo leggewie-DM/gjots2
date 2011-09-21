@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 2.3.14
+                 Version 2.3.15
 
 
       bhepple@freeshell.org
@@ -77,7 +77,7 @@ RPM-based systems
 
 Just do this:
 
-VERSION=2.3.14
+VERSION=2.3.15
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 yum install gjots2-${VERSION}-1.noarch.rpm
 
@@ -147,7 +147,7 @@ app-office/gjots2 ~x86
 
 Then:	
 
-VERSION=2.3.14
+VERSION=2.3.15
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -160,7 +160,7 @@ emerge gjots2
 \NewEntry
 From the tarball source
 
-VERSION=2.3.14
+VERSION=2.3.15
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and
@@ -240,6 +240,12 @@ These options are available:
 -p, --purge-password                scrub password as soon as it's used
 -r, --readonly:                     no editing (or locking)
 -V, --version:                      print the version and exit
+
+For supported languages other than English, you can use eg:
+	LC_ALL=de_DE.utf8 gjots2
+
+To see what languages are currently supported:
+	ls /usr/{,local/}share/locale/*/LC_MESSAGES/gjots2.mo
 
 \NewEntry
 Open and save
@@ -893,12 +899,11 @@ Czech translation by:
 Spanish translation by:
 		Cecilio Salmeron <s.cecilio@gmail.com>
 
-Hungarian translation by: 
-		Erno Csatlos <erno@csatlos.net>
-
 Slovenian translation by: 
-		Aleksa Šušulić <susulic@gmail.com>
+	Aleksa Šušulić <susulic@gmail.com>
 
+German translation by:
+	Uwe Steinmann <uwe@steinmann.cx>
 \NewEntry
 Licence (GPL)
 
