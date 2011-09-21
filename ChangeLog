@@ -1,3 +1,7 @@
+2011-05-10    <bhepple@freeshell.org> Version 2.3.13
+	* Fixed plain text, match-case find
+	* Added Slovenian translation (thanks to Aleksa Šušulić)
+	
 2011-01-03    <bhepple@freeshell.org> Version 2.3.12
 	* Spanish translation finalised
 	

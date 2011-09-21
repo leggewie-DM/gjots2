@@ -255,7 +255,8 @@
                         <property name="use_stock">False</property>
                         <property name="always_show_image">True</property>
                         <signal name="activate" handler="on_findAgain_trigger"/>
-                        <accelerator key="G" signal="activate" modifiers="GDK_CONTROL_MASK"/>                        <child internal-child="image">
+                        <accelerator key="G" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <child internal-child="image">
                           <widget class="GtkImage" id="image17">
                             <property name="visible">True</property>
                             <property name="stock">gtk-media-next</property>
@@ -1186,6 +1187,7 @@ Sergey Bezdenezhnyh (ru) &lt;sib-mail@mtu-net.ru&gt;
 Raimondo Giammanco (it) &lt;rongten@member.fsf.org&gt;
 Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
 Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
+Aleksa Šušulić (sl) &lt;susulic@gmail.com&gt;
 </property>
     <property name="logo">gjots.png</property>
   </widget>

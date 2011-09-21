@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Copyright (C) 1997-2007 Bob Hepple
 # 
@@ -7,7 +7,7 @@
 # to PS or PDF and then invoking a suitable viewer. Otherwise, just
 # print through pr
 
-# $Id: gjots2lpr,v 1.1.2.5 2008/11/07 05:53:21 bhepple Exp $
+# $Id: gjots2lpr,v 1.1.2.6 2011/02/16 23:07:50 bhepple Exp $
 
 # This program is free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public
@@ -26,44 +26,69 @@
 # Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
 # 02139, USA.
 
+print_list() {
+    if [ $# -lt 2 ]; then
+        echo "$1"
+    else
+        LIST=( "$@" )
+        LISTLEN=$((${#LIST[@]} - 1))
+        PREFIX=""
+        for (( i = 0; i < $LISTLEN; i++ )); do 
+            echo -n "$PREFIX\"${LIST[i]}\""
+            PREFIX=", "
+        done
+        echo " or \"${LIST[i]}\""
+    fi
+}
+
 usage() {
-	echo "Usage: $PROG [-pt ] [ filename ... ]
+	echo "Usage: $PROG [ -124fhmptv ] [ filename ... ]
 
 Prints a text file - if possible using postscript or PDF and available
-pre-viewers and printer dialog. It looks for and uses whatever utilities it can
-find on the system.
+pre-viewers and printer dialog. It looks for and uses whatever
+utilities it can find on the system.
 
 If 'filename' is not given then STDIN is printed.
 
 -1: 1 page per sheet
 -2: 2 page per sheet
 -4: 4 page per sheet
+-f FORMATTER: use FORMATTER (a2ps, enscript or mpage)
+-m MEDIA: paper size (default $MEDIA)
 -p: convert to PDF rather than PS
 -t: stick to ASCII text - don't convert to postscript
+-v: verbose operation
 
 The following environment parameters are recognised and have default values:
 
-GJOTS_LPR: xpp, gtklp, kprinter or lpr
-GJOTS_TXT2PS: \"$A2PS_DEFAULTS\", \"$MPAGE_DEFAULTS\" or \"$ENSCRIPT_DEFAULTS\"
-GJOTS_PS2PDF: ps2pdf
-GJOTS_PSVIEWER: gv, kghostview, ggv or ghostview
-GJOTS_PDFVIEWER: acroread, kpdf or xpdf
-GJOTS_PRETTY: \"$PR_DEFAULTS\"
-GJOTS_TXTVIEWER: \"$XDIALOG_DEFAULTS\" or \"$XMESSAGE_DEFAULTS\"
+GJOTS_LPR: $(print_list "${DEFAULT_GJOTS_LPR[@]}")
+GJOTS_TXT2PS: $(print_list "${DEFAULT_GJOTS_TXT2PS[@]}")
+GJOTS_PS2PDF: $(print_list "${DEFAULT_GJOTS_PS2PDF[@]}")
+GJOTS_PSVIEWER: $(print_list "${DEFAULT_GJOTS_PSVIEWER[@]}")
+GJOTS_PDFVIEWER: $(print_list "${DEFAULT_GJOTS_PDFVIEWER[@]}")
+GJOTS_PRETTY: $(print_list "${DEFAULT_GJOTS_PRETTY[@]}")
+GJOTS_TXTVIEWER: $(print_list "${DEFAULT_GJOTS_TXTVIEWER[@]}")
 "
 }
 
 check_env() {
-	# note that we cleverly check only $1 in case there's a bunch of options:
-	RET=""
-	if [ "$1" ]; then
-		if type $1 >/dev/null 2>&1; then
-			RET="$@"
-		else
-			RET=""
+    ALL=( "$@" )
+    for CANDIDATE in "${ALL[@]}"; do
+        set -- $CANDIDATE
+	    if [ "$1" ]; then
+		    if type "$1" >/dev/null 2>&1; then
+			    echo "$CANDIDATE"
+                return 0
+            fi
 		fi
-	fi
-	echo $RET
+	done
+	echo ""
+    return 1
+}
+
+verbose() {
+    [ "$VERBOSE" ] && echo "$@"
+    eval $@
 }
 
 PROG=`basename $0`
@@ -73,177 +98,125 @@ TEMP="/tmp/.tmp.$$"
 RM_LIST=""
 trap "rm -f \$RM_LIST" EXIT
 PAGE_UP=-2
-ARGS=`getopt -o 124htp -- "$@"`
 DO_USAGE=""
-[ $? != 0 ] && echo "use -h for usage" >&2 && exit 1
+VERBOSE=""
+MEDIA=A4
+FORMATTER=""
 
+ARGS=`getopt -o 124f:hm:ptv -- "$@"`
+[ $? != 0 ] && echo "$PROG: use -h for usage" >&2 && exit 1
 eval set -- "$ARGS"
-
 while true; do
 	case $1 in
 		-[124]) PAGE_UP=$1; shift;;
 		-t) TEXTONLY="true"; shift;;
 		-p) PDFONLY="true"; shift;;
-		-h) usage; DO_USAGE="yes"; break;;
+		-h) DO_USAGE="yes"; shift;;
+        -m) MEDIA="$2"; shift; shift;;
+        -f) FORMATTER="$2"; shift; shift;;
+        -v) VERBOSE="yes"; shift;;
 		--) shift; break;;
 		*)  echo "$PROG: internal error" >&2 ; exit 1;;
 	esac
 done
+FILES="$@"
+TITLE=$(basename "$1")
 
-MPAGE_DEFAULTS="mpage -f $PAGE_UP -I1 -P-"
-ENSCRIPT_DEFAULTS="enscript -p - $PAGE_UP -I1"
-A2PS_DEFAULTS="a2ps --margin=1 -B $PAGE_UP -o -"
+MPAGE_DEFAULTS="mpage -b$MEDIA -X'$TITLE' -f $PAGE_UP"
+# NB enscript & a2ps fold long lines by default:
+ENSCRIPT_DEFAULTS="enscript --borders --output=- --media=$MEDIA $PAGE_UP --header='%D %T|$TITLE|Page $% of $='"
+A2PS_DEFAULTS="a2ps --medium=$MEDIA --margin=1 --header --center-title='$TITLE' $PAGE_UP --output=-"
 PR_DEFAULTS="pr -o 1 -T"
 XDIALOG_DEFAULTS="Xdialog --ok-label Print --textbox - 80 120"
 XMESSAGE_DEFAULTS="xmessage -buttons Cancel:1,Print:0 -file -"
 
-GJOTS_LPR=$(check_env $GJOTS_LPR)
-GJOTS_TXT2PS=$(check_env $GJOTS_TXT2PS)
-GJOTS_PS2PDF=$(check_env $GJOTS_PS2PDF)
-GJOTS_PSVIEWER=$(check_env $GJOTS_PSVIEWER)
-GJOTS_PDFVIEWER=$(check_env $GJOTS_PDFVIEWER)
-GJOTS_TXTVIEWER=$(check_env $GJOTS_TXTVIEWER)
-GJOTS_PRETTY=$(check_env $GJOTS_PRETTY)
+DEFAULT_GJOTS_LPR=( xpp gtklp kprinter lpr )
+DEFAULT_GJOTS_TXT2PS=( "$A2PS_DEFAULTS" "$ENSCRIPT_DEFAULTS" "$MPAGE_DEFAULTS" )
+DEFAULT_GJOTS_PS2PDF=( ps2pdf )
+DEFAULT_GJOTS_PSVIEWER=( evince kghostview kpdf ggv gv )
+DEFAULT_GJOTS_PDFVIEWER=( evince acroread kpdf "xpdf -z page" )
+DEFAULT_GJOTS_TXTVIEWER=( "$XDIALOG_DEFAULTS" "$XMESSAGE_DEFAULTS" )
+DEFAULT_GJOTS_PRETTY=( "$PR_DEFAULTS" cat )
+
+case "$FORMATTER" in
+    mpage)
+        GJOTS_TXT2PS=${GJOTS_TXT2PS:-$MPAGE_DEFAULTS} ;;
+    a2ps)
+        GJOTS_TXT2PS=${GJOTS_TXT2PS:-$A2PS_DEFAULTS} ;;
+    enscript)
+        GJOTS_TXT2PS=${GJOTS_TXT2PS:-$ENSCRIPT_DEFAULTS} ;;
+    ?*)
+        GJOTS_TXT2PS=${GJOTS_TXT2PS:-$FORMATTER} ;;
+    *)
+        ;;
+esac
+
+GJOTS_LPR=$(check_env "$GJOTS_LPR" "${DEFAULT_GJOTS_LPR[@]}" )
+GJOTS_TXT2PS=$(check_env "$GJOTS_TXT2PS" "${DEFAULT_GJOTS_TXT2PS[@]}")
+GJOTS_PS2PDF=$(check_env "$GJOTS_PS2PDF" "${DEFAULT_GJOTS_PS2PDF[@]}")
+GJOTS_PSVIEWER=$(check_env "$GJOTS_PSVIEWER" "${DEFAULT_GJOTS_PSVIEWER[@]}")
+GJOTS_PDFVIEWER=$(check_env "$GJOTS_PDFVIEWER" "${DEFAULT_GJOTS_PDFVIEWER[@]}")
+GJOTS_TXTVIEWER=$(check_env "$GJOTS_TXTVIEWER" "${DEFAULT_GJOTS_TXTVIEWER[@]}")
+GJOTS_PRETTY=$(check_env "$GJOTS_PRETTY" "${DEFAULT_GJOTS_PRETTY[@]}")
 
 [ "$DO_USAGE" ] && usage && exit 0
+   
+[ "$VERBOSE" ] && {
+    echo "\
+GJOTS_LPR=\"$GJOTS_LPR\"
+GJOTS_TXT2PS=\"$GJOTS_TXT2PS\"
+GJOTS_PS2PDF=\"$GJOTS_PS2PDF\"
+GJOTS_PSVIEWER=\"$GJOTS_PSVIEWER\"
+GJOTS_PDFVIEWER=\"$GJOTS_PDFVIEWER\"
+GJOTS_PRETTY=\"$GJOTS_PRETTY\"
+GJOTS_TXTVIEWER=\"$GJOTS_TXTVIEWER\""
+}
+ 
+if [ "$PDFONLY" -a "$GJOTS_PDFVIEWER" -a "$GJOTS_PS2PDF" ]; then
+	GJOTS_PSVIEWER=""
+fi
 
 # Get input files
 TTXT=$TEMP.txt
 RM_LIST="$TTXT"
-cat $@ >$TTXT
-
-# Find a printing program
-LPR=lpr
-if [ "$GJOTS_LPR" ]; then
-	LPR="$GJOTS_LPR"
-else
-	if [ "$DISPLAY" ]; then
-		if type xpp >/dev/null 2>&1; then
-			LPR=xpp
-		elif type gtklp >/dev/null 2>&1; then
-			LPR=gtklp
-		elif type kprinter >/dev/null 2>&1; then
-			LPR=kprinter
-		fi
-	fi
-fi
-
-# Find a text to postscript converter:
-if [ "$GJOTS_TXT2PS" ]; then
-	TXT2PS="$GJOTS_TXT2PS"
-else
-	TXT2PS=""
-	if type a2ps >/dev/null 2>&1; then
-		TXT2PS="$A2PS_DEFAULTS"
-	elif type mpage >/dev/null 2>&1; then
-		TXT2PS="$MPAGE_DEFAULTS"
-	elif type enscript >/dev/null 2>&1; then
-		TXT2PS="$ENSCRIPT_DEFAULTS"
-	fi
-fi
-
-# Find a PS previewer:
-if [ "$GJOTS_LPR" ]; then
-	PSVIEWER="$GJOTS_PSVIEWER"
-else
-	PSVIEWER=""
-	if [ "$DISPLAY" -a -z "$TEXTONLY" ] ; then
-		if type gv >/dev/null 2>&1; then
-			PSVIEWER="gv"
-		elif type kghostview >/dev/null 2>&1; then
-			PSVIEWER=kghostview
-		elif type kpdf >/dev/null 2>&1; then
-			PSVIEWER=kpdf
-		elif type ggv >/dev/null 2>&1; then
-			PSVIEWER="ggv"
-		elif type ghostview >/dev/null 2>&1; then
-			PSVIEWER=ghostview
-		fi
-	fi
-fi
-
-# If there's no PS viewer, maybe we can convert to pdf
-PDFVIEWER=""
-PS2PDF=""
-if [ "$DISPLAY" -a -z "$TEXTONLY" -a -n "$TXT2PS" ] ; then
-	# We need a PS to PDF converter:
-	if [ "$GJOTS_PS2PDF" ]; then
-		PS2PDF="$GJOTS_PS2PDF"
-	else
-		if type ps2pdf >/dev/null 2>&1; then
-			PS2PDF=ps2pdf
-		fi
-	fi
-
-	# find a PS previewer:
-	if [ -n "$PS2PDF" ]; then
-		if [ "$GJOTS_PDFVIEWER" ]; then
-			PDFVIEWER="$GJOTS_PDFVIEWER"
-		else
-			if type acroread >/dev/null 2>&1; then
-				PDFVIEWER=acroread
-			elif type kpdf >/dev/null 2>&1; then
-				PDFVIEWER=kpdf
-			elif type xpdf >/dev/null 2>&1; then
-				PDFVIEWER=xpdf
-			fi
-		fi
-	fi
-fi
-
-if [ "$PDFONLY" -a "$PDFVIEWER" ]; then
-	PSVIEWER=""
-fi
+cat $FILES >$TTXT
 
 # Convert text to postscript & fire up a viewer if possible:
-if [ -z "$TEXTONLY" -a "$TXT2PS" ]; then
+if [ -z "$TEXTONLY" -a "$GJOTS_TXT2PS" ]; then
     TPS=$TEMP.ps
     TPDF=$TEMP.pdf
 	RM_LIST="$RM_LIST $TPS $TPDF"
-	$TXT2PS $TTXT > $TPS
-    if [ "$PSVIEWER" ]; then
-		$PSVIEWER $TPS
-	elif [ "$PDFVIEWER" -a "$PS2PDF" ]; then
+	verbose "$GJOTS_TXT2PS $TTXT > $TPS"
+    if [ "$GJOTS_PSVIEWER" ]; then
+		verbose "$GJOTS_PSVIEWER $TPS"
+	elif [ "$GJOTS_PDFVIEWER" -a "$GJOTS_PS2PDF" ]; then
 		# Convert to pdf & fire up a pdf viewer:
-		$PS2PDF $TPS $TPDF
-		$PDFVIEWER $TPDF
+		verbose "$GJOTS_PS2PDF $TPS $TPDF"
+		verbose "$GJOTS_PDFVIEWER $TPDF"
 	else
 		# if all else fails, just print the PS file
-		$LPR $TPS
+		verbose "$GJOTS_LPR $TPS"
 	fi
 	exit 0
 fi
 
 # We can't convert to postscript, just use text:
-PRETTY="cat"
-if type pr >/dev/null 2>&1; then
-	PRETTY="$PR_DEFAULTS"
-fi
  
 if [ "$DISPLAY" ]; then
 	# find a text previewer that can return 0 for "Print" and something else
 	# for Cancel:
-	if [ "$GJOTS_TXTVIEWER" ]; then
-		TXTVIEWER="$GJOTS_TXTVIEWER"
-	else
-		if type Xdialog >/dev/null 2>&1; then
-			TXTVIEWER="$XDIALOG_DEFAULTS"
-		elif type xmessage >/dev/null 2>&1; then
-			TXTVIEWER="$XMESSAGE_DEFAULTS"
-		fi
-	fi
 
-	if [ "$TXTVIEWER" ]; then
-		cat $TTXT |$TXTVIEWER
+	if [ "$GJOTS_TXTVIEWER" ]; then
+		verbose "cat $TTXT |$GJOTS_TXTVIEWER"
 		if [ $? = 0 ]; then 
-			$PRETTY $TTXT | $LPR
+			verbose "$GJOTS_PRETTY $TTXT | $GJOTS_LPR"
 		fi
 		exit 0
 	fi
 fi
 
 # if all else fails, just print the thing:
-$PRETTY $TTXT | $LPR
+verbose "$GJOTS_PRETTY $TTXT | $GJOTS_LPR"
 
 # Local variables
 # fill-column 79
