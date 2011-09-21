@@ -1835,25 +1835,65 @@ class gjots_gui:
 		
 		return 0 # allow further signal propagation
 
+	def backtick(self, command):
+		"""
+		Equivalent of Bourne shell's backtick
+		See http://www.python.org/doc/2.5.1/lib/node534.html
+		"""
+		from subprocess import Popen, PIPE
+		#print "backtick: command='%s'\n" % command
+		value = Popen(["sh", "-c", command], stdout=PIPE).communicate()[0].rstrip()
+		#print "returning '%s'\n" % value
+		return(value)
+
 	def _get_browser(self):
 		if self.trace:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		if self.browser:
 			return self.browser
-		browser_list = [ "firefox", "konqueror", "epiphany", "opera", "dillo", None ]
-		browser = os.getenv("BROWSER")
-		if not browser:
-			# see if there's one already running:
-			for browser in browser_list:
-				if browser and os.system("ps -ef |grep " + browser + " | grep -v grep >/dev/null 2>&1") == 0:
-					break
-		if not browser:
+		browser_list = { 
+			# reminder: this list's order means nothing:
+			# <name of executable>:<what to search for in ps -ef list>
+			"firefox4":"/[x]ulrunner-2/", 
+			"google-chrome":"[/]chrome ", 
+			"firefox":"/[x]ulrunner/", 
+			"konqueror":"[k]onqueror", 
+			"epiphany":"[e]piphany", 
+			"opera":"[o]pera", 
+			"dillo":"[d]illo" 
+			}
+
+        # see if there's one already running for this user:
+		for browser in browser_list.keys():
+			if os.system("ps -U " + os.getenv("USER") + " -o args | grep -q " + browser_list[browser]) == 0:
+				self.browser = browser
+				if self.trace:
+					print "using a running browser: ", browser
+				break
+
+		# see if there's something we can use in $BROWSER
+		if not self.browser:
+			browser = os.getenv("BROWSER")
+			if browser and os.system("type " + browser + " >/dev/null 2>&1") == 0:
+				self.browser = browser
+				if self.trace:
+					print "using the setting from BROWSER: ", browser
+			
+		# see if there's a preferred one in gnome:
+		if not self.browser:
+			self.browser = self.backtick("gconftool-2 -g /desktop/gnome/url-handlers/http/command 2>/dev/null").split()[0]
+			if self.trace:
+				print "using gnome-preferred browser: ", self.browser
+
+		if not self.browser:
 			# see if there's an executable one:
-			for browser in browser_list:
-				if browser and os.system("type " + browser + " >/dev/null 2>&1") == 0:
+			for browser in browser_list.keys():
+				if os.system("type " + browser + " >/dev/null 2>&1") == 0:
+					self.browser = browser
+					if self.trace:
+						print "using executable browser: ", browser
 					break
-		self.browser = browser
-		return browser
+		return self.browser
 	
 	def _run_browser_on(self, url):
 		if self.trace:
@@ -2323,10 +2363,10 @@ class gjots_gui:
 					use_textBuffer = 0
 					continue
 			else:
+				find_text = self.client.get_string(self.find_text_path)
 				if not self.client.get_bool(self.find_match_case_path):
 					zone = zone.lower()
-					find_text = self.client.get_string(
-						self.find_text_path).lower()
+					find_test = find_text.lower()
 				self.hit_start = zone.find(find_text)
 				if self.hit_start < 0:
 					use_textBuffer = 0
@@ -2556,15 +2596,18 @@ class gjots_gui:
 		# Perform more developer checks. If running from CVS or local
 		# tarball, then register local icons, otherwise look in the system
 		# data directory (e.g. /usr/share/gjots2).
+		datadir = prefix + "/share/gjots2/"
 		if not os.access(self.gui_filename, os.F_OK):
-			datadir = prefix + "/share/gjots2/"
 			self.gui_filename = datadir + gladefile
 			for name, file in self.icons.iteritems():
 				self.icons[name] = datadir + self.icons[name]
 		if os.access("pixmaps", os.F_OK):
 			for name, file in self.icons.iteritems():
-				self.icons[name] = "./pixmaps/" + self.icons[name]
+				datadir = "./pixmaps/"
+				self.icons[name] = datadir + self.icons[name]
 		self._init_icons()
+		gtk.window_set_default_icon(
+			gtk.gdk.pixbuf_new_from_file(datadir + "gjots.png"))
 
 		override = {}
 		try:
