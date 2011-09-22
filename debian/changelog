@@ -1,3 +1,20 @@
+gjots2 (2.3.15-1) unstable; urgency=low
+
+  * new upstream release (closes: #639969) which now properly supports undo
+    (closes: #579168 and LP: 632210)
+  * switch to DebSrc3.0. Closes: #600610
+  * debian/patches:
+    - rebase current and drop obsolete patches
+    - add gjots2lpr manpage
+  * debian/control:
+    - slightly change package description to conform to policy
+    - update Standards-Version to 3.9.2
+  * debian/copyright: update copyright years
+  * debian/rules: ship *.gjots files uncompressed for now as a better way
+    to deal with bug 470536 until compressed files are supported by gjots2
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Fri, 23 Sep 2011 00:54:49 +0800
+
 gjots2 (2.3.9-2) unstable; urgency=low
 
   * debian/control: 
