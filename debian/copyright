@@ -5,7 +5,7 @@ It was downloaded from http://bhepple.freeshell.org/gjots/index.shtml
 
 Upstream Author: Bob Hepple <bhepple@freeshell.org>
 
-Copyright: Copyright (c) 2002-2008, Bob Hepple <bhepple@freeshell.org>
+Copyright: Copyright (c) 2002-2011, Bob Hepple <bhepple@freeshell.org>
 
 License:
 
@@ -27,4 +27,4 @@ On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
 
 The Debian packaging is Copyright of Khalid El Fathi 2004-2006 and Rolf
-Leggewie 2009.  It is released under the GPL, version 2.
+Leggewie 2009-2011.  It is released under the GPL, version 2.
