@@ -9,3 +9,6 @@ override_dh_install:
 	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/INSTALL
 	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/COPYING
 	rm $(CURDIR)/debian/gjots2/usr/share/doc/*/ChangeLog
+
+override_dh_compress:
+	dh_compress -X.gjots
