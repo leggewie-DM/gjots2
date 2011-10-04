@@ -3,7 +3,6 @@ Section: gnome
 Priority: optional
 Maintainer: Rolf Leggewie <foss@rolf.leggewie.biz>
 Build-Depends: debhelper (>= 7.0.50~)
-Build-Depends-Indep: python-support (>= 0.3)
 Standards-Version: 3.9.2
 Homepage: http://bhepple.freeshell.org/gjots/
 Vcs-Browser: http://git.debian.org/?p=collab-maint/gjots2.git
@@ -14,7 +13,6 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-glade2, python-gnome2
 Recommends: gv, mpage
 Provides: ${python:Provides}
-XB-Python-Version: ${python:Versions}
 Description: Simple jotter (outline processor) for X11/gtk-gnome
  gjots2 is a fairly simple jotter (outline processor) and notetaking
  application for your desktop.
