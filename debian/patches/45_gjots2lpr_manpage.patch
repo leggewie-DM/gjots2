@@ -52,3 +52,16 @@ index 0000000..5ba7930
 +GJOTS_PRETTY: "pr \fB\-o\fR 1 \fB\-T\fR" or "cat"
 +.br
 +GJOTS_TXTVIEWER: "Xdialog \fB\-\-ok\-label\fR Print \fB\-\-textbox\fR \- 80 120" or "xmessage \fB\-buttons\fR Cancel:1,Print:0 \fB\-file\fR \-"
+Index: gjots2/setup.py
+===================================================================
+--- gjots2.orig/setup.py	2011-10-11 18:41:00.000000000 +0200
++++ gjots2/setup.py	2011-10-11 18:41:47.000000000 +0200
+@@ -33,7 +33,7 @@
+       url = "http://bhepple.freeshell.org/gjots/",
+       scripts = ['bin/gjots2','bin/gjots2docbook','bin/docbook2gjots','bin/gjots2html','bin/gjots2lpr'],
+ 	  data_files = [('lib/gjots2',['lib/__init__.py', 'lib/file.py', 'lib/general.py', 'lib/prefs.py', 'lib/common.py', 'lib/find.py', 'lib/gui.py', 'lib/prefs.py', 'lib/version.py', 'lib/printDialog.py', 'lib/sortDialog.py']),
+-					('share/man/man1', ['share/man/man1/gjots2.1','share/man/man1/gjots2docbook.1','share/man/man1/docbook2gjots.1','share/man/man1/gjots2html.1']),
++					('share/man/man1', ['share/man/man1/gjots2.1','share/man/man1/gjots2docbook.1','share/man/man1/docbook2gjots.1','share/man/man1/gjots2html.1','share/man/man1/gjots2lpr.1']),
+ 					('share/doc/gjots2', ['gjots2.gjots','AUTHORS','README','INSTALL', 'COPYING', 'ChangeLog']),
+ 					('share/doc/gjots2', ['gjots2.en_US.gjots']),
+ 					('share/doc/gjots2', ['gjots2.fr.gjots']),
