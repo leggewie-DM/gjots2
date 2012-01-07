@@ -1,3 +1,16 @@
+Index: gjots2/lib/gui.py
+===================================================================
+--- gjots2.orig/lib/gui.py	2012-01-08 00:01:30.000000000 +0100
++++ gjots2/lib/gui.py	2012-01-08 00:01:42.000000000 +0100
+@@ -1875,7 +1875,7 @@
+ 			# locale version. Version could be 2.3.11.201012291355:
+ 			v = gjots_version.split('.')
+ 			vers = ".".join(v[0:3])
+-			gjots_file_base = self.prefix + "/share/doc/gjots2-" + vers + "/gjots2"
++			gjots_file_base = self.prefix + "/share/doc/gjots2/gjots2"
+ 			for env in "LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG":
+ 				locale_lang = ""
+ 				try:
 Index: gjots2/setup.py
 ===================================================================
 --- gjots2.orig/setup.py	2011-01-15 22:17:38.000000000 +0100
