@@ -22,7 +22,7 @@ Description: Simple jotter (outline processor) for X11/gtk-gnome
  postscript, pdf, man, etc if you want (see the online manual for an example
  of the HTML conversion).
  .
- Some people use it for notes, personal bits and pieces, recipes, docbook XML
+ Some people use it for notes, personal bits and pieces, recipes, DocBook XML
  documents and even PINs and passwords (encrypted with ccrypt(1), openssl(1)
  or gpg(1)).
  .
