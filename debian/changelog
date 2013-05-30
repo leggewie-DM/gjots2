@@ -1,3 +1,18 @@
+gjots2 (2.3.15-2) unstable; urgency=low
+
+  * debian/patches/:
+    - 30_docpath.patch: make sure gjots2 looks in versionless path for manual
+    - 45_gjots2lpr_manpage.patch: provide more meaningful patch description
+      and make sure the man page is actually shipped
+  * debian/control:
+    - enable transition to dh_python2
+    - add explicit build-time and run-time dependency on python
+    - update to Standard 3.9.4
+    - replace docbook with DocBook in extended binary package description
+  * debian/copyright: update copyright information
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Thu, 30 May 2013 21:07:27 +0800
+
 gjots2 (2.3.15-1) unstable; urgency=low
 
   * new upstream release (closes: #639969) which now properly supports undo
