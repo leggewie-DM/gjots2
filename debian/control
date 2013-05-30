@@ -2,7 +2,6 @@ Source: gjots2
 Section: gnome
 Priority: optional
 Maintainer: Rolf Leggewie <foss@rolf.leggewie.biz>
-DM-Upload-Allowed: yes
 Build-Depends: debhelper (>= 7.0.50~), python
 Standards-Version: 3.9.4
 Homepage: http://bhepple.freeshell.org/gjots/
