@@ -1,3 +1,10 @@
+gjots2 (2.3.15-3) unstable; urgency=low
+
+  * update build process to dh9
+  * rules: proper building with python2 needs more explicit instructions
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Sun, 09 Jun 2013 12:04:21 +0900
+
 gjots2 (2.3.15-2) unstable; urgency=low
 
   * debian/patches/:
