@@ -1,3 +1,9 @@
+gjots2 (2.3.15-4) unstable; urgency=low
+
+  * use dh_manpages instead of patching gjots2lpr.1 directly in. Closes: #718130
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Wed, 16 Oct 2013 18:46:10 +0800
+
 gjots2 (2.3.15-3) unstable; urgency=low
 
   * update build process to dh9
