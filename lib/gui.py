@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
+
 import os, sys
-import gtk.glade
-import gnome.ui
 import gobject
 import tempfile
 import gconf
@@ -8,14 +8,13 @@ import pango
 import time # for strftime
 import pipes
 import inspect
-import gettext
+import signal
 
 from file import *
 from prefs import *
 from general import *
 from common import *
 from find import *
-#from sort import *
 from printDialog import *
 from sortDialog import *
 from version import *
@@ -27,7 +26,7 @@ Notes:
 Recall that a GtkTreeStore implements GtkTreeModel - so all treemodel
 methods apply to treestore
 
-According to file:/usr/share/gtk-doc/html/gtk/GtkTreeModel.html,
+According to file:///usr/share/gtk-doc/html/gtk/GtkTreeModel.html,
 tree_row_references are not necessary as "some models guarantee that
 an iterator is valid for as long as the node it refers to is valid
 (most notably the GtkTreeStore and GtkListStore)."
@@ -37,13 +36,41 @@ time the selection changes - so we can always make that assumption.
 
 """
 
+def _insert_primary_callback(clipboard, text, user_data):
+	self, x, y = user_data
+	if not self.readonly:
+		hit_iter = self.textView.get_iter_at_location(x, y)
+		self.textBuffer.place_cursor(hit_iter)
+		self.textBuffer.insert_at_cursor(text)
+		clipboard.set_text(text, -1)
+		self.msg(_("Text pasted"))
+
+def _alarm_handler(signalnum, stack):
+	gui = stack.f_globals['gui']
+	if gui.dirtyflag:
+		gui._do_save(reuse_password = 1)
+	else:
+		gui.set_readonly(1, 1)
+	gui.alarm_set = 0
+
 class gjots_gui:
+
+	def _set_dirtyflag(self):
+		self.dirtyflag = "* "
+		if self.alarm_set:
+			signal.alarm(0)
+			self.alarm_set = 0
+		timeout = self.client.get_int(self.auto_save_interval_path)
+		if timeout > 0:
+			signal.signal(signal.SIGALRM, _alarm_handler)
+			signal.alarm(timeout)
+			self.alarm_set = timeout
 
 	def _start_of_para(self):
 		"""
-		Para marker is \n\n or Unicode equiv (I suppose ???)
+		Para marker is \n\n
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		cursor_mark = self.textBuffer.get_insert()
 		start_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
@@ -69,7 +96,7 @@ class gjots_gui:
 		"""
 		Para marker is \n\n or Unicode equiv (I suppose ???)
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		cursor_mark = self.textBuffer.get_insert()
 		next_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
@@ -89,7 +116,7 @@ class gjots_gui:
 		that might be a url. Word marker is \n \t or space. Returns a
 		TextBuffer iterator.
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		cursor_mark = self.textBuffer.get_insert()
 		start_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
@@ -111,7 +138,7 @@ class gjots_gui:
 		"""
 		Word marker is \n \t or space
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		cursor_mark = self.textBuffer.get_insert()
 		end_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
@@ -128,7 +155,7 @@ class gjots_gui:
 				return end_iter
 			
 	def do_format_paragraph(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		text_formatter=self.client.get_string(self.text_formatter_path)
@@ -158,7 +185,7 @@ class gjots_gui:
 		para = open(scratch, "r").read()
 		if para and para[-1] == '\n':
 			para = para[0:-1]
-		if self.trace:
+		if self.debug:
 			print ("\"%s\"\n" % para)
 		self.textBuffer.place_cursor(start_iter)
 		self.textBuffer.delete(start_iter, end_iter)
@@ -172,80 +199,69 @@ class gjots_gui:
 		return
 	
 	def do_time_stamp(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		format = self.client.get_string(self.date_format_path)
 		newstring = time.strftime(format)
 		self.textBuffer.insert_at_cursor(newstring, len(newstring))
 		return
-	
+
 	def update_find_entry(self):
-		"Potential for wonderful infinite loops here? "
-		if self.trace:
+		# Potential for wonderful infinite loops here?
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		m = self.xml.get_widget("menubar_find_entry")
+		m = self.gui_get_widget("menubar_find_entry")
+		if not m:
+			# glade2
+			m = self.gui_get_widget("menubar_find_combobox")
+			if m:
+				m = m.child
 		if m:
 			m.set_text(self.client.get_string(self.find_text_path))
 		if self.find_dialog:
 			self.find_dialog.update_find_entry()
 
 	def on_gconf_find_text_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
+		return 0
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.trace:
-			print "find_text=", client.get_string(self.find_text_path)
+			print "find_text=", self.client.get_string(self.find_text_path)
 		self.update_find_entry()
 		return
-	
-	def on_gconf_line_length_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
-			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.trace:
-			print "line_length=", client.get_int(self.line_length_path)
-		return
-	
-	def on_gconf_text_formatter_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
-			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.trace:
-			print "text_formatter=", client.get_int(self.text_formatter_path)
-		return
-	
-	def on_gconf_external_editor_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
-			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.trace:
-			print "external_editor = ",client.get_string(self.external_editor_path)
-		return
 
-	def on_gconf_date_format_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
+	def on_gjots_focus_out_event(self, arg1, arg2):
+		signal.alarm(0)
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.trace:
-			print "date_format=", client.get_string(self.date_format_path)
-		return
+		if self.client.get_int(self.auto_save_interval_path) > 0:
+			self._do_save(reuse_password = 1)
+		timeout = self.client.get_int(self.auto_read_only_timeout_path)
+		if timeout > 0:
+			signal.signal(signal.SIGALRM, _alarm_handler)
+			signal.alarm(timeout)
+			self.alarm_set = timeout
 
-	def on_gconf_print_command_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
+
+	def on_combobox_changed(self, combobox):
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.trace:
-			print "print_command=", client.get_string(self.print_command_path)
-		return
+		s = combobox.get_active_text()
+		self.client.set_string(self.find_text_path, s)
+		return 0
 
 	def on_gconf_text_font_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.trace:
 			print "text_font=", client.get_string(self.text_font_path)
 		font_desc = pango.FontDescription(self.client.get_string(self.text_font_path))
 		self.textView.modify_font(font_desc)
 		return
 
 	def on_gconf_top_toolbar_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		value = self.client.get_bool(self.top_toolbar_path)
-		w = self.xml.get_widget("topToolbar")
+		w = self.gui_get_widget("topToolbar")
 		if w:
 			if value:
 				w.show()
@@ -254,16 +270,16 @@ class gjots_gui:
 
 		# how come this doesn't create an infinite loop - doesn't the
 		# GtkMenuChecklist item get a notification?
-		w = self.xml.get_widget("topToolbarCheckMenuItem")
+		w = self.gui_get_widget("topToolbarCheckMenuItem")
 		if w:
 			w.set_active(value)
 		return
 	
 	def on_gconf_side_toolbar_changed(self, client, cnxn_id, entry, label):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		value = self.client.get_bool(self.side_toolbar_path)
-		w = self.xml.get_widget("treeToolbar")
+		w = self.gui_get_widget("treeToolbar")
 		if w:
 			if value:
 				w.show()
@@ -272,41 +288,43 @@ class gjots_gui:
 
 		# how come this doesn't create an infinite loop - doesn't the
 		# GtkMenuChecklist item get a notification?
-		w = self.xml.get_widget("treeToolbarCheckMenuItem")
+		w = self.gui_get_widget("treeToolbarCheckMenuItem")
 		if w:
 			w.set_active(value)
 		return
 	
 	def on_gconf_show_icon_text_changed(self, client, cnxn_id, entry, label):
 		if self.client.get_bool(self.show_icon_text_path):
-			self.xml.get_widget("topToolbar").set_style(gtk.TOOLBAR_BOTH)
-			self.xml.get_widget("treeToolbar").set_style(gtk.TOOLBAR_BOTH)
+			self.gui_get_widget("topToolbar").set_style(gtk.TOOLBAR_BOTH)
+			self.gui_get_widget("treeToolbar").set_style(gtk.TOOLBAR_BOTH)
 		else:
-			self.xml.get_widget("topToolbar").set_style(gtk.TOOLBAR_ICONS)
-			self.xml.get_widget("treeToolbar").set_style(gtk.TOOLBAR_ICONS)
+			self.gui_get_widget("topToolbar").set_style(gtk.TOOLBAR_ICONS)
+			self.gui_get_widget("treeToolbar").set_style(gtk.TOOLBAR_ICONS)
 
-		self.xml.get_widget("showIconTextCheckMenuItem").set_active(self.client.get_bool(self.show_icon_text_path))
+		self.gui_get_widget("showIconTextCheckMenuItem").set_active(self.client.get_bool(self.show_icon_text_path))
 		return
 
 	def on_gconf_status_bar_changed(self, client, cnxn_id, entry, label):
 		if self.client.get_bool(self.status_bar_path):
-			self.xml.get_widget("appbar").show()
+			self.gui_get_widget("appbar").show()
 		else:
-			self.xml.get_widget("appbar").hide()
+			self.gui_get_widget("appbar").hide()
 
-		self.xml.get_widget("statusBarMenuItem").set_active(self.client.get_bool(self.status_bar_path))
+		self.gui_get_widget("statusBarMenuItem").set_active(self.client.get_bool(self.status_bar_path))
 		return
 
 	def on_gconf_pane_position_changed(self, client, cnxn_id, entry, label):
-		self.xml.get_widget("treeTextPane").set_position(client.get_int(self.pane_position_path))
+		self.gui_get_widget("treeTextPane").set_position(client.get_int(self.pane_position_path))
 		return
 
 	def _setup_gconf(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.base_path = "/apps/" + self.progName
 
 		self.line_length_path = self.base_path + "/line_length"
+		self.auto_save_interval_path = self.base_path + "/autoSaveInterval"
+		self.auto_read_only_timeout_path = self.base_path + "/autoReadOnlyTimeout"
 		self.text_formatter_path = self.base_path + "/text_formatter"
 		self.external_editor_path = self.base_path + "/external_editor"
 		self.date_format_path = self.base_path + "/date_format"
@@ -349,6 +367,12 @@ class gjots_gui:
 		
 		if not self.client.get_int(self.line_length_path):
 			self.client.set_int(self.line_length_path, 70)
+		
+		if not self.client.get_int(self.auto_save_interval_path):
+			self.client.set_int(self.auto_save_interval_path, 0)
+		
+		if not self.client.get_int(self.auto_read_only_timeout_path):
+			self.client.set_int(self.auto_read_only_timeout_path, 0)
 
 		if not self.client.get_string(self.text_formatter_path):
 			self.client.set_string(self.text_formatter_path, "fmt -w %d")
@@ -357,7 +381,9 @@ class gjots_gui:
 			self.client.set_string(self.print_command_path, "gjots2lpr $1")
 
 		if not self.client.get_string(self.external_editor_path):
-			if os.system("type nedit >/dev/null 2>&1") == 0:
+			if os.system("type gedit >/dev/null 2>&1") == 0:
+				self.client.set_string(self.external_editor_path, "gedit %s")
+			elif os.system("type nedit >/dev/null 2>&1") == 0:
 				self.client.set_string(self.external_editor_path, "nedit %s")
 			elif os.system("type xedit >/dev/null 2>&1") == 0:
 				self.client.set_string(self.external_editor_path, "xedit %s")
@@ -372,6 +398,10 @@ class gjots_gui:
 
 		if not self.client.get_string(self.find_text_path):
 			self.client.set_string(self.find_text_path, "")
+
+		for i in range(0, self.combobox_max_lines_to_save):
+			if not self.client.get_string(self.find_text_path + str(i)):
+				self.client.set_string(self.find_text_path + str(i), "")
 
 		if not self.client.get_string(self.replace_text_path):
 			self.client.set_string(self.replace_text_path, "")
@@ -413,23 +443,19 @@ class gjots_gui:
 
 		# setup notifiers:
 		
+		self.global_find_index = 0
 		self.client.notify_add(self.find_text_path, self.on_gconf_find_text_changed, self.gjots)
-		self.client.notify_add(self.line_length_path, self.on_gconf_line_length_changed, self.gjots)
-		self.client.notify_add(self.text_formatter_path, self.on_gconf_text_formatter_changed, self.gjots)
-		self.client.notify_add(self.external_editor_path, self.on_gconf_external_editor_changed, self.gjots)
-		self.client.notify_add(self.date_format_path, self.on_gconf_date_format_changed, self.gjots)
 		self.client.notify_add(self.text_font_path, self.on_gconf_text_font_changed, self.gjots)
 		self.client.notify_add(self.top_toolbar_path, self.on_gconf_top_toolbar_changed, self.gjots)
 		self.client.notify_add(self.side_toolbar_path, self.on_gconf_side_toolbar_changed, self.gjots)
 		self.client.notify_add(self.show_icon_text_path, self.on_gconf_show_icon_text_changed, self.gjots)
 		self.client.notify_add(self.status_bar_path, self.on_gconf_status_bar_changed, self.gjots)
 		self.client.notify_add(self.pane_position_path, self.on_gconf_pane_position_changed, self.gjots)
-		self.client.notify_add(self.print_command_path, self.on_gconf_print_command_changed, self.gjots)
 		return
 	
 	def _create_empty_tree(self):
 		# create an empty tree:
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.gjotsfile = gjotsfile(self)
 		self.flush_tree()
@@ -437,19 +463,20 @@ class gjots_gui:
 		self.show_tree(self.progName)
 
 	def flush_tree(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.treestore = gtk.TreeStore(gobject.TYPE_STRING, # title == first line of body except for root, which is filename
-									   gobject.TYPE_STRING, # body
-									   gobject.TYPE_INT)    # body_temp_flag - used after creating new items
+		self.treestore = gtk.TreeStore(
+			gobject.TYPE_STRING, # title == first line of body except for root, which is filename
+			gobject.TYPE_STRING, # body
+			gobject.TYPE_INT)    # body_temp_flag - used after creating new items
 		
 	def set_title(self, basename):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		self.gjots.set_title(self.progName + ": %s" % basename)
 		
 	def show_tree(self, basenanme):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		# remove the old column, if there:
 		column = self.treeView.get_column(0)
@@ -465,19 +492,17 @@ class gjots_gui:
 		self.set_title(basenanme)
 		self.treeView.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
 		self.treeView.show()
-		self.root = self.treestore.get_iter_first()
-
 		return
 
 	def get_node_value(self, treeiter):
 		"Get the text value of the node at location 'treeiter'"
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return self.treestore.get_value(treeiter, 1)
 
 	def get_node_title(self, treeiter):
 		"Get the title value of the node at location 'treeiter'"
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		body = self.treestore.get_value(treeiter, 1)
 		eol = body.find("\n")
@@ -488,17 +513,17 @@ class gjots_gui:
 		return title
 
 	def get_first_child(self, treeiter):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return self.treestore.iter_nth_child(treeiter, 0)
 
 	def get_root(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return self.treestore.get_iter_first()
 	
 	def get_next(self, treeiter):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return self.treestore.iter_next(treeiter)
 
@@ -517,27 +542,28 @@ class gjots_gui:
 		"""
 
 		Get the previous tree item - if current has a previous
-		sibling, return it's last (deepest) child. If no more
+		sibling, return its last (deepest) child. If no more
 		siblings, get the last (deepest) child of the previous sibling
 		of the parent.
 
 		"""
 
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		prev = self._iter_prev(iter)
 		if prev:
 			return self._get_deepest_child(prev)
 
-		while 1:
+		while iter:
 			iter = self.treestore.iter_parent(iter)
 			if not iter:
 				return None
 			prev = self._iter_prev(iter)
 			if prev:
 				return self._get_deepest_child(prev)
-		
+		return iter
+
 	def get_linear_next(self, iter):
 		"""
 
@@ -547,7 +573,7 @@ class gjots_gui:
 
 		"""
 
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		next = self.treestore.iter_children(iter)
 		if next:
@@ -557,17 +583,18 @@ class gjots_gui:
 		if next:
 			return next
 
-		while 1:
+		while iter:
 			iter = self.treestore.iter_parent(iter)
 			if not iter:
 				return None
 			next = self.treestore.iter_next(iter)
 			if next:
 				return next
-		
+		return iter
+
 	def new_node(self, parent, sibling, title, body):
 		# bit too verbose to trace:
-		#if self.trace:
+		#if self.debug:
 		#	print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if sibling:
 			treeiter = self.treestore.insert_after(parent, sibling)
@@ -582,7 +609,7 @@ class gjots_gui:
 		"""
 		Inserts a new blank item into the tree after the last one selected. Make the new item the selection.
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		sibling = self.get_last_selected_iter()
 		if not sibling or self.same_iter(sibling, self.get_root()):
@@ -606,15 +633,15 @@ class gjots_gui:
 
 		# Now put the cursor into the right place
 		self.textView.grab_focus()
-		self.dirtyflag = "* "
+		self._set_dirtyflag()
 
 	def _do_new_child(self):
 		"""
 		Inserts a new blank item as a child of the last one selected.
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.dirtyflag = "* "
+		self._set_dirtyflag()
 		parent = self.get_last_selected_iter()
 		if not parent:
 			# nothing selected or tree is empty - just add an new page
@@ -639,7 +666,7 @@ class gjots_gui:
 		"""
 		Move the current selection before the first's sibling, if any.
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		first_selected = self.get_first_selected_iter()
@@ -654,8 +681,33 @@ class gjots_gui:
 		if not this:
 			self.msg(_("No child!"))
 			return
+
 		if self.same_iter(this, first_selected):
-			self.msg(_("Can't go any further"))
+			# we're at the end of this level - see if we can push into
+			# the parents prev sibling:
+			new_parent = self._iter_prev(parent)
+			if not new_parent:
+				self.msg(_("Can't go any further"))
+				return
+				
+			this = first_selected
+			new_selection_start = new_selection_end = None
+			while this:
+				if not self.treeView.get_selection().iter_is_selected(this):
+					break
+				next = self.treestore.iter_next(this)
+				new_selection_end = self._copy_subtree(self.treestore, this, self.treestore, new_parent, -1)
+				if not new_selection_start:
+					new_selection_start = new_selection_end
+				self.treestore.remove(this)
+				self._set_dirtyflag()
+				this = next
+
+			parent_path = self.treestore.get_path(new_parent)
+			self.treeView.expand_row(parent_path, 0)
+
+			self._select_range(new_selection_start, new_selection_end)
+
 			return
 
 		# scan the siblings until we get to the first_selected:
@@ -672,15 +724,47 @@ class gjots_gui:
 					if self.treeView.get_selection().iter_is_selected(this):
 						self.treestore.move_before(this, pivot) # gtk 2.2 only
 					this = self.treestore.iter_next(this)
-				self.dirtyflag = "* "
+				self._set_dirtyflag()
 				return
 			this = next
 			
+	def _copy_subtree(self, from_treestore, from_iter, to_treestore, to_iter, position):
+		"""
+		position = 0 means to the start
+		position =-1 means to the end
+		position = otherwise _before_ that position
+		"""
+		title = from_treestore.get_value(from_iter, 0)
+		text = from_treestore.get_value(from_iter, 1)
+		if (type(position) == type(to_iter)):
+			new = to_treestore.insert_before(to_iter, position)
+		else:
+			if position == -1:
+				position = to_treestore.iter_n_children(to_iter) + 1
+			new = to_treestore.insert(to_iter, position)
+		to_treestore.set_value(new, 0, title)
+		to_treestore.set_value(new, 1, text)
+		this = from_treestore.iter_nth_child(from_iter, 0)
+		while this:
+			self._copy_subtree(from_treestore, this, to_treestore, new, -1)
+			this = from_treestore.iter_next(this)
+		return new
+
+	def _select_range(self, start, end):
+		# temporarily disconnect selection updating as structure is unstable (bug 1250753):
+		self.treeView.get_selection().disconnect(self.on_tree_selection_changed_handler)
+		
+		self.treeView.get_selection().select_range(self.treestore.get_path(start),
+												   self.treestore.get_path(end))
+        # disabled, so we also need to manually set self.current_item!):
+		self.current_item = start
+		self.on_tree_selection_changed_handler = self.treeView.get_selection().connect("changed", self.on_tree_selection_changed)
+
 	def _do_move_down(self):
 		"""
 		Move the current selection after the last's sibling, if any.
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		first_selected = self.get_first_selected_iter()
@@ -699,7 +783,31 @@ class gjots_gui:
 
 		pivot = self.treestore.iter_next(last_selected)
 		if not pivot:
-			self.msg(_("Can't go any further"))
+			# we're at the end of this level - see if we can push into
+			# the parents next sibling:
+			new_parent = self.treestore.iter_next(parent)
+			if not new_parent:
+				self.msg(_("Can't go any further"))
+				return
+				
+			this = last_selected
+			new_selection_start = new_selection_end = None
+			while this:
+				prev = self._iter_prev(this)
+				if self.same_iter(this, first_selected):
+					prev = None
+				new_selection_start = self._copy_subtree(self.treestore, this, self.treestore, new_parent, 0)
+				if not new_selection_end:
+					new_selection_end = new_selection_start
+				self.treestore.remove(this)
+				self._set_dirtyflag()
+				this = prev
+
+			parent_path = self.treestore.get_path(new_parent)
+			self.treeView.expand_row(parent_path, 0)
+
+			self._select_range(new_selection_start, new_selection_end)
+
 			return
 
 		# now scan siblings looking for selected items and moving after pivot
@@ -712,7 +820,7 @@ class gjots_gui:
 			next = self.treestore.iter_next(this)
 			if self.treeView.get_selection().iter_is_selected(this):
 				self.treestore.move_after(this, pivot) # gtk 2.2 only
-				self.dirtyflag = "* "
+				self._set_dirtyflag()
 			this = next
 			
 	def _do_move_left(self):
@@ -725,7 +833,7 @@ class gjots_gui:
 		position. Sigh.
 		
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.sync_text_buffer()
@@ -775,7 +883,7 @@ class gjots_gui:
 			this = next
 
 		self.on_tree_selection_changed_handler = self.treeView.get_selection().connect("changed", self.on_tree_selection_changed)
-		self.dirtyflag = "* "
+		self._set_dirtyflag()
 
 	def _do_move_right(self):
 		"""
@@ -787,7 +895,7 @@ class gjots_gui:
 		the right position. Sigh.
 
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		
 		self.msg("")
@@ -872,17 +980,21 @@ class gjots_gui:
 			this = next
 			
 		self.on_tree_selection_changed_handler = self.treeView.get_selection().connect("changed", self.on_tree_selection_changed)
-		self.dirtyflag = "* "
+		self._set_dirtyflag()
 	
 	def _new_tree_cut_buffer(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.tree_cutbuffer:
-			self.tree_cutbuffer.close()
 		# TODO: How do I enable/disable the paste button for both tree and
 		# text operations???
 		#self._disable_tree_paste()
-		self.tree_cutbuffer = tempfile.TemporaryFile()
+		if not self.readonly:
+			self.tree_cutbuffer = gtk.TreeStore(
+				gobject.TYPE_STRING, # title == first line of body except for root, which is filename
+				gobject.TYPE_STRING, # body
+				gobject.TYPE_INT)    # body_temp_flag - used after creating new items
+			# create a root:
+			self.tree_cutbuffer_root = self.tree_cutbuffer.insert(None, 0)
 
 	def _iter_prev(self, this):
 		"""
@@ -899,7 +1011,7 @@ class gjots_gui:
 			return None
 		"""
 
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		if not this:
@@ -929,7 +1041,7 @@ class gjots_gui:
 		Returns (text, insert, selection_bound)
 
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		insert = self.textBuffer.get_iter_at_mark(self.textBuffer.get_insert())
 		selection_bound = self.textBuffer.get_iter_at_mark(self.textBuffer.get_selection_bound())
@@ -939,7 +1051,7 @@ class gjots_gui:
 			return (None, None, None)
 			
 	def _do_text_cut(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		text, insert, select_bound = self.get_selected_text()
@@ -950,7 +1062,7 @@ class gjots_gui:
 		return
 		
 	def _do_text_copy(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		text, insert, select_bound = self.get_selected_text()
@@ -961,19 +1073,19 @@ class gjots_gui:
 		return
 
 	def _do_text_paste(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.msg("")
-		display = self.display
-		if self.clipboard:
-			cursor_mark = self.textBuffer.get_insert()
-			insert_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
-			self.textBuffer.paste_clipboard(self.clipboard, insert_iter, self.textView.get_editable())
-			self.msg(_("Text pasted"))
+		if not self.readonly:
+			self.msg("")
+			if self.clipboard:
+				cursor_mark = self.textBuffer.get_insert()
+				insert_iter = self.textBuffer.get_iter_at_mark(cursor_mark)
+				self.textBuffer.paste_clipboard(self.clipboard, insert_iter, self.textView.get_editable())
+				self.msg(_("Text pasted"))
 		return
 
 	def _do_text_select_all(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.textBuffer.select_range(self.textBuffer.get_start_iter(),
@@ -987,7 +1099,7 @@ class gjots_gui:
 		self.msg(_("All tree items selected"))
 
 	def _do_split_item(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		body, start_iter, end_iter = self.get_selected_text()
@@ -1003,11 +1115,11 @@ class gjots_gui:
 			title = body
 		self._do_new_page()
 		self.textBuffer.insert_at_cursor(body, len(body))
-		self.dirtyflag = "* "
+		self._set_dirtyflag()
 		return
 
 	def _do_merge_items(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		first_selected = self.get_first_selected_iter()
@@ -1061,7 +1173,7 @@ class gjots_gui:
 				break
 			this = next
 		
-		self.dirtyflag = "* "
+		self._set_dirtyflag()
 		self.msg(_("%d items merged") % count)
 		return
 
@@ -1081,7 +1193,7 @@ class gjots_gui:
 			child = self.get_next(child)
 		
 	def _do_show_all(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		if self.current_item:
@@ -1089,7 +1201,7 @@ class gjots_gui:
 		return
 
 	def _do_hide_all(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.treeView.collapse_all()
@@ -1099,8 +1211,11 @@ class gjots_gui:
 		return
 	
 	def _do_tree_cut(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
+		if self.readonly:
+			return
+
 		self.msg("")
 		first_selected = self.get_first_selected_iter()
 		if not first_selected:
@@ -1130,18 +1245,21 @@ class gjots_gui:
 			next = self.treestore.iter_next(this)
 			if self.same_iter(this, last_selected):
 				next = None
-			self.gjotsfile.writeItem(self.tree_cutbuffer, this, 0)
+			self._copy_subtree(
+				self.treestore, this, 
+				self.tree_cutbuffer, self.tree_cutbuffer_root, 
+				-1)
 			if not self.treestore.remove(this): # returns false if no more items
 				next = None
 			this = next
 		#self._enable_tree_paste()
 		if new_selection:
 			self.treeView.get_selection().select_iter(new_selection)
-		self.dirtyflag = "* "
+		self._set_dirtyflag()
 		self.msg(_("%d tree items cut") % count)
 
 	def _do_tree_copy(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		first_selected = self.get_first_selected_iter()
@@ -1162,14 +1280,19 @@ class gjots_gui:
 			next = self.treestore.iter_next(this)
 			if self.same_iter(this, last_selected):
 				next = None
-			self.gjotsfile.writeItem(self.tree_cutbuffer, this, 0)
+			self._copy_subtree(
+				self.treestore, this, 
+				self.tree_cutbuffer, self.tree_cutbuffer_root, 
+				-1)
 			this = next
 		#self._enable_tree_paste()
 		self.msg(_("%d tree items copied") % count)
 				
 	def _do_tree_paste(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
+		if self.readonly:
+			return
 		self.msg("")
 		if not self.tree_cutbuffer:
 			self.msg(_("Nothing to paste"))
@@ -1185,13 +1308,18 @@ class gjots_gui:
 			self.msg(_("No parent!"))
 			return
 
-		self.tree_cutbuffer.seek(0, 0)
-		last_selected = self.gjotsfile.readItem(self.tree_cutbuffer, last_selected, parent)
-		self.dirtyflag = "* "
+		this = self.tree_cutbuffer.iter_children(self.tree_cutbuffer_root)
+		while this:
+			last_selected = self._copy_subtree(self.tree_cutbuffer, this,
+											   self.treestore, parent,
+											   last_selected)
+			this = self.treestore.iter_next(this)
+
+		self._set_dirtyflag()
 		self.msg(_("Tree items pasted"))
 
 	def _do_external_edit(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		first_selected = self.get_first_selected_iter()
@@ -1234,13 +1362,13 @@ class gjots_gui:
 		if newbody != body:
 			self.textBuffer.set_text(newbody, len(newbody))
 			self.current_dirty = 1
-			self.dirtyflag = "* "
+			self._set_dirtyflag()
 			self.msg(_("text changed by external editor"))
 		else:
 			self.msg(_("text not changed by external editor"))
 			
 	def msg(self, message):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		# print "msg: \"" + message + "\""
 		# this optimisation really speeds up typing in the textbuffer - gui.msg("") is called for every keystroke
@@ -1253,12 +1381,12 @@ class gjots_gui:
 		self.last_message = message
 
 	def err_msg(self, message):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		general = general_dialog(self, self.progName + _(": Error"), message, OK)
 
 	def set_readonly(self, readonly, quietly):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 			
 		if readonly:
@@ -1277,159 +1405,168 @@ class gjots_gui:
 			self._enable_tree_paste()
 		else:
 			self._disable_tree_paste()
-		w = self.xml.get_widget("cutButton")
+		w = self.gui_get_widget("cutButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("pasteButton")
+		w = self.gui_get_widget("pasteButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("wrapButton")
+		w = self.gui_get_widget("wrapButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("externalEditButton")
+		w = self.gui_get_widget("externalEditButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("timeStampButton")
+		w = self.gui_get_widget("timeStampButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("newChildButton")
+		w = self.gui_get_widget("newChildButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("newPageButton")
+		w = self.gui_get_widget("newPageButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("upButton")
+		w = self.gui_get_widget("upButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("downButton")
+		w = self.gui_get_widget("downButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("promoteButton")
+		w = self.gui_get_widget("promoteButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("demoteButton")
+		w = self.gui_get_widget("demoteButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("saveButton")
+		w = self.gui_get_widget("saveButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("sortTreeButton")
+		w = self.gui_get_widget("sortTreeButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
 
-		w = self.xml.get_widget("importMenuItem")
+		w = self.gui_get_widget("importMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("saveMenuItem")
+		w = self.gui_get_widget("saveMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("newPageMenuItem")
+		w = self.gui_get_widget("newPageMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("upMenuItem")
+		w = self.gui_get_widget("upMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("downMenuItem")
+		w = self.gui_get_widget("downMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("newChildMenuItem")
+		w = self.gui_get_widget("newChildMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("promoteMenuItem")
+		w = self.gui_get_widget("promoteMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("demoteMenuItem")
+		w = self.gui_get_widget("demoteMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("undoMenuItem")
+		w = self.gui_get_widget("undoMenuItem")
 		if self.has_gtksourceview:
 			w.set_sensitive(writeable)
 		else:
-			w.set_sensitive(False)
-		w = self.xml.get_widget("redoMenuItem")
+			w.set_sensitive(0)
+		w = self.gui_get_widget("redoMenuItem")
 		if self.has_gtksourceview:
 			w.set_sensitive(writeable)
 		else:
-			w.set_sensitive(False)
-		w = self.xml.get_widget("undoMenuItem")
+			w.set_sensitive(0)
+		w = self.gui_get_widget("cutMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("redoMenuItem")
+		w = self.gui_get_widget("pasteMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("cutMenuItem")
+		w = self.gui_get_widget("formatMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("pasteMenuItem")
+		w = self.gui_get_widget("externalEditMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("formatMenuItem")
+		w = self.gui_get_widget("timeStampMenuItem")
 		w.set_sensitive(writeable)
-		w = self.xml.get_widget("externalEditMenuItem")
-		w.set_sensitive(writeable)
-		w = self.xml.get_widget("timeStampMenuItem")
-		w.set_sensitive(writeable)
-		w = self.xml.get_widget("splitItemButton")
+		w = self.gui_get_widget("splitItemButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("mergeItemsButton")
+		w = self.gui_get_widget("mergeItemsButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("sortButton")
+		w = self.gui_get_widget("sortButton")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("splitItemMenuItem")
+		w = self.gui_get_widget("splitItemMenuItem")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("mergeItemsMenuItem")
+		w = self.gui_get_widget("mergeItemsMenuItem")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("sortTreeMenuItem")
+		w = self.gui_get_widget("sortTreeMenuItem")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
-		w = self.xml.get_widget("sortTextMenuItem")
+		w = self.gui_get_widget("sortTextMenuItem")
 		if writeable:
 			w.show()
 		else:
 			w.hide()
 		self.textView.set_editable(writeable)
-		self.treeContextMenu_xml.get_widget("cutContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("pasteContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("newPageContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("newChildContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("upContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("downContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("promoteContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("demoteContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("mergeItemsContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("sortTreeContextMenuItem").set_sensitive(writeable)
-		self.treeContextMenu_xml.get_widget("importContextMenuItem").set_sensitive(writeable)
+		if self.builder:
+			self.gui_get_widget("cutContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("pasteContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("newPageContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("newChildContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("upContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("downContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("promoteContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("demoteContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("mergeItemsContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("sortTreeContextMenuItem").set_sensitive(writeable)
+			self.gui_get_widget("importContextMenuItem").set_sensitive(writeable)
+		else:
+			self.treeContextMenu_xml.get_widget("cutContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("pasteContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("newPageContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("newChildContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("upContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("downContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("promoteContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("demoteContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("mergeItemsContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("sortTreeContextMenuItem").set_sensitive(writeable)
+			self.treeContextMenu_xml.get_widget("importContextMenuItem").set_sensitive(writeable)
 
 		# Need to disconnect temporarily to prevent looping:
 		self.readOnly_widget.disconnect(self.readOnly_handler)
@@ -1437,21 +1574,21 @@ class gjots_gui:
 		self.readOnly_handler = self.readOnly_widget.connect("activate", self.on_readOnly_trigger)
 
 	def _enable_tree_paste(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		w = self.xml.get_widget("pasteButton")
+		w = self.gui_get_widget("pasteButton")
 		w.set_sensitive(1)
 
 	def _disable_tree_paste(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		w = self.xml.get_widget("pasteButton")
+		w = self.gui_get_widget("pasteButton")
 		w.set_sensitive(0)
 
 	def _save_if_dirty(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		if self.trace:
+		if self.debug:
 			print "_save_if_dirty"
 		if self.dirtyflag:
 			general = general_dialog(self, self.progName + _(": Save?"),
@@ -1468,7 +1605,7 @@ class gjots_gui:
 
 # File menu callbacks:
 	def on_new_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.sync_text_buffer()
 		if self._save_if_dirty() == CANCEL:
@@ -1479,12 +1616,12 @@ class gjots_gui:
 		self.msg(_("New file"))
 		
 	def on_open_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self._do_open(None)
 		
 	def on_recent_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		uri = widget.get_current_item().get_uri()
 		# Strip 'file://' from the beginning of the uri
@@ -1492,7 +1629,7 @@ class gjots_gui:
 		self._do_open(file_to_open)
 
 	def _do_open(self, file_to_open):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.sync_text_buffer()
@@ -1505,15 +1642,17 @@ class gjots_gui:
 			self._do_goto_root()
 			self._do_tree_selection_changed()
 
-	def _do_save(self):
-		if self.trace:
+	def _do_save(self, reuse_password = 0):
+		signal.alarm(0)
+		self.alarm_set = 0
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.sync_text_buffer()
 		if not self.dirtyflag:
 			self.msg(_("No changes to save"))
 			return
-		if self.gjotsfile.write_file(prompt="", exporting=0):
+		if self.gjotsfile.write_file(prompt="", exporting=0, reuse_password=reuse_password):
 			self.dirtyflag = ""
 			self.msg(_("Saved."))
 		else:
@@ -1521,12 +1660,14 @@ class gjots_gui:
 		return
 
 	def on_save_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self._do_save()
 
 	def on_saveAs_trigger(self, widget):
-		if self.trace:
+		signal.alarm(0)
+		self.alarm_set = 0
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.sync_text_buffer()
@@ -1541,20 +1682,20 @@ class gjots_gui:
 		return
 
 	def on_import_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.sync_text_buffer()
 		self.msg("")
 		import_after = self.get_last_selected_iter()
 		if import_after:
 			if self.gjotsfile.read_file(_("Import from ..."), None, 1, import_after):
-				self.dirtyflag = "* "
+				self._set_dirtyflag()
 		else:
 			self.msg(_("Nothing selected"))
 		return
 
 	def on_export_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.sync_text_buffer()
 		self.msg("")
@@ -1562,7 +1703,7 @@ class gjots_gui:
 		return
 
 	def on_print_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		# TODO: Which line is the right one???
@@ -1570,14 +1711,14 @@ class gjots_gui:
 		print_d = print_dialog(self)
 
 	def on_readOnly_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.set_readonly(self.readOnly_widget.get_active(), quietly=0)
 		return
 
 	def on_quit_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.sync_text_buffer()
@@ -1586,7 +1727,7 @@ class gjots_gui:
 		self._wrangle_geometry()
 		self.gjotsfile.close()
 		# Save the paned widget position
-		self.client.set_int(self.pane_position_path, self.xml.get_widget("treeTextPane").get_position())
+		self.client.set_int(self.pane_position_path, self.gui_get_widget("treeTextPane").get_position())
 		gtk.main_quit()
 
 	def delete_event(self, widget, event, data=None):
@@ -1600,22 +1741,24 @@ class gjots_gui:
 
 # Edit menu callbacks:
 	def on_undo_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		if self.textView.is_focus():
 			self.textBuffer.undo()
 
 	def on_redo_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		if self.textView.is_focus():
 			self.textBuffer.redo()
 
 	def on_cut_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
+		if self.readonly:
+			return
 		self.msg("")
 		self.sync_text_buffer()
 		if self.textView.is_focus():
@@ -1624,7 +1767,7 @@ class gjots_gui:
 			self._do_tree_cut()
 
 	def on_copy_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.sync_text_buffer()
@@ -1634,8 +1777,10 @@ class gjots_gui:
 			self._do_tree_copy()
 
 	def on_paste_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
+		if self.readonly:
+			return
 		self.msg("")
 		if self.textView.is_focus():
 			self._do_text_paste()
@@ -1643,7 +1788,7 @@ class gjots_gui:
 			self._do_tree_paste()
 
 	def on_selectAll_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		if self.textView.is_focus():
@@ -1652,80 +1797,111 @@ class gjots_gui:
 			self._do_tree_select_all()
 
 	def on_find_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.find_dialog = find_dialog(self)
 
 	def on_findAgain_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.client.set_bool(self.find_backwards_path, 0)
+		w = self.gui_get_widget("menubar_find_entry")
+		if not w:
+			# glade2
+			w = self.gui_get_widget("menubar_find_combobox")
+			if w:
+				w = w.child
+		if w:
+			w.select_region(0, -1)
+			w.grab_focus()
+			
 		if self.find_next():
 			self.msg("Found")
 		else:
 			self.msg("Not found")
 
 	def on_findAgainBackwards_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.client.set_bool(self.find_backwards_path, 1)
+		w = self.gui_get_widget("menubar_find_entry")
+		if not w:
+			# glade2
+			w = self.gui_get_widget("menubar_find_combobox")
+			if w:
+				w = w.child
+		if w:
+			w.select_region(0, -1)
+			w.grab_focus()
 		if self.find_next():
 			self.msg("Found")
 		else:
 			self.msg("Not found")
 
 	def on_menubar_find_entry_icon_press(self, widget, icon_pos, event):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 			print "icon_pos=", icon_pos
+		# on_menubar_find_entry_changed() should be enough:
+		#self.client.set_string(self.find_text_path, widget.get_text())
+
+		# this doesn't seem to be needed, which is good because i
+		# can't see how to stop the extra search: send activate signal
+		# to combo so that text gets put on the stack:
+		# widget.emit("activate")
+
 		if icon_pos == gtk.ENTRY_ICON_PRIMARY:
 			self.on_findAgainBackwards_trigger(widget)
 		else:
 			self.on_findAgain_trigger(widget)
 
 	def on_menubar_find_entry_changed(self, widget):
-		if self.trace:
+		# glade-3 only:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
+			print "changed to: " + widget.get_text()
 		self.client.set_string(self.find_text_path, widget.get_text())
 		
 	def on_menubar_find_entry_activate(self, widget):
-		if self.trace:
+		# glade-3 only:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.client.set_string(self.find_text_path, widget.get_text())
+		# on_menubar_find_entry_changed() should be enough:
+		#self.client.set_string(self.find_text_path, widget.get_text())
 		if self.find_next():
 			self.msg("Found")
 		else:
 			self.msg("Not found")
 
-# View menu callbacks:
+	# View menu callbacks:
 	def on_topToolbarCheck_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
-		w = self.xml.get_widget("topToolbarCheckMenuItem")
+		w = self.gui_get_widget("topToolbarCheckMenuItem")
 		if w:
 			value = w.get_active()
 			self.client.set_bool(self.top_toolbar_path, value)
 		return
 
 	def on_treeToolbarCheck_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
-		w = self.xml.get_widget("treeToolbarCheckMenuItem")
+		w = self.gui_get_widget("treeToolbarCheckMenuItem")
 		if w:
 			value = w.get_active()
 			self.client.set_bool(self.side_toolbar_path, value)
 		return
 
 	def on_showIconText_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
-		w = self.xml.get_widget("showIconTextCheckMenuItem")
+		w = self.gui_get_widget("showIconTextCheckMenuItem")
 		if w:
 			value = w.get_active()
 			self.client.set_bool(self.show_icon_text_path, value)
@@ -1734,66 +1910,66 @@ class gjots_gui:
 	def on_statusBarMenuItem_trigger(self, widget):
 		self.msg("")
 		self.client.set_bool(self.status_bar_path,
-				self.xml.get_widget("statusBarMenuItem").get_active())
+				self.gui_get_widget("statusBarMenuItem").get_active())
 		return
 
 	def on_showAll_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_show_all()
 
 	def on_hideAll_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_hide_all()
 
 # Tree menu callbacks:
 	def on_newPage_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_new_page()
 
 	def on_newChild_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_new_child()
 
 	def on_up_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_move_up()
 
 	def on_down_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_move_down()
 
 	def on_promote_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_move_left()
 
 	def on_demote_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_move_right()
 
 	def on_splitItem_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("on_splitItem_trigger")
 		self._do_split_item()
 
 	def on_mergeItems_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_merge_items()
@@ -1804,12 +1980,12 @@ class gjots_gui:
 		view or the tree view is focused, and it will call the more specific
 		handler to open a sort dialog for the detected context.
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
-		if self.xml.get_widget("textView").is_focus():
+		if self.gui_get_widget("textView").is_focus():
 			self.on_sortText_trigger(widget)
-		elif self.xml.get_widget("treeView").is_focus():
+		elif self.gui_get_widget("treeView").is_focus():
 			self.on_sortTree_trigger(widget)
 
 	def on_sortTree_trigger(self, widget):
@@ -1822,19 +1998,19 @@ class gjots_gui:
 
 # Text menu callbacks:
 	def on_format_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.do_format_paragraph()
 
 	def on_timeStamp_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self.do_time_stamp()
 
 	def on_externalEdit_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		self._do_external_edit()
@@ -1842,14 +2018,14 @@ class gjots_gui:
 
 # Settings menu callbacks:
 	def on_prefs_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		prefs = prefs_dialog(self)
 
 # Help menu callbacks:
 	def on_readManual_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 		# Check to see if we are running from the tarball, cvs, or system.
@@ -1900,17 +2076,33 @@ class gjots_gui:
 		return
 
 	def on_about_trigger(self, widget):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
-		about = gtk.glade.XML(self.gui_filename, "about", domain="gjots2")
-		w = about.get_widget("about")
-		w.set_property('name', 'Gjots2')
-		w.set_property('version', gjots_version)
+		dlg = gtk.AboutDialog()
+		dlg.set_version(gjots_version)
+		dlg.set_name("Gjots2")
+		dlg.set_authors(["Bob Hepple", "Gabriel Munoz"])
+		dlg.set_copyright("Copyright Bob Hepple 2002-2012")
+		dlg.set_website("http://bhepple.freeshell.org/gjots2")
+		dlg.set_translator_credits(_("""Rui Nibau (fr) <rui.nibau@omacronides.com>
+Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>
+Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>
+Raimondo Giammanco (it) <rongten@member.fsf.org>
+Martin Sin (cs) <martin.sin@zshk.cz>
+Cecilio Salmeron (es) <s.cecilio@gmail.com>
+Aleksa Šušulić (sl) <susulic@gmail.com>
+Uwe Steinmann (de) <uwe@steinmann.cx>
+Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
+		def close(w, res):
+			if res == gtk.RESPONSE_CANCEL:
+				w.hide()
+		dlg.connect("response", close)
+		dlg.show()		
 
 # Text display callbacks:
 	def on_textView_key_press_event(self, widget, key_event):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 			print "keyval=", key_event.keyval
 			print "state=", key_event.state
@@ -1918,6 +2110,33 @@ class gjots_gui:
 		if key_event.keyval == gtk.keysyms.F12:
 			self.treeView.grab_focus()
 			return 1
+		if key_event.keyval == gtk.keysyms.Page_Up:
+			if self.textBuffer.get_iter_at_mark(self.textBuffer.get_insert()).is_start():
+				self.sync_text_buffer()
+				current_item = self.get_linear_prev(self.current_item)
+				if not current_item: return 0
+				self.current_item = current_item
+				current_tree_path = self.treestore.get_path(self.current_item)
+				self.treeView.expand_to_path(current_tree_path)
+				self.treeView.get_selection().unselect_all()
+				self.treeView.get_selection().select_iter(self.current_item)
+				self.treeView.scroll_to_cell(current_tree_path, None, 1, 
+                                             0.5, 0.5)
+			 	return 1
+		if key_event.keyval == gtk.keysyms.Page_Down:
+			if self.textBuffer.get_iter_at_mark(self.textBuffer.get_insert()).is_end():
+				self.sync_text_buffer()
+				current_item = self.get_linear_next(self.current_item)
+				if not current_item: return 0
+				self.current_item = current_item
+				current_tree_path = self.treestore.get_path(self.current_item)
+				self.treeView.expand_to_path(current_tree_path)
+				self.treeView.get_selection().unselect_all()
+				self.treeView.get_selection().select_iter(self.current_item)
+				self.treeView.scroll_to_cell(current_tree_path, None, 1, 
+                                             0.5, 0.5)
+				self.textBuffer.place_cursor(self.textBuffer.get_start_iter())
+			 	return 1
 		#if key_event.keyval == gtk.keysyms.Insert and key_event.state & gtk.gdk.SHIFT_MASK:
 		#	print "Got Shift-Insert"
 		#	self._do_text_paste()
@@ -1937,42 +2156,45 @@ class gjots_gui:
 		return(value)
 
 	def _get_browser(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		if self.browser:
 			return self.browser
 		browser_list = { 
 			# reminder: this list's order means nothing:
 			# <name of executable>:<what to search for in ps -ef list>
-			"firefox4":"/[x]ulrunner-2/.*firefox-",
-			"google-chrome":"[/]chrome ", 
-			"firefox":"/[x]ulrunner/", 
-			"konqueror":"[k]onqueror", 
-			"epiphany":"[e]piphany", 
-			"opera":"[o]pera", 
-			"dillo":"[d]illo" 
+			"xdg-open":      "",
+			"gnome-open":    "",
+			"firefox4":      "/[x]ulrunner-2/.*firefox-",
+			"google-chrome": "[/]chrome ", 
+			"firefox":       "/[x]ulrunner/", 
+			"konqueror":     "[k]onqueror", 
+			"epiphany":      "[e]piphany", 
+			"opera":         "[o]pera", 
+			"dillo":         "[d]illo" 
 			}
 
         # see if there's one already running for this user:
 		for browser in browser_list.keys():
-			if os.system("ps -U " + os.getenv("USER") + " -o args | grep -q " + browser_list[browser]) == 0:
-				self.browser = browser
-				if self.trace:
-					print "using a running browser: ", browser
-				break
+			if browser_list[browser]:
+				if os.system("ps -U " + os.getenv("USER") + " -o args | grep -q " + browser_list[browser]) == 0:
+					self.browser = browser
+					if self.debug:
+						print "using a running browser: ", browser
+						break
 
 		# see if there's something we can use in $BROWSER
 		if not self.browser:
 			browser = os.getenv("BROWSER")
 			if browser and os.system("type " + browser + " >/dev/null 2>&1") == 0:
 				self.browser = browser
-				if self.trace:
+				if self.debug:
 					print "using the setting from BROWSER: ", browser
 			
 		# see if there's a preferred one in gnome:
 		if not self.browser:
 			self.browser = self.backtick("gconftool-2 -g /desktop/gnome/url-handlers/http/command 2>/dev/null").split()[0]
-			if self.trace:
+			if self.debug:
 				print "using gnome-preferred browser: ", self.browser
 
 		if not self.browser:
@@ -1980,13 +2202,13 @@ class gjots_gui:
 			for browser in browser_list.keys():
 				if os.system("type " + browser + " >/dev/null 2>&1") == 0:
 					self.browser = browser
-					if self.trace:
+					if self.debug:
 						print "using executable browser: ", browser
 					break
 		return self.browser
 	
 	def _run_browser_on(self, url):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		browser = self._get_browser()
 		if browser:
@@ -1994,12 +2216,30 @@ class gjots_gui:
 		else:
 			self.msg("Can't run a browser")
 		return 0
-		
+
 	def on_textView_button_press_event(self, widget, key_event):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-			print "keyval=", key_event.keyval
-			print "state=", key_event.state
+			print key_event
+
+		if key_event.button == 2:
+			# "middle button" is paste - but (unlike GtkEntry, emacs,
+			# firefox and kde apps like 'kate')
+			# GtkTextView/GtkTextBuffer don't move the mark to the
+			# location of the paste - also, the PRIMARY is wiped after
+			# one use. This sucks majorly - so until they fix it
+			# (logged as bug
+			# https://bugzilla.gnome.org/show_bug.cgi?id=673760)
+			# here's a little hack to place the cursor in the right
+			# place and to remember the previous copy:
+			x, y = self.textView.window_to_buffer_coords(
+				self.textView.get_window_type(
+					self.textView.get_window(gtk.TEXT_WINDOW_TEXT)),
+				int(key_event.x),
+				int(key_event.y))
+			self.primary.request_text(_insert_primary_callback, (self, x, y))
+			return 1
+
 		if key_event.type == gtk.gdk._2BUTTON_PRESS:
 			cursor_mark = self.textBuffer.get_insert()
 			start_iter = self._start_of_url()
@@ -2014,20 +2254,19 @@ class gjots_gui:
 				return 1
 		return 0 # allow further signal propagation
 
-	# button_press is not caught here
-	def on_textView_button_release_event(self, widget, event):
-		if self.trace:
+	def on_textView_button_release_event(self, widget, key_event):
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.msg("")
+		return 0 # allow further signal propagation
 
 	def on_textView_move_cursor(self, widget, event, x, y):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.msg("")
 
 	def same_iter(self, treeiter1, treeiter2):
 		"Check if 2 iterators point to the same item"
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		if treeiter1 == None or treeiter2 == None:
 			return 1
@@ -2035,9 +2274,10 @@ class gjots_gui:
 
 	def _check_title(self, treeiter, body):
 		"""
-		Make sure the title and the first line of the text are in sync. But don't change the root title - it is the filename.
+		Make sure the title and the first line of the text are in
+		sync. But don't change the root title - it is the filename.
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		if self.same_iter(treeiter, self.get_root()):
 			return
@@ -2055,7 +2295,7 @@ class gjots_gui:
 			self.first_selected = iter
 			
 	def get_first_selected_iter(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.first_selected = None
 		selection = self.treeView.get_selection()
@@ -2064,7 +2304,7 @@ class gjots_gui:
 		return self.first_selected
 
 	def get_cursor_iter(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		path, column = self.treeView.get_cursor()
 		print "get_cursor_iter: path = ", path
@@ -2075,7 +2315,7 @@ class gjots_gui:
 		self.last_selected = iter
 			
 	def get_last_selected_iter(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.last_selected = None
 		self.treeView.get_selection().selected_foreach(self._foreach_findlast, self)
@@ -2085,9 +2325,9 @@ class gjots_gui:
 		"""
 		If temp flag is set on this item then erase all the text except for the new stuff
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.dirtyflag = "* "
+		self._set_dirtyflag()
 		self.msg("")
 		self.current_dirty = 1
 		if not self.current_item:
@@ -2112,15 +2352,15 @@ class gjots_gui:
 				self.textBuffer.disconnect(self.textBuffer_changed_handler)
 			self.textBuffer.set_text(body, len(body))
 			self.textBuffer_changed_handler = self.textBuffer.connect("changed", self.on_textBuffer_changed)
-
 			self.treestore.set_value(self.current_item, 1, body)
+		body = self.textBuffer.get_text(self.textBuffer.get_start_iter(), self.textBuffer.get_end_iter(), 0)
 		self._check_title(self.current_item, body)
 
 	def sync_text_buffer(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		if self.current_item and self.current_dirty:
-			if self.trace:
+			if self.debug:
 				print "sync_text_buffer: syncing dirty data"
 			body = self.textBuffer.get_text(self.textBuffer.get_start_iter(), self.textBuffer.get_end_iter(), 0)
 			self.treestore.set_value(self.current_item, 1, body)
@@ -2133,7 +2373,7 @@ class gjots_gui:
 		Always put the cursor at the start of text.
 		Check that selection is legal - ie all are siblings of first_selected
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 			print "widget =", widget
 			print "rows =", self.treeView.get_selection().count_selected_rows()
@@ -2146,7 +2386,7 @@ class gjots_gui:
 		treeiter = self.get_first_selected_iter()
 			
 		if treeiter:
-			if self.trace:
+			if self.debug:
 				print "Title =", self.treestore.get_value(treeiter, 0)
 			text = self.treestore.get_value(treeiter, 1)
 			if self.textBuffer_changed_handler:
@@ -2187,9 +2427,15 @@ class gjots_gui:
 		#self.textBuffer.place_cursor(startIter)
 
 	def on_tree_drag_drop(self, widget, drag_context, x, y, time):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
-		self.dirtyflag = "* "
+		path, position = self.treeView.get_dest_row_at_pos(x, y)
+		# path = (0, 2) on non-root items and (0,) on the root item
+		if len(path) < 2 and position == gtk.TREE_VIEW_DROP_BEFORE:
+			return 1
+
+		self._set_dirtyflag()
+		self.current_item = None
 		return
 
 	def _warp(self, iter):
@@ -2202,7 +2448,7 @@ class gjots_gui:
 		Maybe we should also expand iter's parent ...?
 		
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if not iter:
 			return
@@ -2214,7 +2460,7 @@ class gjots_gui:
 		self.treeView.scroll_to_cell(path, None, 1, 0.5, 0.5)
 		
 	def _do_goto_first_sibling(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		first_selected = self.get_first_selected_iter()
@@ -2233,7 +2479,7 @@ class gjots_gui:
 		self._warp(iter)
 
 	def _do_goto_last_sibling(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		last_selected = self.get_last_selected_iter()
@@ -2251,7 +2497,7 @@ class gjots_gui:
 			iter = next
 			
 	def _do_goto_root(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		iter = self.treestore.get_iter_first()
@@ -2262,7 +2508,7 @@ class gjots_gui:
 		self._warp(iter)
 
 	def _do_goto_last_visible(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		last_selected = self.get_last_selected_iter()
@@ -2285,14 +2531,15 @@ class gjots_gui:
 			iter = next
 
 	def _do_goto_last_absolute(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		self._do_show_all()
+		self._do_goto_root()
 		self._do_goto_last_visible()
 
 	def _do_toggle_expand(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		iter = self.current_item
@@ -2306,7 +2553,7 @@ class gjots_gui:
 			self.treeView.expand_row(path, 0)
 			
 	def on_tree_key_press_event(self, widget, key_event):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 			print "key_event.keyval=", key_event.keyval
 			print "key_event.state=", key_event.state, "gtk.keysyms.End=", gtk.keysyms.End
@@ -2335,10 +2582,10 @@ class gjots_gui:
 				self._do_goto_last_absolute()
 				return 1
 			if key_event.keyval == gtk.keysyms.Page_Down:
-				self._do_goto_last_visible()
+				self._do_goto_last_sibling()
 				return 1
 			if key_event.keyval == gtk.keysyms.Page_Up:
-				self._do_goto_root()
+				self._do_goto_first_sibling()
 				return 1
 
 			# hmmm - these never get a chance because of the 'global' accelerators:
@@ -2367,7 +2614,7 @@ class gjots_gui:
 		return 0 # allow further signal propagation
 			
 	def on_tree_button_press_event(self, treeview, event):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 			print "event.button=", event.button
 			print "event.state=", event.state
@@ -2390,18 +2637,21 @@ class gjots_gui:
 				for row in selected:
 					if row == path:
 						treeview.grab_focus()
-						self.treeContextMenu_xml.get_widget("treeContextMenu").popup(None, None, None, event.button, time)
+						self.treeContextMenu_get_widget("treeContextMenu").popup(None, None, None, event.button, time)
 						return 1
 				# If we get here, then we need to de-select the current
 				# selection and select the path that has been right-clicked.
 				selection.unselect_all()
 				selection.select_path(path)
 				treeview.grab_focus()
-				self.treeContextMenu_xml.get_widget("treeContextMenu").popup(None, None, None, event.button, time)
+				self.treeContextMenu_get_widget("treeContextMenu").popup(None, None, None, event.button, time)
 			return 1
 		return 0 # allow further signal propagation
 
 	def remove_tag(self):
+		if self.debug:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+
 		if self.hit_end != -1 and self.hit_start != -1:
 			hit_start_iter = self.textBuffer.get_iter_at_offset(
 				self.start_offset + self.hit_start)
@@ -2409,6 +2659,50 @@ class gjots_gui:
 				self.start_offset + self.hit_end)
 			self.textBuffer.remove_tag(self.found_tag, hit_start_iter, 
 									   hit_end_iter)
+
+	def add_string_to_combobox(self, s):
+		if self.debug:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+			print "s=", s
+		combobox = self.gui_get_widget("menubar_find_combobox");
+		if combobox:
+			num_items = 0
+			model = combobox.get_model() # liststore
+			iter = model.get_iter_first()
+			while iter:
+				if s == model.get_value(iter, 0):
+					combobox.set_active(num_items)
+					return
+				iter = model.iter_next(iter)
+				num_items += 1
+			combobox.prepend_text(s)
+			combobox.set_active(0)
+			num_items += 1
+
+			while model.iter_n_children(None) > self.combobox_max_lines_to_save:
+				# trim them back
+				model.remove(model.iter_nth_child(None, self.combobox_max_lines_to_save))
+				num_items -= 1
+
+			for i in range(0, num_items):
+				s = model.get_value(model.iter_nth_child(None, i), 0)
+				self.client.set_string(self.find_text_path + str(i), s)
+			
+	def update_combobox_from_gconf(self):
+		"""
+		In glade2 we have GtkComboBoxEntry which is subclassed from GtkComboBox
+		"""
+		if self.debug:
+			print inspect.getframeinfo(inspect.currentframe())[2]
+		combobox = self.gui_get_widget("menubar_find_combobox")
+		if combobox:
+			for i in range(0, self.combobox_max_lines_to_save):
+				combobox.remove_text(0)
+			for i in range(0, self.combobox_max_lines_to_save - 1):
+				s = self.client.get_string(self.find_text_path + str(i))
+				combobox.append_text(s)
+		s = self.client.get_string(self.find_text_path)
+		self.add_string_to_combobox(s)
 
 	def find_next(self):
 		"""
@@ -2424,7 +2718,7 @@ class gjots_gui:
 		Returns 1 if something found; else 0.
 
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		self.remove_tag()
@@ -2458,28 +2752,39 @@ class gjots_gui:
 					return 0
 				zone = self.get_node_value(current_tree_iter)
 				self.start_offset = 0
-			
-			options = re.M | re.L
-			if not self.client.get_bool(self.find_match_case_path):
-				options = options | re.I
 
 			search_regex = self.client.get_string(self.find_text_path)
+			self.add_string_to_combobox(search_regex)
+
+			search_regex = search_regex.decode("utf-8")
+			zone = zone.decode("utf-8")
+
 			if not self.client.get_bool(self.find_regex_path):
 				search_regex = re.escape(search_regex)
+			
+			options = re.MULTILINE | re.LOCALE | re.UNICODE
+			if not self.client.get_bool(self.find_match_case_path):
+				options = options | re.IGNORECASE
+				# re.I doesn't work on unicode strings somehow. At
+				# least not at the moment. Maybe it's a bug in python,
+				# maybe it'll get fixed, who knows. Meanwhile, this
+				# fixes the problem for russian, at least:
+				search_regex = string.lower(search_regex)
+				zone = string.lower(zone)
 
 			try:
-				self.prog = re.compile(search_regex, options)
+				self.pattern = re.compile(search_regex, options)
 			except:
 				self.err_msg(_("Bad regular expression"))
-				look_in_current_item = 0
-				continue
+				return
 				
 			self.match = None
 			if self.client.get_bool(self.find_backwards_path):
-				for self.match in self.prog.finditer(zone):
+				# accept the last match:
+				for self.match in self.pattern.finditer(zone):
 					pass
 			else:
-				self.match = self.prog.search(zone)
+				self.match = self.pattern.search(zone)
 			if self.match:
 				self.hit_start = self.match.start()
 				self.hit_end = self.match.end()
@@ -2516,7 +2821,7 @@ class gjots_gui:
 		Returns 1 if something found; else 0
 
 		"""
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.sync_text_buffer()
 		if self.hit_start == -1:
@@ -2527,15 +2832,15 @@ class gjots_gui:
 		hit_end_iter = self.textBuffer.get_iter_at_offset(
 			self.start_offset + self.hit_end)
 		if self.client.get_bool(self.find_regex_path):
-			new_text = self.prog.sub(
-				self.client.get_string(self.replace_text_path), 
-				self.textBuffer.get_text(hit_start_iter, hit_end_iter))
+			new_text = self.pattern.sub(
+				self.client.get_string(self.replace_text_path).decode("utf-8"), 
+				self.textBuffer.get_text(hit_start_iter, hit_end_iter).decode("utf-8"))
 		else:
-			new_text = self.client.get_string(self.replace_text_path)
+			new_text = self.client.get_string(self.replace_text_path).decode("utf-8")
 		
 		self.textBuffer.place_cursor(hit_end_iter)
 		self.textBuffer.delete(hit_start_iter, hit_end_iter)
-		self.textBuffer.insert_at_cursor(new_text, len(new_text))
+		self.textBuffer.insert_at_cursor(new_text)
 		# "insert" mark is now at the _end_ of the replaced text.
 		# Now place the "selection" mark at the start of the replaced text:
 		start_mark = self.textBuffer.get_insert()
@@ -2545,14 +2850,13 @@ class gjots_gui:
 			self.start_offset - len(new_text))
 		self.textBuffer.move_mark_by_name("selection_bound", 
 										  new_selection_bound_iter)
-		#self.dirty = 1 ... handled in on_textBuffer_changed()
 		
 		# now find the next one:
 		return self.find_next()
 	
 
 	def _wrangle_geometry(self):
-		if self.trace:
+		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		if not self.has_set_size:
 			self.has_set_size = 1
@@ -2581,7 +2885,7 @@ class gjots_gui:
 	def _init_icons(self):
 		"""
 		Registers all of the required images as stock items for easy use
-		within the gjots2 glade file.
+		within the gjots2 ui file.
 		"""
 		for stock_name, file in self.icons.iteritems():
 			factory = gtk.IconFactory()
@@ -2591,18 +2895,19 @@ class gjots_gui:
 			factory.add_default()
 		
 	def _add_recent_menu(self):
+		# glade-2 only
 		self.recent_file_filter = gtk.RecentFilter()
-		#self.recent_file_filter.add_pattern(self.file_filter_pattern)
+		self.recent_file_filter.add_pattern(self.file_filter_pattern)
 		self.recent_file_filter.add_application("gjots2")
 		self.recent_file_filter.set_name("All gjots files")
-		w = self.xml.get_widget("recentMenuItem")
+		w = self.gui_get_widget("recentMenuItem")
 		m = gtk.RecentChooserMenu()
 		m.set_show_numbers(True)
 		m.add_filter(self.recent_file_filter)
 		m.connect("item_activated", self.on_recent_trigger)
 		w.set_submenu(m)
 
-	def __init__(self, prefix, progName, geometry, filename, readonly, debug, purge_password):
+	def __init__(self, prefix, progName, geometry, filename, readonly, debug, purge_password, use_glade2):
 		"""
 		In this init we are going to display the main
 		gjots window
@@ -2610,10 +2915,10 @@ class gjots_gui:
 
 		if debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
-			self.trace = 1
-			#sys.settrace(self.tracefunc)
+			self.debug = 1
+			#sys.settrace(self.debugfunc)
 		else:
-			self.trace = 0
+			self.debug = 0
 
 		self.purge_password = purge_password
 			
@@ -2641,7 +2946,6 @@ class gjots_gui:
 			"on_find_trigger":              self.on_find_trigger,
 			"on_findAgain_trigger":         self.on_findAgain_trigger,
 			"on_findAgainBackwards_trigger": self.on_findAgainBackwards_trigger,
-			"on_menubar_find_entry_icon_press": self.on_menubar_find_entry_icon_press,
 
 			# View menu:
 			"on_topToolbarCheck_trigger":   self.on_topToolbarCheck_trigger,
@@ -2691,8 +2995,11 @@ class gjots_gui:
 			"on_tree_button_press_event":   self.on_tree_button_press_event,
 
 			# menutoolbar callbacks
-			"on_menubar_find_entry_changed": self.on_menubar_find_entry_changed,
+			"on_menubar_find_entry_icon_press": self.on_menubar_find_entry_icon_press,
 			"on_menubar_find_entry_activate": self.on_menubar_find_entry_activate,
+			"on_menubar_find_entry_changed": self.on_menubar_find_entry_changed,
+			"on_combobox_changed":          self.on_combobox_changed,
+			"on_gjots_focus_out_event":     self.on_gjots_focus_out_event,
 		}
 			
 		# create widget tree ...
@@ -2700,66 +3007,72 @@ class gjots_gui:
 		self.progName = progName
 		self.geometry = geometry
 		
-		gladefile = "gjots.glade3"
-		self.gui_filename = gladefile
+		# Try ./ first (if one local development file exists, then assume
+		# all others exists) - developer's version, else goto site-packages.
+		
+		self.sharedir = "./"
 		self.password = ""
 		
 		self.prefix = prefix
-		
-		# Try ./ first (if one local development file exists, then assume
-		# all others exists) - developer's version, else goto site-packages.
-		self.gui_filename = "./" + gladefile
+
 		# Format is 'stock-name':'file-name'
 		self.icons = { 'gjots2-new-page' : 'gjots2-new-page.png',
 		               'gjots2-new-child' : 'gjots2-new-child.png',
 		               'gjots2-merge-items' : 'gjots2-merge-items.png',
 		               'gjots2-split-item' : 'gjots2-split-item.png',
 		               'gjots2-hide-all' : 'gjots2-hide-all.png',
-		               'gjots2-show-all' : 'gjots2-show-all.png', }
+		               'gjots2-show-all' : 'gjots2-show-all.png', 
+					   'gjots2-clock' : 'gjots2-clock.png'}
+
 		# Perform more developer checks. If running from CVS or local
 		# tarball, then register local icons, otherwise look in the system
 		# data directory (e.g. /usr/share/gjots2).
-		datadir = prefix + "/share/gjots2/"
+		gui_file = "ui/gjots.ui"
+		self.gui_filename = self.sharedir + gui_file
 		if not os.access(self.gui_filename, os.F_OK):
-			self.gui_filename = datadir + gladefile
-			for name, file in self.icons.iteritems():
-				self.icons[name] = datadir + self.icons[name]
-		if os.access("pixmaps", os.F_OK):
-			for name, file in self.icons.iteritems():
-				datadir = "./pixmaps/"
-				self.icons[name] = datadir + self.icons[name]
-		self._init_icons()
-		gtk.window_set_default_icon(
-			gtk.gdk.pixbuf_new_from_file(datadir + "gjots.png"))
+			self.sharedir = prefix + "/share/gjots2/"
+			self.gui_filename = self.sharedir + gui_file
 
-		override = {}
+		for name, file in self.icons.iteritems():
+			self.icons[name] = self.sharedir + "pixmaps/" + self.icons[name]
+
+		self._init_icons()
+		import gtk
+		gtk.window_set_default_icon(
+			gtk.gdk.pixbuf_new_from_file(self.sharedir + "pixmaps/gjots.png"))
+
 		try:
-			import gtksourceview2
-			override["GtkTextView"] = gtksourceview2.View
-			override["GtkTextBuffer"] = gtksourceview2.Buffer
-			self.has_gtksourceview = True
+			if use_glade2:
+				raise NameError('Using glade2')
+			self.builder = gtk.Builder()
+			self.builder.set_translation_domain('gjots2')
+			self.builder.add_from_file(self.gui_filename)
+			self.builder.add_from_file(self.sharedir + "ui/treeContextMenu.ui")
+			self.builder.connect_signals(callbacks)
+			self.gui_get_widget = self.builder.get_object
+			self.treeContextMenu_get_widget = self.builder.get_object
 		except:
-			try:
-				import gtksourceview
-				override["GtkTextView"] = gtksourceview.SourceView
-				override["GtkTextBuffer"] = gtksourceview.SourceBuffer
-				self.has_gtksourceview = True
-			except:
-				self.has_gtksourceview = False
-				pass
-		self.xml = gtk.glade.XML(self.gui_filename, "gjots", "gjots2", override)
-		self.treeContextMenu_xml = gtk.glade.XML(self.gui_filename, "treeContextMenu", "gjots2", override)
-		self.xml.signal_autoconnect(callbacks)
-		self.treeContextMenu_xml.signal_autoconnect(callbacks)
+			import gtk.glade
+			gui_file = "gjots.glade2"
+			self.gui_filename = self.sharedir + gui_file
+			self.builder = None
+			override = {}
+			self.xml = gtk.glade.XML(self.gui_filename, "gjots", "gjots2", override)
+			self.treeContextMenu_xml = gtk.glade.XML(self.gui_filename, "treeContextMenu", "gjots2", override)
+			self.xml.signal_autoconnect(callbacks)
+			self.treeContextMenu_xml.signal_autoconnect(callbacks)
+			self.gui_get_widget = self.xml.get_widget
+			self.treeContextMenu_get_widget = self.treeContextMenu_xml.get_widget
+
 		self.treestore = None
-		self.gjots = self.xml.get_widget("gjots")
+		self.gjots = self.gui_get_widget("gjots")
 
 		# Connect the window manager close window event to our callback
 		self.gjots.connect("delete_event", self.delete_event)
 
-		self.textView = self.xml.get_widget("textView")
-		self.treeView = self.xml.get_widget("treeView")
-		self.appbar = self.xml.get_widget("appbar")
+		self.textView = self.gui_get_widget("textView")
+		self.treeView = self.gui_get_widget("treeView")
+		self.appbar = self.gui_get_widget("appbar")
 		self.last_message = ""
 		#self.appbar.set_default(self.last_message)
 		self.dirtyflag = ""
@@ -2767,6 +3080,7 @@ class gjots_gui:
 		self.temp_text = _("New...>>>") # must be odd enough to never be in the user's text - problem when documenting gjots itself??
 		self.tree_cutbuffer = None
 		self.current_item = None
+		self.combobox_max_lines_to_save = 10
 
 		# this flag is used to reduce overhead on every keystroke - it
 		# is set when the textBuffer is out of sync with the current
@@ -2776,26 +3090,39 @@ class gjots_gui:
 		# sync'd on change of selection. There must be a nicer way to
 		# do this with signals ...
 		self.current_dirty = 0
-		
+
+		self.has_gtksourceview = 1
+		sourceview_msg = ""
 		try:
-			import gtksourceview2
-			self.textBuffer = gtksourceview2.Buffer()
+			import gtksourceview3
+			self.textBuffer = gtksourceview3.Buffer()
 			self.textBuffer.set_text = lambda *args: not not (
 				self.textBuffer.begin_not_undoable_action(),
-				apply(gtksourceview2.Buffer.set_text, [self.textBuffer] + list(args)),
+				apply(gtksourceview3.Buffer.set_text, [self.textBuffer] + list(args)),
 				self.textBuffer.end_not_undoable_action(),
-			)
+				)
 		except:
 			try:
-				import gtksourceview
-				self.textBuffer = gtksourceview.SourceBuffer()
+				import gtksourceview2
+				self.textBuffer = gtksourceview2.Buffer()
 				self.textBuffer.set_text = lambda *args: not not (
 					self.textBuffer.begin_not_undoable_action(),
-					apply(gtksourceview.SourceBuffer.set_text, [self.textBuffer] + list(args)),
+					apply(gtksourceview2.Buffer.set_text, [self.textBuffer] + list(args)),
 					self.textBuffer.end_not_undoable_action(),
-				)
+					)
 			except:
-				self.textBuffer = gtk.TextBuffer()
+				try:
+					import gtksourceview
+					self.textBuffer = gtksourceview.SourceBuffer()
+					self.textBuffer.set_text = lambda *args: not not (
+						self.textBuffer.begin_not_undoable_action(),
+						apply(gtksourceview.Buffer.set_text, [self.textBuffer] + list(args)),
+						self.textBuffer.end_not_undoable_action(),
+						)
+				except:
+					sourceview_msg = _("Install pygtksourceview to enable undo/redo")
+					self.textBuffer = gtk.TextBuffer()
+					self.has_gtksourceview = 0
 
 		self.textView.set_buffer(self.textBuffer)
 		self.textBuffer.set_text("", 0)
@@ -2804,8 +3131,27 @@ class gjots_gui:
 													background="lightblue")
 		self.textBuffer_changed_handler = self.textBuffer.connect("changed", self.on_textBuffer_changed)
 		self.on_tree_selection_changed_handler = self.treeView.get_selection().connect("changed", self.on_tree_selection_changed)
-		self.readOnly_widget = self.xml.get_widget("readOnlyMenuItem")
+		self.readOnly_widget = self.gui_get_widget("readOnlyMenuItem")
 		self.readOnly_handler = self.readOnly_widget.connect("activate", self.on_readOnly_trigger)
+
+		# add a model to make the combobox == combobox_with_text (can't do it in glade2 or 3)
+		combobox = self.gui_get_widget("menubar_find_combobox");
+		if combobox:
+			liststore = gtk.ListStore(gobject.TYPE_STRING)
+			combobox.set_model(liststore)
+			cell = gtk.CellRendererText()
+			combobox.pack_start(cell, True)
+			if not self.builder:
+				# glade-2:
+				combobox.set_text_column(0)
+				combobox.child.set_icon_from_stock(0, "gtk-media-previous")
+				combobox.child.set_icon_activatable(0, True)
+				combobox.child.set_icon_from_stock(1, "gtk-media-next")
+				combobox.child.set_icon_activatable(1, True)
+				combobox.child.connect("icon-press", self.on_menubar_find_entry_icon_press)
+				combobox.child.connect("activate", self.on_menubar_find_entry_activate)
+				combobox.child.connect("changed", self.on_menubar_find_entry_changed)
+
 		self._setup_gconf()
 		self._wrangle_geometry()
 		self.cut_text = None
@@ -2813,6 +3159,7 @@ class gjots_gui:
 		self.find_dialog = None
 
 		self.update_find_entry()
+		self.update_combobox_from_gconf()
 
 		self.file_filter = gtk.FileFilter()
 		self.file_filter_pattern = "*.gjots*"
@@ -2826,21 +3173,34 @@ class gjots_gui:
 		if not self.clipboard:
 			print "No clipboard"
 			sys.exit(3)
+		self.primary = gtk.Clipboard(self.display, "PRIMARY")
+		if not self.primary:
+			print "No primary clipboard"
+			sys.exit(3)
 
-		self.gjotsfile.read_file("", filename, readonly, import_after=None)
+		if not self.gjotsfile.read_file("", filename, readonly, import_after=None):
+			sys.exit(1)
 
 		self._disable_tree_paste()
-		root_path = self.treestore.get_path(self.root)
+		root_path = self.treestore.get_path(self.get_root())
 		self.treeView.expand_row(root_path, 0)
-		self._warp(self.root)
+		self._warp(self.get_root())
 		#self.treeView.get_selection().select_path(root_path)
 
-		self.msg(progName + _(": version ") + gjots_version)
+		self.msg(progName + _(": version ") + gjots_version + sourceview_msg)
 		self.set_readonly(readonly, quietly=1)
-		self._add_recent_menu()
+
+		# gtkBuilder has recent built in to the file dialog
+		if not self.builder:
+			self._add_recent_menu()
 
 		self.treeView.grab_focus()
 		self.gjots.show()
+
+		if sourceview_msg != "":
+			self.err_msg(sourceview_msg)
+
+		self.alarm_set = 0
 		return
 
 # Local variables:

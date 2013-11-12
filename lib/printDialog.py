@@ -7,43 +7,43 @@ import pipes
 
 class print_dialog:
 	def destroy(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.xml.get_widget(self.name).destroy()
+		self.print_get_widget(self.name).destroy()
 
 	def saveSettings(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		w = self.xml.get_widget("printPageRadioButton")
+		w = self.print_get_widget("printPageRadioButton")
 		if w:
 			self.gui.client.set_bool(self.gui.print_page_path, w.get_active())
-		w = self.xml.get_widget("printSelectionRadioButton")
+		w = self.print_get_widget("printSelectionRadioButton")
 		if w:
 			self.gui.client.set_bool(self.gui.print_selection_path, w.get_active())
-		w = self.xml.get_widget("printAllRadioButton")
+		w = self.print_get_widget("printAllRadioButton")
 		if w:
 			self.gui.client.set_bool(self.gui.print_all_path, w.get_active())
 
-		w = self.xml.get_widget("printPageFeedButton")
+		w = self.print_get_widget("printPageFeedButton")
 		if w:
 			self.gui.client.set_bool(self.gui.print_page_feed_path, w.get_active())
-		w = self.xml.get_widget("printBoldTitlesButton")
+		w = self.print_get_widget("printBoldTitlesButton")
 		if w:
 			self.gui.client.set_bool(self.gui.print_bold_title_path, w.get_active())
 
-		w = self.xml.get_widget("printCommandEntry")
+		w = self.print_get_widget("printCommandEntry")
 		if w:
 			self.gui.client.set_string(self.gui.print_command_path, w.get_text())
 		
 		return
 	
 	def on_printDialog_destroy(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return
 	
 	def on_printCommandEntry_key_press_event(self, widget, key_event):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		# to get all keysyms: print gtk.keysyms.__dict__
@@ -54,28 +54,28 @@ class print_dialog:
 		return
 
 	def _get_settings(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		print_page = print_selection = print_all = page_feed = bold_titles = 0
 		print_command = ""
-		w = self.xml.get_widget("printPageRadioButton")
+		w = self.print_get_widget("printPageRadioButton")
 		if w:
 			print_page = w.get_active()
 		if not print_page:
-			w = self.xml.get_widget("printSelectionRadioButton")
+			w = self.print_get_widget("printSelectionRadioButton")
 			if w:
 				print_selection = w.get_active()
 			if not print_selection:
 				print_all = 1
 
-		w = self.xml.get_widget("printPageFeedButton")
+		w = self.print_get_widget("printPageFeedButton")
 		if w:
 			page_feed = w.get_active()
-		w = self.xml.get_widget("printBoldTitlesButton")
+		w = self.print_get_widget("printBoldTitlesButton")
 		if w:
 			bold_titles = w.get_active()
 
-		w = self.xml.get_widget("printCommandEntry")
+		w = self.print_get_widget("printCommandEntry")
 		if w:
 			print_command = w.get_text()
 		
@@ -95,7 +95,7 @@ class print_dialog:
 					print all the selected pages.
 		"""
 		
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.gui.sync_text_buffer()
 		self.saveSettings()
@@ -146,7 +146,7 @@ class print_dialog:
 		return
 		
 	def on_printCancelButton_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.destroy()
 		return
@@ -157,7 +157,7 @@ class print_dialog:
 		"""
 
 		self.gui = gui
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		callbacks = {
@@ -167,27 +167,33 @@ class print_dialog:
 			"on_printCancelButton_clicked":				self.on_printCancelButton_clicked,
 		}
 		self.name = "printDialog"
-		self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-		self.xml.signal_autoconnect(callbacks)
+		if self.gui.builder:
+			self.gui.builder.add_from_file(self.gui.sharedir + "ui/printDialog.ui")
+			self.gui.builder.connect_signals(callbacks)
+			self.print_get_widget = self.gui.gui_get_widget
+		else:
+			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
+			self.xml.signal_autoconnect(callbacks)
+			self.print_get_widget = self.xml.get_widget
 
-		w = self.xml.get_widget("printPageRadioButton")
+		w = self.print_get_widget("printPageRadioButton")
 		if w:
 			w.set_active(self.gui.client.get_bool(self.gui.print_page_path))
-		w = self.xml.get_widget("printSelectionRadioButton")
+		w = self.print_get_widget("printSelectionRadioButton")
 		if w:
 			w.set_active(self.gui.client.get_bool(self.gui.print_selection_path))
-		w = self.xml.get_widget("printAllRadioButton")
+		w = self.print_get_widget("printAllRadioButton")
 		if w:
 			w.set_active(self.gui.client.get_bool(self.gui.print_all_path))
 
-		w = self.xml.get_widget("printPageFeedButton")
+		w = self.print_get_widget("printPageFeedButton")
 		if w:
 			w.set_active(self.gui.client.get_bool(self.gui.print_page_feed_path))
-		w = self.xml.get_widget("printBoldTitlesButton")
+		w = self.print_get_widget("printBoldTitlesButton")
 		if w:
 			w.set_active(self.gui.client.get_bool(self.gui.print_bold_title_path))
 
-		w = self.xml.get_widget("printCommandEntry")
+		w = self.print_get_widget("printCommandEntry")
 		if w:
 			w.set_text(self.gui.client.get_string(self.gui.print_command_path))
 		return

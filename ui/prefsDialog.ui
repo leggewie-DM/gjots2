@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="lower">10</property>
+    <property name="upper">200</property>
+    <property name="value">70</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment2">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment3">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkWindow" id="prefsDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">gjots: preferences</property>
+    <property name="modal">True</property>
+    <property name="window_position">mouse</property>
+    <child>
+      <object class="GtkVBox" id="vbox2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkTable" id="table2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="border_width">15</property>
+            <property name="n_rows">7</property>
+            <property name="n_columns">2</property>
+            <property name="column_spacing">10</property>
+            <property name="row_spacing">10</property>
+            <child>
+              <object class="GtkButton" id="fontButton">
+                <property name="label">gtk-select-font</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Choose a font for the text panel</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_fontButton_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="top_attach">4</property>
+                <property name="bottom_attach">5</property>
+                <property name="x_options">GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">Date format:</property>
+                <property name="justify">center</property>
+              </object>
+              <packing>
+                <property name="top_attach">3</property>
+                <property name="bottom_attach">4</property>
+                <property name="x_options">GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="dateFormat">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">Format for the timestamp function (see strftime(3)) eg %F</property>
+                <property name="text" translatable="yes">%F</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+                <signal name="key-press-event" handler="on_dateFormat_key_press_event" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">3</property>
+                <property name="bottom_attach">4</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="externalEditor">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">External program to edit a page (%s is replaced by the name of the temporary edit file) eg xterm -e vi %s</property>
+                <property name="text" translatable="yes">xterm -e vi %s</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+                <signal name="key-press-event" handler="on_externalEditor_key_press_event" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">External editor</property>
+                <property name="justify">center</property>
+              </object>
+              <packing>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+                <property name="x_options">GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">Text Line Length: </property>
+                <property name="justify">center</property>
+              </object>
+              <packing>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+                <property name="x_options">GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="lineLength">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">Line length for paragraph wrapping</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+                <property name="adjustment">adjustment1</property>
+                <property name="climb_rate">1</property>
+                <property name="numeric">True</property>
+                <signal name="key-press-event" handler="on_lineLength_key_press_event" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label7">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">Text formatter: </property>
+                <property name="justify">center</property>
+              </object>
+              <packing>
+                <property name="x_options">GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="textFormatter">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">External program to pipe text for formatting (%d is replaced by the current line width) eg fmt -w %d </property>
+                <property name="text" translatable="yes">fmt -w %d </property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+                <signal name="key-press-event" handler="on_textFormatter_key_press_event" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="fontName">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">Current text font</property>
+                <property name="editable">False</property>
+                <property name="text" translatable="yes">Courier 10 Pitch 10</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+                <signal name="key-press-event" handler="on_fontName_key_press_event" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">4</property>
+                <property name="bottom_attach">5</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label4">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">AutoSave interval:</property>
+                <property name="justify">center</property>
+              </object>
+              <packing>
+                <property name="top_attach">5</property>
+                <property name="bottom_attach">6</property>
+                <property name="x_options">GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="autoSaveInterval">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)</property>
+                <property name="invisible_char">●</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+                <property name="adjustment">adjustment2</property>
+                <property name="climb_rate">1</property>
+                <property name="numeric">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">5</property>
+                <property name="bottom_attach">6</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label5">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">Auto ReadOnly timeout:</property>
+                <property name="justify">center</property>
+              </object>
+              <packing>
+                <property name="top_attach">6</property>
+                <property name="bottom_attach">7</property>
+                <property name="x_options">GTK_FILL</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="autoReadOnlyTimeout">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">The number of second after losing focus that ReadOnly should be set.</property>
+                <property name="invisible_char">●</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+                <property name="adjustment">adjustment3</property>
+                <property name="climb_rate">1</property>
+                <property name="numeric">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">6</property>
+                <property name="bottom_attach">7</property>
+                <property name="y_options"/>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHButtonBox" id="hbuttonbox2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="prefsOK">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_prefsOK_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="prefsCancel">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_prefsCancel_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

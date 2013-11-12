@@ -178,7 +178,7 @@ function open_title(title) {
 			print \$0
 			next
 		} else {
-			printf("<!DOCTYPE %s PUBLIC \"-//OASIS//DTD DocBook XML V4.1.2//EN\" \"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd\">\n",doc_type)
+			printf("<!DOCTYPE %s PUBLIC \"-//OASIS//DTD DocBook XML V4.1.2//EN\">\n",doc_type)
 		}
 	}
 		

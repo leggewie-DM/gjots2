@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkWindow" id="printDialog">
+    <property name="visible">True</property>
+    <property name="title" translatable="yes">Print</property>
+    <property name="type_hint">dialog</property>
+    <property name="window_position">mouse</property>
+    <signal handler="on_printDialog_destroy" name="destroy"/>
+    <child>
+      <object class="GtkVBox" id="vbox5">
+        <property name="visible">True</property>
+        <property name="border_width">10</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkFrame" id="frame4">
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkAlignment" id="alignment5">
+                <property name="visible">True</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkHBox" id="hbox6">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkLabel" id="label10">
+                        <property name="visible">True</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">e.g. lpr: </property>
+                        <property name="justify">center</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="printCommandEntry">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="has_focus">True</property>
+                        <property name="can_default">True</property>
+                        <property name="has_default">True</property>
+                        <property name="tooltip-text" translatable="yes">print command (can be a shell expression)</property>
+                        <signal handler="on_printCommandEntry_key_press_event" name="key_press_event"/>
+                      </object>
+                      <packing>
+                        <property name="padding">5</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="label13">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes"> Print command </property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="frame3">
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkAlignment" id="alignment4">
+                <property name="visible">True</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkVBox" id="vbox7">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkRadioButton" id="printPageRadioButton">
+                        <property name="label" translatable="yes">Page</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip-text" translatable="yes">Print the current page</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="printSelectionRadioButton">
+                        <property name="label" translatable="yes">Selection</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip-text" translatable="yes">Print the selected pages or text</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">printPageRadioButton</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="printAllRadioButton">
+                        <property name="label" translatable="yes">All</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip-text" translatable="yes">Print the entire gjots file</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">printPageRadioButton</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="label12">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes"> Print Range </property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="frame7">
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkAlignment" id="alignment8">
+                <property name="visible">True</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkVBox" id="vbox8">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkHBox" id="hbox8">
+                        <property name="visible">True</property>
+                        <property name="homogeneous">True</property>
+                        <child>
+                          <object class="GtkCheckButton" id="printPageFeedButton">
+                            <property name="label" translatable="yes">Page feeds</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip-text" translatable="yes">Feeds a page before every new gjots item</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="printBoldTitlesButton">
+                            <property name="label" translatable="yes">Bold titles</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip-text" translatable="yes">Print the gjots item titles in bold</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="printAutoNumberCheckButton">
+                            <property name="label" translatable="yes">Auto Number</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkHBox" id="hbox9">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="printAutoNumberLabel">
+                            <property name="label" translatable="yes">Auto-number format: </property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="printAutoNumberFormatEntry">
+                            <property name="can_focus">True</property>
+                            <property name="tooltip-text" translatable="yes">eg. 1 for 1.2.1, a</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="label16">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes"> Print formatting </property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="padding">5</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHButtonBox" id="hbuttonbox3">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="printOKButton">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_printOKButton_clicked" name="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="printCancelButton">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_printCancelButton_clicked" name="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

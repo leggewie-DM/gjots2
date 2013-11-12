@@ -1,6 +1,9 @@
 # Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /cvsroot/gjots2/gjots/gjots2.ebuild,v 1.7.2.18 2011/05/10 05:46:24 bhepple Exp $
+# $Header: /home/bhepple/fun/sf/g/gjots/gjots2.ebuild,v 1.7.2.23 2012-06-02 12:42:57 bhepple Exp $
+
+#### NOT TESTED FOR _AGES_ - I no longer have a gentoo system - if
+#### anyone wants to support this, please let me know.
 
 inherit python gnome.org
 
@@ -14,11 +17,12 @@ KEYWORDS="~x86"
 IUSE=""
 
 DEPEND=">=dev-lang/python-2.3.4
-	>=gnome-base/libglade-2.4.0
-	>=gnome-base/libgnome-2
-	>=dev-python/gnome-python-2.0.2
-	>=dev-python/pygtk-2.4.1
-	>=dev-python/pyorbit-2.0.0"
+>=gnome-base/libglade-2.4.0
+>=gnome-base/libgnome-2
+>=dev-python/pygtk-2.4.1
+>=dev-python/pyorbit-2.0.0
+dev-python/libgnome-python
+dev-python/gconf-python"
 
 MAKEOPTS="${MAKEOPTS} -j1"
 
@@ -33,20 +37,17 @@ src_install() {
 	insinto /usr/lib/gjots2
 	doins lib/*.py
 
-	insinto /usr/share/gjots2
-	doins gjots.glade3
+	insinto /usr/share/gjots2/ui
+	doins ui/*.ui
 
-	insinto /usr/share/gjots2
-	doins gjots.png gjots2-hide-all.png gjots2-merge-items.png gjots2-new-child.png gjots2-new-page.png gjots2-show-all.png gjots2-split-item.png
-
-	insinto /usr/share/pixmaps
-	doins gjots.png
+	insinto /usr/share/gjots2/pixmaps
+	doins pixmaps/*.png
 
 	insinto /usr/share/applications
 	doins gjots2.desktop
 
 	insinto /usr/share/man/man1
-	doins share/man/man1/gjots2.1  share/man/man1/gjots2html.1  share/man/man1/gjots2docbook.1  share/man/man1/docbook2gjots.1 
+	doins doc/man/man1/*.1
 
 	dodoc README AUTHORS COPYING INSTALL ChangeLog
 	insinto /usr/share/doc/${PF}
@@ -86,6 +87,12 @@ src_install() {
 
 	insinto /usr/share/locale/sl/LC_MESSAGES
 	doins po/sl/LC_MESSAGES/gjots2.mo
+
+	insinto /usr/share/locale/de_DE/LC_MESSAGES
+	doins po/de_DE/LC_MESSAGES/gjots2.mo
+
+	insinto /usr/share/locale/sv/LC_MESSAGES
+	doins po/sv/LC_MESSAGES/gjots2.mo
 }
 
 pkg_postinst() {

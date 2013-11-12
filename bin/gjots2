@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import sys, os, getopt
-import gettext
 import linecache
 
 def traceit(frame, event, arg):
@@ -16,8 +15,6 @@ def traceit(frame, event, arg):
         print "%s:%s:%s: %s" % (event, name, lineno, line.rstrip())
     return traceit
 
-gettext.install('gjots2', '/usr/share/locale')
-
 def ver2str(ver):
     return ".".join(map(str,ver))
 
@@ -25,109 +22,140 @@ def ver2str(ver):
 #from Gjots.version import version
 
 def usage():
-	print _("""Usage: gjots [OPTIONS] [FILENAME]
-A gnome-2/X11 jotter
+    print _("""Usage: gjots [OPTIONS] [FILENAME]
+A gtk/X11 jotter
 
 OPTIONS:
 -h, --help:                         this help
 -d, --debug:                        debug to stdout
+-2, --glade2:                       use glade-2 gui if available
 -t, --trace:                        trace lines as they execute
 -g 123x456, --geometry=123x456:     initial geometry (X x Y)
--p, --purge-password				don't remember password
+-p, --purge-password                don't remember password
 -r, --readonly:                     no editing (or locking)
 -V, --version:                      print the version and exit
 
 FILENAME:
-	gjots data filename (default is $HOME/.gjotsfile)
+    gjots data filename (default is $HOME/.gjotsfile)
 """)
 
 if __name__ == '__main__':
-	pyver = (2,2)
-	pygtkver = (2,2,0)
+    pyver = (2,5)
+    pygtkver = (2,16,0)
 
-	dirName, progName = os.path.split(sys.argv[0])
+    # gjots2 might be:               'prefix' is then
+    # /usr/bin/gjots2                /usr
+    # /bin/gjots2 (fedora-18)        /usr
+    # /usr/local/bin/gjots2          /usr/local
+    # /foo/bar/gjots2                /foo
+    # ./gjots2                       ./
 
-	#
-	# python version
-	#
-	if sys.version_info[:2] < pyver:
-	    sys.stderr.write(_("%s requires python%s or higher.") % (progName, ver2str(pyver)))
-	    sys.exit(1)
+    dirName, progName = os.path.split(sys.argv[0])
+    # prefix, bin = os.path.split(dirName)
+    prefix = dirName
+    # fedora-18 puts things in /usr/bin but arg0 is /bin/gjots2 !!!!
+    if dirName == "/bin" and os.access("/usr" + sys.argv[0], os.F_OK):
+        prefix = "/usr/bin"
+    prefix, junk = os.path.split(prefix)
+    #
+    # Add the library path to the system load path
+    #
+    # developer should use local version executed from the current directory:
+    localdir = os.curdir + "/lib"
+    if os.access(localdir, os.F_OK) and os.access("ui/gjots.ui", os.F_OK):
+        prefix = localdir
+        sys.path = [ localdir ] + sys.path
+        sys.stderr.write("%s: Warning: running modules from %s\n" % (progName, localdir))
+    else:
+        sys.path = [ prefix + '/lib/gjots2' ] + sys.path
 
-	#
-	# pygtk version
-	#
-	try:
-	    import pygtk
-	except ImportError, err:
-	    print err
-	    sys.stderr.write(_("%s requires pygtk-%s.\n") % (progName, ver2str(pygtkver)))
-	    sys.exit(1)
-	else:
-	    pygtk.require("2.0")
+    # i18n support
+    import gettext
+    import locale
 
-	#
-	# Add the library path to the system load path
-	#
-	# developer should use local version executed from the current directory:
-	localdir=os.curdir + "/lib"
-	if os.access(localdir, os.F_OK) and os.access("gjots.glade3", os.F_OK):
-		prefix = localdir
-		sys.path = [ localdir ] + sys.path
-		sys.stderr.write(_("%s: Warning: running modules from %s\n") % (progName, localdir))
-	else:
-		# Assumption: we're running from $prefix/bin
-		prefix, bin = os.path.split(dirName)
-		sys.path = [ prefix + '/lib/gjots2' ] + sys.path
+    # Locale setting in gtk.Builder appears somewhat broken under Python. See:
+    #   https://bugzilla.gnome.org/show_bug.cgi?id=574520
+    locale_domain = "gjots2"
+    locale_dir = prefix + "/share/locale"
+    
+    gettext.bindtextdomain(locale_domain, locale_dir)
+    locale.setlocale(locale.LC_ALL, '')
+    gettext.textdomain(locale_domain)
+    gettext.install(locale_domain, localedir=locale_dir, unicode=True)
+    try:
+        locale.bindtextdomain(locale_domain, locale_dir)
+        locale.bind_textdomain_codeset(locale_domain, 'UTF-8')
+    except locale.Error:
+        print "Couldn't bind the translation domain. Some translations won't work."
+    _ = gettext.gettext
 
-	from gui import *
-	from version import *
+    #
+    # python version
+    #
+    if sys.version_info[:2] < pyver:
+        sys.stderr.write(_("%s requires python%s or higher.") % (progName, ver2str(pyver)))
+        sys.exit(1)
 
-	try:
-	    opts, args = getopt.getopt(sys.argv[1:], "hdrtg:V", ["help", "debug", "readonly", "trace", "geometry=", "version"])
-	except getopt.GetoptError, errmsg:
-		sys.stderr.write("%s: %s\n" % (progName, errmsg))
-		sys.stderr.write(_("Use -h for help\n"))
-		sys.exit(2)
+    #
+    # pygtk version
+    #
+    try:
+        import pygtk
+    except ImportError, err:
+        print err
+        sys.stderr.write(_("%s requires pygtk-%s.\n") % (progName, ver2str(pygtkver)))
+        sys.exit(1)
+    else:
+        pygtk.require("2.0")
 
-	readonly = 0
-	output = None
-	geometry = ""
-	prefs = ""
-	debug = 0
-	purge_password = 0
-	for o, a in opts:
-		if o in ("-h", "--help"):
-			usage()
-			sys.exit(0)
-		if o in ("-V", "--version"):
-			print _("%s version %s") % (progName, gjots_version)
-			sys.exit(0)
-		if o in ("-p", "--purge-password"):
-			purge_password = 1
-		if o in ("-r", "--readonly"):
-			readonly = 1
-		if o in ("-g", "--geometry"):
-			geometry = a
-		if o in ("-d", "--debug"):
-			debug = 1
-		if o in ("-t", "--trace"):
-			sys.settrace(traceit)
+    from gui import *
+    from version import *
 
-	if len(args):
-		filename = args[0]
-	else:
-		filename = os.environ["HOME"]+"/.gjotsfile"
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "2hdrtg:V", ["help", "glade2", "debug", "readonly", "trace", "geometry=", "version"])
+    except getopt.GetoptError, errmsg:
+        sys.stderr.write("%s: %s\n" % (progName, errmsg))
+        sys.stderr.write(_("Use -h for help\n"))
+        sys.exit(2)
 
-	if not os.access(filename, os.R_OK):
-		os.system("touch " + filename)
+    readonly = 0
+    output = None
+    geometry = ""
+    prefs = ""
+    debug = 0
+    purge_password = 0
+    use_glade2 = 0
+    for o, a in opts:
+        if o in ("-h", "--help"):
+            usage()
+            sys.exit(0)
+        if o in ("-V", "--version"):
+            print _("%s version %s") % (progName, gjots_version)
+            sys.exit(0)
+        if o in ("-2", "--glade2"):
+            use_glade2 = 1
+        if o in ("-p", "--purge-password"):
+            purge_password = 1
+        if o in ("-r", "--readonly"):
+            readonly = 1
+        if o in ("-g", "--geometry"):
+            geometry = a
+        if o in ("-d", "--debug"):
+            debug = 1
+        if o in ("-t", "--trace"):
+            sys.settrace(traceit)
 
-	import gnome
-	gnome.program_init(progName, gjots_version)
+    if len(args):
+        filename = args[0]
+    else:
+        filename = os.environ["HOME"]+"/.gjotsfile"
 
-	gui = gjots_gui(prefix, progName, geometry, filename, readonly, debug, purge_password)
+    if not os.access(filename, os.R_OK):
+        os.system("touch " + filename)
 
-	gtk.main()
+    gui = gjots_gui(prefix, progName, geometry, filename, readonly, debug, purge_password, use_glade2)
+
+    gtk.main()
 
 
 # Local variables:

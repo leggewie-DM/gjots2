@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkFileChooserDialog" id="fileselection">
+    <property name="border_width">5</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="window_position">mouse</property>
+    <property name="type_hint">normal</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="skip_pager_hint">True</property>
+    <signal handler="on_fileselectionOkButton_clicked" name="file_activated"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox2">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child>
+          <object class="GtkHBox" id="hbox1">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkCheckButton" id="fileselectionReadonly">
+                <property name="label" translatable="yes">Open file read only</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip-text" translatable="yes">To open the file in read-only mode.</property>
+                <property name="focus_on_click">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area2">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="fileselectionOkButton">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_fileselectionOkButton_clicked" name="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="fileselectionCancelButton">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_fileselectionCancelButton_clicked" name="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

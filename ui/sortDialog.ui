@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<interface>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="lower">-1</property>
+    <property name="page_increment">10</property>
+    <property name="step_increment">1</property>
+    <property name="page_size">10</property>
+    <property name="value">1</property>
+  </object>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkWindow" id="sortDialog">
+    <property name="visible">True</property>
+    <property name="title" translatable="yes">Sort</property>
+    <property name="type_hint">dialog</property>
+    <property name="window_position">mouse</property>
+    <signal handler="on_sortDialog_destroy" name="destroy"/>
+    <child>
+      <object class="GtkVBox" id="vbox6">
+        <property name="visible">True</property>
+        <property name="border_width">10</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkFrame" id="frame5">
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkAlignment" id="alignment6">
+                <property name="visible">True</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkTable" id="table7">
+                    <property name="visible">True</property>
+                    <property name="n_rows">2</property>
+                    <property name="n_columns">2</property>
+                    <child>
+                      <object class="GtkRadioButton" id="sortAscendingRadioButton">
+                        <property name="label" translatable="yes">Ascending</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip-text" translatable="yes">Sort in ascending order</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="x_options">GTK_FILL</property>
+                        <property name="y_options"/>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="sortDescendingRadioButton">
+                        <property name="label" translatable="yes">Descending</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip-text" translatable="yes">Sort in descending order</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">sortAscendingRadioButton</property>
+                      </object>
+                      <packing>
+                        <property name="top_attach">1</property>
+                        <property name="bottom_attach">2</property>
+                        <property name="x_options">GTK_FILL</property>
+                        <property name="y_options"/>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="sortAlphabeticRadioButton">
+                        <property name="label" translatable="yes">Alphabetic</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip-text" translatable="yes">Sort in alphabetic order</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
+                        <property name="x_options">GTK_FILL</property>
+                        <property name="y_options"/>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="sortNumericRadioButton">
+                        <property name="label" translatable="yes">Numeric</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip-text" translatable="yes">Sort in numeric order</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">sortAlphabeticRadioButton</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">1</property>
+                        <property name="bottom_attach">2</property>
+                        <property name="x_options">GTK_FILL</property>
+                        <property name="y_options"/>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="label14">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes"> Sort Parameters </property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="sortRangeFrame">
+            <property name="visible">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkAlignment" id="alignment7">
+                <property name="visible">True</property>
+                <property name="left_padding">12</property>
+                <child>
+                  <object class="GtkVBox" id="vbox10">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkSpinButton" id="sortSublevelsSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="tooltip-text" translatable="yes">How many sublevels to sort (0 for none; -1 for 'all')</property>
+                        <property name="adjustment">adjustment1</property>
+                        <property name="climb_rate">1</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="label15">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes"> Sort Sublevels </property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHButtonBox" id="hbuttonbox4">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="saveOKButton">
+                <property name="label">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_sortOKButton_clicked" name="clicked"/>
+                <accelerator key="KP_Enter" signal="clicked"/>
+                <accelerator key="Return" signal="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="saveCancelButton">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_sortCancelButton_clicked" name="clicked"/>
+                <accelerator key="Escape" signal="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
