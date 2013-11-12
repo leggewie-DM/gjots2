@@ -1,0 +1,11 @@
+diff --git a/gjots2.desktop b/gjots2.desktop
+index 1d41f97..4bd025d 100644
+--- a/gjots2.desktop
++++ b/gjots2.desktop
+@@ -19,5 +19,5 @@ Comment[ru]=Сохраняйте и организуйте Ваши заметк
+ Exec=gjots2
+ Terminal=false
+ Type=Application
+-Icon=gjots2.png
++Icon=gjots.png
+ Categories=GNOME;Application;Utility;
