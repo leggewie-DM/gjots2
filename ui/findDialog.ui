@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkWindow" id="findDialog">
+    <property name="visible">True</property>
+    <property name="title" translatable="yes">Find &amp; replace</property>
+    <property name="type_hint">dialog</property>
+    <property name="window_position">mouse</property>
+    <signal handler="on_findDialog_destroy" name="destroy"/>
+    <child>
+      <object class="GtkVBox" id="vbox3">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkHBox" id="hbox2">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkTable" id="table4">
+                <property name="visible">True</property>
+                <property name="border_width">10</property>
+                <property name="n_rows">2</property>
+                <property name="n_columns">2</property>
+                <property name="column_spacing">10</property>
+                <property name="row_spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="label4">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Find:</property>
+                    <property name="justify">center</property>
+                  </object>
+                  <packing>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="replaceLabel">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Replace:</property>
+                    <property name="justify">center</property>
+                  </object>
+                  <packing>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="findEntry">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_focus">True</property>
+                    <property name="can_default">True</property>
+                    <property name="has_default">True</property>
+                    <property name="tooltip-text" translatable="yes">String to search for</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="replaceEntry">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip-text" translatable="yes">String to replace</property>
+                    <signal handler="on_replaceEntry_key_press_event" name="key_press_event"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkTable" id="table3">
+                <property name="visible">True</property>
+                <property name="border_width">10</property>
+                <property name="n_rows">3</property>
+                <property name="n_columns">2</property>
+                <property name="column_spacing">10</property>
+                <property name="row_spacing">10</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkButton" id="findStartButton">
+                    <property name="label" translatable="yes">Find</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <signal handler="on_findStartButton_clicked" name="clicked"/>
+                    <accelerator key="Return" signal="clicked"/>
+                    <accelerator key="KP_Enter" signal="clicked"/>
+                  </object>
+                  <packing>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="findCloseButton">
+                    <property name="label" translatable="yes">Close</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <signal handler="on_findCloseButton_clicked" name="clicked"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="replaceStartButton">
+                    <property name="label" translatable="yes">Replace</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <signal handler="on_replaceStartButton_clicked" name="clicked"/>
+                  </object>
+                  <packing>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="replaceAllButton">
+                    <property name="label" translatable="yes">Replace All</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <signal handler="on_replaceAllButton_clicked" name="clicked"/>
+                  </object>
+                  <packing>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="findCancelButton">
+                    <property name="label" translatable="yes">Cancel</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <signal handler="on_findCancelButton_clicked" name="clicked"/>
+                    <accelerator key="Escape" signal="clicked"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="findClearButton">
+                    <property name="label" translatable="yes">Clear</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <signal handler="on_findClearButton_clicked" name="clicked"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="findFeedback">
+            <property name="visible">True</property>
+            <property name="justify">center</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="frame2">
+            <property name="visible">True</property>
+            <property name="border_width">10</property>
+            <property name="label_xalign">0</property>
+            <child>
+              <object class="GtkTable" id="table5">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="border_width">10</property>
+                <property name="n_rows">2</property>
+                <property name="n_columns">2</property>
+                <property name="column_spacing">10</property>
+                <property name="row_spacing">10</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkCheckButton" id="caseCheckbutton">
+                    <property name="label" translatable="yes">Match case</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip-text" translatable="yes">Don't ignore case</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="regexCheckbutton">
+                    <property name="label" translatable="yes">Regular Expression</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip-text" translatable="yes">Find string is a regular expression (see 'man 7 regex')</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="backwardsCheckbutton">
+                    <property name="label" translatable="yes">Backwards</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip-text" translatable="yes">Search backwards</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="globalCheckbutton">
+                    <property name="label" translatable="yes">Global</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="tooltip-text" translatable="yes">Searches entire file not just this entry</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"/>
+                  </packing>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="label6">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes"> Options </property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

@@ -17,7 +17,7 @@ class LockingError(Exception):
 class gjotsfile:
 
 	def _make_lockfile_name(self, filename):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		dirname, basename = os.path.split(filename)
 
@@ -38,7 +38,7 @@ class gjotsfile:
 
 		"""
 		
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 			
 		if not filename or len(filename) == 0:
@@ -46,7 +46,7 @@ class gjotsfile:
 
 		lockfile = self._make_lockfile_name(filename)
 
-		if self.gui.trace:
+		if self.gui.debug:
 			print "lock_file: lockfile name =", lockfile
 		pid = 0
 		
@@ -69,7 +69,7 @@ class gjotsfile:
 			except:
 				pass
 			
-			if self.gui.trace:
+			if self.gui.debug:
 				print "lock: pid = %d\n" % pid
 			if pid > 0:
 				if pid == os.getpid():
@@ -86,7 +86,7 @@ class gjotsfile:
 					return (2, pid)
 
 		# nothing read from lockfile or process no longer exists:
-		if self.gui.trace:
+		if self.gui.debug:
 			print "lock_file: locking to pid", os.getpid()
 		try:
 			fd = file(lockfile, "w")
@@ -102,7 +102,7 @@ class gjotsfile:
 		Returns 0 on success, 1 on fail
 		"""
 		
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		if not filename or len(filename) == 0:
@@ -148,7 +148,7 @@ class gjotsfile:
 		"""
 
 		# Too verbose to trace this
-		#if self.gui.trace:
+		#if self.gui.debug:
 		#	print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		newNode = None
@@ -174,7 +174,7 @@ class gjotsfile:
 		"""
 		
 		# Too verbose to trace this
-		#if self.gui.trace:
+		#if self.gui.debug:
 		#	print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		body = []
@@ -221,15 +221,16 @@ class gjotsfile:
 		first=suppress printing first level \NewEntry and \NewFolder - we're doing root
 		"""
 		# Too verbose to trace this
-		#if self.gui.trace:
+		#if self.gui.debug:
 		#	print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		if not first:
 			f.write("\\NewEntry\n")
 		body = self.gui.get_node_value(treeiter)
-		f.write(body)
-		if body and not body[-1] == '\n':
-			f.write('\n')
+		if body:
+			f.write(body)
+			if not body[-1] == '\n':
+				f.write('\n')
 		treeiter = self.gui.get_first_child(treeiter)
 		if treeiter:
 			if not first:
@@ -241,7 +242,7 @@ class gjotsfile:
 				f.write("\\EndFolder\n")
 
 	def get_password(self, num_fields, filename, mode, password):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		secretp = 1
 		feedback = " "
@@ -263,8 +264,8 @@ class gjotsfile:
 			feedback = _("Password was not confirmed")
 		return password
 	
-	def ccrypt_open(self, filename, mode = "r"):
-		if self.gui.trace:
+	def ccrypt_open(self, filename, mode = "r", reuse_password = 0):
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if os.system("type ccdecrypt >/dev/null 2>&1") != 0:
 			self.gui.err_msg(_("Could not find the ccrypt program - please install it and try again"))
@@ -276,7 +277,8 @@ class gjotsfile:
 		else:
 			num_fields = 1
 
-		self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
+		if not reuse_password or self.gui.password == None or self.gui.password == "":
+			self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
 		envname = "DH665" # or anything you like!
 		os.environ[envname] = self.gui.password
 		if mode == "r":
@@ -291,37 +293,49 @@ class gjotsfile:
 			self.gui.password = blank
 			self.gui.password = ""
 		return f
-	
-	def gpg_open(self, filename, mode = "r"):
-		if self.gui.trace:
-			print inspect.getframeinfo(inspect.currentframe())[2], vars()
-		if os.system("type gpg >/dev/null 2>&1") != 0:
-			self.gui.err_msg(_("Could not find the gpg program - please install it and try again"))
-			raise PasswordError
-		
-		# get a password:
-		if mode == "w":
-			num_fields = 2
-		else:
-			num_fields = 1
 
-		self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
+	def gpg_open(self, filename, mode = "r", reuse_password = 0):
+		if self.gui.debug:
+			print inspect.getframeinfo(inspect.currentframe())[2], vars()
+		prog = "gpg2"
+		if os.system("type " + prog + " >/dev/null 2>&1") != 0:
+			prog = "gpg"
+			if os.system("type " + prog + " >/dev/null 2>&1") != 0:
+				self.gui.err_msg(_("Neither gpg2 nor gpg are available - please install one (perhaps package gnupg2) and try again"))
+				raise PasswordError
+		
+		# allow agent to provide password if available:
+		if os.environ["GPG_AGENT_INFO"]:
+			prefix = ""
+			option = ""
+		else:
+			if (mode == "r"):
+				num_fields = 1
+			else:
+				num_fields = 2
+			if not reuse_password or self.gui.password == None or self.gui.password == "":
+				self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
+			prefix = "echo \"" + self.gui.password + "\" | "
+			option = "--passphrase-fd 0 "
+
 		if mode == "r":
-			f = os.popen("echo \"" + self.gui.password + "\" | gpg --batch --no-tty --cipher-algo 3DES --decrypt --passphrase-fd 0 " + filename + " 2>/dev/null", "r")
+			f = os.popen(prefix + prog + " --batch --no-tty --decrypt --use-agent " + option + filename + " 2>/dev/null", "r")
 		else:
 			scratch = tempfile.mktemp()
-			f = os.popen("cat > " + scratch + "; echo \"" + self.gui.password + "\" | gpg --batch --no-tty --cipher-algo 3DES -o - --symmetric --passphrase-fd 0 " + scratch + "> " + filename + " 2>/dev/null; rm " + scratch, "w")
+			cmd = "cat > " + scratch + "; " + prefix + prog + " --batch --no-tty -o - --symmetric " + option + scratch + "> " + filename + " 2>/dev/null; rm " + scratch
+
+			f = os.popen(cmd, "w")
 		blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 		if self.gui.purge_password:
 			self.gui.password = blank
 			self.gui.password = ""
 		return f
 	
-	def ssl_open(self, filename, mode = "r"):
-		if self.gui.trace:
+	def ssl_open(self, filename, mode = "r", reuse_password = 0):
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if os.system("type openssl >/dev/null 2>&1") != 0:
-			self.gui.err_msg(_("Could not find the openssl program - please install it and try again"))
+			self.gui.err_msg(_("No openssl program - please install it and try again"))
 			raise PasswordError
 		
 		# get a password:
@@ -330,7 +344,8 @@ class gjotsfile:
 		else:
 			num_fields = 1
 
-		self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
+		if not reuse_password or self.gui.password == None or self.gui.password == "":
+			self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
 		if mode == "r":
 			f = os.popen("echo \"" + self.gui.password + "\" | openssl des3 -d -pass stdin -in " + filename + " 2>&1", "r")
 		else:
@@ -343,16 +358,17 @@ class gjotsfile:
 		return f
 
 	def close(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		if self.filename:
 			self.unlock_file(self.filename)
 		
-	def _general_open(self, filename, mode):
-		if self.gui.trace:
+	def _general_open(self, filename, mode, reuse_password = 0):
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
-		
+
+		self.last_file = filename
 		if mode == "w":
 			try:
 				backup_file = filename + "~"
@@ -366,17 +382,20 @@ class gjotsfile:
 			
 		exti = filename.rfind(".cpt")
 		if not exti == -1:
-			return self.ccrypt_open(filename, mode)
+			return self.ccrypt_open(filename, mode = mode, reuse_password = reuse_password)
+		exti = filename.rfind(".gpg2")
+		if not exti == -1:
+			return self.gpg_open(filename, mode = mode, reuse_password = reuse_password)
 		exti = filename.rfind(".gpg")
 		if not exti == -1:
-			return self.gpg_open(filename, mode)
+			return self.gpg_open(filename, mode = mode, reuse_password = reuse_password)
 		exti = filename.rfind(".ssl")
 		if not exti == -1:
-			return self.ssl_open(filename, mode)
+			return self.ssl_open(filename, mode = mode, reuse_password = reuse_password)
 		return open(filename, mode)
 		
 	def _do_load(self, filename, import_after):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		dirname, basename = os.path.split(filename)
@@ -402,10 +421,12 @@ class gjotsfile:
 			self.filename = filename
 			self.gui.show_tree(basename)
 			
-		f.close()
+		if f.close() != None:
+			self.gui.err_msg(_("failed!"))
+			return ""
 		return self.filename
 	
-	def _do_store(self, filename, selection):
+	def _do_store(self, filename, selection, reuse_password = 0):
 		"""
 
 		Internal storage routine - no prompting, locking or other
@@ -415,7 +436,7 @@ class gjotsfile:
 		Return filename on success, "" on error
 
 		"""
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		if not filename:
@@ -423,7 +444,7 @@ class gjotsfile:
 		dirname, basename = os.path.split(filename)
 
 		try:
-			f = self._general_open(filename, "w")
+			f = self._general_open(filename, "w", reuse_password = reuse_password)
 		except IOError:
 			dirname, basename = os.path.split(filename)
 			self.gui.msg(_("Not saved."))
@@ -436,12 +457,12 @@ class gjotsfile:
 		if selection:
 			first_selected = self.gui.get_first_selected_iter()
 			if not first_selected:
-				self.gui.msg(_("Nothing selected"))
+				self.gui.err_msg(_("Nothing selected"))
 				return ""
 
 			last_selected = self.gui.get_last_selected_iter()
 			if not last_selected:
-				self.gui.msg(_("Nothing selected"))
+				self.gui.err_msg(_("Nothing selected"))
 				return ""
 
 			this = first_selected
@@ -458,35 +479,37 @@ class gjotsfile:
 			# needs a try/except: for IO errors, eg. out of space, network failed ...
 			self.writeItem(f, treeiter, 1)
 		
-		f.close()
+		if f.close() != None:
+			self.gui.err_msg(_("failed!"))
+			return ""
 		return filename
 	
 	def destroy(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.xml.get_widget(self.name).destroy()
+		self.file_get_widget(self.name).destroy()
 
 	def on_fileselection_key_press_event(self, widget, event):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		# Nothing is needed here - return & escape work as expected
 		pass
 	
 	def on_fileselectionCancelButton_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.prompt_filename = None
 		self.fileselectionValue = CANCEL
 		
 	def on_fileselectionOkButton_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.prompt_filename = self.fileselection_dialog.get_filename()
 		self.fileselectionValue = OK
-		self.fileselection_readonly = self.xml.get_widget("fileselectionReadonly").get_active()
+		self.fileselection_readonly = self.file_get_widget("fileselectionReadonly").get_active()
 
 	def get_value(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return self.prompt_filename
 	
@@ -494,7 +517,7 @@ class gjotsfile:
 		"""
 		File selection dialog
 		"""
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		callbacks = {
@@ -505,11 +528,24 @@ class gjotsfile:
 		}
 
 		self.name = "fileselection"
-		self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-		self.fileselection_dialog = self.xml.get_widget(self.name)
+		if self.gui.builder:
+			self.gui.builder.add_from_file(self.gui.sharedir + "ui/fileDialog.ui")
+			self.gui.builder.connect_signals(callbacks)
+			self.file_get_widget = self.gui.gui_get_widget
+		else:
+			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
+			self.xml.signal_autoconnect(callbacks)
+			self.file_get_widget = self.xml.get_widget
+			
+		self.fileselection_dialog = self.file_get_widget(self.name)
 		self.fileselection_dialog.set_title(title)
 
 		self.fileselection_dialog.add_filter(self.gui.file_filter)
+
+		if self.last_file == None:
+			self.last_file = os.environ["HOME"]
+		self.last_file = self.gui.backtick("readlink -n -m " + self.last_file)
+		self.fileselection_dialog.set_filename(self.last_file)
 
 		all_filter = gtk.FileFilter()
 		all_filter.add_pattern("*")
@@ -521,9 +557,13 @@ class gjotsfile:
 		self.fileselectionValue = WAITING
 		if mode == gtk.FILE_CHOOSER_ACTION_SAVE:
 			self.fileselection_dialog.set_do_overwrite_confirmation(True)
-			self.xml.get_widget("fileselectionReadonly").hide()
+			self.file_get_widget("fileselectionReadonly").hide()
 
-		self.xml.signal_autoconnect(callbacks)
+		if self.gui.builder:
+			self.gui.builder.connect_signals(callbacks)
+		else:
+			self.xml.signal_autoconnect(callbacks)
+
 		while self.fileselectionValue == WAITING:
 			gtk.main_iteration()
 
@@ -539,7 +579,7 @@ class gjotsfile:
 
 		"""
 		
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		if prompt and not filename:
@@ -624,7 +664,7 @@ class gjotsfile:
 				return 1
 		return 0
 	
-	def write_file(self, prompt = "", exporting=0):
+	def write_file(self, prompt = "", exporting=0, reuse_password=1):
 		"""
 		
 		Top level file writing - with prompting if necessary. If no
@@ -637,12 +677,15 @@ class gjotsfile:
 		If exporting then only write the current selection - no need
 		to change the default filename to this one; otherwise, write
 		the root item and change the default filename to this one.
-		
+
+		If we already know the password and reuse_password is 0 then
+		just save the sucker.
+
 		Return filename on success, "" on error
 		
 		"""
 		
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		if self.gui.readonly or not self.filename:
@@ -664,7 +707,9 @@ class gjotsfile:
 						if self._check_timestamp(self.filename, 
 												 self.filename_timestamp):
 							return ""
-						retval = self._do_store(self.filename, exporting)
+						retval = self._do_store(self.filename, 
+												selection = exporting, 
+												reuse_password = reuse_password)
 						if not exporting:
 							try:
 								s = os.stat(self.filename)
@@ -707,7 +752,9 @@ class gjotsfile:
 					except IOError:
 						pass
 
-					retval = self._do_store(self.prompt_filename, exporting)
+					retval = self._do_store(self.prompt_filename, 
+											selection = exporting, 
+											reuse_password = reuse_password)
 					if exporting:
 						self.unlock_file(self.prompt_filename)
 					else:
@@ -727,7 +774,9 @@ class gjotsfile:
 				# assert exporting == 0
 				if self._check_timestamp(self.filename, self.filename_timestamp):
 					return ""
-				retval = self._do_store(self.filename, exporting)
+				retval = self._do_store(self.filename, 
+										selection = exporting, 
+										reuse_password = reuse_password)
 				try:
 					s = os.stat(self.filename)
 					self.filename_timestamp = s.st_mtime
@@ -748,13 +797,14 @@ class gjotsfile:
 			
 	def __init__(self, gui):
 		self.gui = gui
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.prompt_filename = ""
 		self.filename = ""
 		self.fileselectionValue = OK
 		self.fileselection_readonly = False
 		self.file_filter = None
+		self.last_file = None
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")

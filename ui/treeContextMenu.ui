@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<interface>
+  <object class="GtkUIManager" id="uimanager1">
+    <child>
+      <object class="GtkActionGroup" id="actiongroup1">
+        <child>
+          <object class="GtkAction" id="cutContextMenuItem">
+            <property name="stock_id">gtk-cut</property>
+            <property name="name">cutContextMenuItem</property>
+            <signal handler="on_cut_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="copyContextMenuItem">
+            <property name="stock_id">gtk-copy</property>
+            <property name="name">copyContextMenuItem</property>
+            <signal handler="on_copy_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="pasteContextMenuItem">
+            <property name="stock_id">gtk-paste</property>
+            <property name="name">pasteContextMenuItem</property>
+            <signal handler="on_paste_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="selectAllContextMenuItem">
+            <property name="name">selectAllContextMenuItem</property>
+            <property name="label" translatable="yes">Select _All</property>
+            <signal handler="on_selectAll_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="findContextMenuItem">
+            <property name="stock_id">gtk-find</property>
+            <property name="name">findContextMenuItem</property>
+            <signal handler="on_find_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="newPageContextMenuItem">
+            <property name="stock_id">gnome-stock-multiple-file</property>
+            <property name="name">newPageContextMenuItem</property>
+            <property name="label" translatable="yes">New Page</property>
+            <signal handler="on_newPage_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="newChildContextMenuItem">
+            <property name="name">newChildContextMenuItem</property>
+            <property name="label" translatable="yes">New Child</property>
+            <signal handler="on_newChild_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="upContextMenuItem">
+            <property name="stock_id">gtk-go-up</property>
+            <property name="name">upContextMenuItem</property>
+            <signal handler="on_up_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="downContextMenuItem">
+            <property name="stock_id">gtk-go-down</property>
+            <property name="name">downContextMenuItem</property>
+            <signal handler="on_down_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="promoteContextMenuItem">
+            <property name="stock_id">gtk-go-back</property>
+            <property name="name">promoteContextMenuItem</property>
+            <property name="label" translatable="yes">Promote</property>
+            <signal handler="on_promote_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="demoteContextMenuItem">
+            <property name="stock_id">gtk-go-forward</property>
+            <property name="name">demoteContextMenuItem</property>
+            <property name="label" translatable="yes">Demote</property>
+            <signal handler="on_demote_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="mergeItemsContextMenuItem">
+            <property name="name">mergeItemsContextMenuItem</property>
+            <property name="label" translatable="yes">Merge Items</property>
+            <signal handler="on_mergeItems_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="showAllContextMenuItem">
+            <property name="name">showAllContextMenuItem</property>
+            <property name="label" translatable="yes">Show All</property>
+            <signal handler="on_showAll_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="hideAllContextMenuItem">
+            <property name="name">hideAllContextMenuItem</property>
+            <property name="label" translatable="yes">Hide All</property>
+            <signal handler="on_hideAll_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="sortTreeContextMenuItem">
+            <property name="name">sortTreeContextMenuItem</property>
+            <property name="label" translatable="yes">Sort Tree</property>
+            <signal handler="on_sortTree_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="importContextMenuItem">
+            <property name="name">importContextMenuItem</property>
+            <property name="label" translatable="yes">Import</property>
+            <signal handler="on_import_trigger" name="activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkAction" id="exportContextMenuItem">
+            <property name="name">exportContextMenuItem</property>
+            <property name="label" translatable="yes">Export</property>
+            <signal handler="on_export_trigger" name="activate"/>
+          </object>
+        </child>
+      </object>
+    </child>
+    <ui>
+      <popup name="treeContextMenu">
+        <menuitem action="cutContextMenuItem"/>
+        <menuitem action="copyContextMenuItem"/>
+        <menuitem action="pasteContextMenuItem"/>
+        <separator/>
+        <menuitem action="selectAllContextMenuItem"/>
+        <separator/>
+        <menuitem action="findContextMenuItem"/>
+        <separator/>
+        <menuitem action="newPageContextMenuItem"/>
+        <menuitem action="newChildContextMenuItem"/>
+        <separator/>
+        <menuitem action="upContextMenuItem"/>
+        <menuitem action="downContextMenuItem"/>
+        <menuitem action="promoteContextMenuItem"/>
+        <menuitem action="demoteContextMenuItem"/>
+        <separator/>
+        <menuitem action="mergeItemsContextMenuItem"/>
+        <separator/>
+        <menuitem action="showAllContextMenuItem"/>
+        <menuitem action="hideAllContextMenuItem"/>
+        <separator/>
+        <menuitem action="sortTreeContextMenuItem"/>
+        <separator/>
+        <menuitem action="importContextMenuItem"/>
+        <menuitem action="exportContextMenuItem"/>
+      </popup>
+    </ui>
+  </object>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkMenu" constructor="uimanager1" id="treeContextMenu">
+    <property name="visible">True</property>
+  </object>
+</interface>

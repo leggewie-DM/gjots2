@@ -63,10 +63,13 @@ there was an increasing number of people who wanted LOTE
 learn about python and hence the current python version of gjots
 - gjots2 or "son of gjots" came into being. Being written in an
 interpreted language it isn't quite so fast to start up as the
-original gjots but it offers heaps more features:
+original gjots* but it offers heaps more features:
 
 Like Goldilocks said about the chairs, porridge and beds, 
 gjots2 is "just right". 
+
+* this was true when I wrote this in about 2004. In 2012, my i7
+brings it up practically instantly.
 \NewEntry
 Installing
 
@@ -76,7 +79,9 @@ uninstallation and more package management than setup.py
 \NewEntry
 RPM-based systems
 
-Just do this:
+fedora includes gjots2
+
+Just download and do this:
 
 VERSION=_VERSION_
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
@@ -87,26 +92,23 @@ Prerequisites
 
 Let rpm take the strain ... otherwise ...
 
-You may need to install (or re-install) libglade, pygtk, gnome-python,
-or gtk for your current version of python or possibly you can just set
-your PYTHONPATH eg.
+Install pygtksourceview to enable Undo/Redo
+
+You may need to install (or re-install) libglade, pygtk, or gtk for
+your current version of python or possibly you can just set your
+PYTHONPATH eg.
 
 	export PYTHONPATH=/usr/local/lib/python2.6/site-packages/
 
 As at this writing (gjots-2.3.11), I have the following installed (on Fedora-13):
 
-    glade3-libgladeui
-    gnome-python2
-    gnome-python2-gconf
     gtk2
     gtksourceview
     libglade2
-    libgnome
-    libgnomecanvas
-    libgnomeui
     pygtk2
     pygtk2-libglade
     pygtksourceview
+    glade3-libgladeui
 
 Make sure the python packages are installed in the site-packages
 directory for the version of python that you are using (do a "python
@@ -119,8 +121,8 @@ example, it happened to me when python got upgraded from 2.2 to
 2.3 - /usr/lib/python2.X/site-packages directory is not
 automatically updated.) I then had to (on gentoo) do this:
 
-	emerge unmerge libglade pygtk gnome-python bonobo-python pyorbit
-	emerge libglade pygtk gnome-python bonobo-python pyorbit
+	emerge unmerge libglade pygtk bonobo-python pyorbit
+	emerge libglade pygtk bonobo-python pyorbit
 
 gjots2 was written with glade-3 so if you want to change or fix the
 code you will need to install it too.  Otherwise, it's just python!
@@ -137,7 +139,7 @@ less trouble to install them from the right hand side of this
 list and let the Gentoo dependency system take care of modules to
 the left - but I haven't tried it):
 
-	 >=gtk+-2 >=libglade-2 >=pygtk-2 gnome-python-2 >=pyorbit-2
+	 >=gtk+-2 >=libglade-2 >=pygtk-2 >=pyorbit-2
 
 Make sure you have a line like the following in your /etc/make.conf:
 
@@ -236,6 +238,7 @@ Or use an argument - gjots2 accepts a single file, eg:
 These options are available:
 -h, --help:                         this help
 -d, --debug:                        debug to stdout
+-2, --glade2:                       use glade-2 gui if available
 -t, --trace:                        trace lines as they execute
 -g 123x456, --geometry=123x456:     initial geometry (X x Y)
 -p, --purge-password                scrub password as soon as it's used
@@ -244,6 +247,8 @@ These options are available:
 
 For supported languages other than English, you can use eg:
 	LC_ALL=de_DE.utf8 gjots2
+or (eg fedora-16+):
+    LANGUAGE=de_DE.utf8 gjots2
 
 To see what languages are currently supported:
 	ls /usr/{,local/}share/locale/*/LC_MESSAGES/gjots2.mo
@@ -373,7 +378,9 @@ The "Find" button pops up the find & replace dialog.
 Find & Replace
 
 ^F, Edit->Find or the Find button in the top toolbar popup the
-find & replace dialog.
+find & replace dialog. The top toolbar also holds the most recent find string and quick forward and back search buttons. There is a drop-down of recent searches to the right of this.
+
+^G is a shortcut for 'next' and Shift-^G is for 'previous'.
 
 The operation should be intuitive - type in what you want to find
 into the Find & Replace dialog Find entry and press the Find
@@ -557,7 +564,8 @@ Global key mappings:
 	^s		does save
 	^q		does quit
 	^f		Popup the find dialog
-
+        ^g              find next
+        shift-^g        find previous
 \NewEntry
 Import and export
 
@@ -592,8 +600,9 @@ recognised.
 \NewEntry
 Encryption
 
-gjots2 can encrypt and decrypt files using the ccrypt(1), openssl(1)
-or gpg(1) packages.
+gjots2 can encrypt and decrypt files using the ccrypt(1), openssl(1),
+gpg2(1) or gpg(1) packages. If the gpg-agent is detected (ie if
+the GPG_AGENT_INFO variable is set) then it is used for passwords.
 
 Files are saved with encryption according to the file suffix you
 provide:
@@ -604,13 +613,18 @@ provide:
 
 gjots2 prompts for passwords where needed.
 
-Make sure you have ccrypt, openssl or gpg installed if you want
+Make sure you have ccrypt, openssl, gpg2 or gpg installed if you want
 to use this feature.
 
 Don't lose your password - I can't help you recover lost
-passwords.
+passwords!!
 \NewEntry
 Security
+
+gjots2 has not been audited for security, so don't assume it
+is secure. That said, it's probably secure enough for most
+private use. The static, encrypted files on disc are as good as
+gpg/openssl/ccrypt, ie pretty good, (the default algorithm and key lengths are used in each encryption program).
 
 For encryption in ccrypt, I've used the equivalent of:
  
@@ -652,12 +666,22 @@ the URL is selected.
 
 Only http[s]://... URLs are recognised.
 
-The BROWSER environment parameter is obeyed in selecting which browser to
-run. If that's not set then an already-running browser from the list below
-is selected. If none of them are already running then the first one from
-the list that can be found is run.
+The browser that gets started or activated is the first from:
 
-	firefox
+An already-running browser from the list below is activated. 
+
+Failing that, the BROWSER environment parameter is obeyed
+
+Failing that, the gnome prefered browser is run.
+
+Failing that, then the first one from the list that can be found
+is run.
+
+	xdg-open
+	gnome-open
+	firefox4
+        chrome
+        firefox
 	konqueror
 	epiphany
 	opera

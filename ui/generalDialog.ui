@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkWindow" id="generalDialog">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="border_width">1</property>
+    <property name="title" translatable="yes">window1</property>
+    <property name="modal">True</property>
+    <property name="window_position">mouse</property>
+    <property name="destroy_with_parent">True</property>
+    <child>
+      <object class="GtkVBox" id="vbox1">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel" id="generalPromptLabel">
+            <property name="visible">True</property>
+            <property name="xpad">10</property>
+            <property name="label" translatable="yes">label1</property>
+            <property name="justify">center</property>
+            <property name="wrap">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="padding">10</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTable" id="table1">
+            <property name="visible">True</property>
+            <property name="border_width">10</property>
+            <property name="n_rows">2</property>
+            <property name="n_columns">2</property>
+            <property name="column_spacing">5</property>
+            <property name="row_spacing">5</property>
+            <child>
+              <object class="GtkLabel" id="generalLabel2">
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">label2</property>
+                <property name="justify">center</property>
+              </object>
+              <packing>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+                <property name="x_options"/>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="generalLabel1">
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">label1</property>
+                <property name="justify">center</property>
+              </object>
+              <packing>
+                <property name="x_options"/>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="generalField2">
+                <property name="can_focus">True</property>
+                <property name="events">GDK_BUTTON_PRESS_MASK | GDK_STRUCTURE_MASK</property>
+                <signal handler="on_generalField2_key_press_event" name="key_press_event"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+                <property name="x_options"/>
+                <property name="y_options"/>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="generalField1">
+                <property name="can_focus">True</property>
+                <property name="has_focus">True</property>
+                <property name="events">GDK_BUTTON_PRESS_MASK | GDK_KEY_RELEASE_MASK</property>
+                <signal handler="on_generalField1_key_press_event" name="key_press_event"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="x_options"/>
+                <property name="y_options"/>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="generalFeedback">
+            <property name="label" translatable="yes">label1</property>
+            <property name="justify">center</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator1">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHButtonBox" id="hbuttonbox1">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="generalOK">
+                <property name="label">gtk-ok</property>
+                <property name="can_focus">False</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_generalOK_clicked" name="clicked"/>
+                <accelerator key="Return" signal="clicked"/>
+                <accelerator key="KP_Enter" signal="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <object class="GtkButton" id="generalNo">
+                <property name="label">gtk-no</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_generalNo_clicked" name="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="generalCancel">
+                <property name="label">gtk-cancel</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_stock">True</property>
+                <signal handler="on_generalCancel_clicked" name="clicked"/>
+                <accelerator key="Escape" signal="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="generalTryagain">
+                <property name="label" translatable="yes">Try again</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_underline">True</property>
+                <signal handler="on_generalTryagain_clicked" name="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="generalReadonly">
+                <property name="label" translatable="yes">Read only</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="border_width">5</property>
+                <property name="use_underline">True</property>
+                <signal handler="on_generalReadonly_clicked" name="clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="padding">15</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

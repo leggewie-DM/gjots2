@@ -54,35 +54,35 @@ def _sort_function_num_des(x, y):
 
 class sort_dialog:
 	def destroy(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.xml.get_widget(self.name).destroy()
+		self.sort_get_widget(self.name).destroy()
 
 	def saveSettings(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		w = self.xml.get_widget("sortAscendingRadioButton")
+		w = self.sort_get_widget("sortAscendingRadioButton")
 		if w:
 			self.gui.client.set_bool(self.gui.sort_ascending_path, w.get_active())
 		else:
 			print "Cant find sortAscendingRadioButton"
-		w = self.xml.get_widget("sortAlphabeticRadioButton")
+		w = self.sort_get_widget("sortAlphabeticRadioButton")
 		if w:
 			self.gui.client.set_bool(self.gui.sort_alpha_path, w.get_active())
 
-		w = self.xml.get_widget("sortSublevelsSpinButton")
+		w = self.sort_get_widget("sortSublevelsSpinButton")
 		if w:
 			self.gui.client.set_int(self.gui.sort_sublevels_path, w.get_value_as_int())
 		
 		return
 	
 	def on_sortDialog_destroy(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		return
 	
 	def on_sortCommandEntry_key_press_event(self, widget, key_event):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		# to get all keysyms: print gtk.keysyms.__dict__
@@ -93,19 +93,19 @@ class sort_dialog:
 		return
 
 	def _get_settings(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		sort_ascending = sort_alpha = sort_items = sort_sublevels = 0
-		w = self.xml.get_widget("sortAscendingRadioButton")
+		w = self.sort_get_widget("sortAscendingRadioButton")
 		if w:
 			sort_ascending = w.get_active()
 		else:
 			print _("_get_settings: Cant find sortAscendingRadioButton")
-		w = self.xml.get_widget("sortAlphabeticRadioButton")
+		w = self.sort_get_widget("sortAlphabeticRadioButton")
 		if w:
 			sort_alpha = w.get_active()
 
-		w = self.xml.get_widget("sortSublevelsSpinButton")
+		w = self.sort_get_widget("sortSublevelsSpinButton")
 		if w:
 			sort_sublevels = w.get_value_as_int()
 
@@ -123,7 +123,7 @@ class sort_dialog:
 
 		Sorting only takes place on the title, not on the body.
 		"""
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		child = self.gui.treestore.iter_children(item)
@@ -204,7 +204,7 @@ class sort_dialog:
 		"""
 		"""
 		
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.gui.sync_text_buffer()
 		self.saveSettings()
@@ -235,7 +235,7 @@ class sort_dialog:
 			body = string.join(text_list, "\n")
 			self.gui.textBuffer.delete(start_text, end_text)
 			self.gui.textBuffer.insert(start_text, body, len(body))
-			self.gui.dirtyflag = "* "
+			self.gui._set_dirtyflag()
 			return
 
 		"""
@@ -255,7 +255,7 @@ class sort_dialog:
 		if self.gui.same_iter(first_selected, last_selected):
 			# Only one item selected
 			self._sort_item(first_selected, 0, 0, sort_ascending, sort_alpha, sort_sublevels, 0)
-			self.gui.dirtyflag = "* "
+			self.gui._set_dirtyflag()
 			return
 
  		parent = self.gui.treestore.iter_parent(first_selected)
@@ -264,11 +264,11 @@ class sort_dialog:
 			return
 
 		self._sort_item(parent, first_selected, last_selected, sort_ascending, sort_alpha, sort_sublevels, 0)
-		self.gui.dirtyflag = "* "
+		self.gui._set_dirtyflag()
 		return
 		
 	def on_sortCancelButton_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.destroy()
 		return
@@ -279,7 +279,7 @@ class sort_dialog:
 		"""
 
 		self.gui = gui
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		callbacks = {
@@ -289,26 +289,32 @@ class sort_dialog:
 			"on_sortCancelButton_clicked":				self.on_sortCancelButton_clicked,
 		}
 		self.name = "sortDialog"
-		self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-		self.xml.signal_autoconnect(callbacks)
+		if self.gui.builder:
+			self.gui.builder.add_from_file(self.gui.sharedir + "ui/sortDialog.ui")
+			self.gui.builder.connect_signals(callbacks)
+			self.sort_get_widget = self.gui.gui_get_widget
+		else:
+			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
+			self.xml.signal_autoconnect(callbacks)
+			self.sort_get_widget = self.xml.get_widget
 
 		# Initialize the GUI state of the radio buttons and spin button
 		# based on the type of sort ('tree', 'text', or 'both')
 
 		# TODO: Shouldn't we be setting each radio button???
-		w = self.xml.get_widget("sortAscendingRadioButton")
+		w = self.sort_get_widget("sortAscendingRadioButton")
 		w.set_active(self.gui.client.get_bool(self.gui.sort_ascending_path))
-		w = self.xml.get_widget("sortAlphabeticRadioButton")
+		w = self.sort_get_widget("sortAlphabeticRadioButton")
 		w.set_active(self.gui.client.get_bool(self.gui.sort_alpha_path))
 
 		if type == "tree":
 			self.type = "tree"
-			self.xml.get_widget("sortSublevelsSpinButton").set_sensitive(True)
-			self.xml.get_widget("sortDialog").set_title(_("Sort Tree"))
+			self.sort_get_widget("sortSublevelsSpinButton").set_sensitive(True)
+			self.sort_get_widget("sortDialog").set_title(_("Sort Tree"))
 		elif type == "text":
 			self.type = "text"
-			self.xml.get_widget("sortRangeFrame").hide()
-			self.xml.get_widget("sortDialog").set_title(_("Sort Text"))
+			self.sort_get_widget("sortRangeFrame").hide()
+			self.sort_get_widget("sortDialog").set_title(_("Sort Text"))
 
 		return
 		

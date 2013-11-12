@@ -1,5 +1,4 @@
 import gtk
-import gnome
 import gconf
 import inspect
 
@@ -15,22 +14,22 @@ are in here, but quite honestly - really!
 
 class font_dialog:
 	def destroy(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.xml.get_widget(self.name).destroy()
+		self.fonts_get_widget(self.name).destroy()
 
 	def on_fontCancel_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.value = CANCEL
 
 	def on_fontApply_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.value = OK
 
 	def on_fontOK_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.value = OK
 
@@ -40,7 +39,7 @@ class font_dialog:
 		"""
 
 		self.gui = gui
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		callbacks = {
@@ -49,9 +48,16 @@ class font_dialog:
 			"on_fontOK_clicked":						self.on_fontOK_clicked,
 		}
 		self.name = "fontselectiondialog"
-		self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-		self.xml.signal_autoconnect(callbacks)
-		self.fontselectiondialog = self.xml.get_widget("fontselectiondialog")
+		if self.gui.builder:
+			self.gui.builder.add_from_file(self.gui.sharedir + "ui/fontDialog.ui")
+			self.gui.builder.connect_signals(callbacks)
+			self.fonts_get_widget = self.gui.gui_get_widget
+		else:
+			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
+			self.xml.signal_autoconnect(callbacks)
+			self.fonts_get_widget = self.xml.get_widget
+
+		self.fontselectiondialog = self.fonts_get_widget("fontselectiondialog")
 		self.fontselectiondialog.set_font_name(self.gui.client.get_string(self.gui.text_font_path))
 		self.value = WAITING
 		while self.value == WAITING:
@@ -59,12 +65,12 @@ class font_dialog:
 
 class prefs_dialog:
 	def destroy(self):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
-		self.xml.get_widget(self.name).destroy()
+		self.prefs_get_widget(self.name).destroy()
 
 	def on_fontButton_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		f = font_dialog(self.gui)
 		if f.value == OK:
@@ -72,7 +78,7 @@ class prefs_dialog:
 		f.destroy()
 		
 	def on_prefsOK_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		
 		self.gui.client.set_int(self.gui.line_length_path, 			self.lineLength_spinbutton.get_value_as_int())
@@ -80,15 +86,17 @@ class prefs_dialog:
 		self.gui.client.set_string(self.gui.external_editor_path, 	self.externalEditor_entry.get_text())
 		self.gui.client.set_string(self.gui.date_format_path, 		self.dateFormat_entry.get_text())
 		self.gui.client.set_string(self.gui.text_font_path, 		self.fontName_entry.get_text())
+		self.gui.client.set_int(self.gui.auto_save_interval_path,   self.autoSaveInterval_spinbutton.get_value_as_int())
+		self.gui.client.set_int(self.gui.auto_read_only_timeout_path, self.autoReadOnlyTimeout_spinbutton.get_value_as_int())
 		self.destroy()
 
 	def on_prefsCancel_clicked(self, widget):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		self.destroy()
 	
 	def on_textFormatter_key_press_event(self, widget, key_event):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if key_event.keyval == gtk.keysyms.Return or key_event.keyval == gtk.keysyms.KP_Enter:
 			self.on_prefsOK_clicked(widget)
@@ -97,7 +105,7 @@ class prefs_dialog:
 		return
 	
 	def on_lineLength_key_press_event(self, widget, key_event):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if key_event.keyval == gtk.keysyms.Return or key_event.keyval == gtk.keysyms.KP_Enter:
 			self.on_prefsOK_clicked(widget)
@@ -106,7 +114,7 @@ class prefs_dialog:
 		return
 	
 	def on_externalEditor_key_press_event(self, widget, key_event):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if key_event.keyval == gtk.keysyms.Return or key_event.keyval == gtk.keysyms.KP_Enter:
 			self.on_prefsOK_clicked(widget)
@@ -115,7 +123,7 @@ class prefs_dialog:
 		return
 	
 	def on_dateFormat_key_press_event(self, widget, key_event):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if key_event.keyval == gtk.keysyms.Return or key_event.keyval == gtk.keysyms.KP_Enter:
 			self.on_prefsOK_clicked(widget)
@@ -124,7 +132,7 @@ class prefs_dialog:
 		return
 	
 	def on_fontName_key_press_event(self, widget, key_event):
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 		if key_event.keyval == gtk.keysyms.Return or key_event.keyval == gtk.keysyms.KP_Enter:
 			self.on_prefsOK_clicked(widget)
@@ -138,7 +146,7 @@ class prefs_dialog:
 		"""
 
 		self.gui = gui
-		if self.gui.trace:
+		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 
 		callbacks = {
@@ -151,21 +159,31 @@ class prefs_dialog:
 			"on_dateFormat_key_press_event":			self.on_dateFormat_key_press_event,
 			"on_fontName_key_press_event":				self.on_fontName_key_press_event,
 		}
-		self.name = "prefs"
-		self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-		self.xml.signal_autoconnect(callbacks)
+		self.name = "prefsDialog"
+		if self.gui.builder:
+			self.gui.builder.add_from_file(self.gui.sharedir + "ui/prefsDialog.ui")
+			self.gui.builder.connect_signals(callbacks)
+			self.prefs_get_widget = self.gui.gui_get_widget
+		else:
+			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
+			self.xml.signal_autoconnect(callbacks)
+			self.prefs_get_widget = self.xml.get_widget
 
-		self.lineLength_spinbutton = self.xml.get_widget("lineLength")
-		self.textFormatter_entry = self.xml.get_widget("textFormatter")
-		self.externalEditor_entry = self.xml.get_widget("externalEditor")
-		self.dateFormat_entry = self.xml.get_widget("dateFormat")
-		self.fontName_entry = self.xml.get_widget("fontName")
+		self.lineLength_spinbutton = self.prefs_get_widget("lineLength")
+		self.autoSaveInterval_spinbutton = self.prefs_get_widget("autoSaveInterval")
+		self.autoReadOnlyTimeout_spinbutton = self.prefs_get_widget("autoReadOnlyTimeout")
+		self.textFormatter_entry = self.prefs_get_widget("textFormatter")
+		self.externalEditor_entry = self.prefs_get_widget("externalEditor")
+		self.dateFormat_entry = self.prefs_get_widget("dateFormat")
+		self.fontName_entry = self.prefs_get_widget("fontName")
 		
 		self.lineLength_spinbutton.set_value(self.gui.client.get_int   (self.gui.line_length_path))
 		self.textFormatter_entry.set_text   (self.gui.client.get_string(self.gui.text_formatter_path))
 		self.externalEditor_entry.set_text  (self.gui.client.get_string(self.gui.external_editor_path))
 		self.dateFormat_entry.set_text      (self.gui.client.get_string(self.gui.date_format_path))
 		self.fontName_entry.set_text        (self.gui.client.get_string(self.gui.text_font_path))
+		self.autoSaveInterval_spinbutton.set_value(self.gui.client.get_int(self.gui.auto_save_interval_path))
+		self.autoReadOnlyTimeout_spinbutton.set_value(self.gui.client.get_int(self.gui.auto_read_only_timeout_path))
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
