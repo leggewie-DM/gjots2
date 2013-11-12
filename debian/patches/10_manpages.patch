@@ -1,5 +1,5 @@
---- gjots2-2.3.4.orig/share/man/man1/docbook2gjots.1
-+++ gjots2-2.3.4/share/man/man1/docbook2gjots.1
+--- gjots2-2.3.4.orig/doc/man/man1/docbook2gjots.1
++++ gjots2-2.3.4/doc/man/man1/docbook2gjots.1
 @@ -59,7 +59,7 @@
  .RS
  .nf
@@ -35,8 +35,8 @@
  or FITNESS FOR A PARTICULAR PURPOSE.
  .SH "SEE ALSO"
  .BR gjots (1),
---- gjots2-2.3.4.orig/share/man/man1/gjots2docbook.1
-+++ gjots2-2.3.4/share/man/man1/gjots2docbook.1
+--- gjots2-2.3.4.orig/doc/man/man1/gjots2docbook.1
++++ gjots2-2.3.4/doc/man/man1/gjots2docbook.1
 @@ -39,7 +39,7 @@
  .B gjotsfile
  being converted to chapter or section headings in DOCBOOK. There is no
@@ -70,8 +70,8 @@
 -.BR docbook2gjots (1)
 \ No newline at end of file
 +.BR docbook2gjots (1)
---- gjots2-2.3.4.orig/share/man/man1/gjots2html.1
-+++ gjots2-2.3.4/share/man/man1/gjots2html.1
+--- gjots2-2.3.4.orig/doc/man/man1/gjots2html.1
++++ gjots2-2.3.4/doc/man/man1/gjots2html.1
 @@ -56,8 +56,8 @@
  .SH "COPYRIGHT"
  Copyright (c) 2002-2011 Robert Hepple
