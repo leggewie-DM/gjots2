@@ -1,3 +1,13 @@
+gjots2 (2.4.1-1) unstable; urgency=low
+
+  * Imported Upstream version 2.4.1. Closes: #703865
+    - implement auto-save. LP: #889600
+    - fix text highlighting in search function. LP: #558345
+  * rebase Debian patches to latest upstream code
+  * 50_fix-desktop-file.patch: point desktop file to correct PNG file
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Tue, 12 Nov 2013 17:13:03 +0100
+
 gjots2 (2.3.15-4) unstable; urgency=low
 
   * use dh_manpages instead of patching gjots2lpr.1 directly in. Closes: #718130
