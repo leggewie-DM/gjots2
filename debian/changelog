@@ -1,3 +1,12 @@
+gjots2 (2.4.1-2) unstable; urgency=low
+
+  * control
+    - add python-gtksourceview2 to Recommends. Closes: #731578
+    - update to standard 3.9.5. No further changes.
+  * patches: patch desktop file for full validation (patch 50)
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Sat, 22 Feb 2014 02:27:51 +0100
+
 gjots2 (2.4.1-1) unstable; urgency=low
 
   * Imported Upstream version 2.4.1. Closes: #703865
