@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 2.4.1
+                 Version 2.4.2
 
 
       bhepple@freeshell.org
@@ -82,16 +82,16 @@ fedora includes gjots2
 
 Just download and do this:
 
-VERSION=2.4.1
+VERSION=2.4.2
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 yum install gjots2-${VERSION}-1.noarch.rpm
 
 \NewEntry
 Prerequisites
 
-Let rpm take the strain ... otherwise ...
+Let yum take the strain ... otherwise ...
 
-Install pygtksourceview to enable Undo/Redo
+Install pygtksourceview2 to enable Undo/Redo
 
 You may need to install (or re-install) libglade, pygtk, or gtk for
 your current version of python or possibly you can just set your
@@ -102,7 +102,7 @@ PYTHONPATH eg.
 As at this writing (gjots-2.3.11), I have the following installed (on Fedora-13):
 
     gtk2
-    gtksourceview
+    gtksourceview2
     libglade2
     pygtk2
     pygtk2-libglade
@@ -149,7 +149,7 @@ app-office/gjots2 ~x86
 
 Then:	
 
-VERSION=2.4.1
+VERSION=2.4.2
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -162,7 +162,7 @@ emerge gjots2
 \NewEntry
 From the tarball source
 
-VERSION=2.4.1
+VERSION=2.4.2
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and

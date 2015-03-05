@@ -2,6 +2,7 @@
 
 import sys, os, getopt
 import linecache
+from distutils.sysconfig import get_python_lib
 
 def traceit(frame, event, arg):
     if event == "line" or event == "call":
@@ -17,9 +18,6 @@ def traceit(frame, event, arg):
 
 def ver2str(ver):
     return ".".join(map(str,ver))
-
-#from Gjots.gui import *
-#from Gjots.version import version
 
 def usage():
     print _("""Usage: gjots [OPTIONS] [FILENAME]
@@ -43,20 +41,9 @@ if __name__ == '__main__':
     pyver = (2,5)
     pygtkver = (2,16,0)
 
-    # gjots2 might be:               'prefix' is then
-    # /usr/bin/gjots2                /usr
-    # /bin/gjots2 (fedora-18)        /usr
-    # /usr/local/bin/gjots2          /usr/local
-    # /foo/bar/gjots2                /foo
-    # ./gjots2                       ./
-
     dirName, progName = os.path.split(sys.argv[0])
-    # prefix, bin = os.path.split(dirName)
-    prefix = dirName
-    # fedora-18 puts things in /usr/bin but arg0 is /bin/gjots2 !!!!
-    if dirName == "/bin" and os.access("/usr" + sys.argv[0], os.F_OK):
-        prefix = "/usr/bin"
-    prefix, junk = os.path.split(prefix)
+    prefix = sys.prefix
+
     #
     # Add the library path to the system load path
     #
@@ -67,7 +54,7 @@ if __name__ == '__main__':
         sys.path = [ localdir ] + sys.path
         sys.stderr.write("%s: Warning: running modules from %s\n" % (progName, localdir))
     else:
-        sys.path = [ prefix + '/lib/gjots2' ] + sys.path
+        sys.path = [ get_python_lib() + '/gjots2' ] + sys.path
 
     # i18n support
     import gettext

@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Versjon 2.4.1
+                 Versjon 2.4.2
 
 
       bhepple@freeshell.org
@@ -148,7 +148,7 @@ app-office/gjots2 ~x86
 
 Så:	
 
-VERSION=2.4.1
+VERSION=2.4.2
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -163,7 +163,7 @@ RPM-baserte systemer
 
 Bare gjør dette:
 
-VERSION=2.4.1
+VERSION=2.4.2
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 rpm -i gjots2-${VERSION}-1.noarch.rpm
 
@@ -181,7 +181,7 @@ pyorbit-2.0.1-4
 \NewEntry
 Fra tar-kildekoden
 
-VERSION=2.4.1
+VERSION=2.4.2
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 Hvis du installerer fra tar-kildekoden, dekomprimer først tar-

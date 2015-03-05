@@ -171,7 +171,9 @@ class prefs_dialog:
 
 		self.lineLength_spinbutton = self.prefs_get_widget("lineLength")
 		self.autoSaveInterval_spinbutton = self.prefs_get_widget("autoSaveInterval")
+		self.autoSaveInterval_spinbutton.set_range(0, 3600)
 		self.autoReadOnlyTimeout_spinbutton = self.prefs_get_widget("autoReadOnlyTimeout")
+		self.autoReadOnlyTimeout_spinbutton.set_range(0, 3600)
 		self.textFormatter_entry = self.prefs_get_widget("textFormatter")
 		self.externalEditor_entry = self.prefs_get_widget("externalEditor")
 		self.dateFormat_entry = self.prefs_get_widget("dateFormat")

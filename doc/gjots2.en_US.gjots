@@ -90,9 +90,9 @@ yum install gjots2-${VERSION}-1.noarch.rpm
 \NewEntry
 Prerequisites
 
-Let rpm take the strain ... otherwise ...
+Let yum take the strain ... otherwise ...
 
-Install pygtksourceview to enable Undo/Redo
+Install pygtksourceview2 to enable Undo/Redo
 
 You may need to install (or re-install) libglade, pygtk, or gtk for
 your current version of python or possibly you can just set your
@@ -103,7 +103,7 @@ PYTHONPATH eg.
 As at this writing (gjots-2.3.11), I have the following installed (on Fedora-13):
 
     gtk2
-    gtksourceview
+    gtksourceview2
     libglade2
     pygtk2
     pygtk2-libglade

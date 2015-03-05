@@ -3042,8 +3042,9 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 			gtk.gdk.pixbuf_new_from_file(self.sharedir + "pixmaps/gjots.png"))
 
 		try:
+			glade_msg = "glade3 (libglade)"
 			if use_glade2:
-				raise NameError('Using glade2')
+				raise NameError('glade3 failed')
 			self.builder = gtk.Builder()
 			self.builder.set_translation_domain('gjots2')
 			self.builder.add_from_file(self.gui_filename)
@@ -3052,6 +3053,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 			self.gui_get_widget = self.builder.get_object
 			self.treeContextMenu_get_widget = self.builder.get_object
 		except:
+			glade_msg = "glade2"
 			import gtk.glade
 			gui_file = "gjots.glade2"
 			self.gui_filename = self.sharedir + gui_file
@@ -3092,7 +3094,9 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 		self.current_dirty = 0
 
 		self.has_gtksourceview = 1
-		sourceview_msg = ""
+		sourceview_err_msg = ""
+		sourceview_msg = " using sourceview"
+		
 		try:
 			import gtksourceview3
 			self.textBuffer = gtksourceview3.Buffer()
@@ -3101,6 +3105,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 				apply(gtksourceview3.Buffer.set_text, [self.textBuffer] + list(args)),
 				self.textBuffer.end_not_undoable_action(),
 				)
+			sourceview_msg += "3"
 		except:
 			try:
 				import gtksourceview2
@@ -3110,6 +3115,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 					apply(gtksourceview2.Buffer.set_text, [self.textBuffer] + list(args)),
 					self.textBuffer.end_not_undoable_action(),
 					)
+				sourceview_msg += "3"
 			except:
 				try:
 					import gtksourceview
@@ -3120,9 +3126,10 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 						self.textBuffer.end_not_undoable_action(),
 						)
 				except:
-					sourceview_msg = _("Install pygtksourceview to enable undo/redo")
+					sourceview_err_msg = _("Install pygtksourceview to enable undo/redo")
 					self.textBuffer = gtk.TextBuffer()
 					self.has_gtksourceview = 0
+					sourceview_msg = " no sourceview!!"
 
 		self.textView.set_buffer(self.textBuffer)
 		self.textBuffer.set_text("", 0)
@@ -3187,7 +3194,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 		self._warp(self.get_root())
 		#self.treeView.get_selection().select_path(root_path)
 
-		self.msg(progName + _(": version ") + gjots_version + sourceview_msg)
+		self.msg(progName + _(": version ") + gjots_version + sourceview_msg + " using " + glade_msg)
 		self.set_readonly(readonly, quietly=1)
 
 		# gtkBuilder has recent built in to the file dialog
@@ -3197,8 +3204,8 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 		self.treeView.grab_focus()
 		self.gjots.show()
 
-		if sourceview_msg != "":
-			self.err_msg(sourceview_msg)
+		if sourceview_err_msg != "":
+			self.err_msg(sourceview_err_msg)
 
 		self.alarm_set = 0
 		return
