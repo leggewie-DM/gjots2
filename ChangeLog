@@ -1,4 +1,16 @@
-2014-01-06    <bob.hepple@gmail.com> Version 2.4.2
+2014-12-18    <bob.hepple@gmail.com> Version 2.4.3
+	* Added gjots2org, org2gjots and ability to open .org files
+	* Added a test version of gjots.el based on org-mode for emacs (see doco)
+2014-06-27    <bob.hepple@gmail.com>
+	* Add ^t accelerator for timestamp
+2014-05-24    <bob.hepple@gmail.com>
+	* Add ^Insert accelerator for NewPage
+	* add appdata file
+2014-05-19    <bob.hepple@gmail.com>
+	* Use {xdg,gnome,kde,exo}-open to open URL's if available
+2014-04-01    <bob.hepple@gmail.com> Version 2.4.2
+	* 2.4.2 released
+2014-01-06    <bob.hepple@gmail.com>
 	* Added localisation support for glade3
 	* Allow timeouts up to 1hr
 2013-12-30    <bob.hepple@gmail.com>
@@ -7,6 +19,7 @@
 	* fold Redhat packaging improvements
 	* add messages about versions of sourceview and glade being used
 2013-10-30    <bob.hepple@gmail.com> Version 2.4.1
+	* 2.4.1 released
 	* Add support for gtk.builder (glade-3, fedora-18) in addition to
 	gtk.xml (glade-2, Centos6)
 	* Add a combobox on the find entry in the menubar with associated

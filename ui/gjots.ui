@@ -391,6 +391,7 @@
                             <property name="tooltip_text" translatable="yes">Create a new page</property>
                             <property name="use_underline">True</property>
                             <property name="use_stock">False</property>
+                            <accelerator key="Insert" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <signal name="activate" handler="on_newPage_trigger" swapped="no"/>
                           </object>
                         </child>
@@ -529,6 +530,7 @@
                             <property name="use_underline">True</property>
                             <property name="use_stock">False</property>
                             <signal name="activate" handler="on_timeStamp_trigger" swapped="no"/>
+                            <accelerator key="t" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                           </object>
                         </child>
                         <child>

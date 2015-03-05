@@ -1,0 +1,93 @@
+#!/bin/sh
+# Copyright (C) 1997-2015 Bob Hepple
+# 
+# A simple script to convert a emacs outline file to gjots
+#
+# This program is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later
+# version.
+# 
+# This program is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more
+# details.
+# 
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the Free
+# Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
+# 02139, USA.
+
+usage() {
+	echo "Usage: $PROG [filename]
+Converts an emacs org-mode to gjots (on stdout).
+
+    -F char: marker for headers in outline-regexp (default '*')
+"
+}
+
+PROG=$( basename $0 )
+MARKER="*"
+
+ARGS=$( getopt -o F:h -n $PROG -- "$@" ) || {
+    echo "use -h for usage" >&2
+    exit 1
+}
+
+eval set -- "$ARGS"
+
+while true; do
+	case $1 in
+	-h) usage; exit 0;;
+    -F) MARKER="$2"; shift 2;;
+	--) shift; break;;
+	*)  echo "$PROG: internal error" >&2 ; exit 1;;
+	esac
+done
+
+FILENAME=""
+[ -r $1 ] && FILENAME=$1
+
+[[ "$FILENAME" ]] && exec < $FILENAME
+awk -v marker="$MARKER" '
+
+BEGIN {
+    current_level = marker " "
+    pattern = "^" marker "+ "
+    escaped_marker = "\\" marker
+}
+
+{
+	if ($0 ~ pattern) {
+        tag = $1 " "
+        body = substr($0, length(tag) + 1)
+        delta = length(tag) - length(current_level)
+        while (delta < 0) {
+            print "\\EndFolder"
+            delta++
+        }
+        while (delta > 0) {
+            print "\\NewFolder"
+            delta--
+        }
+        print "\\NewEntry"
+        print body
+        current_level = tag
+    } else if (substr($0, 1, 2) == escaped_marker) {
+        print substr($0, 2)
+    } else {
+        print $0
+    }
+}
+
+END {
+    while (length(current_level) > 2) {
+        current_level = substr(current_level, 2)
+        print "\\EndFolder"
+    }
+}'
+
+# Local Variables:
+# mode: shell-script

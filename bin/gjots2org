@@ -1,5 +1,4 @@
 #!/bin/sh
-#
 # Copyright (C) 1997-2015 Bob Hepple
 # 
 # A simple script to convert a gjots file to emacs outline 
@@ -23,27 +22,25 @@
 
 usage() {
 	echo "Usage: $PROG [filename]
-Converts a gjots file to emacs outline mode (on stdout). The emacs
-outline-regexp is defaulted to ===>+
+Converts a gjots file to emacs org-mode (on stdout).
 
-    -b base: base string for outline-regexp (default '===')
-    -F char: marker for headers in outline-regexp (default '>')
+    -F char: marker for headers in outline-regexp (default '*')
 "
 }
 
 PROG=$( basename $0 )
-BASE="==="
-MARKER=">"
+MARKER="*"
 
-ARGS=$( getopt -o b:F:h -- "$@" )
-[ $? != 0 ] && echo "use -h for usage" >&2 && exit 1
+ARGS=$( getopt -o F:h -n $PROG -- "$@" ) || {
+    echo "use -h for usage" >&2
+    exit 1
+}
 
 eval set -- "$ARGS"
 
 while true; do
 	case $1 in
 	-h) usage; exit 0;;
-    -b) BASE="$2"; shift 2;;
     -F) MARKER="$2"; shift 2;;
 	--) shift; break;;
 	*)  echo "$PROG: internal error" >&2 ; exit 1;;
@@ -54,10 +51,10 @@ FILENAME=""
 [ -r $1 ] && FILENAME=$1
 
 writeBody() {
-    exec < $FILENAME
-    awk -v marker="$MARKER" -v base="$BASE" 'BEGIN {
+    [[ "$FILENAME" ]] && exec < $FILENAME
+    awk -v marker="$MARKER" 'BEGIN {
 	level = 1
-	level_hdr = base marker
+    level_hdr = marker
 	print_title = 0
 }
 
@@ -77,33 +74,17 @@ writeBody() {
 			printf("%s %s\n",level_hdr, $0)
 			print_title = 0
 		} else {
+            if ($0 ~ "^" marker) {
+                printf("\\")
+            }
 			print
 		}
 	}
 }'
 }
 
-writeTrailer() {
-    cat <<EOF
-
-$BASE$MARKER Setting up emacs:
-REM Local Variables:
-REM fill-column:70
-REM mode: outline
-REM eval:(make-variable-buffer-local 'outline-regexp)
-REM eval:(setq outline-regexp "$BASE$MARKER+")
-REM eval:(auto-fill-mode 1)
-REM eval:(goto-char (point-min))
-REM eval:(hide-other)
-REM End:
-EOF
-}
-
-# This is the main program:
-(
-		writeBody
-		writeTrailer
-)
+# main:
+writeBody
 
 # Local Variables:
 # mode: shell-script

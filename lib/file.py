@@ -350,11 +350,24 @@ class gjotsfile:
 			f = os.popen("echo \"" + self.gui.password + "\" | openssl des3 -d -pass stdin -in " + filename + " 2>&1", "r")
 		else:
 			scratch = tempfile.mktemp()
-			f = os.popen("cat > " + scratch + "; echo \"" + self.gui.password + "\" | openssl des3 -pass stdin -in " + scratch + " -out " + filename + " 2>&2; rm " + scratch, "w")
+			f = os.popen("cat > " + scratch + "; echo \"" + self.gui.password + "\" | openssl des3 -pass stdin -in " + scratch + " -out " + filename + " 2>&1; rm " + scratch, "w")
 		blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 		if self.gui.purge_password:
 			self.gui.password = blank
 			self.gui.password = ""
+		return f
+	
+	def org_open(self, filename, mode = "r", reuse_password = 0):
+		if self.gui.debug:
+			print inspect.getframeinfo(inspect.currentframe())[2], vars()
+		if os.system("type org2gjots >/dev/null 2>&1") != 0:
+			self.gui.err_msg(_("No org2gjots program - please install it and try again"))
+			raise PasswordError
+
+		if mode == "r":
+			f = os.popen("org2gjots " + filename + " 2>&1", "r")
+		else:
+			f = os.popen("gjots2org " + filename + " 2>&1", "w")
 		return f
 
 	def close(self):
@@ -392,6 +405,9 @@ class gjotsfile:
 		exti = filename.rfind(".ssl")
 		if not exti == -1:
 			return self.ssl_open(filename, mode = mode, reuse_password = reuse_password)
+		exti = filename.rfind(".org")
+		if not exti == -1:
+			return self.org_open(filename, mode = mode, reuse_password = reuse_password)
 		return open(filename, mode)
 		
 	def _do_load(self, filename, import_after):

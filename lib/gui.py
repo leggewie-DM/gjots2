@@ -2163,8 +2163,6 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 		browser_list = { 
 			# reminder: this list's order means nothing:
 			# <name of executable>:<what to search for in ps -ef list>
-			"xdg-open":      "",
-			"gnome-open":    "",
 			"firefox4":      "/[x]ulrunner-2/.*firefox-",
 			"google-chrome": "[/]chrome ", 
 			"firefox":       "/[x]ulrunner/", 
@@ -2210,6 +2208,13 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 	def _run_browser_on(self, url):
 		if self.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
+
+		open_list = [ "xdg-open", "gnome-open", "kde-open", "exo-open" ]
+		for opener in open_list:
+			if os.system("type " + opener + " >/dev/null 2>&1") == 0:
+				os.system(opener + " '" + url + "' &")
+				return 0
+
 		browser = self._get_browser()
 		if browser:
 			os.system(browser + " '" + url + "' &")
@@ -2897,9 +2902,10 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 	def _add_recent_menu(self):
 		# glade-2 only
 		self.recent_file_filter = gtk.RecentFilter()
-		self.recent_file_filter.add_pattern(self.file_filter_pattern)
+		for p in self.file_filter_pattern:
+			self.recent_file_filter.add_pattern(p)
 		self.recent_file_filter.add_application("gjots2")
-		self.recent_file_filter.set_name("All gjots files")
+		self.recent_file_filter.set_name("All gjots files *.gjots* *.org")
 		w = self.gui_get_widget("recentMenuItem")
 		m = gtk.RecentChooserMenu()
 		m.set_show_numbers(True)
@@ -3169,9 +3175,10 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"""))
 		self.update_combobox_from_gconf()
 
 		self.file_filter = gtk.FileFilter()
-		self.file_filter_pattern = "*.gjots*"
-		self.file_filter.add_pattern(self.file_filter_pattern)
-		self.file_filter.set_name("All gjots files")
+		self.file_filter_pattern = [ "*.gjots*", "*.org" ]
+		for p in self.file_filter_pattern:
+			self.file_filter.add_pattern(p)
+		self.file_filter.set_name("All gjots files *.gjots* *.org")
 
 		self.display = gtk.gdk.display_manager_get().get_default_display()
 

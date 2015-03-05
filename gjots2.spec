@@ -17,7 +17,7 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 2.4.2
+%define ver 2.4.3
 %define rel 1
 
 %define _source_filedigest_algorithm md5
@@ -39,8 +39,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 BuildRequires: python desktop-file-utils
 
-Requires: python >= 2.3, gnome-python2-gnome
-Requires: gnome-python2-gconf >= 2.6.0
+Requires: python >= 2.6, gnome-python2-gnome
+Requires: gnome-python2-gconf >= 2.20.0
 Requires: gnome-python2-bonobo
 Requires: pygtksourceview
 # how to 'require' libglade3 if it's available otherwise glade2???? ie
@@ -74,7 +74,7 @@ done
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-2.4.2
+#	buildroot=/var/tmp/root-gjots2-2.4.3
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib
@@ -82,6 +82,7 @@ done
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{python_sitelib}/%{name}
 mkdir -p %{buildroot}%{_datadir}/{applications,%{name},pixmaps}
+mkdir -p %{buildroot}%{_datadir}/appdata
 mkdir -p %{buildroot}%{_datadir}/%{name}/pixmaps
 mkdir -p %{buildroot}%{_datadir}/%{name}/ui
 mkdir -p %{buildroot}%{_datadir}/doc/%{name}
@@ -93,6 +94,7 @@ install -pm0644 gjots.glade2 %{buildroot}%{_datadir}/%{name}
 install -pm0644 pixmaps/gjots.png %{buildroot}%{_datadir}/pixmaps/
 install -pm0644 pixmaps/*.png %{buildroot}%{_datadir}/%{name}/pixmaps/
 install -pm0644 ui/*.ui %{buildroot}%{_datadir}/%{name}/ui/
+install -pm0644 %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/
 
 desktop-file-install \
         --dir %{buildroot}%{_datadir}/applications              \
@@ -122,6 +124,6 @@ done
 %doc %lang(es) doc/gjots2.es.gjots
 
 %dir %{python_sitelib}/%{name}
-%{python_sitelib}/%{name}/*.py
+%{python_sitelib}/%{name}
 %{_bindir}/*
 %{_datadir}/*

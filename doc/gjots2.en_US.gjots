@@ -177,7 +177,7 @@ On some systems, you may have permission problems with system-wide
 installations from source. All new directories installed should have
 permissions 0755, and all installed files should have permissions
 0644, with the exception of 'docbook2gjots', 'gjots2',
-'gjots2docbook', 'gjots2emacs' and 'gjots2html', which should have
+'gjots2docbook', 'gjots2emacs', 'gjots2org' and 'gjots2html', which should have
 permissions 0755.
 \EndFolder
 \NewEntry
@@ -241,7 +241,7 @@ These options are available:
 -2, --glade2:                       use glade-2 gui if available
 -t, --trace:                        trace lines as they execute
 -g 123x456, --geometry=123x456:     initial geometry (X x Y)
--p, --purge-password                scrub password as soon as it's used
+-p, --purge-password                don't remember password
 -r, --readonly:                     no editing (or locking)
 -V, --version:                      print the version and exit
 
@@ -293,6 +293,9 @@ Similiarly, .ssl will be opened using (DES3) openssl and .gpg will be
 opened with (DES3) gpg.
 
 Install ccrypt, openssl or gpg for good security!
+
+As of version 2.4.3 *.org files are supported for intercourse with
+emacs org-mode.
 \NewEntry
 Controls
 
@@ -597,6 +600,44 @@ by some keywords:
 
 The \keywords need to be at the start of the line to be 
 recognised.
+
+\NewEntry
+emacs org-mode
+
+As of 2.4.3 emacs' the header/sub-heading structures of org-mode is also recognised. A file written with a .org filename extension will be saved in org-mode format:
+
+text
+* heading
+** sub-heading
+more text
+** sub-heading
+* etc
+etc
+
+Extended features of org-mode such as tables, links, agendas etc are not recognised by gjots2.
+
+gjots2org and org2gjots are also provided.
+
+\NewFolder
+\NewEntry
+gjots.el
+
+This major mode for emacs is in testing:
+
+; GJOTS MODE - remaining problems:
+; you must show-all before saving
+; it prompts for coding. default raw-text is OK
+
+(setq format-alist
+      (cons '(gjots "gjots" nil "gjots2org" "org2gjots" t nil) format-alist))
+(define-derived-mode gjots-mode org-mode "gjots"
+  "Major mode for editing gjots files."
+  (format-decode-buffer 'gjots)
+  (hide-sublevels '1))
+(autoload 'gjots-mode "gjots-mode" "Major mode to edit gjots files." t)
+(setq auto-mode-alist
+      (cons '("\\.gjots$" . gjots-mode) auto-mode-alist))
+\EndFolder
 \NewEntry
 Encryption
 
@@ -723,6 +764,16 @@ outline-regexp is defaulted to ===>+
 
     -b base: base string for outline-regexp (default '===')
     -F char: marker for headers in outline-regexp (default '>')
+\NewEntry
+gjots2org, org2gjots
+
+gjots2org converts a gjotsfile to and from a format more or less suitable for
+emacs' org mode.
+
+Usage: gjots2org [filename]
+Converts a gjots file to emacs org mode (on stdout).
+    -F char: marker for headers in outline-regexp (default '*')
+
 \EndFolder
 \EndFolder
 \NewEntry

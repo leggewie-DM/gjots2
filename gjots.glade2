@@ -424,6 +424,7 @@
 			  <property name="label" translatable="yes">_New Page</property>
 			  <property name="use_underline">True</property>
 			  <signal name="activate" handler="on_newPage_trigger"/>
+			  <accelerator key="Insert" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 
 			  <child internal-child="image">
 			    <widget class="GtkImage" id="image48">
@@ -592,6 +593,7 @@
 			  <property name="label" translatable="yes">_Time stamp</property>
 			  <property name="use_underline">True</property>
 			  <signal name="activate" handler="on_timeStamp_trigger"/>
+			  <accelerator key="T" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 
 			  <child internal-child="image">
 			    <widget class="GtkImage" id="image51">
