@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 2.4.3
+                 Version 2.4.4
 
 
       bhepple@freeshell.org
@@ -82,7 +82,7 @@ fedora includes gjots2
 
 Just download and do this:
 
-VERSION=2.4.3
+VERSION=2.4.4
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 yum install gjots2-${VERSION}-1.noarch.rpm
 
@@ -149,7 +149,7 @@ app-office/gjots2 ~x86
 
 Then:	
 
-VERSION=2.4.3
+VERSION=2.4.4
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -162,7 +162,7 @@ emerge gjots2
 \NewEntry
 From the tarball source
 
-VERSION=2.4.3
+VERSION=2.4.4
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and

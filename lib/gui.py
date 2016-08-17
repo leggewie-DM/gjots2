@@ -381,8 +381,12 @@ class gjots_gui:
 			self.client.set_string(self.print_command_path, "gjots2lpr $1")
 
 		if not self.client.get_string(self.external_editor_path):
-			if os.system("type gedit >/dev/null 2>&1") == 0:
+			if os.system("type xdg-open >/dev/null 2>&1") == 0:
+				self.client.set_string(self.external_editor_path, "xdg-open %s")
+			elif os.system("type gedit >/dev/null 2>&1") == 0:
 				self.client.set_string(self.external_editor_path, "gedit %s")
+			elif os.system("type kate >/dev/null 2>&1") == 0:
+				self.client.set_string(self.external_editor_path, "kate %s")
 			elif os.system("type nedit >/dev/null 2>&1") == 0:
 				self.client.set_string(self.external_editor_path, "nedit %s")
 			elif os.system("type xedit >/dev/null 2>&1") == 0:
@@ -434,7 +438,10 @@ class gjots_gui:
 			self.client.set_bool(self.sort_ascending_path, 1)
 			self.client.set_bool(self.sort_alpha_path, 1)
 			self.client.set_bool(self.sort_items_path, 1)
-			
+
+		# set this off at startup:
+		self.client.set_bool(self.find_backwards_path, 0)
+
 		self.on_gconf_top_toolbar_changed(self.client, 0, 0, 0)
 		self.on_gconf_side_toolbar_changed(self.client, 0, 0, 0)
 		self.on_gconf_show_icon_text_changed(self.client, 0, 0, 0)

@@ -17,7 +17,7 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 2.4.3
+%define ver 2.4.4
 %define rel 1
 
 %define _source_filedigest_algorithm md5
@@ -74,7 +74,7 @@ done
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-2.4.3
+#	buildroot=/var/tmp/root-gjots2-2.4.4
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib

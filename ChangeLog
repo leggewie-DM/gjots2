@@ -1,3 +1,7 @@
+2015-02-20    <bob.hepple@gmail.com>
+	* Find dialog should revert to 'forwards' at startup
+2014-12-29    <bob.hepple@gmail.com>
+	* Added xdg-open and kate as external editors
 2014-12-18    <bob.hepple@gmail.com> Version 2.4.3
 	* Added gjots2org, org2gjots and ability to open .org files
 	* Added a test version of gjots.el based on org-mode for emacs (see doco)
