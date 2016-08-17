@@ -13,10 +13,10 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 2.4.4
+                 Version 3.0.1
 
 
-      bhepple@freeshell.org
+      bhepple@gmail.com
       http://bhepple.freeshell.org/gjots
 
 \NewEntry
@@ -72,17 +72,15 @@ brings it up practically instantly.
 \NewEntry
 Installing
 
-If possible, use RPM or emerge (Gentoo) - they allow easy
-uninstallation and more package management than setup.py
+If possible, use RPM - better package management than setup.py
 \NewFolder
 \NewEntry
 RPM-based systems
 
-fedora includes gjots2
+fedora includes gjots2 but is often out of date - better get the
+latest package from the homepage
 
-Just download and do this:
-
-VERSION=2.4.4
+VERSION=3.0.1
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 yum install gjots2-${VERSION}-1.noarch.rpm
 
@@ -91,78 +89,29 @@ Prerequisites
 
 Let yum take the strain ... otherwise ...
 
-Install pygtksourceview2 to enable Undo/Redo
+Install pygtksourceview to enable Undo/Redo
+
+For gjots2-2.x.x: (Fedora <= 20 Centos <= 6)
+python
+gnome-python2
+pygtk2-libglade
+gnome-python2-gconf
+
+For gjots2-3.x.x: (Fedora-21+ Centos-7+)
+
 
 You may need to install (or re-install) libglade, pygtk, or gtk for
 your current version of python or possibly you can just set your
 PYTHONPATH eg.
 
-	export PYTHONPATH=/usr/local/lib/python2.6/site-packages/
-
-As at this writing (gjots-2.3.11), I have the following installed (on Fedora-13):
-
-    gtk2
-    gtksourceview2
-    libglade2
-    pygtk2
-    pygtk2-libglade
-    pygtksourceview
-    glade3-libgladeui
-
-Make sure the python packages are installed in the site-packages
-directory for the version of python that you are using (do a "python
--V" to find out the version):
-
-	/usr/lib/pythonX.X/site-packages
-
-If they're not there then you may need to re-install them - for
-example, it happened to me when python got upgraded from 2.2 to
-2.3 - /usr/lib/python2.X/site-packages directory is not
-automatically updated.) I then had to (on gentoo) do this:
-
-	emerge unmerge libglade pygtk bonobo-python pyorbit
-	emerge libglade pygtk bonobo-python pyorbit
+	export PYTHONPATH=/usr/local/lib/python2.7/site-packages/
 
 gjots2 was written with glade-3 so if you want to change or fix the
 code you will need to install it too.  Otherwise, it's just python!
 \NewEntry
-Gentoo 
-
-Note: 2.6.8 and earlier were tested on gentoo. 2.6.9 and on were not.
-
-Until and unless gjots2 has an official ebuild (look in
-/usr/portage/app-office) you'll have to do this:
-
-Packages needed on gentoo are (in dependency order - it might be
-less trouble to install them from the right hand side of this
-list and let the Gentoo dependency system take care of modules to
-the left - but I haven't tried it):
-
-	 >=gtk+-2 >=libglade-2 >=pygtk-2 >=pyorbit-2
-
-Make sure you have a line like the following in your /etc/make.conf:
-
-PORTDIR_OVERLAY=/usr/local/portage
-
-You will need a line like this in /etc/portage/packages.keywords:
-app-office/gjots2 ~x86
-
-Then:	
-
-VERSION=2.4.4
-CAT=/usr/local/portage/app-office/gjots2
-cd /usr/portage/distfiles
-wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
-mkdir -p ${CAT}
-cd ${CAT}
-wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.ebuild
-ebuild ${CAT}/gjots2-${VERSION}.ebuild digest
-emerge gjots2
-
-\NewEntry
 From the tarball source
 
-VERSION=2.4.4
+VERSION=3.0.1
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and
@@ -780,7 +729,7 @@ Development status
 
 
 If you have ideas on how to improve gjots2, please email to
-bhepple@freeshell.org
+bhepple@gmail.com
 
 
 
@@ -853,7 +802,7 @@ The sort dialog can't set itself to the values stored in gconf.
 Platforms
 
 Tested on the following platforms:
-  Fedora-13
+  Fedora-21
 
 Older version were tested on:
   Gentoo Linux i386

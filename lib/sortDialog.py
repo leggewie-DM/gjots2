@@ -1,10 +1,9 @@
-import gtk.keysyms
-import gtk.glade
 import re
 import inspect
 import tempfile
 import pipes
 import string
+from gi.repository import GObject, Gtk
 
 """
 
@@ -63,16 +62,16 @@ class sort_dialog:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		w = self.sort_get_widget("sortAscendingRadioButton")
 		if w:
-			self.gui.client.set_bool(self.gui.sort_ascending_path, w.get_active())
+			self.gui.settings.set_boolean("sort-ascending", w.get_active())
 		else:
 			print "Cant find sortAscendingRadioButton"
 		w = self.sort_get_widget("sortAlphabeticRadioButton")
 		if w:
-			self.gui.client.set_bool(self.gui.sort_alpha_path, w.get_active())
+			self.gui.settings.set_boolean("sort-alpha", w.get_active())
 
 		w = self.sort_get_widget("sortSublevelsSpinButton")
 		if w:
-			self.gui.client.set_int(self.gui.sort_sublevels_path, w.get_value_as_int())
+			self.gui.settings.set_int("sort-sublevels", w.get_value_as_int())
 		
 		return
 	
@@ -85,10 +84,10 @@ class sort_dialog:
 		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
-		# to get all keysyms: print gtk.keysyms.__dict__
-		if key_event.keyval == gtk.keysyms.Return or key_event.keyval == gtk.keysyms.KP_Enter:
+		# to get all keysyms: print Gdk.KEY___dict__
+		if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
 			self.on_sortOKButton_clicked(widget)
-		if key_event.keyval == gtk.keysyms.Escape:
+		if key_event.keyval == Gdk.KEY_Escape:
 			self.on_sortCancelButton_clicked(widget)
 		return
 
@@ -124,8 +123,12 @@ class sort_dialog:
 		Sorting only takes place on the title, not on the body.
 		"""
 		if self.gui.debug:
-			print inspect.getframeinfo(inspect.currentframe())[2]
+			print inspect.getframeinfo(inspect.currentframe())[2], vars()
+			print "Item = ", self.gui.treestore.get_value(item, 0)
 
+		item_path = self.gui.treestore.get_path(item)
+		item_was_expanded = self.gui.treeView.row_expanded(item_path)
+		
 		child = self.gui.treestore.iter_children(item)
 		if not child:
 			return
@@ -157,8 +160,9 @@ class sort_dialog:
 			if selection_start != -1 and selection_end == -1:
 				sort_list.append([count, self.gui.get_node_title(child)])
 			if sort_sublevels < 0 or level < sort_sublevels:
-				if self.gui.treestore.iter_children(child):
-					self._sort_item(child, 0, 0, sort_ascending, sort_alpha, sort_sublevels, level + 1)
+				if selection_start != -1 and count >= selection_start and ( selection_end == -1 or count <= selection_end ):
+					if self.gui.treestore.iter_children(child):
+						self._sort_item(child, 0, 0, sort_ascending, sort_alpha, sort_sublevels, level + 1)
 			if selection_end == -1 and self.gui.same_iter(child, end_iter):
 				selection_end = count
 			child = self.gui.treestore.iter_next(child)
@@ -197,8 +201,63 @@ class sort_dialog:
 			child = self.gui.treestore.iter_next(child)
 			count = count + 1
 		#print "reorder_list = ", reorder_list
-		self.gui.treestore.reorder(item, reorder_list)
-		return
+		try:
+			self.gui.treestore.reorder(item, reorder_list)
+		except:
+			# gtk+-3.16 does not export reorder to python
+			# https://bugzilla.gnome.org/show_bug.cgi?id=757796
+
+			# a homebrew reorder
+			
+			# create a temporary treestore:
+			temp_treestore = Gtk.TreeStore(
+				GObject.TYPE_STRING, # title == first line of body except for root, which is filename
+				GObject.TYPE_STRING, # body
+				GObject.TYPE_INT)	 # body_temp_flag - used after creating new items
+
+			temp_treestore_root = temp_treestore.insert(None, 0)
+			
+			first_unselected = self.gui.treestore.iter_next(end_iter) # maybe None
+
+			#print "start_iter = ", self.gui.treestore.get_value(start_iter, 0)
+			#print "end_iter = ", self.gui.treestore.get_value(end_iter, 0)
+			#print "first_unselected = ", self.gui.treestore.get_value(first_unselected, 0) if first_unselected else "None"
+			
+			# make a copy of the selected items and remove them from the treestore:
+			this = start_iter
+			while this:
+				#print "copying ", self.gui.treestore.get_value(this, 0)
+				next = self.gui.treestore.iter_next(this)
+				if self.gui.same_iter(this, end_iter):
+					next = None
+				self.gui._copy_subtree(
+					self.gui.treestore, this, 
+					temp_treestore, temp_treestore_root, 
+					-1)
+				if not self.gui.treestore.remove(this): # returns false if no more items
+					next = None
+				this = next
+
+			# now copy them back in the right order:
+			this = first_unselected if first_unselected else -1
+			after = False
+			# print "reorder_list = ", reorder_list
+			count = 0
+			for iter in reorder_list:
+				if iter >= selection_start and iter <= selection_end:
+					# print "iter = ", iter
+				
+					this = self.gui._copy_subtree(
+						temp_treestore, temp_treestore.iter_nth_child(temp_treestore_root, iter - selection_start),
+						self.gui.treestore, item, 
+						this, after)
+					count = count + 1
+					after = True
+
+			# expand item:
+			if item_was_expanded: self.gui.treeView.expand_row(item_path, 0)
+			
+			return
 	
 	def on_sortOKButton_clicked(self, widget):
 		"""
@@ -216,7 +275,7 @@ class sort_dialog:
 			if not body:
 				start_text = self.gui.textBuffer.get_start_iter()
 				end_text = self.gui.textBuffer.get_end_iter()
-				body = self.gui.textBuffer.get_text(start_text, end_text)
+				body = self.gui.textBuffer.get_text(start_text, end_text, False)
 				if not body:
 					self.gui.msg(_("Nothing to sort!"))
 					return
@@ -278,6 +337,10 @@ class sort_dialog:
 		Print dialog
 		"""
 
+		# if type == "tree":
+		#	gui.err_msg("tree sort is unavailable until GtkTreeStore.reorder() in gtk+ is fixed")
+		#	return
+
 		self.gui = gui
 		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2]
@@ -289,23 +352,18 @@ class sort_dialog:
 			"on_sortCancelButton_clicked":				self.on_sortCancelButton_clicked,
 		}
 		self.name = "sortDialog"
-		if self.gui.builder:
-			self.gui.builder.add_from_file(self.gui.sharedir + "ui/sortDialog.ui")
-			self.gui.builder.connect_signals(callbacks)
-			self.sort_get_widget = self.gui.gui_get_widget
-		else:
-			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-			self.xml.signal_autoconnect(callbacks)
-			self.sort_get_widget = self.xml.get_widget
+		self.gui.builder.add_from_file(self.gui.sharedir + "ui/sortDialog.ui")
+		self.gui.builder.connect_signals(callbacks)
+		self.sort_get_widget = self.gui.gui_get_widget
 
 		# Initialize the GUI state of the radio buttons and spin button
 		# based on the type of sort ('tree', 'text', or 'both')
 
 		# TODO: Shouldn't we be setting each radio button???
 		w = self.sort_get_widget("sortAscendingRadioButton")
-		w.set_active(self.gui.client.get_bool(self.gui.sort_ascending_path))
+		w.set_active(self.gui.settings.get_boolean("sort-ascending"))
 		w = self.sort_get_widget("sortAlphabeticRadioButton")
-		w.set_active(self.gui.client.get_bool(self.gui.sort_alpha_path))
+		w.set_active(self.gui.settings.get_boolean("sort-alpha"))
 
 		if type == "tree":
 			self.type = "tree"
@@ -322,7 +380,7 @@ class sort_dialog:
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode 1)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

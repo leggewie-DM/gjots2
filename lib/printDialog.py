@@ -1,5 +1,3 @@
-import gtk.keysyms
-import gtk.glade
 import re
 import inspect
 import tempfile
@@ -16,24 +14,24 @@ class print_dialog:
 			print inspect.getframeinfo(inspect.currentframe())[2]
 		w = self.print_get_widget("printPageRadioButton")
 		if w:
-			self.gui.client.set_bool(self.gui.print_page_path, w.get_active())
+			self.gui.settings.set_boolean("print-page", w.get_active())
 		w = self.print_get_widget("printSelectionRadioButton")
 		if w:
-			self.gui.client.set_bool(self.gui.print_selection_path, w.get_active())
+			self.gui.settings.set_boolean("print-selection", w.get_active())
 		w = self.print_get_widget("printAllRadioButton")
 		if w:
-			self.gui.client.set_bool(self.gui.print_all_path, w.get_active())
+			self.gui.settings.set_boolean("print-all", w.get_active())
 
 		w = self.print_get_widget("printPageFeedButton")
 		if w:
-			self.gui.client.set_bool(self.gui.print_page_feed_path, w.get_active())
+			self.gui.settings.set_boolean("print-page-feed", w.get_active())
 		w = self.print_get_widget("printBoldTitlesButton")
 		if w:
-			self.gui.client.set_bool(self.gui.print_bold_title_path, w.get_active())
+			self.gui.settings.set_boolean("print-bold-title", w.get_active())
 
 		w = self.print_get_widget("printCommandEntry")
 		if w:
-			self.gui.client.set_string(self.gui.print_command_path, w.get_text())
+			self.gui.settings.set_string("print-command", w.get_text())
 		
 		return
 	
@@ -46,10 +44,10 @@ class print_dialog:
 		if self.gui.debug:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
-		# to get all keysyms: print gtk.keysyms.__dict__
-		if key_event.keyval == gtk.keysyms.Return or key_event.keyval == gtk.keysyms.KP_Enter:
+		# to get all keysyms: print Gdk.KEY___dict__
+		if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
 			self.on_printOKButton_clicked(widget)
-		if key_event.keyval == gtk.keysyms.Escape:
+		if key_event.keyval == Gdk.KEY_Escape:
 			self.on_printCancelButton_clicked(widget)
 		return
 
@@ -167,42 +165,37 @@ class print_dialog:
 			"on_printCancelButton_clicked":				self.on_printCancelButton_clicked,
 		}
 		self.name = "printDialog"
-		if self.gui.builder:
-			self.gui.builder.add_from_file(self.gui.sharedir + "ui/printDialog.ui")
-			self.gui.builder.connect_signals(callbacks)
-			self.print_get_widget = self.gui.gui_get_widget
-		else:
-			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-			self.xml.signal_autoconnect(callbacks)
-			self.print_get_widget = self.xml.get_widget
+		self.gui.builder.add_from_file(self.gui.sharedir + "ui/printDialog.ui")
+		self.gui.builder.connect_signals(callbacks)
+		self.print_get_widget = self.gui.gui_get_widget
 
 		w = self.print_get_widget("printPageRadioButton")
 		if w:
-			w.set_active(self.gui.client.get_bool(self.gui.print_page_path))
+			w.set_active(self.gui.settings.get_boolean("print-page"))
 		w = self.print_get_widget("printSelectionRadioButton")
 		if w:
-			w.set_active(self.gui.client.get_bool(self.gui.print_selection_path))
+			w.set_active(self.gui.settings.get_boolean("print-selection"))
 		w = self.print_get_widget("printAllRadioButton")
 		if w:
-			w.set_active(self.gui.client.get_bool(self.gui.print_all_path))
+			w.set_active(self.gui.settings.get_boolean("print-all"))
 
 		w = self.print_get_widget("printPageFeedButton")
 		if w:
-			w.set_active(self.gui.client.get_bool(self.gui.print_page_feed_path))
+			w.set_active(self.gui.settings.get_boolean("print-page-feed"))
 		w = self.print_get_widget("printBoldTitlesButton")
 		if w:
-			w.set_active(self.gui.client.get_bool(self.gui.print_bold_title_path))
+			w.set_active(self.gui.settings.get_boolean("print-bold-title"))
 
 		w = self.print_get_widget("printCommandEntry")
 		if w:
-			w.set_text(self.gui.client.get_string(self.gui.print_command_path))
+			w.set_text(self.gui.settings.get_string("print-command"))
 		return
 		
 # print_dialog
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode 1)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

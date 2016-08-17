@@ -1,4 +1,18 @@
-2015-02-20    <bob.hepple@gmail.com>
+2015-09-01    <bob.hepple@gmail.com> 3.0.1
+	* port to PyGObject (requires Fedora-21 or Centos-7)
+	* fix external editor function
+	* derive tempfile from original filename
+	* promote item in combox to pole position on re-use
+	* improve alarm (use GObject.timeout_add
+	* when the file is changed underneath us, move the new version aside
+	* in _do_move_up do the removal backwards as there is breakage in gtk3-3.16.7-1.fc22.x86_64
+	* fix _do_tree_paste
+	* fix _do_tree_copy - it was disabled in readonly mode
+	* fix tree sort - gtk+-3.16 does not export reorder to python -
+	see https://bugzilla.gnome.org/show_bug.cgi?id=757796. Added a
+	python reorder to work around it.
+
+2015-02-20    <bob.hepple@gmail.com> Version 2.4.4
 	* Find dialog should revert to 'forwards' at startup
 2014-12-29    <bob.hepple@gmail.com>
 	* Added xdg-open and kate as external editors

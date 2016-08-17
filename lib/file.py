@@ -1,10 +1,14 @@
-import gtk, os, re
+import os, re
 import tempfile, fcntl
 import inspect
+from gi.repository import Gtk
 
 import gui
 from general import *
 from common import *
+import time # for strftime
+import shutil
+import string
 
 class PasswordError(Exception):
 	def __init__(self):
@@ -250,7 +254,7 @@ class gjotsfile:
 		dirname, basename = os.path.split(filename)
 		prompt = _("Enter password for ") + basename
 		while 1:
-			general = general_dialog(self.gui, _("gjots2: Enter Password"), prompt, OK|CANCEL,
+			general = general_dialog(self.gui, self.gui.progName + _(": Enter Password"), prompt, OK|CANCEL,
 									 num_fields, secretp, feedback,
 									 _("Password: "), password,
 									 _("Confirm: "),  confirm)
@@ -544,14 +548,9 @@ class gjotsfile:
 		}
 
 		self.name = "fileselection"
-		if self.gui.builder:
-			self.gui.builder.add_from_file(self.gui.sharedir + "ui/fileDialog.ui")
-			self.gui.builder.connect_signals(callbacks)
-			self.file_get_widget = self.gui.gui_get_widget
-		else:
-			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-			self.xml.signal_autoconnect(callbacks)
-			self.file_get_widget = self.xml.get_widget
+		self.gui.builder.add_from_file(self.gui.sharedir + "ui/fileDialog.ui")
+		self.gui.builder.connect_signals(callbacks)
+		self.file_get_widget = self.gui.gui_get_widget
 			
 		self.fileselection_dialog = self.file_get_widget(self.name)
 		self.fileselection_dialog.set_title(title)
@@ -563,7 +562,7 @@ class gjotsfile:
 		self.last_file = self.gui.backtick("readlink -n -m " + self.last_file)
 		self.fileselection_dialog.set_filename(self.last_file)
 
-		all_filter = gtk.FileFilter()
+		all_filter = Gtk.FileFilter()
 		all_filter.add_pattern("*")
 		all_filter.set_name("All files")
 		self.fileselection_dialog.add_filter(all_filter)
@@ -571,17 +570,14 @@ class gjotsfile:
 		self.fileselection_dialog.set_action(mode)
 		self.fileselection_dialog.show()
 		self.fileselectionValue = WAITING
-		if mode == gtk.FILE_CHOOSER_ACTION_SAVE:
+		if mode == Gtk.FileChooserAction.SAVE:
 			self.fileselection_dialog.set_do_overwrite_confirmation(True)
 			self.file_get_widget("fileselectionReadonly").hide()
 
-		if self.gui.builder:
-			self.gui.builder.connect_signals(callbacks)
-		else:
-			self.xml.signal_autoconnect(callbacks)
+		self.gui.builder.connect_signals(callbacks)
 
 		while self.fileselectionValue == WAITING:
-			gtk.main_iteration()
+			Gtk.main_iteration()
 
 		self.fileselection_dialog.destroy()
 
@@ -599,7 +595,7 @@ class gjotsfile:
 			print inspect.getframeinfo(inspect.currentframe())[2], vars()
 
 		if prompt and not filename:
-			self._file_dialog(prompt, gtk.FILE_CHOOSER_ACTION_OPEN)
+			self._file_dialog(prompt, Gtk.FileChooserAction.OPEN)
 			if self.fileselectionValue != OK or not self.prompt_filename:
 				return ""
 		else:
@@ -614,12 +610,12 @@ class gjotsfile:
 		if not os.access(self.prompt_filename, os.R_OK):
 			self.gui.err_msg(_("%s is not readable") % basename)
 			return ""
-		
-		gtk.recent_manager_get_default().add_full(
-			"file://" + self.prompt_filename, 
-			{"mime_type": "application/gjots",
-			 "app_name": "gjots2",
-			 "app_exec": "gjots2"})
+
+		rd = Gtk.RecentData()
+		rd.mime_type = "application/gjots"
+		rd.app_name = "gjots2"
+		rd.app_exec = "gjots2"
+		Gtk.RecentManager.get_default().add_full("file://" + self.prompt_filename, rd)
 
 		# lock the file
 		while not readonly:
@@ -632,7 +628,7 @@ class gjotsfile:
 			else:
 				msg = _("%s: locked by process number %d") % (basename, pid)
 			general = general_dialog(self.gui,
-									 title = _("gjots2: can't lock file."),
+									 title = self.gui.progName + _(": can't lock file."),
 									 prompt = msg,
 									 buttons = TRYAGAIN | CANCEL | READONLY,
 									 secretp = 0,
@@ -661,23 +657,25 @@ class gjotsfile:
 			self.gui.set_readonly(0, quietly=1)
 		return retval
 
-	def _check_timestamp(self, filename, timestamp):
-		if timestamp:
-			dirname, basename = os.path.split(filename)
+	# see if the file has changed since we read it - maybe something else wrote to it:
+	def _check_timestamp(self):
+		if self.filename_timestamp:
+			dirname, basename = os.path.split(self.filename)
 			try:
-				s = os.stat(filename)
+				s = os.stat(self.filename)
 			except:
 				return 0
 
 			if s.st_mtime > self.filename_timestamp:
-				general = general_dialog(self.gui, _("gjots2: %s changed") % basename,
-										 _("'%s' has changed since it was read.\noverwrite anyway?") % basename, YES|CANCEL,
-										 0, 0, "",
-										 "", "",
-										 "",  "")
-				if general.get_value() == OK:
-					return 0
-				return 1
+				timestamp = time.strftime("%Y%m%d%H%M%S", time.localtime(s.st_mtime))
+				c = string.split(basename, ".gjots")
+				newfilename = string.join([ c[0], timestamp, "gjots" ], ".")
+				if len(c) > 1: newfilename += c[1] # add suffix, if any
+					
+				newfilename = os.path.join(dirname, newfilename)
+				shutil.copy(self.filename, newfilename)
+				if self.gui.debug: print "copied %s to %s\n" % ( basename, newfilename)
+				return newfilename
 		return 0
 	
 	def write_file(self, prompt = "", exporting=0, reuse_password=1):
@@ -711,7 +709,7 @@ class gjotsfile:
 		retval = ""
 		while 1: # use 'while' simply so that we can use break:
 			if prompt:
-				self._file_dialog(prompt, gtk.FILE_CHOOSER_ACTION_SAVE)
+				self._file_dialog(prompt, Gtk.FileChooserAction.SAVE)
 				if self.fileselectionValue == OK and self.prompt_filename:
 					dirname, basename = os.path.split(self.prompt_filename)
 
@@ -720,12 +718,19 @@ class gjotsfile:
 						if exporting:
 							self.gui.err_msg(_("That file is already open!"))
 							return ""
-						if self._check_timestamp(self.filename, 
-												 self.filename_timestamp):
-							return ""
+						timestamped_file = self._check_timestamp()
+						
 						retval = self._do_store(self.filename, 
 												selection = exporting, 
 												reuse_password = reuse_password)
+						if timestamped_file:
+							general_dialog(self.gui, self.gui.progName + _(": file has changed"),
+										   _("File changed since it was read - copied to %s ") % timestamped_file,
+										   OK,
+										   0, 0, "",
+										   "", "",
+										   "",  "")
+							
 						if not exporting:
 							try:
 								s = os.stat(self.filename)
@@ -757,7 +762,7 @@ class gjotsfile:
 							self.gui.err_msg(_("%s is not writable") % basename)
 							return ""
 						general = general_dialog(self.gui, 
-												 _("gjots2: %s already exists.") % basename,
+												 self.gui.progName + _(": %s already exists.") % basename,
 												 _("overwrite %s?") % basename, YES|CANCEL,
 												 0, 0, "",
 												 "", "",
@@ -788,11 +793,17 @@ class gjotsfile:
 					return ""
 			else: # just save the sucker
 				# assert exporting == 0
-				if self._check_timestamp(self.filename, self.filename_timestamp):
-					return ""
+				timestamped_file = self._check_timestamp()
 				retval = self._do_store(self.filename, 
 										selection = exporting, 
 										reuse_password = reuse_password)
+				if timestamped_file:
+					general_dialog(self.gui, self.gui.progName + _(": file has changed"),
+								   _("File changed since it was read - so it was copied to %s ") % timestamped_file,
+								   OK,
+								   0, 0, "",
+								   "", "",
+								   "",  "")
 				try:
 					s = os.stat(self.filename)
 					self.filename_timestamp = s.st_mtime
@@ -804,11 +815,11 @@ class gjotsfile:
 #		if self.gui.dev:
 #			os.system("meld " + self.prompt_filename + " " + self.prompt_filename + "~")
 		
-		gtk.recent_manager_get_default().add_full(
-			"file://" + self.filename, 
-			{"mime_type": "application/gjots",
-			 "app_name": "gjots2",
-			 "app_exec": "gjots2"})
+		rd = Gtk.RecentData()
+		rd.mime_type = "application/gjots"
+		rd.app_name = "gjots2"
+		rd.app_exec = "gjots2"
+		Gtk.RecentManager.get_default().add_full("file://" + self.filename, rd)
 		return retval
 			
 	def __init__(self, gui):
@@ -824,7 +835,7 @@ class gjotsfile:
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode t)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

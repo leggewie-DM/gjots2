@@ -1,4 +1,4 @@
-import gtk
+from gi.repository import Gtk
 import inspect
 
 from common import *
@@ -110,17 +110,12 @@ class general_dialog:
 		self.name = "generalDialog"
 
 		self.filename = self.gui.sharedir + "ui/generalDialog.ui"
-		if self.gui.builder:
-			self.gui.builder.add_from_file(self.filename)
-			self.gui.builder.connect_signals(callbacks)
-			self.general_get_widget = self.gui.gui_get_widget
-		else:
-			self.xml = gtk.glade.XML(self.gui.gui_filename, self.name, domain="gjots2")
-			self.xml.signal_autoconnect(callbacks)
-			self.general_get_widget = self.xml.get_widget
+		self.gui.builder.add_from_file(self.filename)
+		self.gui.builder.connect_signals(callbacks)
+		self.general_get_widget = self.gui.gui_get_widget
 
 		self.general_dialog = self.general_get_widget(self.name)
-		#gtk.Widget.show(self)
+		#Gtk.Widget.show(self)
 		self.general_dialog.set_transient_for(self.gui.gjots)
 		self.general_dialog.set_title(title)
 		self.general_get_widget("generalPromptLabel").set_label(prompt)
@@ -180,7 +175,7 @@ class general_dialog:
 		self.generalValue = WAITING
 
 		while self.generalValue == WAITING:
-			gtk.main_iteration()
+			Gtk.main_iteration()
 
 		if self.generalValue == OK:
 			if num_fields > 1:
@@ -192,7 +187,7 @@ class general_dialog:
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode 1)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

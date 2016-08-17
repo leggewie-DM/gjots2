@@ -1,6 +1,6 @@
 # $Id: gjots2.spec,v 1.12.2.29 2012-06-02 12:42:57 bhepple Exp $
 
-#   Copyright (C) 2002-2014 Robert Hepple 
+#   Copyright (C) 2002-2015 Robert Hepple 
 #
 #   This program is free software; you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -17,7 +17,7 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 2.4.4
+%define ver 3.0.1
 %define rel 1
 
 %define _source_filedigest_algorithm md5
@@ -39,13 +39,9 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 BuildRequires: python desktop-file-utils
 
-Requires: python >= 2.6, gnome-python2-gnome
-Requires: gnome-python2-gconf >= 2.20.0
-Requires: gnome-python2-bonobo
-Requires: pygtksourceview
-# how to 'require' libglade3 if it's available otherwise glade2???? ie
-# to require it on f-19+ but not on RHEL6??? Without building separate
-# packages for them, of course!
+Requires: python
+Requires: pygobject3
+Requires: gtksourceview3
 
 %description
 
@@ -74,7 +70,7 @@ done
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-2.4.4
+#	buildroot=/var/tmp/root-gjots2-3.0.1
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib
@@ -87,14 +83,15 @@ mkdir -p %{buildroot}%{_datadir}/%{name}/pixmaps
 mkdir -p %{buildroot}%{_datadir}/%{name}/ui
 mkdir -p %{buildroot}%{_datadir}/doc/%{name}
 mkdir -p %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}/%{_datadir}/glib-2.0/schemas/
 
 install -pm0755 bin/* %{buildroot}%{_bindir}/
 install -pm0755 lib/*.py %{buildroot}%{python_sitelib}/%{name}/
-install -pm0644 gjots.glade2 %{buildroot}%{_datadir}/%{name}
 install -pm0644 pixmaps/gjots.png %{buildroot}%{_datadir}/pixmaps/
 install -pm0644 pixmaps/*.png %{buildroot}%{_datadir}/%{name}/pixmaps/
 install -pm0644 ui/*.ui %{buildroot}%{_datadir}/%{name}/ui/
 install -pm0644 %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/
+install -pm0644 org.gtk.%{name}.gschema.xml %{buildroot}/%{_datadir}/glib-2.0/schemas/
 
 desktop-file-install \
         --dir %{buildroot}%{_datadir}/applications              \
@@ -108,6 +105,10 @@ for file in $(find po/ -name gjots2.mo | sed 's|po/||') ; do
 done
 
 %find_lang %{name}
+
+%post
+# this is just too noisy:
+glib-compile-schemas %{_datadir}/glib-2.0/schemas 2>/dev/null
 
 %clean
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
