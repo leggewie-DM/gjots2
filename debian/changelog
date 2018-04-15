@@ -1,3 +1,14 @@
+gjots2 (2.4.1-4) unstable; urgency=medium
+
+  * revert the package hijack in 2.4.1-3 by
+    Athos Ribeiro <athoscribeiro@gmail.com>
+    Lucas Kanashiro <kanashiro@debian.org>
+    who couldn't even be bothered to clean up after their mess
+  * move VCS URIs to point to github
+  * update my copyright to 2018
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Mon, 16 Apr 2018 06:12:46 +0800
+
 gjots2 (2.4.1-2) unstable; urgency=low
 
   * control
