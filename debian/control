@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 9), python
 Standards-Version: 3.9.5
 Homepage: http://bhepple.freeshell.org/gjots/
 Vcs-Browser: https://github.com/leggewie-DM/gjots2
-Vcs-Git: git@github.com:leggewie-DM/gjots2.git
+Vcs-Git: https://github.com/leggewie-DM/gjots2.git
 
 Package: gjots2
 Architecture: all
