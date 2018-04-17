@@ -1,3 +1,11 @@
+gjots2 (2.4.1-5) unstable; urgency=medium
+
+  * control:
+    - use publicly accessible Vcs-Git URI
+    - demote gv, mpage and python-gtksourceview2 to Suggests. Closes: #876571
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Tue, 17 Apr 2018 22:36:57 +0800
+
 gjots2 (2.4.1-4) unstable; urgency=medium
 
   * revert the package hijack in 2.4.1-3 by
