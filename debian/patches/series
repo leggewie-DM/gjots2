@@ -3,3 +3,4 @@
 #40_disable-manual-in-GUI.patch
 50_fix-desktop-file.patch
 60_dont-import-gconf.patch
+70_dont-install-missing-xml-scripts.patch
