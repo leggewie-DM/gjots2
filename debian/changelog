@@ -1,9 +1,16 @@
-gjots2 (3.0.2-0.1) UNRELEASED; urgency=medium
+gjots2 (3.0.2-0.1) unstable; urgency=medium
 
   * Non-maintainer upload
   * Imported Upstream version 3.0.2
+  * Depend on python-gi and gir1.2-gtk-3.0 instead of python-glade2
+    (Closes: #790584)
+  * Recommend gir1.2-gtksourceview-3.0 instead of python-gtksourceview2
+  * Refresh patches
+  * Add 60_dont-import-gconf.patch
+  * Add 70_dont-install-missing-xml-scripts.patch
+  * Add 80_adjust-lib-install-directory.patch
 
- -- Jeremy Bicha <jbicha@debian.org>  Sun, 23 Dec 2018 23:31:21 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Mon, 24 Dec 2018 00:30:33 -0500
 
 gjots2 (2.4.1-4) unstable; urgency=medium
 
