@@ -12,9 +12,8 @@ index 1d41f97..b21066f 100644
  Exec=gjots2
  Terminal=false
  Type=Application
--Icon=gjots2.png
+-Icon=gjots2
 -Categories=GNOME;Application;Utility;
 +Icon=gjots
 +Categories=GNOME;GTK;Utility;
 +Keywords=notes;hierarchy
-
