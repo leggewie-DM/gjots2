@@ -253,44 +253,6 @@
                 <property name="y_options"/>
               </packing>
             </child>
-            <child>
-              <object class="GtkLabel" id="label5">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Auto ReadOnly timeout:</property>
-                <property name="justify">center</property>
-              </object>
-              <packing>
-                <property name="top_attach">6</property>
-                <property name="bottom_attach">7</property>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"/>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="autoReadOnlyTimeout">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="tooltip_text" translatable="yes">The number of second after losing focus that ReadOnly should be set.</property>
-                <property name="invisible_char">●</property>
-                <property name="invisible_char_set">True</property>
-                <property name="primary_icon_activatable">False</property>
-                <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <property name="adjustment">adjustment3</property>
-                <property name="climb_rate">1</property>
-                <property name="numeric">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">6</property>
-                <property name="bottom_attach">7</property>
-                <property name="y_options"/>
-              </packing>
-            </child>
           </object>
           <packing>
             <property name="expand">True</property>

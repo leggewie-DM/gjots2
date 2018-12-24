@@ -1,3 +1,17 @@
+2017-08-10    <bob.hepple@gmail.com> 3.0.2
+	release 3.0.2
+2017-05-17    <bob.hepple@gmail.com> 3.0.2
+	gjots2org: don't use regex when looking for marker in column 1
+2017-01-11    <bob.hepple@gmail.com> 3.0.2
+	* fix paste to be able to do both primary or clipboard
+	* bind Shift-Insert to 'paste primary'
+2016-12-07    <bob.hepple@gmail.com> 3.0.2
+	* remove setting changes in 'find' combobox - it was recursive
+	* untabify
+2016-02-27    <bob.hepple@gmail.com> 3.0.2
+	* remove separate readonly timeout
+2016-02-05    <bob.hepple@gmail.com> 3.0.2
+	* give readonly feature its own alarm
 2015-09-01    <bob.hepple@gmail.com> 3.0.1
 	* port to PyGObject (requires Fedora-21 or Centos-7)
 	* fix external editor function
