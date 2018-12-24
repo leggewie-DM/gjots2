@@ -1,0 +1,19 @@
+From: Jeremy Bicha <jbicha@debian.org>
+Date: Sun, 23 Dec 2018 23:57:07 -0500
+Subject: don't import GConf
+
+it's not actually used and gconf is obsolete
+---
+ lib/prefs.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/lib/prefs.py b/lib/prefs.py
+index a799736..6cdb1f4 100644
+--- a/lib/prefs.py
++++ b/lib/prefs.py
+@@ -1,5 +1,4 @@
+ from gi.repository import Gtk
+-from gi.repository import GConf
+ import inspect
+ 
+ from common import *
