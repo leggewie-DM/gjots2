@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gjots2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-08 00:54+1000\n"
+"POT-Creation-Date: 2014-02-06 21:07+1000\n"
 "PO-Revision-Date: 2010-11-22 20:02+0100\n"
 "Last-Translator: Cecilio Salmeron <s.cecilio@gmail.com>\n"
 "Language-Team: SPANISH <bhepple@freeshell.org>\n"
@@ -19,688 +19,728 @@ msgstr ""
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../ui/about.ui:9
-msgid "Copyright Bob Hepple 2002-2012"
-msgstr "Copyright Bob Hepple 2002-2012"
+#: ../gjots.glade2:43 ../ui/gjots.ui:24
+msgid "_File"
+msgstr "_Archivo"
 
-#: ../ui/about.ui:10
-msgid "http://bhepple.freeshell.org/gjots2"
-msgstr "http://bhepple.freeshell.org/gjots2"
+#: ../gjots.glade2:70
+msgid "Recent"
+msgstr "Recientes"
 
-#: ../ui/about.ui:20
+#: ../gjots.glade2:108 ../ui/gjots.ui:91
+msgid "Import items from a gjots file"
+msgstr "Importar items desde un archivo gjots"
+
+#: ../gjots.glade2:109
+msgid "_Import"
+msgstr "_Importar"
+
+#: ../gjots.glade2:118 ../ui/gjots.ui:102
+msgid "Export selected items to a gjots file"
+msgstr "Exportar los items seleccionados a un archivo gjots"
+
+#: ../gjots.glade2:119 ../ui/gjots.ui:99
+msgid "_Export"
+msgstr "_Exportar"
+
+#: ../gjots.glade2:150 ../ui/gjots.ui:135
+msgid "Toggle the read-only flag if possible"
+msgstr "Cambiar indicador de sólo lectura, si es posible"
+
+#: ../gjots.glade2:151 ../ui/gjots.ui:136
+msgid "_Read-only"
+msgstr "_Sólo lectura"
+
+#: ../gjots.glade2:168
 #, fuzzy
-msgid ""
-"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
-"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
-"Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>\n"
-"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
-"Martin Sin (cs) <martin.sin@zshk.cz>\n"
-"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
-"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
-"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
+msgid "Exit gjots"
+msgstr "Cerrar gjots"
+
+#: ../gjots.glade2:182 ../ui/gjots.ui:167
+msgid "_Edit"
+msgstr "_Editar"
+
+#: ../gjots.glade2:269
+msgid "Find Next"
+msgstr "Buscar siguiente"
+
+#: ../gjots.glade2:291 ../ui/gjots.ui:273
+msgid "Find Previous"
 msgstr ""
-"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
-"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
-"Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>\n"
-"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
-"Martin Sin (cs) <martin.sin@zshk.cz>\n"
-"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
 
-#: ../ui/fileDialog.ui:23
-msgid "Open file read only"
-msgstr "Abrir como 'sólo lectura'"
+#: ../gjots.glade2:332 ../ui/gjots.ui:299
+msgid "_View"
+msgstr "_Ver"
 
-#: ../ui/fileDialog.ui:27
-msgid "To open the file in read-only mode."
-msgstr "Para abrir eln archivo en modo de sólo lectura."
+#: ../gjots.glade2:341 ../gjots.glade2:1257 ../ui/gjots.ui:310
+#: ../ui/gjots.ui:1062
+msgid "Show all items below the current item"
+msgstr "Mostrar todos los items debajo del actual"
 
-#: ../ui/findDialog.ui:7
-msgid "Find & replace"
-msgstr "Buscar y sustituir"
+#: ../gjots.glade2:342 ../ui/gjots.ui:307
+msgid "_Show All"
+msgstr "Mostrar _todos"
 
-#: ../ui/findDialog.ui:28
-msgid "Find:"
-msgstr "Buscar:"
+#: ../gjots.glade2:351 ../ui/gjots.ui:321
+msgid "Hide all items except the top level"
+msgstr "Ocultar todos los items excepto los de primer nivel"
 
-#: ../ui/findDialog.ui:40
-msgid "Replace:"
-msgstr "Sustituir:"
+#: ../gjots.glade2:352 ../ui/gjots.ui:318
+msgid "_Hide All"
+msgstr "_Ocultar todo"
 
-#: ../ui/findDialog.ui:57
-msgid "String to search for"
-msgstr "Texto a buscar"
+#: ../gjots.glade2:367 ../ui/gjots.ui:337
+msgid "Toggles the main toolbar"
+msgstr "Muestra/oculta la barra principal de herramientas"
 
-#: ../ui/findDialog.ui:69
-msgid "String to replace"
-msgstr "Texto a sustituir"
+#: ../gjots.glade2:368 ../ui/gjots.ui:338
+msgid "To_p Toolbar"
+msgstr "Herramientas _principales"
 
-#: ../ui/findDialog.ui:96 ../ui/gjots.ui:876
+#: ../gjots.glade2:378 ../ui/gjots.ui:347
+msgid "Toggles tree tool bar"
+msgstr "Muestra/oculta la barra de herramientas de árbol"
+
+#: ../gjots.glade2:379 ../ui/gjots.ui:348
+msgid "Tre_e Toolbar"
+msgstr "Herramientas de _árbol"
+
+#: ../gjots.glade2:389 ../ui/gjots.ui:357
+msgid "Show the related icon text"
+msgstr "Mostrar el icono asociado al texto"
+
+#: ../gjots.glade2:390 ../ui/gjots.ui:358
+msgid "Show _Icon Text"
+msgstr "Mostrar _icono de texto"
+
+#: ../gjots.glade2:400 ../ui/gjots.ui:367
+msgid "Status _Bar"
+msgstr "Barra de _estado"
+
+#: ../gjots.glade2:414 ../ui/gjots.ui:380
+msgid "_Tree"
+msgstr "Ar_bol"
+
+#: ../gjots.glade2:423 ../ui/gjots.ui:391
+msgid "Create a new page"
+msgstr "Crear una página nueva"
+
+#: ../gjots.glade2:424 ../ui/gjots.ui:388
+msgid "_New Page"
+msgstr "_Nueva página"
+
+#: ../gjots.glade2:445
+msgid "Create a new child "
+msgstr "Crear un nuevo hijo"
+
+#: ../gjots.glade2:446 ../ui/gjots.ui:399
+msgid "New _Child"
+msgstr "Nuevo _hijo"
+
+#: ../gjots.glade2:461 ../gjots.glade2:1087 ../ui/gjots.ui:419
+#: ../ui/gjots.ui:927
+msgid "Move selection up"
+msgstr "Mover la selección hacia arriba"
+
+#: ../gjots.glade2:462 ../gjots.glade2:1088 ../ui/gjots.ui:928
+msgid "Up"
+msgstr "Subir"
+
+#: ../gjots.glade2:471 ../gjots.glade2:1105 ../ui/gjots.ui:430
+#: ../ui/gjots.ui:942
+msgid "Move selection down"
+msgstr "Mover la selección hacia abajo"
+
+#: ../gjots.glade2:472 ../gjots.glade2:1106 ../ui/gjots.ui:943
+msgid "Down"
+msgstr "Bajar"
+
+#: ../gjots.glade2:481 ../gjots.glade2:1123 ../ui/gjots.ui:441
+#: ../ui/gjots.ui:957
+msgid "Selection becomes a sibling to their parent"
+msgstr "La selección se colocará al mismo nivel que su padre"
+
+#: ../gjots.glade2:482 ../ui/gjots.ui:438
+msgid "P_romote"
+msgstr "_Promocionar"
+
+#: ../gjots.glade2:503 ../gjots.glade2:1141 ../ui/gjots.ui:452
+#: ../ui/gjots.ui:972
+msgid "Selection becomes a child of the previous item"
+msgstr "La selección se colocará como hijo del item al que precede"
+
+#: ../gjots.glade2:504 ../ui/gjots.ui:449
+msgid "D_emote"
+msgstr "_Rebajar"
+
+#: ../gjots.glade2:531 ../ui/gjots.ui:469
+msgid "Make a new item from the current selection"
+msgstr "Transforma la selección en un nuevo item"
+
+#: ../gjots.glade2:532 ../ui/gjots.ui:466
+msgid "_Split Item"
+msgstr "_Dividir item"
+
+#: ../gjots.glade2:541 ../ui/gjots.ui:480
+msgid "Merge current items into the first one"
+msgstr "Fusiona los items seleccionados en uno único"
+
+#: ../gjots.glade2:542 ../ui/gjots.ui:477
+msgid "_Merge Items"
+msgstr "_Fusionar items"
+
+#: ../gjots.glade2:557 ../gjots.glade2:1275 ../ui/gjots.ui:491
+#: ../ui/gjots.ui:1077
+msgid "Popup the sort tree dialog"
+msgstr "Muestra el diálogo de 'ordenar árbol'"
+
+#: ../gjots.glade2:558 ../ui/gjots.ui:488
+msgid "S_ort Tree"
+msgstr "_Ordenar árbol"
+
+#: ../gjots.glade2:571 ../ui/gjots.ui:505
+msgid "Te_xt"
+msgstr "Te_xto"
+
+#: ../gjots.glade2:580 ../ui/gjots.ui:516
+msgid "Format the current paragraph"
+msgstr "Da formato al párrafo actual"
+
+#: ../gjots.glade2:581 ../ui/gjots.ui:513
+msgid "_Format"
+msgstr "_Formato"
+
+#: ../gjots.glade2:591 ../ui/gjots.ui:528
+msgid "Add a time/date stamp (see preferences)"
+msgstr "Añade fecha y hora (ver preferencias)"
+
+#: ../gjots.glade2:592 ../ui/gjots.ui:525
+msgid "_Time stamp"
+msgstr "Fecha y _hora"
+
+#: ../gjots.glade2:611 ../ui/gjots.ui:539
+msgid "Edit current item in an external editor"
+msgstr "Edita el item actual en un editor externo"
+
+#: ../gjots.glade2:612 ../ui/gjots.ui:536
+msgid "_External Edit"
+msgstr "_Editor externo"
+
+#: ../gjots.glade2:633 ../ui/gjots.ui:550
+msgid "Popup the sort text dialog"
+msgstr "Muestra el diálogo de 'ordenar texto'"
+
+#: ../gjots.glade2:634 ../ui/gjots.ui:547
+msgid "_Sort Text"
+msgstr "_Ordenar texto"
+
+#: ../gjots.glade2:647 ../ui/gjots.ui:564
+msgid "_Help"
+msgstr "_Ayuda"
+
+#: ../gjots.glade2:656 ../ui/gjots.ui:575
+msgid "Read the online manual (using gjots)"
+msgstr "Leer el manual en línea (usando gjots)"
+
+#: ../gjots.glade2:657 ../ui/gjots.ui:572
+msgid "_Read Manual"
+msgstr "_Leer manual"
+
+#: ../gjots.glade2:678
+#, fuzzy
+msgid "About gjots2"
+msgstr "Cerrar gjots"
+
+#: ../gjots.glade2:709
+#, fuzzy
+msgid " Find: "
+msgstr " Buscar:"
+
+#: ../gjots.glade2:765 ../ui/gjots.ui:670
+msgid "Save gjots document"
+msgstr "Guarda un documento gjots"
+
+#: ../gjots.glade2:766 ../ui/gjots.ui:671
+msgid "Save"
+msgstr "Guardar"
+
+#: ../gjots.glade2:783 ../ui/gjots.ui:685
+msgid "Print this document"
+msgstr "Imprime este documento"
+
+#: ../gjots.glade2:784 ../gjots.glade2:2664 ../ui/gjots.ui:686
+#: ../ui/printDialog.ui:7
+msgid "Print"
+msgstr "Imprimir"
+
+#: ../gjots.glade2:823 ../ui/gjots.ui:715
+msgid "Cut selected items"
+msgstr "Quita los items seleccionados"
+
+#: ../gjots.glade2:824 ../ui/gjots.ui:716
+msgid "Cut"
+msgstr "Cortar"
+
+#: ../gjots.glade2:841 ../ui/gjots.ui:730
+msgid "Copy selected items"
+msgstr "Copia los items seleccionados"
+
+#: ../gjots.glade2:842 ../ui/gjots.ui:731
+msgid "Copy"
+msgstr "Copiar"
+
+#: ../gjots.glade2:859 ../ui/gjots.ui:745
+msgid "Paste selected items"
+msgstr "Pega los items seleccionados"
+
+#: ../gjots.glade2:860 ../ui/gjots.ui:746
+msgid "Paste"
+msgstr "Pegar"
+
+#: ../gjots.glade2:899 ../ui/gjots.ui:775
+msgid "Wrap the current paragraph to the current line length"
+msgstr "Ajusta el párrafo actual para amoldarse al tamaño de línea"
+
+#: ../gjots.glade2:900 ../ui/gjots.ui:776
+msgid "Wrap"
+msgstr "Ajustar"
+
+#: ../gjots.glade2:917 ../ui/gjots.ui:790
+msgid "Invoke an external editor on the current item"
+msgstr "LLama a un editor externo para editar el item actual"
+
+#: ../gjots.glade2:918 ../ui/gjots.ui:791
+msgid "Ext.Ed."
+msgstr "Ed.ext."
+
+#: ../gjots.glade2:935 ../ui/gjots.ui:805
+msgid "Add a time/date stamp (see prefs)"
+msgstr "Añade fecha y hora (ver preferencias)"
+
+#: ../gjots.glade2:936 ../ui/gjots.ui:806
+msgid "Date"
+msgstr "Fecha"
+
+#: ../gjots.glade2:953 ../ui/gjots.ui:820
+msgid "Popup the find and replace dialog"
+msgstr "Muestra el diálogo de 'buscar y reemplazar'"
+
+#: ../gjots.glade2:954 ../gjots.glade2:2360 ../ui/findDialog.ui:97
+#: ../ui/gjots.ui:821
 msgid "Find"
 msgstr "Buscar"
 
-#: ../ui/findDialog.ui:112
-msgid "Close"
-msgstr "Cerrar"
+#: ../gjots.glade2:971 ../ui/gjots.ui:835
+msgid "Popup the sort dialog"
+msgstr "Muestra el diálogo de 'ordenar'"
 
-#: ../ui/findDialog.ui:128
-msgid "Replace"
-msgstr "Sustituir"
+#: ../gjots.glade2:972 ../gjots.glade2:3148 ../ui/gjots.ui:836
+#: ../ui/sortDialog.ui:15
+msgid "Sort"
+msgstr "Ordenar"
 
-#: ../ui/findDialog.ui:144
-msgid "Replace All"
-msgstr "Sustituir todo"
+#: ../gjots.glade2:989 ../ui/gjots.ui:850
+msgid "Open gjots preferences window"
+msgstr "Abre la ventana de 'preferencias' de gjots"
 
-#: ../ui/findDialog.ui:160
-msgid "Cancel"
-msgstr "Cancelar"
+#: ../gjots.glade2:990 ../ui/gjots.ui:851
+msgid "Prefs"
+msgstr "Preferencias"
 
-#: ../ui/findDialog.ui:179
-msgid "Clear"
-msgstr "Limpiar"
+#: ../gjots.glade2:1029 ../ui/gjots.ui:882
+msgid "Create a new item"
+msgstr "Crea un nuevo item"
 
-#: ../ui/findDialog.ui:233
-msgid "Match case"
-msgstr "Coincidir mayúsculas y minúsculas"
+#: ../gjots.glade2:1030 ../gjots.glade2:3628 ../ui/gjots.ui:883
+#: ../ui/treeContextMenu.ui:45
+msgid "New Page"
+msgstr "Nueva página"
 
-#: ../ui/findDialog.ui:237
-msgid "Don't ignore case"
-msgstr "Distinguir mayúsculas/minúsculas"
+#: ../gjots.glade2:1047 ../ui/gjots.ui:402 ../ui/gjots.ui:897
+msgid "Create a new child"
+msgstr "Añade un nuevo hijo"
 
-#: ../ui/findDialog.ui:247
-msgid "Regular Expression"
-msgstr "Expresión regular"
+#: ../gjots.glade2:1048 ../gjots.glade2:3649 ../ui/gjots.ui:898
+#: ../ui/treeContextMenu.ui:52
+msgid "New Child"
+msgstr "Nuevo hijo"
 
-#: ../ui/findDialog.ui:251
-msgid "Find string is a regular expression (see 'man 7 regex')"
-msgstr "El texto a buscar es una expresión regular (ver 'man 7 regex')"
+#: ../gjots.glade2:1124 ../gjots.glade2:3692 ../ui/gjots.ui:958
+#: ../ui/treeContextMenu.ui:74
+msgid "Promote"
+msgstr "Promocionar"
 
-#: ../ui/findDialog.ui:263
-msgid "Backwards"
-msgstr "Hacia atrás"
+#: ../gjots.glade2:1142 ../gjots.glade2:3713 ../ui/gjots.ui:973
+#: ../ui/treeContextMenu.ui:82
+msgid "Demote"
+msgstr "Rebajar"
 
-#: ../ui/findDialog.ui:267
-msgid "Search backwards"
-msgstr "Búscar hacia atrás"
+#: ../gjots.glade2:1181 ../ui/gjots.ui:1002
+msgid "Split the text selection into a new item"
+msgstr "Corta la selección y crea con ella un nuevo item"
 
-#: ../ui/findDialog.ui:282
-msgid "Global"
-msgstr "Global"
+#: ../gjots.glade2:1182 ../ui/gjots.ui:1003
+msgid "Split Item"
+msgstr "Dividir item"
 
-#: ../ui/findDialog.ui:286
-msgid "Searches entire file not just this entry"
-msgstr "Buscar en todo el archivo, no sólo en esta entrada"
+#: ../gjots.glade2:1199 ../ui/gjots.ui:1017
+msgid "Merge selected items together"
+msgstr "Fusina los items seleccionados"
 
-#: ../ui/findDialog.ui:302
-msgid " Options "
-msgstr " Opciones"
+#: ../gjots.glade2:1200 ../gjots.glade2:3740 ../ui/gjots.ui:1018
+#: ../ui/treeContextMenu.ui:89
+msgid "Merge Items"
+msgstr "Fusionar items"
 
-#: ../ui/fontDialog.ui:8
-msgid "Select Font"
-msgstr "Seleccionar tipografía"
+#: ../gjots.glade2:1239 ../ui/gjots.ui:1047
+msgid "Hide all items except for the top level"
+msgstr "Oculta todos los items excepto los de primer nivel"
 
-#: ../ui/generalDialog.ui:9
+#: ../gjots.glade2:1240 ../gjots.glade2:3784 ../ui/gjots.ui:1048
+#: ../ui/treeContextMenu.ui:103
+msgid "Hide All"
+msgstr "Ocultar todo"
+
+#: ../gjots.glade2:1258 ../gjots.glade2:3765 ../ui/gjots.ui:1063
+#: ../ui/treeContextMenu.ui:96
+msgid "Show All"
+msgstr "Mostrar todo"
+
+#: ../gjots.glade2:1276 ../gjots.glade2:3809 ../lib/sortDialog.py:313
+#: ../ui/gjots.ui:1078 ../ui/treeContextMenu.ui:110
+msgid "Sort Tree"
+msgstr "Ordenar árbol"
+
+#: ../gjots.glade2:1407 ../ui/generalDialog.ui:9
 msgid "window1"
 msgstr "ventana1"
 
+#: ../gjots.glade2:1430 ../gjots.glade2:1491 ../gjots.glade2:1572
 #: ../ui/generalDialog.ui:21 ../ui/generalDialog.ui:56
 #: ../ui/generalDialog.ui:102
 msgid "label1"
 msgstr "etiqueta1"
 
-#: ../ui/generalDialog.ui:43
+#: ../gjots.glade2:1464 ../ui/generalDialog.ui:43
 msgid "label2"
 msgstr "etiqueta2"
 
-#: ../ui/generalDialog.ui:178
+#: ../gjots.glade2:1658 ../ui/generalDialog.ui:178
 msgid "Try again"
 msgstr "Inténtelo de nuevo"
 
-#: ../ui/generalDialog.ui:194
+#: ../gjots.glade2:1671 ../ui/generalDialog.ui:194
 msgid "Read only"
 msgstr "Sólo lectura"
 
-#: ../ui/gjots.ui:23
-msgid "_File"
-msgstr "_Archivo"
-
-#: ../ui/gjots.ui:92
-msgid "Import items from a gjots file"
-msgstr "Importar items desde un archivo gjots"
-
-#: ../ui/gjots.ui:101
-msgid "_Export"
-msgstr "_Exportar"
-
-#: ../ui/gjots.ui:104
-msgid "Export selected items to a gjots file"
-msgstr "Exportar los items seleccionados a un archivo gjots"
-
-#: ../ui/gjots.ui:140
-msgid "Toggle the read-only flag if possible"
-msgstr "Cambiar indicador de sólo lectura, si es posible"
-
-#: ../ui/gjots.ui:142
-msgid "_Read-only"
-msgstr "_Sólo lectura"
-
-#: ../ui/gjots.ui:158
-#, fuzzy
-msgid "Exit gjots2"
-msgstr "Cerrar gjots"
-
-#: ../ui/gjots.ui:175
-msgid "_Edit"
-msgstr "_Editar"
-
-#: ../ui/gjots.ui:287
-msgid "Find Previous"
-msgstr ""
-
-#: ../ui/gjots.ui:316
-msgid "_View"
-msgstr "_Ver"
-
-#: ../ui/gjots.ui:324
-msgid "_Show All"
-msgstr "Mostrar _todos"
-
-#: ../ui/gjots.ui:327 ../ui/gjots.ui:1131
-msgid "Show all items below the current item"
-msgstr "Mostrar todos los items debajo del actual"
-
-#: ../ui/gjots.ui:336
-msgid "_Hide All"
-msgstr "_Ocultar todo"
-
-#: ../ui/gjots.ui:339
-msgid "Hide all items except the top level"
-msgstr "Ocultar todos los items excepto los de primer nivel"
-
-#: ../ui/gjots.ui:357
-msgid "Toggles the main toolbar"
-msgstr "Muestra/oculta la barra principal de herramientas"
-
-#: ../ui/gjots.ui:359
-msgid "To_p Toolbar"
-msgstr "Herramientas _principales"
-
-#: ../ui/gjots.ui:368
-msgid "Toggles tree tool bar"
-msgstr "Muestra/oculta la barra de herramientas de árbol"
-
-#: ../ui/gjots.ui:370
-msgid "Tre_e Toolbar"
-msgstr "Herramientas de _árbol"
-
-#: ../ui/gjots.ui:379
-msgid "Show the related icon text"
-msgstr "Mostrar el icono asociado al texto"
-
-#: ../ui/gjots.ui:381
-msgid "Show _Icon Text"
-msgstr "Mostrar _icono de texto"
-
-#: ../ui/gjots.ui:391
-msgid "Status _Bar"
-msgstr "Barra de _estado"
-
-#: ../ui/gjots.ui:405
-msgid "_Tree"
-msgstr "Ar_bol"
-
-#: ../ui/gjots.ui:413
-msgid "_New Page"
-msgstr "_Nueva página"
-
-#: ../ui/gjots.ui:416
-msgid "Create a new page"
-msgstr "Crear una página nueva"
-
-#: ../ui/gjots.ui:425
-msgid "New _Child"
-msgstr "Nuevo _hijo"
-
-#: ../ui/gjots.ui:428 ../ui/gjots.ui:955
-msgid "Create a new child"
-msgstr "Añade un nuevo hijo"
-
-#: ../ui/gjots.ui:447 ../ui/gjots.ui:987
-msgid "Move selection up"
-msgstr "Mover la selección hacia arriba"
-
-#: ../ui/gjots.ui:459 ../ui/gjots.ui:1003
-msgid "Move selection down"
-msgstr "Mover la selección hacia abajo"
-
-#: ../ui/gjots.ui:468
-msgid "P_romote"
-msgstr "_Promocionar"
-
-#: ../ui/gjots.ui:471 ../ui/gjots.ui:1019
-msgid "Selection becomes a sibling to their parent"
-msgstr "La selección se colocará al mismo nivel que su padre"
-
-#: ../ui/gjots.ui:480
-msgid "D_emote"
-msgstr "_Rebajar"
-
-#: ../ui/gjots.ui:483 ../ui/gjots.ui:1035
-msgid "Selection becomes a child of the previous item"
-msgstr "La selección se colocará como hijo del item al que precede"
-
-#: ../ui/gjots.ui:499
-msgid "_Split Item"
-msgstr "_Dividir item"
-
-#: ../ui/gjots.ui:502
-msgid "Make a new item from the current selection"
-msgstr "Transforma la selección en un nuevo item"
-
-#: ../ui/gjots.ui:511
-msgid "_Merge Items"
-msgstr "_Fusionar items"
-
-#: ../ui/gjots.ui:514
-msgid "Merge current items into the first one"
-msgstr "Fusiona los items seleccionados en uno único"
-
-#: ../ui/gjots.ui:523
-msgid "S_ort Tree"
-msgstr "_Ordenar árbol"
-
-#: ../ui/gjots.ui:526 ../ui/gjots.ui:1147
-msgid "Popup the sort tree dialog"
-msgstr "Muestra el diálogo de 'ordenar árbol'"
-
-#: ../ui/gjots.ui:542
-msgid "Te_xt"
-msgstr "Te_xto"
-
-#: ../ui/gjots.ui:550
-msgid "_Format"
-msgstr "_Formato"
-
-#: ../ui/gjots.ui:553
-msgid "Format the current paragraph"
-msgstr "Da formato al párrafo actual"
-
-#: ../ui/gjots.ui:563
-msgid "_Time stamp"
-msgstr "Fecha y _hora"
-
-#: ../ui/gjots.ui:566
-msgid "Add a time/date stamp (see preferences)"
-msgstr "Añade fecha y hora (ver preferencias)"
-
-#: ../ui/gjots.ui:575
-msgid "_External Edit"
-msgstr "_Editor externo"
-
-#: ../ui/gjots.ui:578
-msgid "Edit current item in an external editor"
-msgstr "Edita el item actual en un editor externo"
-
-#: ../ui/gjots.ui:587
-msgid "_Sort Text"
-msgstr "_Ordenar texto"
-
-#: ../ui/gjots.ui:590
-msgid "Popup the sort text dialog"
-msgstr "Muestra el diálogo de 'ordenar texto'"
-
-#: ../ui/gjots.ui:606
-msgid "_Help"
-msgstr "_Ayuda"
-
-#: ../ui/gjots.ui:614
-msgid "_Read Manual"
-msgstr "_Leer manual"
-
-#: ../ui/gjots.ui:617
-msgid "Read the online manual (using gjots)"
-msgstr "Leer el manual en línea (usando gjots)"
-
-#: ../ui/gjots.ui:714
-msgid "Save gjots document"
-msgstr "Guarda un documento gjots"
-
-#: ../ui/gjots.ui:716
-msgid "Save"
-msgstr "Guardar"
-
-#: ../ui/gjots.ui:730
-msgid "Print this document"
-msgstr "Imprime este documento"
-
-#: ../ui/gjots.ui:732 ../ui/printDialog.ui:7
-msgid "Print"
-msgstr "Imprimir"
-
-#: ../ui/gjots.ui:762
-msgid "Cut selected items"
-msgstr "Quita los items seleccionados"
-
-#: ../ui/gjots.ui:764
-msgid "Cut"
-msgstr "Cortar"
-
-#: ../ui/gjots.ui:778
-msgid "Copy selected items"
-msgstr "Copia los items seleccionados"
-
-#: ../ui/gjots.ui:780
-msgid "Copy"
-msgstr "Copiar"
-
-#: ../ui/gjots.ui:794
-msgid "Paste selected items"
-msgstr "Pega los items seleccionados"
-
-#: ../ui/gjots.ui:796
-msgid "Paste"
-msgstr "Pegar"
-
-#: ../ui/gjots.ui:826
-msgid "Wrap the current paragraph to the current line length"
-msgstr "Ajusta el párrafo actual para amoldarse al tamaño de línea"
-
-#: ../ui/gjots.ui:828
-msgid "Wrap"
-msgstr "Ajustar"
-
-#: ../ui/gjots.ui:842
-msgid "Invoke an external editor on the current item"
-msgstr "LLama a un editor externo para editar el item actual"
-
-#: ../ui/gjots.ui:844
-msgid "Ext.Ed."
-msgstr "Ed.ext."
-
-#: ../ui/gjots.ui:858
-msgid "Add a time/date stamp (see prefs)"
-msgstr "Añade fecha y hora (ver preferencias)"
-
-#: ../ui/gjots.ui:860
-msgid "Date"
-msgstr "Fecha"
-
-#: ../ui/gjots.ui:874
-msgid "Popup the find and replace dialog"
-msgstr "Muestra el diálogo de 'buscar y reemplazar'"
-
-#: ../ui/gjots.ui:890
-msgid "Popup the sort dialog"
-msgstr "Muestra el diálogo de 'ordenar'"
-
-#: ../ui/gjots.ui:892 ../ui/sortDialog.ui:15
-msgid "Sort"
-msgstr "Ordenar"
-
-#: ../ui/gjots.ui:906
-msgid "Open gjots preferences window"
-msgstr "Abre la ventana de 'preferencias' de gjots"
-
-#: ../ui/gjots.ui:908
-msgid "Prefs"
-msgstr "Preferencias"
-
-#: ../ui/gjots.ui:939
-msgid "Create a new item"
-msgstr "Crea un nuevo item"
-
-#: ../ui/gjots.ui:941 ../ui/treeContextMenu.ui:45
-msgid "New Page"
-msgstr "Nueva página"
-
-#: ../ui/gjots.ui:957 ../ui/treeContextMenu.ui:52
-msgid "New Child"
-msgstr "Nuevo hijo"
-
-#: ../ui/gjots.ui:989
-msgid "Up"
-msgstr "Subir"
-
-#: ../ui/gjots.ui:1005
-msgid "Down"
-msgstr "Bajar"
-
-#: ../ui/gjots.ui:1021 ../ui/treeContextMenu.ui:74
-msgid "Promote"
-msgstr "Promocionar"
-
-#: ../ui/gjots.ui:1037 ../ui/treeContextMenu.ui:82
-msgid "Demote"
-msgstr "Rebajar"
-
-#: ../ui/gjots.ui:1067
-msgid "Split the text selection into a new item"
-msgstr "Corta la selección y crea con ella un nuevo item"
-
-#: ../ui/gjots.ui:1069
-msgid "Split Item"
-msgstr "Dividir item"
-
-#: ../ui/gjots.ui:1083
-msgid "Merge selected items together"
-msgstr "Fusina los items seleccionados"
-
-#: ../ui/gjots.ui:1085 ../ui/treeContextMenu.ui:89
-msgid "Merge Items"
-msgstr "Fusionar items"
-
-#: ../ui/gjots.ui:1115
-msgid "Hide all items except for the top level"
-msgstr "Oculta todos los items excepto los de primer nivel"
-
-#: ../ui/gjots.ui:1117 ../ui/treeContextMenu.ui:103
-msgid "Hide All"
-msgstr "Ocultar todo"
-
-#: ../ui/gjots.ui:1133 ../ui/treeContextMenu.ui:96
-msgid "Show All"
-msgstr "Mostrar todo"
-
-#: ../ui/gjots.ui:1149 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:308
-msgid "Sort Tree"
-msgstr "Ordenar árbol"
-
-#: ../ui/prefsDialog.ui:15
+#: ../gjots.glade2:1691 ../ui/prefsDialog.ui:25
 msgid "gjots: preferences"
 msgstr "gjots: preferencias"
 
-#: ../ui/prefsDialog.ui:35
+#: ../gjots.glade2:1724 ../ui/prefsDialog.ui:48
 msgid "Choose a font for the text panel"
 msgstr "Elegir tipografía para el panel de texto"
 
-#: ../ui/prefsDialog.ui:50
+#: ../gjots.glade2:1745 ../ui/prefsDialog.ui:64
 msgid "Date format:"
 msgstr "Formato de fecha:"
 
-#: ../ui/prefsDialog.ui:64
-msgid "Format for the timestamp function (see strftime(3))"
+#: ../gjots.glade2:1773 ../ui/prefsDialog.ui:78
+#, fuzzy
+msgid "Format for the timestamp function (see strftime(3)) eg %F"
 msgstr "Formato para la funcion de fecha/hora (ver strftime(3))"
 
-#: ../ui/prefsDialog.ui:65
+#: ../gjots.glade2:1778 ../ui/prefsDialog.ui:79
 msgid "%F"
 msgstr "%F"
 
-#: ../ui/prefsDialog.ui:80
+#: ../gjots.glade2:1796 ../ui/prefsDialog.ui:98
+#, fuzzy
 msgid ""
 "External program to edit a page (%s is replaced by the name of the temporary "
-"edit file)"
+"edit file) eg xterm -e vi %s"
 msgstr ""
 "Programa externo para editar una página (%s será reemplazado por el nombre "
 "del archivo temporal a editar)"
 
-#: ../ui/prefsDialog.ui:81
+#: ../gjots.glade2:1801 ../ui/prefsDialog.ui:99
 msgid "xterm -e vi %s"
 msgstr "xterm -e vi %s"
 
-#: ../ui/prefsDialog.ui:96
+#: ../gjots.glade2:1819 ../ui/prefsDialog.ui:119
 msgid "External editor"
 msgstr "Editor externo"
 
-#: ../ui/prefsDialog.ui:110
+#: ../gjots.glade2:1847 ../ui/prefsDialog.ui:134
 msgid "Text Line Length: "
 msgstr "Tamaño de línea de texto:"
 
-#: ../ui/prefsDialog.ui:124
+#: ../gjots.glade2:1875 ../ui/prefsDialog.ui:148
 msgid "Line length for paragraph wrapping"
 msgstr "Tamaño de línea para ajuste de párrafo"
 
-#: ../ui/prefsDialog.ui:142
+#: ../gjots.glade2:1898 ../ui/prefsDialog.ui:171
 msgid "Text formatter: "
 msgstr "Formateador de texto:"
 
-#: ../ui/prefsDialog.ui:154
+#: ../gjots.glade2:1926 ../ui/prefsDialog.ui:201
+msgid "Current text font"
+msgstr "Tipografía actual:"
+
+#: ../gjots.glade2:1931 ../ui/prefsDialog.ui:203
+msgid "Courier 10 Pitch 10"
+msgstr "Courier 10 Pitch 10"
+
+#: ../gjots.glade2:1949 ../ui/prefsDialog.ui:223
+msgid "AutoSave interval:"
+msgstr ""
+
+#: ../gjots.glade2:1977 ../ui/prefsDialog.ui:237
+msgid "Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)"
+msgstr ""
+
+#: ../gjots.glade2:2000 ../ui/prefsDialog.ui:183
+#, fuzzy
 msgid ""
 "External program to pipe text for formatting (%d is replaced by the current "
-"line width)"
+"line width) eg fmt -w %d "
 msgstr ""
 "Programa externo al que enviar el texto a formatear (%d será reemplazado por "
 "el tamaño actual de línea)"
 
-#: ../ui/prefsDialog.ui:155
+#: ../gjots.glade2:2005 ../ui/prefsDialog.ui:184
 msgid "fmt -w %d "
 msgstr "fmt -w %d "
 
-#: ../ui/prefsDialog.ui:168
-msgid "Current text font"
-msgstr "Tipografía actual:"
+#: ../gjots.glade2:2023 ../ui/prefsDialog.ui:261
+msgid "Auto ReadOnly timeout:"
+msgstr ""
 
-#: ../ui/prefsDialog.ui:170
-msgid "Courier 10 Pitch 10"
-msgstr "Courier 10 Pitch 10"
+#: ../gjots.glade2:2051 ../ui/prefsDialog.ui:275
+msgid "The number of second after losing focus that ReadOnly should be set."
+msgstr ""
 
-#: ../ui/printDialog.ui:31
+#: ../gjots.glade2:2136 ../ui/fontDialog.ui:8
+msgid "Select Font"
+msgstr "Seleccionar tipografía"
+
+#: ../gjots.glade2:2186
+msgid "abcdefghijk ABCDEFGHIJK"
+msgstr "abcdefghijk ABCDEFGHIJK"
+
+#: ../gjots.glade2:2198 ../ui/findDialog.ui:7
+msgid "Find & replace"
+msgstr "Buscar y sustituir"
+
+#: ../gjots.glade2:2238 ../ui/findDialog.ui:29
+msgid "Find:"
+msgstr "Buscar:"
+
+#: ../gjots.glade2:2266 ../ui/findDialog.ui:41
+msgid "Replace:"
+msgstr "Sustituir:"
+
+#: ../gjots.glade2:2294 ../ui/findDialog.ui:58
+msgid "String to search for"
+msgstr "Texto a buscar"
+
+#: ../gjots.glade2:2319 ../ui/findDialog.ui:70
+msgid "String to replace"
+msgstr "Texto a sustituir"
+
+#: ../gjots.glade2:2382 ../ui/findDialog.ui:113
+msgid "Close"
+msgstr "Cerrar"
+
+#: ../gjots.glade2:2402 ../ui/findDialog.ui:129
+msgid "Replace"
+msgstr "Sustituir"
+
+#: ../gjots.glade2:2422 ../ui/findDialog.ui:161
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../gjots.glade2:2443 ../ui/findDialog.ui:145
+msgid "Replace All"
+msgstr "Sustituir todo"
+
+#: ../gjots.glade2:2463 ../ui/findDialog.ui:180
+msgid "Clear"
+msgstr "Limpiar"
+
+#: ../gjots.glade2:2540 ../ui/findDialog.ui:252
+msgid "Find string is a regular expression (see 'man 7 regex')"
+msgstr "El texto a buscar es una expresión regular (ver 'man 7 regex')"
+
+#: ../gjots.glade2:2542 ../ui/findDialog.ui:248
+msgid "Regular Expression"
+msgstr "Expresión regular"
+
+#: ../gjots.glade2:2562 ../ui/findDialog.ui:287
+msgid "Searches entire file not just this entry"
+msgstr "Buscar en todo el archivo, no sólo en esta entrada"
+
+#: ../gjots.glade2:2564 ../ui/findDialog.ui:283
+msgid "Global"
+msgstr "Global"
+
+#: ../gjots.glade2:2585 ../ui/findDialog.ui:238
+msgid "Don't ignore case"
+msgstr "Distinguir mayúsculas/minúsculas"
+
+#: ../gjots.glade2:2587 ../ui/findDialog.ui:234
+msgid "Match case"
+msgstr "Coincidir mayúsculas y minúsculas"
+
+#: ../gjots.glade2:2607 ../ui/findDialog.ui:268
+msgid "Search backwards"
+msgstr "Búscar hacia atrás"
+
+#: ../gjots.glade2:2609 ../ui/findDialog.ui:264
+msgid "Backwards"
+msgstr "Hacia atrás"
+
+#: ../gjots.glade2:2632 ../ui/findDialog.ui:303
+msgid " Options "
+msgstr " Opciones"
+
+#: ../gjots.glade2:2714 ../ui/printDialog.ui:32
 msgid "e.g. lpr: "
 msgstr "ej. lpr:"
 
-#: ../ui/printDialog.ui:47
+#: ../gjots.glade2:2739 ../ui/printDialog.ui:48
 msgid "print command (can be a shell expression)"
 msgstr "orden para imprimir (puede ser una 'shell expression')"
 
-#: ../ui/printDialog.ui:62
+#: ../gjots.glade2:2767 ../ui/printDialog.ui:63
 msgid " Print command "
 msgstr " Orden para imprimir"
 
-#: ../ui/printDialog.ui:86
-msgid "Page"
-msgstr "Página"
-
-#: ../ui/printDialog.ui:90
+#: ../gjots.glade2:2822 ../ui/printDialog.ui:91
 msgid "Print the current page"
 msgstr "Imprime la página actual"
 
-#: ../ui/printDialog.ui:102
-msgid "Selection"
-msgstr "Selección"
+#: ../gjots.glade2:2824 ../ui/printDialog.ui:87
+msgid "Page"
+msgstr "Página"
 
-#: ../ui/printDialog.ui:106
+#: ../gjots.glade2:2842 ../ui/printDialog.ui:107
 msgid "Print the selected pages or text"
 msgstr "Imprime las páginas o el texto seleccionado"
 
-#: ../ui/printDialog.ui:119
-msgid "All"
-msgstr "Todo"
+#: ../gjots.glade2:2844 ../ui/printDialog.ui:103
+msgid "Selection"
+msgstr "Selección"
 
-#: ../ui/printDialog.ui:123
+#: ../gjots.glade2:2863 ../ui/printDialog.ui:124
 msgid "Print the entire gjots file"
 msgstr "Imprime el archivo gjots completo"
 
-#: ../ui/printDialog.ui:141
+#: ../gjots.glade2:2865 ../ui/printDialog.ui:120
+msgid "All"
+msgstr "Todo"
+
+#: ../gjots.glade2:2888 ../ui/printDialog.ui:142
 msgid " Print Range "
 msgstr " Imprimir rango"
 
-#: ../ui/printDialog.ui:169
-msgid "Page feeds"
-msgstr "Páginas independientes"
-
-#: ../ui/printDialog.ui:173
+#: ../gjots.glade2:2949 ../ui/printDialog.ui:174
 msgid "Feeds a page before every new gjots item"
 msgstr "Usa una página nueva para cada item gjots"
 
-#: ../ui/printDialog.ui:185
-msgid "Bold titles"
-msgstr "Títulos en negrita"
+#: ../gjots.glade2:2951 ../ui/printDialog.ui:170
+msgid "Page feeds"
+msgstr "Páginas independientes"
 
-#: ../ui/printDialog.ui:188
+#: ../gjots.glade2:2968 ../ui/printDialog.ui:189
 msgid "Print the gjots item titles in bold"
 msgstr "Imprime los títulos de los items en negrita"
 
-#: ../ui/printDialog.ui:200
+#: ../gjots.glade2:2970 ../ui/printDialog.ui:186
+msgid "Bold titles"
+msgstr "Títulos en negrita"
+
+#: ../gjots.glade2:2989 ../ui/printDialog.ui:201
 msgid "Auto Number"
 msgstr "Autonumerar"
 
-#: ../ui/printDialog.ui:223
+#: ../gjots.glade2:3020 ../ui/printDialog.ui:224
 msgid "Auto-number format: "
 msgstr "Formato para autonumeración:"
 
-#: ../ui/printDialog.ui:234
+#: ../gjots.glade2:3044 ../ui/printDialog.ui:235
 msgid "eg. 1 for 1.2.1, a"
 msgstr "ej.: 1 para 1.2.1, a"
 
-#: ../ui/printDialog.ui:252
+#: ../gjots.glade2:3075 ../ui/printDialog.ui:253
 msgid " Print formatting "
 msgstr " Imprimir con formato"
 
-#: ../ui/sortDialog.ui:39
-msgid "Ascending"
-msgstr "Ascendente"
-
-#: ../ui/sortDialog.ui:43
+#: ../gjots.glade2:3201 ../ui/sortDialog.ui:44
 msgid "Sort in ascending order"
 msgstr "Ordenar en secuencia ascendente"
 
-#: ../ui/sortDialog.ui:54
-msgid "Descending"
-msgstr "Descendente"
+#: ../gjots.glade2:3203 ../ui/sortDialog.ui:40
+msgid "Ascending"
+msgstr "Ascendente"
 
-#: ../ui/sortDialog.ui:58
-msgid "Sort in descending order"
-msgstr "Ordenar en secuencia descendente"
-
-#: ../ui/sortDialog.ui:72
-msgid "Alphabetic"
-msgstr "Alfabético"
-
-#: ../ui/sortDialog.ui:76
+#: ../gjots.glade2:3224 ../ui/sortDialog.ui:77
 msgid "Sort in alphabetic order"
 msgstr "Ordenar según orden alfabético"
 
-#: ../ui/sortDialog.ui:89
-msgid "Numeric"
-msgstr "Numérico"
+#: ../gjots.glade2:3226 ../ui/sortDialog.ui:73
+msgid "Alphabetic"
+msgstr "Alfabético"
 
-#: ../ui/sortDialog.ui:93
+#: ../gjots.glade2:3247 ../ui/sortDialog.ui:94
 msgid "Sort in numeric order"
 msgstr "Ordenar según orden numérico"
 
-#: ../ui/sortDialog.ui:114
+#: ../gjots.glade2:3249 ../ui/sortDialog.ui:90
+msgid "Numeric"
+msgstr "Numérico"
+
+#: ../gjots.glade2:3271 ../ui/sortDialog.ui:59
+msgid "Sort in descending order"
+msgstr "Ordenar en secuencia descendente"
+
+#: ../gjots.glade2:3273 ../ui/sortDialog.ui:55
+msgid "Descending"
+msgstr "Descendente"
+
+#: ../gjots.glade2:3299 ../ui/sortDialog.ui:115
 msgid " Sort Parameters "
 msgstr " Prámetros para ordenar"
 
-#: ../ui/sortDialog.ui:142
+#: ../gjots.glade2:3354 ../ui/sortDialog.ui:143
 msgid "How many sublevels to sort (0 for none; -1 for 'all')"
 msgstr "¿Cuántos subniveles hay que ordenar? (0=ninguno; -1=todos) "
 
-#: ../ui/sortDialog.ui:159
+#: ../gjots.glade2:3378 ../ui/sortDialog.ui:160
 msgid " Sort Sublevels "
 msgstr " Niveles a ordenar"
 
-#: ../ui/treeContextMenu.ui:30
+#: ../gjots.glade2:3528 ../ui/fileDialog.ui:28
+msgid "To open the file in read-only mode."
+msgstr "Para abrir eln archivo en modo de sólo lectura."
+
+#: ../gjots.glade2:3530 ../ui/fileDialog.ui:24
+msgid "Open file read only"
+msgstr "Abrir como 'sólo lectura'"
+
+#: ../gjots.glade2:3598 ../ui/treeContextMenu.ui:30
 msgid "Select _All"
 msgstr "Seleccionar_todo"
 
-#: ../ui/treeContextMenu.ui:117
+#: ../gjots.glade2:3834 ../ui/treeContextMenu.ui:117
 msgid "Import"
 msgstr "Importar"
 
-#: ../ui/treeContextMenu.ui:124
+#: ../gjots.glade2:3853 ../ui/treeContextMenu.ui:124
 msgid "Export"
 msgstr "Exportar"
 
-#: ../gjots2:28
+#: ../gjots2:23
 #, fuzzy
 msgid ""
 "Usage: gjots [OPTIONS] [FILENAME]\n"
@@ -709,14 +749,15 @@ msgid ""
 "OPTIONS:\n"
 "-h, --help:                         this help\n"
 "-d, --debug:                        debug to stdout\n"
+"-2, --glade2:                       use glade-2 gui if available\n"
 "-t, --trace:                        trace lines as they execute\n"
 "-g 123x456, --geometry=123x456:     initial geometry (X x Y)\n"
-"-p, --purge-password\t\t\t\tdon't remember password\n"
+"-p, --purge-password                don't remember password\n"
 "-r, --readonly:                     no editing (or locking)\n"
 "-V, --version:                      print the version and exit\n"
 "\n"
 "FILENAME:\n"
-"\tgjots data filename (default is $HOME/.gjotsfile)\n"
+"    gjots data filename (default is $HOME/.gjotsfile)\n"
 msgstr ""
 "Uso: gjots [OPCIONES] [NOMBRE_DE_ARCHIVO]\n"
 "Un block de notas para  gnome-2/X11\n"
@@ -732,217 +773,210 @@ msgstr ""
 "NOMBRE_DE_ARCHIVO:\n"
 "\tarchivo gjots a editar (por defecto $HOME/.gjotsfile)\n"
 
-#: ../gjots2:54
+#: ../gjots2:83
 #, python-format
 msgid "%s requires python%s or higher."
 msgstr "%s necesita python %s o más reciente."
 
-#: ../gjots2:64
+#: ../gjots2:93
 #, python-format
 msgid "%s requires pygtk-%s.\n"
 msgstr "%s necesita pygtk-%s.\n"
 
-#: ../gjots2:77
-#, python-format
-msgid "%s: Warning: running modules from %s\n"
-msgstr "%s: Atención: módulos ejecutándose en %s\n"
-
-#: ../gjots2:90
+#: ../gjots2:105
 msgid "Use -h for help\n"
 msgstr "Use -h para ayuda\n"
 
-#: ../gjots2:104
+#: ../gjots2:120
 #, python-format
 msgid "%s version %s"
 msgstr "%s versión %s"
 
-#: ../lib/gui.py:140
+#: ../lib/gui.py:46 ../lib/gui.py:1084
+msgid "Text pasted"
+msgstr "Texto pegado"
+
+#: ../lib/gui.py:168
 #, python-format
 msgid "External formatter \"%s\" is not installed - can't format"
 msgstr ""
 "El formateador externo \"%s\" no está instalado . No se puede dar formato."
 
-#: ../lib/gui.py:399
+#: ../lib/gui.py:420
 msgid "not initialised"
 msgstr "No inicializado"
 
-#: ../lib/gui.py:657 ../lib/gui.py:698 ../lib/gui.py:702
-#: ../lib/gui.py:744 ../lib/gui.py:748 ../lib/gui.py:807
-#: ../lib/gui.py:812 ../lib/gui.py:1025 ../lib/gui.py:1034
-#: ../lib/gui.py:1117 ../lib/gui.py:1126 ../lib/gui.py:1159
-#: ../lib/gui.py:1164 ../lib/gui.py:1190 ../lib/gui.py:1551
-#: ../lib/gui.py:2279 ../lib/gui.py:2298 ../lib/gui.py:2327
-#: ../lib/gui.py:2357 ../lib/file.py:439 ../lib/file.py:444
-#: ../lib/sortDialog.py:247 ../lib/sortDialog.py:252
+#: ../lib/gui.py:674 ../lib/gui.py:772 ../lib/gui.py:776 ../lib/gui.py:842
+#: ../lib/gui.py:846 ../lib/gui.py:905 ../lib/gui.py:910 ../lib/gui.py:1127
+#: ../lib/gui.py:1136 ../lib/gui.py:1222 ../lib/gui.py:1231 ../lib/gui.py:1267
+#: ../lib/gui.py:1272 ../lib/gui.py:1303 ../lib/gui.py:1694 ../lib/gui.py:2468
+#: ../lib/gui.py:2487 ../lib/gui.py:2516 ../lib/gui.py:2547 ../lib/file.py:460
+#: ../lib/file.py:465 ../lib/sortDialog.py:247 ../lib/sortDialog.py:252
 #: ../lib/printDialog.py:110 ../lib/printDialog.py:115
 msgid "Nothing selected"
 msgstr "No hay nada seleccionado"
 
-#: ../lib/gui.py:661 ../lib/gui.py:707 ../lib/gui.py:752
-#: ../lib/gui.py:817 ../lib/gui.py:920 ../lib/gui.py:1195
-#: ../lib/gui.py:2283 ../lib/sortDialog.py:263
+#: ../lib/gui.py:678 ../lib/gui.py:781 ../lib/gui.py:850 ../lib/gui.py:915
+#: ../lib/gui.py:1022 ../lib/gui.py:1308 ../lib/gui.py:2472
+#: ../lib/sortDialog.py:263
 msgid "No parent!"
 msgstr "¡No hay padre!"
 
-#: ../lib/gui.py:665 ../lib/gui.py:718
+#: ../lib/gui.py:682 ../lib/gui.py:816
 msgid "No child!"
 msgstr "¡No hay hijo!"
 
-#: ../lib/gui.py:668 ../lib/gui.py:712
+#: ../lib/gui.py:690 ../lib/gui.py:790
 msgid "Can't go any further"
 msgstr "No se puede ir más allá"
 
-#: ../lib/gui.py:675 ../lib/gui.py:835
+#: ../lib/gui.py:717 ../lib/gui.py:933
 msgid "Internal error!"
 msgstr "¡Error interno!"
 
-#: ../lib/gui.py:756
+#: ../lib/gui.py:854
 msgid "Can't go further!"
 msgstr "¡No se puede ir más all!"
 
-#: ../lib/gui.py:959
+#: ../lib/gui.py:1061
 msgid "Text cut"
 msgstr "Texto cortado"
 
-#: ../lib/gui.py:970
+#: ../lib/gui.py:1072
 msgid "Text copied"
 msgstr "Texto copiado"
 
-#: ../lib/gui.py:982
-msgid "Text pasted"
-msgstr "Texto pegado"
-
-#: ../lib/gui.py:991
+#: ../lib/gui.py:1093
 msgid "All text selected"
 msgstr "Todo el texto seleccionado"
 
-#: ../lib/gui.py:997
+#: ../lib/gui.py:1099
 msgid "All tree items selected"
 msgstr "Todos los items del arbol seleccionados"
 
-#: ../lib/gui.py:1005
+#: ../lib/gui.py:1107
 msgid "Nothing selected!"
 msgstr "¡No hay nada seleccionado!"
 
-#: ../lib/gui.py:1029
+#: ../lib/gui.py:1131
 msgid "Can't merge the root item"
 msgstr "No puede fusionarse el nodo raíz"
 
-#: ../lib/gui.py:1038
+#: ../lib/gui.py:1140
 msgid "Nothing to merge"
 msgstr "Nada que fusionar"
 
-#: ../lib/gui.py:1045
+#: ../lib/gui.py:1147
 msgid "Can't merge items that have children"
 msgstr "No pueden fusionarse items que tienen hijos"
 
-#: ../lib/gui.py:1075
+#: ../lib/gui.py:1177
 #, python-format
 msgid "%d items merged"
 msgstr "Se han fusionado %d items "
 
-#: ../lib/gui.py:1121
+#: ../lib/gui.py:1226
 msgid "Can't delete the root item"
 msgstr "No puede eliminarse el nodo raíz"
 
-#: ../lib/gui.py:1151
+#: ../lib/gui.py:1259
 #, python-format
 msgid "%d tree items cut"
 msgstr "Cortados %d items del árbol"
 
-#: ../lib/gui.py:1178
+#: ../lib/gui.py:1289
 #, python-format
 msgid "%d tree items copied"
 msgstr "Copiados %d items del árbol"
 
-#: ../lib/gui.py:1185
+#: ../lib/gui.py:1298
 msgid "Nothing to paste"
 msgstr "Nada que pegar"
 
-#: ../lib/gui.py:1201
+#: ../lib/gui.py:1319
 msgid "Tree items pasted"
 msgstr "Items del árbol pegados"
 
-#: ../lib/gui.py:1221
+#: ../lib/gui.py:1339
 msgid "Can't write "
 msgstr "No puede escribirse"
 
-#: ../lib/gui.py:1231
+#: ../lib/gui.py:1349
 #, python-format
 msgid "Can't run '%s'"
 msgstr "No puede ejecutarse '%s'"
 
-#: ../lib/gui.py:1240
+#: ../lib/gui.py:1358
 msgid "Can't read "
 msgstr "No puede leerse"
 
-#: ../lib/gui.py:1248
+#: ../lib/gui.py:1366
 msgid "text changed by external editor"
 msgstr "texto modificado en un editor externo"
 
-#: ../lib/gui.py:1250
+#: ../lib/gui.py:1368
 msgid "text not changed by external editor"
 msgstr "texto no modificado en un editor externo"
 
-#: ../lib/gui.py:1268
+#: ../lib/gui.py:1386
 msgid ": Error"
 msgstr ": Error"
 
-#: ../lib/gui.py:1281
+#: ../lib/gui.py:1399
 #, python-format
 msgid "Can't lock file %s: already locked by process %d"
 msgstr "No puede bloquearse el archivo %s: Está retenido por el proceso %d"
 
-#: ../lib/gui.py:1455
+#: ../lib/gui.py:1594
 msgid ": Save?"
 msgstr ": ¿Guardar?"
 
-#: ../lib/gui.py:1456
+#: ../lib/gui.py:1595
 msgid "Save current work?"
 msgstr "¿Guardar el trabajo actual?"
 
-#: ../lib/gui.py:1477
+#: ../lib/gui.py:1616
 msgid "New file"
 msgstr "Nuevo archivo"
 
-#: ../lib/gui.py:1501
+#: ../lib/gui.py:1640
 msgid "Open file ..."
 msgstr "Abrir archivo ..."
 
-#: ../lib/gui.py:1512
+#: ../lib/gui.py:1653
 msgid "No changes to save"
 msgstr "No hay cambios que guardar"
 
-#: ../lib/gui.py:1516 ../lib/gui.py:1536
+#: ../lib/gui.py:1657 ../lib/gui.py:1679
 msgid "Saved."
 msgstr "Guardado."
 
-#: ../lib/gui.py:1518 ../lib/gui.py:1538 ../lib/file.py:429
+#: ../lib/gui.py:1659 ../lib/gui.py:1681 ../lib/file.py:450
 msgid "Not saved."
 msgstr "No guardado."
 
-#: ../lib/gui.py:1532
+#: ../lib/gui.py:1675
 msgid "Nothing to save"
 msgstr "Nada que guardar"
 
-#: ../lib/gui.py:1534 ../lib/file.py:651
+#: ../lib/gui.py:1677 ../lib/file.py:693
 msgid "Save as ..."
 msgstr "Guardar como ..."
 
-#: ../lib/gui.py:1548
+#: ../lib/gui.py:1691
 msgid "Import from ..."
 msgstr "Importar desde ..."
 
-#: ../lib/gui.py:1559
+#: ../lib/gui.py:1702
 msgid "Export to ..."
 msgstr "Exportar a ..."
 
-#: ../lib/gui.py:1878 ../lib/gui.py:1881
+#: ../lib/gui.py:2045 ../lib/gui.py:2048
 #, python-format
 msgid "%s: Warning: opening gjots2 manual from %s\n"
 msgstr "%s: Atención: abriendo el manual de gjots2 desde %s\n"
 
-#: ../lib/gui.py:1921
+#: ../lib/gui.py:2088
 #, fuzzy
 msgid ""
 "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
@@ -952,7 +986,8 @@ msgid ""
 "Martin Sin (cs) <martin.sin@zshk.cz>\n"
 "Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
 "Aleksa Šušulić (sl) <susulic@gmail.com>\n"
-"Uwe Steinmann (de) <uwe@steinmann.cx>"
+"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
+"Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"
 msgstr ""
 "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
 "Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
@@ -961,11 +996,11 @@ msgstr ""
 "Martin Sin (cs) <martin.sin@zshk.cz>\n"
 "Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
 
-#: ../lib/gui.py:2217
+#: ../lib/gui.py:2406
 msgid "pygtk-2.2 is required for this application!"
 msgstr "¡Hace falta pygtk-2.2 para ejecutar este programa!"
 
-#: ../lib/gui.py:2223
+#: ../lib/gui.py:2412
 msgid ""
 "gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
 "event."
@@ -973,134 +1008,140 @@ msgstr ""
 "gjots2: Atención: la lista de selección está vacía. Se ignora el evento de \n"
 "cambio en seleción de arbol."
 
-#: ../lib/gui.py:2287
+#: ../lib/gui.py:2476
 msgid "Can't go further"
 msgstr "No puede irse más allá"
 
-#: ../lib/gui.py:2316
+#: ../lib/gui.py:2505
 msgid "Tree is empty!"
 msgstr "¡El árbol está vacío!"
 
-#: ../lib/gui.py:2585
+#: ../lib/gui.py:2778
 msgid "Bad regular expression"
 msgstr "Expresión regular no válida"
 
-#: ../lib/gui.py:2678
+#: ../lib/gui.py:2870
 #, python-format
 msgid "%s: bad geometry specification: %s\n"
 msgstr "%s: datos de geometría no válidos: %s\n"
 
-#: ../lib/gui.py:2882
+#: ../lib/gui.py:3082
 msgid "New...>>>"
 msgstr "Nuevo...>>>"
 
-#: ../lib/gui.py:2914
+#: ../lib/gui.py:3129
 msgid "Install pygtksourceview to enable undo/redo"
 msgstr ""
 
-#: ../lib/gui.py:2967
+#: ../lib/gui.py:3197
 msgid ": version "
 msgstr ": versión "
 
-#: ../lib/find.py:77 ../lib/find.py:100
+#: ../lib/find.py:81 ../lib/find.py:104
 msgid "Not found"
 msgstr "No encontrado"
 
-#: ../lib/find.py:79
+#: ../lib/find.py:83
 msgid "Found"
 msgstr "Encontrado"
 
-#: ../lib/find.py:103
+#: ../lib/find.py:107
 msgid "Replace?"
 msgstr "¿Sustituir?"
 
-#: ../lib/find.py:120
+#: ../lib/find.py:124
 #, python-format
 msgid "%d substitutions"
 msgstr "%d sustituciones"
 
-#: ../lib/file.py:250
+#: ../lib/file.py:251
 msgid "Enter password for "
 msgstr "Introduzca contraseña para "
 
-#: ../lib/file.py:252
+#: ../lib/file.py:253
 msgid "gjots2: Enter Password"
 msgstr "gjots2: Introduzca contraseña"
 
-#: ../lib/file.py:254
+#: ../lib/file.py:255
 msgid "Password: "
 msgstr "Contraseña:"
 
-#: ../lib/file.py:255
+#: ../lib/file.py:256
 msgid "Confirm: "
 msgstr "Confirmar:"
 
-#: ../lib/file.py:263
+#: ../lib/file.py:264
 msgid "Password was not confirmed"
 msgstr "La contraseña no se ha confirmado"
 
-#: ../lib/file.py:270
+#: ../lib/file.py:271
 msgid "Could not find the ccrypt program - please install it and try again"
 msgstr ""
 "No puede encontrarse el programa ccrypt. Por favor, instálelo y pruebe de "
 "nuevo"
 
-#: ../lib/file.py:299
-msgid "Could not find the gpg program - please install it and try again"
+#: ../lib/file.py:304
+msgid ""
+"Neither gpg2 nor gpg are available - please install one (perhaps package "
+"gnupg2) and try again"
 msgstr ""
-"No puede encontrarse el programa gpg. Por favor, instálelo y pruebe de nuevo"
 
-#: ../lib/file.py:324
-msgid "Could not find the openssl program - please install it and try again"
+#: ../lib/file.py:338
+#, fuzzy
+msgid "No openssl program - please install it and try again"
 msgstr ""
 "No puede encontrarse el programa openssl. Por favor, instálelo y pruebe de "
 "nuevo"
 
-#: ../lib/file.py:387
+#: ../lib/file.py:406
 msgid "Can't open \""
 msgstr "No puede abrirse \""
 
-#: ../lib/file.py:390
+#: ../lib/file.py:409
 msgid "Bad password"
 msgstr "Contraseña incorrecta"
 
-#: ../lib/file.py:393
+#: ../lib/file.py:412
 msgid "File cannot be locked"
 msgstr "El archivo no puede bloquearse"
 
-#: ../lib/file.py:430
+#: ../lib/file.py:425 ../lib/file.py:483
+msgid "failed!"
+msgstr ""
+
+#: ../lib/file.py:451
 msgid "Can't write to "
 msgstr "No se puede escribir en "
 
-#: ../lib/file.py:433
+#: ../lib/file.py:454
 msgid "Can't lock file"
 msgstr "No se puede bloquear el archivo"
 
-#: ../lib/file.py:560
+#: ../lib/file.py:599
 #, python-format
 msgid "%s is not readable"
 msgstr "%s no puede leerse"
 
-#: ../lib/file.py:576
+#: ../lib/file.py:615
 #, python-format
 msgid "%s: no permission"
 msgstr "%s: permiso denegado"
 
-#: ../lib/file.py:578
+#: ../lib/file.py:617
 #, python-format
 msgid "%s: locked by process number %d"
 msgstr "%s: bloqueado por el proceso %d"
 
-#: ../lib/file.py:580
+#: ../lib/file.py:619
 msgid "gjots2: can't lock file."
 msgstr "gjots2: no se bloquear archivo."
 
-#: ../lib/file.py:618
+#: ../lib/file.py:657
 #, python-format
 msgid "gjots2: %s changed"
 msgstr "gjots2: %s modificado."
 
-#: ../lib/file.py:619
+#: ../lib/file.py:658
 #, python-format
 msgid ""
 "'%s' has changed since it was read.\n"
@@ -1109,30 +1150,30 @@ msgstr ""
 "'%s' ha sido modificado desde que fue leído.\n"
 "¿Sobreescribir?"
 
-#: ../lib/file.py:663
+#: ../lib/file.py:705
 msgid "That file is already open!"
 msgstr "¡Ese archivo ya está abierto!"
 
-#: ../lib/file.py:680
+#: ../lib/file.py:724
 #, python-format
 msgid "%s is locked by pid %d"
 msgstr "%s está bloqueado por pid %d"
 
-#: ../lib/file.py:684
+#: ../lib/file.py:728
 msgid "Can't make a lockfile in "
 msgstr "No puede crease archivo de bloqueo en "
 
-#: ../lib/file.py:697
+#: ../lib/file.py:741
 #, python-format
 msgid "%s is not writable"
 msgstr "%s protegido contra escritura"
 
-#: ../lib/file.py:700
+#: ../lib/file.py:744
 #, python-format
 msgid "gjots2: %s already exists."
 msgstr "gjots2: %s ya existe."
 
-#: ../lib/file.py:701
+#: ../lib/file.py:745
 #, python-format
 msgid "overwrite %s?"
 msgstr "¿sobreescribir %s?"
@@ -1149,25 +1190,68 @@ msgstr "Error interno"
 msgid "Nothing to sort!"
 msgstr "¡Nada que ordenar!"
 
-#: ../lib/sortDialog.py:312
+#: ../lib/sortDialog.py:317
 msgid "Sort Text"
 msgstr "Ordenar texto"
 
-#~ msgid "Recent"
-#~ msgstr "Recientes"
+#: ../ui/about.ui:9
+#, fuzzy
+msgid "Copyright Bob Hepple 2002-2011"
+msgstr "Copyright Bob Hepple 2002-2012"
 
-#~ msgid "_Import"
-#~ msgstr "_Importar"
+#: ../ui/about.ui:10
+msgid "http://bhepple.freeshell.org/gjots2"
+msgstr "http://bhepple.freeshell.org/gjots2"
 
-#~ msgid "Find Next"
-#~ msgstr "Buscar siguiente"
+#: ../ui/about.ui:20
+#, fuzzy
+msgid ""
+"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
+"Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
+"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
+"Martin Sin (cs) <martin.sin@zshk.cz>\n"
+"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
+"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
+"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
+msgstr ""
+"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
+"Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>\n"
+"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
+"Martin Sin (cs) <martin.sin@zshk.cz>\n"
+"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
 
-#~ msgid "Create a new child "
-#~ msgstr "Crear un nuevo hijo"
+#: ../ui/gjots.ui:152
+#, fuzzy
+msgid "Exit gjots2"
+msgstr "Cerrar gjots"
+
+#~ msgid "%s: Warning: running modules from %s\n"
+#~ msgstr "%s: Atención: módulos ejecutándose en %s\n"
 
 #, fuzzy
-#~ msgid " Find: "
-#~ msgstr " Buscar:"
+#~ msgid ""
+#~ "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+#~ "Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
+#~ "Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>\n"
+#~ "Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
+#~ "Martin Sin (cs) <martin.sin@zshk.cz>\n"
+#~ "Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
+#~ "Aleksa Šušulić (sl) <susulic@gmail.com>\n"
+#~ "Uwe Steinmann (de) <uwe@steinmann.cx>"
+#~ msgstr ""
+#~ "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+#~ "Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
+#~ "Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>\n"
+#~ "Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
+#~ "Martin Sin (cs) <martin.sin@zshk.cz>\n"
+#~ "Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
+
+#~ msgid "Could not find the gpg program - please install it and try again"
+#~ msgstr ""
+#~ "No puede encontrarse el programa gpg. Por favor, instálelo y pruebe de "
+#~ "nuevo"
 
 #~ msgid "_Settings"
 #~ msgstr "_Preferencias"
@@ -1213,6 +1297,3 @@ msgstr "Ordenar texto"
 
 #~ msgid "translator_credits"
 #~ msgstr "Cecilio Salmerón"
-
-#~ msgid "abcdefghijk ABCDEFGHIJK"
-#~ msgstr "abcdefghijk ABCDEFGHIJK"

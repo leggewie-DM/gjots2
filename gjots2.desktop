@@ -19,5 +19,5 @@ Comment[ru]=Сохраняйте и организуйте Ваши заметк
 Exec=gjots2
 Terminal=false
 Type=Application
-Icon=gjots2.png
+Icon=gjots2
 Categories=GNOME;Application;Utility;

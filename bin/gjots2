@@ -2,6 +2,7 @@
 
 import sys, os, getopt
 import linecache
+from distutils.sysconfig import get_python_lib
 
 def traceit(frame, event, arg):
     if event == "line" or event == "call":
@@ -18,9 +19,6 @@ def traceit(frame, event, arg):
 def ver2str(ver):
     return ".".join(map(str,ver))
 
-#from Gjots.gui import *
-#from Gjots.version import version
-
 def usage():
     print _("""Usage: gjots [OPTIONS] [FILENAME]
 A gtk/X11 jotter
@@ -28,7 +26,6 @@ A gtk/X11 jotter
 OPTIONS:
 -h, --help:                         this help
 -d, --debug:                        debug to stdout
--2, --glade2:                       use glade-2 gui if available
 -t, --trace:                        trace lines as they execute
 -g 123x456, --geometry=123x456:     initial geometry (X x Y)
 -p, --purge-password                don't remember password
@@ -40,23 +37,9 @@ FILENAME:
 """)
 
 if __name__ == '__main__':
-    pyver = (2,5)
-    pygtkver = (2,16,0)
-
-    # gjots2 might be:               'prefix' is then
-    # /usr/bin/gjots2                /usr
-    # /bin/gjots2 (fedora-18)        /usr
-    # /usr/local/bin/gjots2          /usr/local
-    # /foo/bar/gjots2                /foo
-    # ./gjots2                       ./
-
     dirName, progName = os.path.split(sys.argv[0])
-    # prefix, bin = os.path.split(dirName)
-    prefix = dirName
-    # fedora-18 puts things in /usr/bin but arg0 is /bin/gjots2 !!!!
-    if dirName == "/bin" and os.access("/usr" + sys.argv[0], os.F_OK):
-        prefix = "/usr/bin"
-    prefix, junk = os.path.split(prefix)
+    prefix = sys.prefix
+
     #
     # Add the library path to the system load path
     #
@@ -67,13 +50,13 @@ if __name__ == '__main__':
         sys.path = [ localdir ] + sys.path
         sys.stderr.write("%s: Warning: running modules from %s\n" % (progName, localdir))
     else:
-        sys.path = [ prefix + '/lib/gjots2' ] + sys.path
+        sys.path = [ get_python_lib() + '/gjots2' ] + sys.path
 
     # i18n support
     import gettext
     import locale
 
-    # Locale setting in gtk.Builder appears somewhat broken under Python. See:
+    # Locale setting in Gtk.Builder appears somewhat broken under Python. See:
     #   https://bugzilla.gnome.org/show_bug.cgi?id=574520
     locale_domain = "gjots2"
     locale_dir = prefix + "/share/locale"
@@ -92,6 +75,7 @@ if __name__ == '__main__':
     #
     # python version
     #
+    pyver = (2,5)
     if sys.version_info[:2] < pyver:
         sys.stderr.write(_("%s requires python%s or higher.") % (progName, ver2str(pyver)))
         sys.exit(1)
@@ -99,20 +83,14 @@ if __name__ == '__main__':
     #
     # pygtk version
     #
-    try:
-        import pygtk
-    except ImportError, err:
-        print err
-        sys.stderr.write(_("%s requires pygtk-%s.\n") % (progName, ver2str(pygtkver)))
-        sys.exit(1)
-    else:
-        pygtk.require("2.0")
+    import gi
+    gi.require_version("Gtk", "3.0")
 
     from gui import *
     from version import *
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "2hdrtg:V", ["help", "glade2", "debug", "readonly", "trace", "geometry=", "version"])
+        opts, args = getopt.getopt(sys.argv[1:], "hdrtg:V", ["help", "debug", "readonly", "trace", "geometry=", "version"])
     except getopt.GetoptError, errmsg:
         sys.stderr.write("%s: %s\n" % (progName, errmsg))
         sys.stderr.write(_("Use -h for help\n"))
@@ -124,7 +102,6 @@ if __name__ == '__main__':
     prefs = ""
     debug = 0
     purge_password = 0
-    use_glade2 = 0
     for o, a in opts:
         if o in ("-h", "--help"):
             usage()
@@ -132,8 +109,6 @@ if __name__ == '__main__':
         if o in ("-V", "--version"):
             print _("%s version %s") % (progName, gjots_version)
             sys.exit(0)
-        if o in ("-2", "--glade2"):
-            use_glade2 = 1
         if o in ("-p", "--purge-password"):
             purge_password = 1
         if o in ("-r", "--readonly"):
@@ -153,9 +128,9 @@ if __name__ == '__main__':
     if not os.access(filename, os.R_OK):
         os.system("touch " + filename)
 
-    gui = gjots_gui(prefix, progName, geometry, filename, readonly, debug, purge_password, use_glade2)
+    gui = gjots_gui(prefix, progName, geometry, filename, readonly, debug, purge_password)
 
-    gtk.main()
+    Gtk.main()
 
 
 # Local variables:

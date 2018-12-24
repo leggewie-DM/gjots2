@@ -1,9 +1,8 @@
 #!/bin/sh
 #
-# Copyright (C) 1997-2002 Bob Hepple
+# Copyright (C) 1997-2015 Bob Hepple
 # 
-# A simple script to convert a gjots file to an HTML page - with table of contents
-# etc
+# A simple script to convert a gjots file to emacs outline 
 #
 # This program is free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public
@@ -21,10 +20,6 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
 # 02139, USA.
-#
-# This would probably be easier for most people to understand if it
-# were in perl(1)... but it's in sh, awk and m4. Anyone want to
-# rewrite it?
 
 usage() {
 	echo "Usage: $PROG [filename]
@@ -36,11 +31,11 @@ outline-regexp is defaulted to ===>+
 "
 }
 
-PROG=`basename $0`
+PROG=$( basename $0 )
 BASE="==="
 MARKER=">"
 
-ARGS=`getopt -o F:h -- "$@"`
+ARGS=$( getopt -o b:F:h -- "$@" )
 [ $? != 0 ] && echo "use -h for usage" >&2 && exit 1
 
 eval set -- "$ARGS"
@@ -59,46 +54,34 @@ FILENAME=""
 [ -r $1 ] && FILENAME=$1
 
 writeBody() {
-AWKFILE=/tmp/gjots2html.tmp$$.awk 
-
-# Leave the here-document terminator unquoted to enable shell variable
-# expansion: $ \ ` and , need escaping with \:
-cat >$AWKFILE <<EOF
-BEGIN {
+    exec < $FILENAME
+    awk -v marker="$MARKER" -v base="$BASE" 'BEGIN {
 	level = 1
-    marker = "$MARKER"
-    base="$BASE"
 	level_hdr = base marker
-	print_title=0
+	print_title = 0
 }
 
 {
-	if (\$0 ~ /^\\\\NewEntry/) { 
-		print_title=1
-	} else if (\$0 ~ /^\\\\NewFolder/) { 
+	if ($0 ~ /^\\NewEntry/) { 
+		print_title = 1
+	} else if ($0 ~ /^\\NewFolder/) { 
 		level++
 		level_hdr = level_hdr marker
-	} else if (\$0 ~ /^\\\\EndFolder/) {
+	} else if ($0 ~ /^\\EndFolder/) {
 		if (level > 1) {
 		    level--
 		    level_hdr = substr(level_hdr, 1, length(level_hdr) - 1)
         }
 	} else {
 		if (print_title) {
-			printf("%s %s\n",level_hdr, \$0)
-			print_title=0
+			printf("%s %s\n",level_hdr, $0)
+			print_title = 0
 		} else {
 			print
 		}
 	}
+}'
 }
-
-EOF
-
-cat $FILENAME | awk -f $AWKFILE
-rm $AWKFILE
-
-} # writeBody
 
 writeTrailer() {
     cat <<EOF
@@ -116,8 +99,11 @@ REM End:
 EOF
 }
 
-# This is the main program (!):
+# This is the main program:
 (
 		writeBody
 		writeTrailer
 )
+
+# Local Variables:
+# mode: shell-script
