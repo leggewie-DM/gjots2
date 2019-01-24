@@ -13,11 +13,11 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 3.0.1
+                 Version 3.0.2
 
 
-      bhepple@gmail.com
-      http://bhepple.freeshell.org/gjots
+      bob.hepple@gmail.com
+      http://bhepple.com//doku/doku.php?id=gjots
 
 \NewEntry
 Introduction
@@ -80,7 +80,7 @@ RPM-based systems
 fedora includes gjots2 but is often out of date - better get the
 latest package from the homepage
 
-VERSION=3.0.1
+VERSION=3.0.2
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 yum install gjots2-${VERSION}-1.noarch.rpm
 
@@ -111,7 +111,7 @@ code you will need to install it too.  Otherwise, it's just python!
 \NewEntry
 From the tarball source
 
-VERSION=3.0.1
+VERSION=3.0.2
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and
