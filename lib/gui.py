@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
+import gi
+gi.require_version('GtkSource', '3.0')
+gi.require_version("Gtk", "3.0")
 from gi.repository import GObject, Gio, Gtk, Gdk, GdkPixbuf, GLib
 import tempfile
 from gi.repository import Pango
@@ -1925,11 +1928,8 @@ class gjots_gui:
             gjots_file = "./doc/gjots2.gjots"
             sys.stderr.write(_("%s: Warning: opening gjots2 manual from %s\n") % ("gjots2", gjots_file))
         else:
-            # run from the system share directory - try to find a
-            # locale version. Version could be 2.3.11.201012291355:
-            v = gjots_version.split('.')
-            vers = ".".join(v[0:3])
-            gjots_file_base = self.prefix + "/share/doc/gjots2-" + vers + "/gjots2"
+            # run from the system share directory
+            gjots_file_base = self.prefix + "/share/doc/gjots2/gjots2"
             for env in "LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG":
                 locale_lang = ""
                 try:
@@ -2804,7 +2804,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>""")
         for stock_name, file in self.icons.items():
             factory = Gtk.IconFactory()
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(file)
-            iconset = Gtk.IconSet(pixbuf)
+            iconset = Gtk.IconSet.new_from_pixbuf(pixbuf)
             factory.add(stock_name, iconset)
             factory.add_default()
 

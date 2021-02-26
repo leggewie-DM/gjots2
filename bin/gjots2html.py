@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # TODO:
 #   1) Add option to generate the html file in chunks
@@ -65,9 +65,9 @@ TITLE = "Contents"
 STDOUT = sys.stdout
 
 # Regular expressions for parsing the gjots file format
-newEntry = re.compile('^\\\NewEntry$')
-newFolder = re.compile('^\\\NewFolder$')
-endFolder = re.compile('^\\\EndFolder$')
+newEntry = re.compile(r'^\\NewEntry$')
+newFolder = re.compile(r'^\\NewFolder$')
+endFolder = re.compile(r'^\\EndFolder$')
 
 # Reg ex's for replacing special characters
 trailDot = re.compile('\.$')  # For printNode() number beautification
@@ -83,8 +83,8 @@ gjotsEmbed = re.compile('^INSERT GJOTS TEXT HERE$')
 # Prints out usage information to stdout
 #
 def usage():
-	global STDOUT
-	print >>STDOUT, 'Usage: ' + os.path.basename(sys.argv[0]) + \
+        global STDOUT
+        print('Usage: ' + os.path.basename(sys.argv[0]) + \
 """ [-c] [-e template] [-h] [-k] [-l] [-n] [-o out]
                      [-s css] [-t title] [-v] [-w length] gjots_file
   -c, --contents                 Adds a link to the Table Of Contents
@@ -107,7 +107,7 @@ def usage():
   -w length, --wrap length       Wrap the HTML output at the specified
                                  character length.
 
-Description: Converts a gjots file to html (on stdout)"""
+Description: Converts a gjots file to html (on stdout)""", file=STDOUT)
 
 #
 # Shifts off the last number in `node', and increments the new last
@@ -115,23 +115,23 @@ Description: Converts a gjots file to html (on stdout)"""
 # necessary) to the next level lower and returned by this function.
 #
 def removeNode(node):
-	node.pop()
-	node[len(node) - 1] = node[len(node) - 1] + 1
-	return headingValue(node)
+        node.pop()
+        node[len(node) - 1] = node[len(node) - 1] + 1
+        return headingValue(node)
 
 #
 # Pushes a new node number (default 1) onto the node list. A new HTML
 # heading is incremented (if necessary) and returned.
 #
 def addNode(node):
-	node.append(1)
-	return headingValue(node)
+        node.append(1)
+        return headingValue(node)
 
 #
 # Increments the last number in the list `node' by one.
 #
 def incrementNode(node):
-	node[len(node) - 1] = node[len(node) - 1] + 1
+        node[len(node) - 1] = node[len(node) - 1] + 1
 
 #
 # Returns the current HTML heading level based upon the node list. This
@@ -139,11 +139,11 @@ def incrementNode(node):
 # (based on the lowest level by the HTML standard).
 #
 def headingValue(node):
-	if len(node) + 1 > 6:
-		result = 6
-	else:
-		result = len(node) + 1
-	return result
+        if len(node) + 1 > 6:
+                result = 6
+        else:
+                result = len(node) + 1
+        return result
 
 #
 # Returns a string representation of a the current node number. `node'
@@ -151,205 +151,205 @@ def headingValue(node):
 # seperated by a period (e.g. 1.1, 2.3.4, etc).
 #
 def printNode(node):
-	result = ''
-	for n in node:
-		result += str(n) + '.'
-	if len(node) > 1:
-		result = trailDot.sub('', result)
-	return result
+        result = ''
+        for n in node:
+                result += str(n) + '.'
+        if len(node) > 1:
+                result = trailDot.sub('', result)
+        return result
 
 #
 # Formats the plain text in buffer by changing special characters to
 # their HTML format (see an ascii table for values).
 #
 def format(buffer):
-	buffer = amp.sub('&amp;', buffer)
-	buffer = quot.sub('&quot;', buffer)
-	buffer = lt.sub('&lt;', buffer)
-	buffer = gt.sub('&gt;', buffer)
-	buffer = fslash.sub('&#47;', buffer)
-	return buffer
+        buffer = amp.sub('&amp;', buffer)
+        buffer = quot.sub('&quot;', buffer)
+        buffer = lt.sub('&lt;', buffer)
+        buffer = gt.sub('&gt;', buffer)
+        buffer = fslash.sub('&#47;', buffer)
+        return buffer
 
 #
 # Formats a string to be a valid link
 #
 def formatLink(l):
-	return link.sub('', l)
-	
+        return link.sub('', l)
+
 
 def main():
-	global STDOUT, WRAPPER
-	global VERSION, CONTENTS, CHUNKS, LINE, EMBED, OUTPUT, TITLE, WRAP
-	global FILENAME, STYLESHEET, PRINT_TOC
-	# Parse the command line options
-	try:
-		opts, args = getopt.getopt(sys.argv[1:], 'ce:hklno:s:t:vw:', \
-			['contents', 'embed=', 'help', 'chunks', 'line', 'no-toc=', \
-			'output=', 'style-sheet=', 'title=', 'version', 'wrap='])
-	except getopt.GetoptError:
-		STDOUT = sys.stderr
-		print >>STDOUT, 'error: Invalid Option(s)'
-		usage()
-		sys.exit(1)
-	for o, a in opts:
-		if o in ('-c', '--contents'):
-			CONTENTS = True
-		elif o in ('-e', '--embed'):
-			EMBED = a
-		elif o in ('-h', '--help'):
-			usage()
-			sys.exit()
-		elif o in ('-k', '--chunks'):
-			CHUNKS = True
-		elif o in ('-l', '--lines'):
-			LINE = True
-		elif o in ('-n', '--no-toc'):
-			PRINT_TOC = False
-		elif o in ('-o', '--output'):
-			OUTPUT = a
-		elif o in ('-s', '--style-sheet'):
-			STYLESHEET = a
-		elif o in ('-t', '--title'):
-			TITLE = a
-		elif o in ('-v', '--version'):
-			print os.path.basename(sys.argv[0]) + ' version ' + VERSION
-			sys.exit()
-		elif o in ('-w', '--wrap'):
-			WRAP = a
-			WRAPPER = textwrap.TextWrapper(width=int(WRAP), \
-				expand_tabs=False, replace_whitespace=False, \
-				initial_indent='', subsequent_indent='', \
-				fix_sentence_endings=False, break_long_words=False)
+        global STDOUT, WRAPPER
+        global VERSION, CONTENTS, CHUNKS, LINE, EMBED, OUTPUT, TITLE, WRAP
+        global FILENAME, STYLESHEET, PRINT_TOC
+        # Parse the command line options
+        try:
+                opts, args = getopt.getopt(sys.argv[1:], 'ce:hklno:s:t:vw:', \
+                        ['contents', 'embed=', 'help', 'chunks', 'line', 'no-toc=', \
+                        'output=', 'style-sheet=', 'title=', 'version', 'wrap='])
+        except getopt.GetoptError:
+                STDOUT = sys.stderr
+                print('error: Invalid Option(s)', file=STDOUT)
+                usage()
+                sys.exit(1)
+        for o, a in opts:
+                if o in ('-c', '--contents'):
+                        CONTENTS = True
+                elif o in ('-e', '--embed'):
+                        EMBED = a
+                elif o in ('-h', '--help'):
+                        usage()
+                        sys.exit()
+                elif o in ('-k', '--chunks'):
+                        CHUNKS = True
+                elif o in ('-l', '--lines'):
+                        LINE = True
+                elif o in ('-n', '--no-toc'):
+                        PRINT_TOC = False
+                elif o in ('-o', '--output'):
+                        OUTPUT = a
+                elif o in ('-s', '--style-sheet'):
+                        STYLESHEET = a
+                elif o in ('-t', '--title'):
+                        TITLE = a
+                elif o in ('-v', '--version'):
+                        print(os.path.basename(sys.argv[0]) + ' version ' + VERSION)
+                        sys.exit()
+                elif o in ('-w', '--wrap'):
+                        WRAP = a
+                        WRAPPER = textwrap.TextWrapper(width=int(WRAP), \
+                                expand_tabs=False, replace_whitespace=False, \
+                                initial_indent='', subsequent_indent='', \
+                                fix_sentence_endings=False, break_long_words=False)
 
-	# Make sure the last argument exists (should be a gjots file)
-	if not os.path.isfile(sys.argv[len(sys.argv) - 1]) or \
-		len(sys.argv) <= 1:
-		STDOUT = sys.stderr
-		print >>STDOUT, 'error: You must specify a gjots file to convert'
-		usage()
-		sys.exit(1)
-	FILENAME = sys.argv[len(sys.argv) - 1]
-	# Set the title if not specified at the command line
-	if not TITLE:
-		TITLE = os.path.basename(FILENAME)
-	# Re-direct output to a file if specified at the command line
-	if OUTPUT:
-		if not os.path.isfile(OUTPUT):
-			STDOUT = open(OUTPUT, 'w')
-		else:
-			STDOUT = sys.stderr
-			print >>STDOUT, 'error: Invalid output file - file already exists'
-			usage()
-			sys.exit(1)
-	# Read in the HTML from a specified template file and output the new
-	# file with text before and after the marked region (INSERT GJOTS TEXT
-	# HERE).
-	before = ''
-	after = None
-	if EMBED:
-		if not os.path.isabs(EMBED):
-			EMBED = os.path.abspath(EMBED)
-		if os.path.isfile(EMBED):
-			embedfile = open(EMBED, 'r')
-			for line in embedfile:
-				if gjotsEmbed.match(line):
-					after = ''
-				elif after != None:
-					after += line
-				else:
-					before += line
-			embedfile.close()
-			print >>STDOUT, before
-		else:
-			STDOUT = sys.stderr
-			print >>STDOUT, "error: Invalid output file - file doesn't exist"
-			usage()
-			sys.exit(1)
+        # Make sure the last argument exists (should be a gjots file)
+        if not os.path.isfile(sys.argv[len(sys.argv) - 1]) or \
+                len(sys.argv) <= 1:
+                STDOUT = sys.stderr
+                print('error: You must specify a gjots file to convert', file=STDOUT)
+                usage()
+                sys.exit(1)
+        FILENAME = sys.argv[len(sys.argv) - 1]
+        # Set the title if not specified at the command line
+        if not TITLE:
+                TITLE = os.path.basename(FILENAME)
+        # Re-direct output to a file if specified at the command line
+        if OUTPUT:
+                if not os.path.isfile(OUTPUT):
+                        STDOUT = open(OUTPUT, 'w')
+                else:
+                        STDOUT = sys.stderr
+                        print('error: Invalid output file - file already exists', file=STDOUT)
+                        usage()
+                        sys.exit(1)
+        # Read in the HTML from a specified template file and output the new
+        # file with text before and after the marked region (INSERT GJOTS TEXT
+        # HERE).
+        before = ''
+        after = None
+        if EMBED:
+                if not os.path.isabs(EMBED):
+                        EMBED = os.path.abspath(EMBED)
+                if os.path.isfile(EMBED):
+                        embedfile = open(EMBED, 'r')
+                        for line in embedfile:
+                                if gjotsEmbed.match(line):
+                                        after = ''
+                                elif after != None:
+                                        after += line
+                                else:
+                                        before += line
+                        embedfile.close()
+                        print(before, file=STDOUT)
+                else:
+                        STDOUT = sys.stderr
+                        print("error: Invalid output file - file doesn't exist", file=STDOUT)
+                        usage()
+                        sys.exit(1)
 
-	# Pre-parse file for keyword order - NOTE: This is not efficient
-	keywords = ['\NewEntry', '\NewFolder', '\EndFolder']
-	keys = []
-	file = open(FILENAME, 'r')
-	for line in file:
-		line = line.rstrip()
-		if line in keywords: keys.append(line)
-	file.close()
+        # Pre-parse file for keyword order - NOTE: This is not efficient
+        keywords = ['\\NewEntry', '\\NewFolder', '\\EndFolder']
+        keys = []
+        file = open(FILENAME, 'r')
+        for line in file:
+                line = line.rstrip()
+                if line in keywords: keys.append(line)
+        file.close()
 
-	# Print the header HTML information
-	if not EMBED:
-		print >>STDOUT, '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN"'
-		print >>STDOUT, '  "http://www.w3.org/TR/xhtml1/DTD/xhtml11-strict.dtd">'
-		print >>STDOUT, '<html>\n<head>\n<title>' + TITLE + '</title>'
-		if STYLESHEET:
-			print >>STDOUT, '<link rel="stylesheet" href="' + STYLESHEET + \
-				'" type="text/css"/>'
-		print >>STDOUT, '</head>\n<body>\n'
-	print >>STDOUT, '<p><a name="Contents">' + TITLE + '</a>\n</p>'
-	if PRINT_TOC: print >>STDOUT, '<ul>'
+        # Print the header HTML information
+        if not EMBED:
+                print('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN"', file=STDOUT)
+                print('  "http://www.w3.org/TR/xhtml1/DTD/xhtml11-strict.dtd">', file=STDOUT)
+                print('<html>\n<head>\n<title>' + TITLE + '</title>', file=STDOUT)
+                if STYLESHEET:
+                        print('<link rel="stylesheet" href="' + STYLESHEET + \
+                                '" type="text/css"/>', file=STDOUT)
+                print('</head>\n<body>\n', file=STDOUT)
+        print('<p><a name="Contents">' + TITLE + '</a>\n</p>', file=STDOUT)
+        if PRINT_TOC: print('<ul>', file=STDOUT)
 
-	# Parse file for the actual conversion
-	node = [1]   # Start at node number 1
-	body = ''    # Holds the persistent, formatted HTML output until end
-	buffer = ''  # Holds temporary parsed buffer
-	H = 2        # The HTML heading level (default)
-	file = open(FILENAME, 'r')
-	line = (file.readline()).rstrip()
-	for lookahead in file:
-		lookahead = lookahead.rstrip()
-		if line == '\NewEntry' and lookahead not in keywords:
-			buffer = format(buffer)
-			body += '<pre class="gjots-pre">\n' + buffer + '</pre>\n\n'
-			if CONTENTS: body += '<a href="#Contents">Contents</a>'
-			if LINE: body += '<hr/>'
-			body += '<h' + str(H) + ' class="gjots-heading">' + \
-				'<a class="gjots-anchor" name="' + printNode(node) + '-' + \
-				formatLink(lookahead) + '">' + printNode(node) + ' ' + \
-				format(lookahead) + '</a></h' + str(H) + '>\n'
-			buffer = ''
-			if PRINT_TOC:
-				print >>STDOUT, '<li class="gjots-li"><a class="gjots-contents"' \
-					+ ' href="#' + printNode(node) + '-' + formatLink(lookahead) + \
-					'">' + printNode(node) + ' ' + format(lookahead) + '</a>'
-			keys.pop(0)
-			if PRINT_TOC and len(keys) != 0 and keys[0] != '\NewFolder':
-				print >>STDOUT, '</li>'
-			if len(keys) != 0 and keys[0] == '\NewEntry':
-				incrementNode(node)
-		elif line == '\NewFolder':
-			if PRINT_TOC: print >>STDOUT, '<ul>'
-			H = addNode(node)
-			keys.pop(0)
-		elif line == '\EndFolder':
-			if PRINT_TOC: print >>STDOUT, '</ul></li>'
-			H = removeNode(node)
-			keys.pop(0)
-		elif lookahead not in keywords:
-			if WRAP and len(lookahead) > 72:
-				buffer += WRAPPER.fill(lookahead) + '\n'
-			else:
-				buffer += lookahead + '\n'
+        # Parse file for the actual conversion
+        node = [1]   # Start at node number 1
+        body = ''    # Holds the persistent, formatted HTML output until end
+        buffer = ''  # Holds temporary parsed buffer
+        H = 2        # The HTML heading level (default)
+        file = open(FILENAME, 'r')
+        line = (file.readline()).rstrip()
+        for lookahead in file:
+                lookahead = lookahead.rstrip()
+                if line == '\\NewEntry' and lookahead not in keywords:
+                        buffer = format(buffer)
+                        body += '<pre class="gjots-pre">\n' + buffer + '</pre>\n\n'
+                        if CONTENTS: body += '<a href="#Contents">Contents</a>'
+                        if LINE: body += '<hr/>'
+                        body += '<h' + str(H) + ' class="gjots-heading">' + \
+                                '<a class="gjots-anchor" name="' + printNode(node) + '-' + \
+                                formatLink(lookahead) + '">' + printNode(node) + ' ' + \
+                                format(lookahead) + '</a></h' + str(H) + '>\n'
+                        buffer = ''
+                        if PRINT_TOC:
+                                print('<li class="gjots-li"><a class="gjots-contents"' \
+                                        + ' href="#' + printNode(node) + '-' + formatLink(lookahead) + \
+                                        '">' + printNode(node) + ' ' + format(lookahead) + '</a>', file=STDOUT)
+                        keys.pop(0)
+                        if PRINT_TOC and len(keys) != 0 and keys[0] != '\\NewFolder':
+                                print('</li>', file=STDOUT)
+                        if len(keys) != 0 and keys[0] == '\\NewEntry':
+                                incrementNode(node)
+                elif line == '\\NewFolder':
+                        if PRINT_TOC: print('<ul>', file=STDOUT)
+                        H = addNode(node)
+                        keys.pop(0)
+                elif line == '\\EndFolder':
+                        if PRINT_TOC: print('</ul></li>', file=STDOUT)
+                        H = removeNode(node)
+                        keys.pop(0)
+                elif lookahead not in keywords:
+                        if WRAP and len(lookahead) > 72:
+                                buffer += WRAPPER.fill(lookahead) + '\n'
+                        else:
+                                buffer += lookahead + '\n'
 
-		line = lookahead
-	file.close()
+                line = lookahead
+        file.close()
 
-	# Process any valid keywords and flush the buffer
-	if PRINT_TOC:
-		print >>STDOUT, '</ul></li>\n</ul>\n<p></p>'
-	if WRAP and len(lookahead) > 72:
-		buffer += WRAPPER.fill(lookahead)
-	buffer = format(buffer)
-	body += '<pre>\n' + buffer + '</pre>\n'
-	if CONTENTS: body += '<a href="#Contents">Contents</a>'
+        # Process any valid keywords and flush the buffer
+        if PRINT_TOC:
+                print('</ul></li>\n</ul>\n<p></p>', file=STDOUT)
+        if WRAP and len(lookahead) > 72:
+                buffer += WRAPPER.fill(lookahead)
+        buffer = format(buffer)
+        body += '<pre>\n' + buffer + '</pre>\n'
+        if CONTENTS: body += '<a href="#Contents">Contents</a>'
 
-	# Output the previously formatted body of the gjots file
-	print >>STDOUT, body
-	if not EMBED: print >>STDOUT, '</body>\n</html>'
+        # Output the previously formatted body of the gjots file
+        print(body, file=STDOUT)
+        if not EMBED: print('</body>\n</html>', file=STDOUT)
 
-	if EMBED:
-		print >>STDOUT, after
-		STDOUT.close()
-	elif OUTPUT:
-		STDOUT.close()
+        if EMBED:
+                print(after, file=STDOUT)
+                STDOUT.close()
+        elif OUTPUT:
+                STDOUT.close()
 
 if __name__ == "__main__":
-	main()
+        main()

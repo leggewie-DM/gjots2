@@ -73,7 +73,7 @@ brings it up practically instantly.
 \NewEntry
 Installing
 
-If possible, use RPM - better package management than setup.py
+If possible, use dnf/yum/rpm or apt - better package management than setup.py
 \NewFolder
 \NewEntry
 RPM-based systems
@@ -83,13 +83,41 @@ latest package from the homepage
 
 VERSION=_VERSION_
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
-yum install gjots2-${VERSION}-1.noarch.rpm
+dnf install gjots2
 
+There are builds on COPR: 
+https://copr.fedorainfracloud.org/coprs/wef/gjots2/
+\NewEntry
+From the tarball source
+
+VERSION=_VERSION_
+wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
+
+If installing from the tarball, after unpacking the tar file and
+cd'ing to it do this:
+
+	python setup.py install [ --prefix=/usr/... ]
+
+Uninstall with the uninstall.sh script provided here.
+
+On some systems, you may have permission problems with system-wide
+installations from source. All new directories installed should
+have permissions 0755, and all installed files should have
+permissions 0644, with the exception of 'docbook2gjots', 'gjots2',
+'gjots2docbook', 'gjots2emacs', 'gjots2org' and 'gjots2html',
+which should have permissions 0755.
+\NewFolder
 \NewEntry
 Prerequisites
 
-Let yum take the strain ... otherwise ...
+Let yum/dnf/apt take the strain ... otherwise ...
 
+Version 3.1.0+:
+Install sourceview4
+Install gtk3
+Install python3-gobject
+
+Earlier versions:
 Install pygtksourceview to enable Undo/Redo
 
 For gjots2-2.x.x: (Fedora <= 20 Centos <= 6)
@@ -109,25 +137,7 @@ PYTHONPATH eg.
 
 gjots2 was written with glade-3 so if you want to change or fix the
 code you will need to install it too.  Otherwise, it's just python!
-\NewEntry
-From the tarball source
-
-VERSION=_VERSION_
-wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
-
-If installing from the tarball, after unpacking the tar file and
-cd'ing to it do this:
-
-	python setup.py install [ --prefix=/usr/... ]
-
-Uninstall with the uninstall.sh script provided here.
-
-On some systems, you may have permission problems with system-wide
-installations from source. All new directories installed should have
-permissions 0755, and all installed files should have permissions
-0644, with the exception of 'docbook2gjots', 'gjots2',
-'gjots2docbook', 'gjots2emacs', 'gjots2org' and 'gjots2html', which should have
-permissions 0755.
+\EndFolder
 \EndFolder
 \NewEntry
 Contributing
@@ -803,7 +813,7 @@ The sort dialog can't set itself to the values stored in gconf.
 Platforms
 
 Tested on the following platforms:
-  Fedora-21
+  Fedora-31
 
 Older version were tested on:
   Gentoo Linux i386
