@@ -17,12 +17,9 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 3.1.1
-%define rel 1.wef
-
 Name: gjots2
-Version: %{ver}
-Release: %{rel}
+Version: 3.1.2
+Release: 1.wef
 Summary: A note jotter. Organise your ideas, notes, facts in a hierarchy.
 License: GPLv2+
 URL: http://bhepple.freeshell.org/gjots
@@ -70,7 +67,7 @@ done
 %install
 %py3_install
 
-rm -rf %{buildroot}%{_datadir}/doc/gjots2-%{ver}/
+rm -rf %{buildroot}%{_datadir}/doc/gjots2-%{version}/
 
 for file in $(find po/ -name gjots2.mo | sed 's|po/||') ; do
 	install -Dpm0644 po/$file %{buildroot}%{_datadir}/locale/$file

@@ -3086,4 +3086,5 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>""")
 # eval:(setq indent-tabs-mode nil)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
+# eval:(which-function-mode -1) ; turn it off - this file is too big
 # End:

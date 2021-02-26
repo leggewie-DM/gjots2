@@ -1,3 +1,5 @@
+2020-03-09   <bob.hepple@gmail.com> 3.1.2
+	when writing to org file, output goes to stdout rather than the file!
 2020-03-08   <bob.hepple@gmail.com> 3.1.1
 	doco goes in /usr/share/doc/gjots2 ie not versioned
 	update tools to python3

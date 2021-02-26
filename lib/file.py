@@ -371,7 +371,7 @@ class gjotsfile:
         if mode == "r":
             f = os.popen("org2gjots " + filename + " 2>&1", "r")
         else:
-            f = os.popen("gjots2org " + filename + " 2>&1", "w")
+            f = os.popen("gjots2org - > " + filename, "w")
         return f
 
     def close(self):
