@@ -1,0 +1,21 @@
+From: Jeremy Bicha <jbicha@debian.org>
+Date: Mon, 24 Dec 2018 00:04:06 -0500
+Subject: Don't install missing xml scripts
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 641de33..2ac4d23 100755
+--- a/setup.py
++++ b/setup.py
+@@ -32,7 +32,7 @@ setup(
+     author = "Bob Hepple",
+     author_email = "bob.hepple@gmail.com",
+     url = "http://bhepple.freeshell.org/gjots/",
+-    scripts = ['bin/gjots2','bin/gjots2docbook','bin/docbook2gjots','bin/gjots2html','bin/gjots2html.py','bin/gjots2lpr','bin/gjots2emacs','bin/gjots2org','bin/org2gjots','bin/gjots2xml','bin/xml2gjots'],
++    scripts = ['bin/gjots2','bin/gjots2docbook','bin/docbook2gjots','bin/gjots2html','bin/gjots2html.py','bin/gjots2lpr','bin/gjots2emacs','bin/gjots2org','bin/org2gjots'],
+     data_files = [
+         ( 'lib/gjots2',
+           [

@@ -10,8 +10,9 @@ Vcs-Git: https://github.com/leggewie-DM/gjots2.git
 
 Package: gjots2
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python, python-glade2, python-gnome2
-Suggests: gv, mpage, python-gtksourceview2
+Depends: ${python:Depends}, ${misc:Depends}, python, python-gi, gir1.2-gtk-3.0
+Recommends: gir1.2-gtksourceview-3.0
+Suggests: gv, mpage
 Provides: ${python:Provides}
 Description: Simple jotter (outline processor) for X11/gtk-gnome
  gjots2 is a fairly simple jotter (outline processor) and notetaking
