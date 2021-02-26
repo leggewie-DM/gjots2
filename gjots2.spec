@@ -1,28 +1,11 @@
-# $Id: gjots2.spec,v 1.12.2.29 2012-06-02 12:42:57 bhepple Exp $
+# -*-Mode: rpm-spec -*-
 
-#   Copyright (C) 2002-2020 Robert Hepple 
-#
-#   This program is free software; you can redistribute it and/or
-#   modify it under the terms of the GNU General Public License as
-#   published by the Free Software Foundation; either version 2 of the
-#   License, or (at your option) any later version.
-#
-#   This program is distributed in the hope that it will be useful, but
-#   WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-#   General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with this program; if not, write to the Free Software
-#   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
-#   MA 02111-1307, USA.
-
-Name: gjots2
-Version: 3.1.2
-Release: 1.wef
-Summary: A note jotter. Organise your ideas, notes, facts in a hierarchy.
+Name:    gjots2
+Version: 3.1.3
+Release: 2%{?dist}
+Summary: A hierarchical note jotter - organise your ideas, notes, facts in a tree
 License: GPLv2+
-URL: http://bhepple.freeshell.org/gjots
+URL:     http://bhepple.freeshell.org/gjots
 Source0: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
 
 BuildArch: noarch
@@ -84,7 +67,7 @@ desktop-file-install \
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.xml
 
 %files -f gjots2.lang
-%doc AUTHORS COPYING ChangeLog README doc/gjots2.gjots 
+%doc AUTHORS ChangeLog README doc/gjots2.gjots 
 %doc %lang(en_US) doc/gjots2.en_US.gjots 
 %doc %lang(fr) doc/gjots2.fr.gjots
 %doc %lang(nb) doc/gjots2.nb.gjots
@@ -109,6 +92,11 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.
 %{_mandir}/man1/%{name}*
 %{_mandir}/man1/docbook2gjots*
 
+%license COPYING
+
 %changelog
-* Sun Mar  8 2020 <bob.hepple@gmail.com> - 3.1.1-1
+* Sun Mar 08 2020 <bob.hepple@gmail.com> - 3.1.2-2
+- minor spec file fixes
+
+* Sun Mar 08 2020 <bob.hepple@gmail.com> - 3.1.2-1
 - merged fedora-30 spec file

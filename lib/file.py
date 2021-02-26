@@ -17,7 +17,7 @@ class PasswordError(Exception):
 class LockingError(Exception):
     def __init__(self):
         pass
-    
+
 class gjotsfile:
 
     def _make_lockfile_name(self, filename):
@@ -29,7 +29,7 @@ class gjotsfile:
             dirname = dirname + "/"
         name = dirname + ".#" + basename
         return name
-    
+
     def lock_file(self, filename):
         """
 
@@ -37,14 +37,14 @@ class gjotsfile:
         0: OK
         1: no permission to create lockfile
         2: already locked by another process
-        
+
         pid is the pid of the locking process or 0 on success
 
         """
-        
+
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
-            
+
         if not filename or len(filename) == 0:
             filename = self.filename
 
@@ -53,7 +53,7 @@ class gjotsfile:
         if self.gui.debug:
             print("lock_file: lockfile name =", lockfile)
         pid = 0
-        
+
         if os.access(lockfile, os.F_OK):
             # file already exists - see if it was ours
             if not os.access(lockfile, os.W_OK):
@@ -72,7 +72,7 @@ class gjotsfile:
                     pid = int(m.group(1))
             except:
                 pass
-            
+
             if self.gui.debug:
                 print("lock: pid = %d\n" % pid)
             if pid > 0:
@@ -81,7 +81,7 @@ class gjotsfile:
                     fcntl.flock(fd, fcntl.LOCK_UN)
                     fd.close()
                     return (0, pid)
-                
+
                 # hmmm - there's no getpgid() call in python
                 if os.system("ps -ef |awk '{print $2}'|grep %d >/dev/null 2>&1" % pid) == 0:
                     # locking process still exists:
@@ -100,12 +100,12 @@ class gjotsfile:
         except IOError:
             return (1, 0)
         return (0, 0)
-        
+
     def unlock_file(self, filename):
         """
         Returns 0 on success, 1 on fail
         """
-        
+
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
 
@@ -129,7 +129,7 @@ class gjotsfile:
         except:
             # nothing read - harmless
             pass
-        
+
         retval = 1
         if pid == 0 or pid == os.getpid():
             # yes - it's ours - or it's corrupt
@@ -139,16 +139,16 @@ class gjotsfile:
         fcntl.flock(fd, fcntl.LOCK_UN)
         fd.close()
         return retval
-    
+
     def wrapItem(self, sibling, parent, title, body):
         """
-        
+
         Make new node after sibling. sibling=None means insert at end.
         "title" goes into the tree (left panel). "body" goes into the
         right panel.
 
         parent=None is a special case - it is creating the root of the tree
-        
+
         """
 
         # Too verbose to trace this
@@ -164,7 +164,7 @@ class gjotsfile:
 
     def readItem(self, f, start, parent, title = ""):
         """
-        
+
         Read lines from f, populating parent, starting after "start"
         or at the end of parent if null. "title" is used to override
         the title of the first item - generally because it's the
@@ -176,7 +176,7 @@ class gjotsfile:
         Return the last item inserted.
 
         """
-        
+
         # Too verbose to trace this
         #if self.gui.debug:
         #   print inspect.getframeinfo(inspect.currentframe())[2], vars()
@@ -260,21 +260,21 @@ class gjotsfile:
                                      _("Confirm: "),  confirm)
             if not general.get_value() == OK:
                 raise PasswordError
-            
+
             password = general.get_field1()
             confirm = general.get_field2()
             if mode == "r" or password == confirm:
                 break
             feedback = _("Password was not confirmed")
         return password
-    
+
     def ccrypt_open(self, filename, mode = "r", reuse_password = 0):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
         if os.system("type ccdecrypt >/dev/null 2>&1") != 0:
             self.gui.err_msg(_("Could not find the ccrypt program - please install it and try again"))
             raise PasswordError
-        
+
         # get a password:
         if mode == "w":
             num_fields = 2
@@ -286,9 +286,9 @@ class gjotsfile:
         envname = "DH665" # or anything you like!
         os.environ[envname] = self.gui.password
         if mode == "r":
-            f = os.popen("ccdecrypt -c -E " + envname + " " + filename, "r")
+            f = os.popen("ccdecrypt -c -E " + envname + " '" + filename + "'", "r")
         else:
-            f = os.popen("ccencrypt -E " + envname + ">" + filename, "w")
+            f = os.popen("ccencrypt -E " + envname + "> '" + filename + "'", "w")
 
         # Note - I don't think the following actually scrubs the memory for local variables - need something mutable...
         blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -307,7 +307,7 @@ class gjotsfile:
             if os.system("type " + prog + " >/dev/null 2>&1") != 0:
                 self.gui.err_msg(_("Neither gpg2 nor gpg are available - please install one (perhaps package gnupg2) and try again"))
                 raise PasswordError
-        
+
         # allow agent to provide password if available:
         if os.environ["GPG_AGENT_INFO"]:
             prefix = ""
@@ -323,10 +323,10 @@ class gjotsfile:
             option = "--passphrase-fd 0 "
 
         if mode == "r":
-            f = os.popen(prefix + prog + " --batch --no-tty --decrypt --use-agent " + option + filename + " 2>/dev/null", "r")
+            f = os.popen(prefix + prog + " --batch --no-tty --decrypt --use-agent " + option + "'" + filename + "' 2>/dev/null", "r")
         else:
             scratch = tempfile.mktemp(text=True)
-            cmd = "cat > " + scratch + "; " + prefix + prog + " --batch --no-tty -o - --symmetric " + option + scratch + "> " + filename + " 2>/dev/null; rm " + scratch
+            cmd = "cat > " + scratch + "; " + prefix + prog + " --batch --no-tty -o - --symmetric " + option + scratch + "> '" + filename + "' 2>/dev/null; rm " + scratch
 
             f = os.popen(cmd, "w")
         blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -334,14 +334,14 @@ class gjotsfile:
             self.gui.password = blank
             self.gui.password = ""
         return f
-    
+
     def ssl_open(self, filename, mode = "r", reuse_password = 0):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
         if os.system("type openssl >/dev/null 2>&1") != 0:
             self.gui.err_msg(_("No openssl program - please install it and try again"))
             raise PasswordError
-        
+
         # get a password:
         if mode == "w":
             num_fields = 2
@@ -351,16 +351,16 @@ class gjotsfile:
         if not reuse_password or self.gui.password == None or self.gui.password == "":
             self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
         if mode == "r":
-            f = os.popen("echo \"" + self.gui.password + "\" | openssl des3 -d -pass stdin -in " + filename + " 2>&1", "r")
+            f = os.popen("echo \"" + self.gui.password + "\" | openssl des3 -d -pass stdin -in '" + filename + "' 2>&1", "r")
         else:
             scratch = tempfile.mktemp(text=True)
-            f = os.popen("cat > " + scratch + "; echo \"" + self.gui.password + "\" | openssl des3 -pass stdin -in " + scratch + " -out " + filename + " 2>&1; rm " + scratch, "w")
+            f = os.popen("cat > " + scratch + "; echo \"" + self.gui.password + "\" | openssl des3 -pass stdin -in " + scratch + " -out '" + filename + "' 2>&1; rm " + scratch, "w")
         blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
         if self.gui.purge_password:
             self.gui.password = blank
             self.gui.password = ""
         return f
-    
+
     def org_open(self, filename, mode = "r", reuse_password = 0):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
@@ -369,9 +369,9 @@ class gjotsfile:
             raise PasswordError
 
         if mode == "r":
-            f = os.popen("org2gjots " + filename + " 2>&1", "r")
+            f = os.popen("org2gjots '" + filename + "' 2>&1", "r")
         else:
-            f = os.popen("gjots2org - > " + filename, "w")
+            f = os.popen("gjots2org - > '" + filename + "'", "w")
         return f
 
     def close(self):
@@ -380,7 +380,7 @@ class gjotsfile:
 
         if self.filename:
             self.unlock_file(self.filename)
-        
+
     def _general_open(self, filename, mode, reuse_password = 0):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
@@ -390,13 +390,13 @@ class gjotsfile:
             try:
                 backup_file = filename + "~"
                 s = os.stat(filename)
-                os.system("cp -f " + filename + " " + backup_file)
+                os.system("cp -f '" + filename + "' '" + backup_file + "'")
                 os.utime(backup_file, (s.st_atime, s.st_mtime))
                 os.chmod(backup_file, s.st_mode)
                 # os.chown(backup_file, s.st_uid, s.st_gid) ... not permitted!!
             except OSError:
                 pass
-            
+
         exti = filename.rfind(".cpt")
         if not exti == -1:
             return self.ccrypt_open(filename, mode = mode, reuse_password = reuse_password)
@@ -413,13 +413,13 @@ class gjotsfile:
         if not exti == -1:
             return self.org_open(filename, mode = mode, reuse_password = reuse_password)
         return open(filename, mode)
-        
+
     def _do_load(self, filename, import_after):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
 
         dirname, basename = os.path.split(filename)
-            
+
         try:
             f = self._general_open(filename, "r")
         except IOError:
@@ -440,12 +440,12 @@ class gjotsfile:
             self.readItem(f, None, None, basename)
             self.filename = filename
             self.gui.show_tree()
-            
+
         if f.close() != None:
             self.gui.err_msg(_("failed!"))
             return ""
         return self.filename
-    
+
     def _do_store(self, filename, selection, reuse_password = 0):
         """
 
@@ -498,12 +498,12 @@ class gjotsfile:
             treeiter = self.gui.get_root()
             # needs a try/except: for IO errors, eg. out of space, network failed ...
             self.writeItem(f, treeiter, 1)
-        
+
         if f.close() != None:
             self.gui.err_msg(_("failed!"))
             return ""
         return filename
-    
+
     def destroy(self):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
@@ -514,13 +514,13 @@ class gjotsfile:
             print(inspect.getframeinfo(inspect.currentframe())[2])
         # Nothing is needed here - return & escape work as expected
         pass
-    
+
     def on_fileselectionCancelButton_clicked(self, widget):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
         self.prompt_filename = None
         self.fileselectionValue = CANCEL
-        
+
     def on_fileselectionOkButton_clicked(self, widget):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
@@ -532,7 +532,7 @@ class gjotsfile:
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
         return self.prompt_filename
-    
+
     def _file_dialog(self, title, mode):
         """
         File selection dialog
@@ -551,7 +551,7 @@ class gjotsfile:
         self.gui.builder.add_from_file(self.gui.sharedir + "ui/fileDialog.ui")
         self.gui.builder.connect_signals(callbacks)
         self.file_get_widget = self.gui.gui_get_widget
-            
+
         self.fileselection_dialog = self.file_get_widget(self.name)
         self.fileselection_dialog.set_title(title)
 
@@ -590,7 +590,7 @@ class gjotsfile:
         Returns filename read in or ""
 
         """
-        
+
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
 
@@ -606,7 +606,7 @@ class gjotsfile:
         dirname, basename = os.path.split(self.prompt_filename)
         if import_after or self.fileselection_readonly:
             readonly = 1
-            
+
         if not os.access(self.prompt_filename, os.R_OK):
             self.gui.err_msg(_("%s is not readable") % basename)
             return ""
@@ -642,7 +642,7 @@ class gjotsfile:
             if general.get_value() == READONLY:
                 self.gui.set_readonly(1, quietly=1)
                 readonly = 1
-                
+
         retval = self._do_load(self.prompt_filename, import_after)
         self.filename_timestamp = 0
         if retval:
@@ -671,23 +671,23 @@ class gjotsfile:
                 c = string.split(basename, ".gjots")
                 newfilename = string.join([ c[0], timestamp, "gjots" ], ".")
                 if len(c) > 1: newfilename += c[1] # add suffix, if any
-                    
+
                 newfilename = os.path.join(dirname, newfilename)
                 shutil.copy(self.filename, newfilename)
                 if self.gui.debug: print("copied %s to %s\n" % ( basename, newfilename))
                 return newfilename
         return 0
-    
+
     def write_file(self, prompt = "", exporting=0, reuse_password=1):
         """
-        
+
         Top level file writing - with prompting if necessary. If no
         prompt just use the default file and don't check about
         overwriting it.
 
         Always lock the file before writing - leave it locked (and
         remove any other locks) unless exporting.
-        
+
         If exporting then only write the current selection - no need
         to change the default filename to this one; otherwise, write
         the root item and change the default filename to this one.
@@ -696,9 +696,9 @@ class gjotsfile:
         just save the sucker.
 
         Return filename on success, "" on error
-        
+
         """
-        
+
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
 
@@ -719,9 +719,9 @@ class gjotsfile:
                             self.gui.err_msg(_("That file is already open!"))
                             return ""
                         timestamped_file = self._check_timestamp()
-                        
-                        retval = self._do_store(self.filename, 
-                                                selection = exporting, 
+
+                        retval = self._do_store(self.filename,
+                                                selection = exporting,
                                                 reuse_password = reuse_password)
                         if timestamped_file:
                             general_dialog(self.gui, self.gui.progName + _(": file has changed"),
@@ -730,7 +730,7 @@ class gjotsfile:
                                            0, 0, "",
                                            "", "",
                                            "",  "")
-                            
+
                         if not exporting:
                             try:
                                 s = os.stat(self.filename)
@@ -742,11 +742,11 @@ class gjotsfile:
                     reason, pid = self.lock_file(self.prompt_filename)
 
                     if reason == 2:
-                        self.gui.err_msg(_("%s is locked by pid %d") % 
+                        self.gui.err_msg(_("%s is locked by pid %d") %
                                          (basename, pid))
                         return ""
                     if reason == 1:
-                        self.gui.err_msg(_("Can't make a lockfile in ") + 
+                        self.gui.err_msg(_("Can't make a lockfile in ") +
                                          dirname)
                         return ""
 
@@ -761,7 +761,7 @@ class gjotsfile:
                             self.unlock_file(self.prompt_filename)
                             self.gui.err_msg(_("%s is not writable") % basename)
                             return ""
-                        general = general_dialog(self.gui, 
+                        general = general_dialog(self.gui,
                                                  self.gui.progName + _(": %s already exists.") % basename,
                                                  _("overwrite %s?") % basename, YES|CANCEL,
                                                  0, 0, "",
@@ -773,8 +773,8 @@ class gjotsfile:
                     except IOError:
                         pass
 
-                    retval = self._do_store(self.prompt_filename, 
-                                            selection = exporting, 
+                    retval = self._do_store(self.prompt_filename,
+                                            selection = exporting,
                                             reuse_password = reuse_password)
                     if exporting:
                         self.unlock_file(self.prompt_filename)
@@ -794,8 +794,8 @@ class gjotsfile:
             else: # just save the sucker
                 # assert exporting == 0
                 timestamped_file = self._check_timestamp()
-                retval = self._do_store(self.filename, 
-                                        selection = exporting, 
+                retval = self._do_store(self.filename,
+                                        selection = exporting,
                                         reuse_password = reuse_password)
                 if timestamped_file:
                     general_dialog(self.gui, self.gui.progName + _(": file has changed"),
@@ -814,14 +814,14 @@ class gjotsfile:
 # developers may want to enable this to check the before & after file images:
 #       if self.gui.dev:
 #           os.system("meld " + self.prompt_filename + " " + self.prompt_filename + "~")
-        
+
         rd = Gtk.RecentData()
         rd.mime_type = "application/gjots"
         rd.app_name = "gjots2"
         rd.app_exec = "gjots2"
         Gtk.RecentManager.get_default().add_full("file://" + self.filename, rd)
         return retval
-            
+
     def __init__(self, gui):
         self.gui = gui
         if self.gui.debug:

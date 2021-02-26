@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Versjon 3.1.2
+                 Versjon 3.1.3
 
 
       bhepple@freeshell.org
@@ -148,7 +148,7 @@ app-office/gjots2 ~x86
 
 Så:	
 
-VERSION=3.1.2
+VERSION=3.1.3
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -163,7 +163,7 @@ RPM-baserte systemer
 
 Bare gjør dette:
 
-VERSION=3.1.2
+VERSION=3.1.3
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 rpm -i gjots2-${VERSION}-1.noarch.rpm
 
@@ -181,7 +181,7 @@ pyorbit-2.0.1-4
 \NewEntry
 Fra tar-kildekoden
 
-VERSION=3.1.2
+VERSION=3.1.3
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 Hvis du installerer fra tar-kildekoden, dekomprimer først tar-
@@ -886,8 +886,8 @@ GNU GENERAL PUBLIC LICENCE
 
 GNU GENERAL PUBLIC LICENCE (GNU GENERELL OFFENTLIG LISENS)
 Versjon 2, juni 1991, oversatt januar 2004; oppdatert juli 2005.
-Opphavsrett © 1989, 1991 Free Software Foundation, Inc.
-59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+Opphavsrett © 1989, 1991 Free Software Foundation
+ 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
 Alle har lov til å kopiere og distribuere umodifiserte kopier av dette lisensdokumentet, men å endre det er forbudt.
 Forord
@@ -986,8 +986,8 @@ Her kommer den offisielle GPL på engelsk, som gjelder for dette programmet.
 		    GNU GENERAL PUBLIC LICENSE
 		       Version 2, June 1991
 
- Copyright (C) 1989, 1991 Free Software Foundation, Inc.
-     59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ Copyright (C) 1989, 1991 Free Software Foundation
+ 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
