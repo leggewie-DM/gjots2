@@ -1,7 +1,7 @@
 # -*-Mode: rpm-spec -*-
 
 Name:    gjots2
-Version: 3.1.5
+Version: 3.1.6
 Release: 1%{?dist}
 Summary: A hierarchical note jotter - organize your ideas, notes, facts in a tree
 License: GPLv2
@@ -87,7 +87,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}-%{version}-py%{python3_version}.egg-info
 %{_datadir}/%{name}/
-%{_datadir}/pixmaps/gjots.png
+%{_datadir}/pixmaps/gjots2.png
 %{_datadir}/metainfo/gjots2.metainfo.xml
 %{_datadir}/applications/*gjots2.desktop
 %{_datadir}/glib-2.0/schemas/org.gtk.gjots2.gschema.xml
@@ -95,6 +95,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 %{_mandir}/man1/docbook2gjots*
 
 %changelog
+* Sun May 03 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.6-1
+- rebuilt in response to RHBZ#1823599
+
 * Sat May 02 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.5-1
 - in response to RHBZ#1823599
 

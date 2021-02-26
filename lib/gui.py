@@ -2854,7 +2854,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>""")
 
         self._init_icons()
         from gi.repository import Gtk, Gio
-        Gtk.Window.set_default_icon_name("gjots")
+        Gtk.Window.set_default_icon_name("gjots2")
 
         self.builder = Gtk.Builder()
         self.builder.set_translation_domain('gjots2')

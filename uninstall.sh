@@ -35,6 +35,6 @@ prefix=${1:-"/usr"}
 rm -rf $prefix/lib/gjots2 $prefix/share/doc/gjots2-* $prefix/share/gjots2
 rm -f $prefix/bin/gjots2html $prefix/bin/docbook2gjots $prefix/bin/gjots2 $prefix/bin/gjots2docbook $prefix/bin/gjots2lpr
 rm -f $prefix/share/man/man1/gjots2html.1 $prefix/share/man/man1/docbook2gjots.1 $prefix/share/man/man1/gjots2.1 $prefix/share/man/man1/gjots2docbook.1
-rm -f $prefix/share/pixmaps/gjots.png $prefix/share/applications/gjots2.desktop
+rm -f $prefix/share/pixmaps/gjots2.png $prefix/share/applications/gjots2.desktop
 rm -f $prefix/share/glib-2.0/schemas/org.gtk.gjots2.gschema.xml $prefix/share/metainfo/gjots2.metainfo.xml
 rm -f $prefix/share/locale/*/LC_MESSAGES/gjots2.mo

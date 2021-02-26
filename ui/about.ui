@@ -8,7 +8,7 @@
     <property name="border_width">5</property>
     <property name="type">popup</property>
     <property name="window_position">mouse</property>
-    <property name="icon">gjots.png</property>
+    <property name="icon">gjots2.png</property>
     <property name="type_hint">dialog</property>
     <property name="copyright" translatable="yes">Copyright Bob Hepple 2002-2020</property>
     <property name="comments" translatable="yes">http://bhepple.freeshell.org/gjots2</property>
@@ -31,6 +31,6 @@ Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
 Aleksa Šušulić (sl) &lt;susulic@gmail.com&gt;
 Uwe Steinmann (de) &lt;uwe@steinmann.cx&gt;
 </property>
-    <property name="logo">gjots.png</property>
+    <property name="logo">gjots2.png</property>
   </object>
 </interface>

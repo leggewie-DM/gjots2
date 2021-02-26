@@ -36,6 +36,11 @@ all Linux distributions.
  <url type="homepage">http://sourceforge.net/projects/gjots2</url>
  <update_contact>bob.hepple@gmail.com</update_contact>
  <releases>
+   <release version="3.1.6" date="2020-05-03">
+     <description>
+       <p>Fix issues in RHBZ#1823599</p>
+     </description>
+   </release>
    <release version="3.1.5" date="2020-05-02">
      <description>
        <p>Fix issues in RHBZ#1823599</p>

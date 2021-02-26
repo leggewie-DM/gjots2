@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 3.1.5
+                 Version 3.1.6
 
 
       bob.hepple@gmail.com
@@ -80,7 +80,7 @@ RPM-based systems
 fedora includes gjots2 but is often out of date - better get the
 latest package from the homepage
 
-VERSION=3.1.5
+VERSION=3.1.6
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 dnf install gjots2
 
@@ -89,7 +89,7 @@ https://copr.fedorainfracloud.org/coprs/wef/gjots2/
 \NewEntry
 From the tarball source
 
-VERSION=3.1.5
+VERSION=3.1.6
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and
