@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gjots2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-24 11:50+1000\n"
+"POT-Creation-Date: 2020-06-29 14:35+1000\n"
 "PO-Revision-Date: 2006-01-16 15:35+0100\n"
 "Last-Translator: Robert Emil Berge\n"
 "Language-Team:  <nb@li.org>\n"
@@ -29,7 +29,9 @@ msgstr "http://bhepple.freeshell.org/gjots2"
 
 #: ../ui/about.ui:25
 msgid ""
+"\n"
 "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+"Frederic Muller (fr) <fred@cm17.com>\n"
 "Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
 "Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
 "Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
@@ -69,7 +71,7 @@ msgstr "Tekst å søke etter"
 msgid "String to replace"
 msgstr "Tekst å erstatte med"
 
-#: ../ui/findDialog.ui:115 ../ui/gjots.ui:810
+#: ../ui/findDialog.ui:115 ../ui/gjots.ui:843
 msgid "Find"
 msgstr "Finn"
 
@@ -208,7 +210,7 @@ msgstr ""
 msgid "_Show All"
 msgstr "Vis _alt"
 
-#: ../ui/gjots.ui:310 ../ui/gjots.ui:1051
+#: ../ui/gjots.ui:310 ../ui/gjots.ui:1084
 msgid "Show all items below the current item"
 msgstr "Vis alle elementer under valgte element"
 
@@ -264,15 +266,15 @@ msgstr "Lag nytt element"
 msgid "New _Child"
 msgstr "Nytt _underelement"
 
-#: ../ui/gjots.ui:403 ../ui/gjots.ui:886
+#: ../ui/gjots.ui:403 ../ui/gjots.ui:919
 msgid "Create a new child"
 msgstr "Lag et nytt underelement"
 
-#: ../ui/gjots.ui:420 ../ui/gjots.ui:916
+#: ../ui/gjots.ui:420 ../ui/gjots.ui:949
 msgid "Move selection up"
 msgstr "Flytt valgte elementer opp"
 
-#: ../ui/gjots.ui:431 ../ui/gjots.ui:931
+#: ../ui/gjots.ui:431 ../ui/gjots.ui:964
 msgid "Move selection down"
 msgstr "Flytt valgte elementer ned"
 
@@ -280,7 +282,7 @@ msgstr "Flytt valgte elementer ned"
 msgid "P_romote"
 msgstr "_Forfrem"
 
-#: ../ui/gjots.ui:442 ../ui/gjots.ui:946
+#: ../ui/gjots.ui:442 ../ui/gjots.ui:979
 msgid "Selection becomes a sibling to their parent"
 msgstr "Utvalg kommer på samme nivå som overelement"
 
@@ -288,7 +290,7 @@ msgstr "Utvalg kommer på samme nivå som overelement"
 msgid "D_emote"
 msgstr "_Degrader"
 
-#: ../ui/gjots.ui:453 ../ui/gjots.ui:961
+#: ../ui/gjots.ui:453 ../ui/gjots.ui:994
 msgid "Selection becomes a child of the previous item"
 msgstr "Utvalg blir underelement til elementet før"
 
@@ -312,7 +314,7 @@ msgstr "Slå sammen valgte elementer inn i det første"
 msgid "S_ort Tree"
 msgstr "So_rter treet"
 
-#: ../ui/gjots.ui:492 ../ui/gjots.ui:1066
+#: ../ui/gjots.ui:492 ../ui/gjots.ui:1099
 msgid "Popup the sort tree dialog"
 msgstr "Åpne dialogvindu for å sortere treet"
 
@@ -365,147 +367,155 @@ msgstr "Les manualen"
 msgid "Read the online manual (using gjots)"
 msgstr "Les manualen fra internet (med gjots)"
 
-#: ../ui/gjots.ui:659
+#: ../ui/gjots.ui:650
+msgid "Find the previous occurance"
+msgstr ""
+
+#: ../ui/gjots.ui:666
+msgid "Find the next occurance"
+msgstr ""
+
+#: ../ui/gjots.ui:692
 msgid "Save gjots document"
 msgstr "Lagre gjots-dokumentet"
 
-#: ../ui/gjots.ui:660
+#: ../ui/gjots.ui:693
 msgid "Save"
 msgstr "Lagre"
 
-#: ../ui/gjots.ui:674
+#: ../ui/gjots.ui:707
 msgid "Print this document"
 msgstr "Skriv ut dette dokumentet"
 
-#: ../ui/gjots.ui:675 ../ui/printDialog.ui:9
+#: ../ui/gjots.ui:708 ../ui/printDialog.ui:9
 msgid "Print"
 msgstr "Skriv ut"
 
-#: ../ui/gjots.ui:704
+#: ../ui/gjots.ui:737
 msgid "Cut selected items"
 msgstr "Klipp ut valgte elementer"
 
-#: ../ui/gjots.ui:705
+#: ../ui/gjots.ui:738
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: ../ui/gjots.ui:719
+#: ../ui/gjots.ui:752
 msgid "Copy selected items"
 msgstr "Kopier valgte elementer"
 
-#: ../ui/gjots.ui:720
+#: ../ui/gjots.ui:753
 msgid "Copy"
 msgstr "Kopier"
 
-#: ../ui/gjots.ui:734
+#: ../ui/gjots.ui:767
 msgid "Paste selected items"
 msgstr "Lim inn valgte elementer"
 
-#: ../ui/gjots.ui:735
+#: ../ui/gjots.ui:768
 msgid "Paste"
 msgstr "Lim inn"
 
-#: ../ui/gjots.ui:764
+#: ../ui/gjots.ui:797
 msgid "Wrap the current paragraph to the current line length"
 msgstr "Bryt gjeldene avsnitt til valgt linjelengde"
 
-#: ../ui/gjots.ui:765
+#: ../ui/gjots.ui:798
 msgid "Wrap"
 msgstr "Bryt"
 
-#: ../ui/gjots.ui:779
+#: ../ui/gjots.ui:812
 msgid "Invoke an external editor on the current item"
 msgstr "Start et eksternt skriveprogram for gjeldene element"
 
-#: ../ui/gjots.ui:780
+#: ../ui/gjots.ui:813
 msgid "Ext.Ed."
 msgstr "Ekst.prg."
 
-#: ../ui/gjots.ui:794
+#: ../ui/gjots.ui:827
 msgid "Add a time/date stamp (see prefs)"
 msgstr "Sett inn stempel for tid/dato (se innstillinger)"
 
-#: ../ui/gjots.ui:795
+#: ../ui/gjots.ui:828
 msgid "Date"
 msgstr "Dato"
 
-#: ../ui/gjots.ui:809
+#: ../ui/gjots.ui:842
 msgid "Popup the find and replace dialog"
 msgstr "Åpne dialogvinduet for finn/erstatt"
 
-#: ../ui/gjots.ui:824
+#: ../ui/gjots.ui:857
 msgid "Popup the sort dialog"
 msgstr "Åpne dialogvinduet for å sortere"
 
-#: ../ui/gjots.ui:825 ../ui/sortDialog.ui:16
+#: ../ui/gjots.ui:858 ../ui/sortDialog.ui:16
 msgid "Sort"
 msgstr "Sorter"
 
-#: ../ui/gjots.ui:839
+#: ../ui/gjots.ui:872
 msgid "Open gjots preferences window"
 msgstr "Åpne vinduet for gjots innstillinger"
 
-#: ../ui/gjots.ui:840
+#: ../ui/gjots.ui:873
 msgid "Prefs"
 msgstr "Innstillinger"
 
-#: ../ui/gjots.ui:871
+#: ../ui/gjots.ui:904
 msgid "Create a new item"
 msgstr "Lag et nytt element"
 
-#: ../ui/gjots.ui:872 ../ui/treeContextMenu.ui:45
+#: ../ui/gjots.ui:905 ../ui/treeContextMenu.ui:45
 msgid "New Page"
 msgstr "Nytt element"
 
-#: ../ui/gjots.ui:887 ../ui/treeContextMenu.ui:52
+#: ../ui/gjots.ui:920 ../ui/treeContextMenu.ui:52
 msgid "New Child"
 msgstr "Nytt underelement"
 
-#: ../ui/gjots.ui:917
+#: ../ui/gjots.ui:950
 msgid "Up"
 msgstr "Opp"
 
-#: ../ui/gjots.ui:932
+#: ../ui/gjots.ui:965
 msgid "Down"
 msgstr "Ned"
 
-#: ../ui/gjots.ui:947 ../ui/treeContextMenu.ui:74
+#: ../ui/gjots.ui:980 ../ui/treeContextMenu.ui:74
 msgid "Promote"
 msgstr "Forfrem"
 
-#: ../ui/gjots.ui:962 ../ui/treeContextMenu.ui:82
+#: ../ui/gjots.ui:995 ../ui/treeContextMenu.ui:82
 msgid "Demote"
 msgstr "Degrader"
 
-#: ../ui/gjots.ui:991
+#: ../ui/gjots.ui:1024
 msgid "Split the text selection into a new item"
 msgstr "Skill ut tekstutvalget til et nytt element"
 
-#: ../ui/gjots.ui:992
+#: ../ui/gjots.ui:1025
 msgid "Split Item"
 msgstr "Del element"
 
-#: ../ui/gjots.ui:1006
+#: ../ui/gjots.ui:1039
 msgid "Merge selected items together"
 msgstr "Slå sammen valgte elementer"
 
-#: ../ui/gjots.ui:1007 ../ui/treeContextMenu.ui:89
+#: ../ui/gjots.ui:1040 ../ui/treeContextMenu.ui:89
 msgid "Merge Items"
 msgstr "Slå sammen elementer"
 
-#: ../ui/gjots.ui:1036
+#: ../ui/gjots.ui:1069
 msgid "Hide all items except for the top level"
 msgstr "Skjul alle elementer utenom øverste nivå"
 
-#: ../ui/gjots.ui:1037 ../ui/treeContextMenu.ui:103
+#: ../ui/gjots.ui:1070 ../ui/treeContextMenu.ui:103
 msgid "Hide All"
 msgstr "Skjul alt"
 
-#: ../ui/gjots.ui:1052 ../ui/treeContextMenu.ui:96
+#: ../ui/gjots.ui:1085 ../ui/treeContextMenu.ui:96
 msgid "Show All"
 msgstr "Vis alt"
 
-#: ../ui/gjots.ui:1067 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
+#: ../ui/gjots.ui:1100 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
 msgid "Sort Tree"
 msgstr "Sorter treet"
 
@@ -762,7 +772,7 @@ msgstr "Bruk -h for hjelp\n"
 msgid "%s version %s"
 msgstr "%s versjon %s"
 
-#: ../lib/gui.py:50 ../lib/gui.py:993
+#: ../lib/gui.py:50 ../lib/gui.py:995
 msgid "Text pasted"
 msgstr "Limt inn tekst"
 
@@ -772,179 +782,179 @@ msgid "External formatter \"%s\" is not installed - can't format"
 msgstr ""
 "Eksternt formateringsprogram \"%s\" er ikke installert - kan ikke formatere"
 
-#: ../lib/gui.py:561 ../lib/gui.py:672 ../lib/gui.py:676 ../lib/gui.py:742
-#: ../lib/gui.py:746 ../lib/gui.py:809 ../lib/gui.py:814 ../lib/gui.py:1040
-#: ../lib/gui.py:1049 ../lib/gui.py:1135 ../lib/gui.py:1144 ../lib/gui.py:1180
-#: ../lib/gui.py:1185 ../lib/gui.py:1216 ../lib/gui.py:1605 ../lib/gui.py:2383
-#: ../lib/gui.py:2402 ../lib/gui.py:2431 ../lib/gui.py:2462 ../lib/file.py:480
-#: ../lib/file.py:485 ../lib/sortDialog.py:329 ../lib/sortDialog.py:334
+#: ../lib/gui.py:563 ../lib/gui.py:674 ../lib/gui.py:678 ../lib/gui.py:744
+#: ../lib/gui.py:748 ../lib/gui.py:811 ../lib/gui.py:816 ../lib/gui.py:1042
+#: ../lib/gui.py:1051 ../lib/gui.py:1137 ../lib/gui.py:1146 ../lib/gui.py:1182
+#: ../lib/gui.py:1187 ../lib/gui.py:1218 ../lib/gui.py:1607 ../lib/gui.py:2380
+#: ../lib/gui.py:2399 ../lib/gui.py:2428 ../lib/gui.py:2459 ../lib/file.py:466
+#: ../lib/file.py:471 ../lib/sortDialog.py:329 ../lib/sortDialog.py:334
 #: ../lib/printDialog.py:108 ../lib/printDialog.py:113
 msgid "Nothing selected"
 msgstr "Ingenting er valgt"
 
-#: ../lib/gui.py:565 ../lib/gui.py:681 ../lib/gui.py:750 ../lib/gui.py:819
-#: ../lib/gui.py:931 ../lib/gui.py:1221 ../lib/gui.py:2387
+#: ../lib/gui.py:567 ../lib/gui.py:683 ../lib/gui.py:752 ../lib/gui.py:821
+#: ../lib/gui.py:933 ../lib/gui.py:1223 ../lib/gui.py:2384
 #: ../lib/sortDialog.py:345
 msgid "No parent!"
 msgstr "Overelement finnes ikke!"
 
-#: ../lib/gui.py:569 ../lib/gui.py:716
+#: ../lib/gui.py:571 ../lib/gui.py:718
 msgid "No child!"
 msgstr "Underelement finnes ikke!"
 
-#: ../lib/gui.py:577 ../lib/gui.py:690
+#: ../lib/gui.py:579 ../lib/gui.py:692
 msgid "Can't go any further"
 msgstr "Kan ikke gå videre"
 
-#: ../lib/gui.py:613 ../lib/gui.py:837
+#: ../lib/gui.py:615 ../lib/gui.py:839
 msgid "Internal error!"
 msgstr "Intern feil!"
 
-#: ../lib/gui.py:754
+#: ../lib/gui.py:756
 msgid "Can't go further!"
 msgstr "Kan ikke gå videre!"
 
-#: ../lib/gui.py:970
+#: ../lib/gui.py:972
 msgid "Text cut"
 msgstr "Utklipt tekst"
 
-#: ../lib/gui.py:981
+#: ../lib/gui.py:983
 msgid "Text copied"
 msgstr "Kopiert tekst"
 
-#: ../lib/gui.py:1002
+#: ../lib/gui.py:1004
 msgid "All text selected"
 msgstr "Hele den valgte teksten"
 
-#: ../lib/gui.py:1012
+#: ../lib/gui.py:1014
 msgid "All tree items selected"
 msgstr "Alle valgte tre-elementer"
 
-#: ../lib/gui.py:1020
+#: ../lib/gui.py:1022
 msgid "Nothing selected!"
 msgstr "Ingenting er valgt!"
 
-#: ../lib/gui.py:1044
+#: ../lib/gui.py:1046
 msgid "Can't merge the root item"
 msgstr "Kan ikke slå sammen rot-elementet"
 
-#: ../lib/gui.py:1053
+#: ../lib/gui.py:1055
 msgid "Nothing to merge"
 msgstr "Ingenting å slå sammen"
 
-#: ../lib/gui.py:1060
+#: ../lib/gui.py:1062
 msgid "Can't merge items that have children"
 msgstr "Kan ikke slå sammen elementer som har underelementer"
 
-#: ../lib/gui.py:1090
+#: ../lib/gui.py:1092
 #, python-format
 msgid "%d items merged"
 msgstr "%d elementer slått sammen"
 
-#: ../lib/gui.py:1139
+#: ../lib/gui.py:1141
 msgid "Can't delete the root item"
 msgstr "Kan ikke slette rot-elementet"
 
-#: ../lib/gui.py:1172
+#: ../lib/gui.py:1174
 #, python-format
 msgid "%d tree items cut"
 msgstr "%d tre-elementer klippet ut"
 
-#: ../lib/gui.py:1202
+#: ../lib/gui.py:1204
 #, python-format
 msgid "%d tree items copied"
 msgstr "%d tre-elementer kopiert"
 
-#: ../lib/gui.py:1211
+#: ../lib/gui.py:1213
 msgid "Nothing to paste"
 msgstr "Ingenting å lime inn"
 
-#: ../lib/gui.py:1234
+#: ../lib/gui.py:1236
 msgid "Tree items pasted"
 msgstr "Tre-elementer limt inn"
 
-#: ../lib/gui.py:1255
+#: ../lib/gui.py:1257
 #, fuzzy
 msgid "Can't write tempfile"
 msgstr "Kan ikke skrive"
 
-#: ../lib/gui.py:1275
+#: ../lib/gui.py:1277
 #, python-format
 msgid "Can't run '%s'"
 msgstr "Kan ikke kjøre '%s'"
 
-#: ../lib/gui.py:1284
+#: ../lib/gui.py:1286
 #, fuzzy
 msgid "Can't read tempfile "
 msgstr "Kan ikke lese"
 
-#: ../lib/gui.py:1290
+#: ../lib/gui.py:1292
 msgid "text changed by external editor"
 msgstr "tekst redigert med eksternt skriveprogram"
 
-#: ../lib/gui.py:1292
+#: ../lib/gui.py:1294
 msgid "text not changed by external editor"
 msgstr "Tekst som ikke er redigert med eksternt skriveprogram"
 
-#: ../lib/gui.py:1311
+#: ../lib/gui.py:1313
 msgid ": Error"
 msgstr ": Feil"
 
-#: ../lib/gui.py:1324
+#: ../lib/gui.py:1326
 #, python-format
 msgid "Can't lock file %s: already locked by process %d"
 msgstr "Kan ikke låse filen %s: allerede låst av prosess %d"
 
-#: ../lib/gui.py:1507
+#: ../lib/gui.py:1509
 msgid ": Save?"
 msgstr ": Lagre?"
 
-#: ../lib/gui.py:1508
+#: ../lib/gui.py:1510
 msgid "Save current work?"
 msgstr "Lagre forandringer?"
 
-#: ../lib/gui.py:1529
+#: ../lib/gui.py:1531
 msgid "New file"
 msgstr "Ny fil"
 
-#: ../lib/gui.py:1553
+#: ../lib/gui.py:1555
 msgid "Open file ..."
 msgstr "Åpne fil ..."
 
-#: ../lib/gui.py:1565
+#: ../lib/gui.py:1567
 msgid "No changes to save"
 msgstr "Ingen forandringer å lagre"
 
-#: ../lib/gui.py:1569 ../lib/gui.py:1590
+#: ../lib/gui.py:1571 ../lib/gui.py:1592
 msgid "Saved."
 msgstr "Lagret."
 
-#: ../lib/gui.py:1571 ../lib/gui.py:1592 ../lib/file.py:470
+#: ../lib/gui.py:1573 ../lib/gui.py:1594 ../lib/file.py:456
 msgid "Not saved."
 msgstr "Ikke lagret."
 
-#: ../lib/gui.py:1586
+#: ../lib/gui.py:1588
 msgid "Nothing to save"
 msgstr "Ingenting å lagre"
 
-#: ../lib/gui.py:1588 ../lib/file.py:707
+#: ../lib/gui.py:1590 ../lib/file.py:693
 msgid "Save as ..."
 msgstr "Lagre som ..."
 
-#: ../lib/gui.py:1602
+#: ../lib/gui.py:1604
 msgid "Import from ..."
 msgstr "Importer fra ..."
 
-#: ../lib/gui.py:1613
+#: ../lib/gui.py:1615
 msgid "Export to ..."
 msgstr "Eksporter til ..."
 
-#: ../lib/gui.py:1937 ../lib/gui.py:1940
+#: ../lib/gui.py:1929 ../lib/gui.py:1932
 #, python-format
 msgid "%s: Warning: opening gjots2 manual from %s\n"
 msgstr "%s: Advarser: åpner gjots2-manualen fra %s\n"
 
-#: ../lib/gui.py:2320
+#: ../lib/gui.py:2315
 msgid ""
 "gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
 "event."
@@ -952,32 +962,32 @@ msgstr ""
 "gjots2: advarsel: Utvalgslisten er NULL. Hopper over tre-utvalg forandret\n"
 "hendelse."
 
-#: ../lib/gui.py:2391
+#: ../lib/gui.py:2388
 msgid "Can't go further"
 msgstr "Kan ikke gå videre"
 
-#: ../lib/gui.py:2420
+#: ../lib/gui.py:2417
 msgid "Tree is empty!"
 msgstr "Treet er tomt!"
 
-#: ../lib/gui.py:2708
+#: ../lib/gui.py:2714
 msgid "Bad regular expression"
 msgstr "Feilaktig regulært uttrykk"
 
-#: ../lib/gui.py:2800
+#: ../lib/gui.py:2806
 #, python-format
 msgid "%s: bad geometry specification: %s\n"
 msgstr "%s: feil spesifikasjon av vindustørelse: %s\n"
 
-#: ../lib/gui.py:2891
+#: ../lib/gui.py:2897
 msgid "New...>>>"
 msgstr "Ny...>>>"
 
-#: ../lib/gui.py:2928
+#: ../lib/gui.py:2934
 msgid "Install gtksourceview to enable undo/redo"
 msgstr ""
 
-#: ../lib/gui.py:3086
+#: ../lib/gui.py:3099
 msgid ": version "
 msgstr ": versjon "
 
@@ -1029,99 +1039,99 @@ msgid ""
 "gnupg2) and try again"
 msgstr ""
 
-#: ../lib/file.py:342
+#: ../lib/file.py:328
 #, fuzzy
 msgid "No openssl program - please install it and try again"
 msgstr "Kunne ikke finne programmet openssl - installer det og forsøk igjen"
 
-#: ../lib/file.py:368
+#: ../lib/file.py:354
 #, fuzzy
 msgid "No org2gjots program - please install it and try again"
 msgstr "Kunne ikke finne programmet openssl - installer det og forsøk igjen"
 
-#: ../lib/file.py:426
+#: ../lib/file.py:412
 msgid "Can't open \""
 msgstr "Kan ikke opne \""
 
-#: ../lib/file.py:429
+#: ../lib/file.py:415
 msgid "Bad password"
 msgstr "Feilaktig passord"
 
-#: ../lib/file.py:432
+#: ../lib/file.py:418
 msgid "File cannot be locked"
 msgstr "Filen kan ikke låses"
 
-#: ../lib/file.py:445 ../lib/file.py:503
+#: ../lib/file.py:431 ../lib/file.py:489
 msgid "failed!"
 msgstr ""
 
-#: ../lib/file.py:471
+#: ../lib/file.py:457
 msgid "Can't write to "
 msgstr "Kan ikke skrive til"
 
-#: ../lib/file.py:474
+#: ../lib/file.py:460
 msgid "Can't lock file"
 msgstr "Kan ikke låse filen"
 
-#: ../lib/file.py:611
+#: ../lib/file.py:597
 #, python-format
 msgid "%s is not readable"
 msgstr "%s er ikke lesbar"
 
-#: ../lib/file.py:627
+#: ../lib/file.py:613
 #, python-format
 msgid "%s: no permission"
 msgstr "%s: ikke tilgang"
 
-#: ../lib/file.py:629
+#: ../lib/file.py:615
 #, python-format
 msgid "%s: locked by process number %d"
 msgstr "%s: låst av prosess nummer %d"
 
-#: ../lib/file.py:631
+#: ../lib/file.py:617
 #, fuzzy
 msgid ": can't lock file."
 msgstr "gjots: kan ikke låse fil."
 
-#: ../lib/file.py:719
+#: ../lib/file.py:705
 msgid "That file is already open!"
 msgstr "Den filen er allerede åpen!"
 
-#: ../lib/file.py:727 ../lib/file.py:801
+#: ../lib/file.py:713 ../lib/file.py:787
 #, fuzzy
 msgid ": file has changed"
 msgstr "gjots: %s finnes allerede."
 
-#: ../lib/file.py:728
+#: ../lib/file.py:714
 #, python-format
 msgid "File changed since it was read - copied to %s "
 msgstr ""
 
-#: ../lib/file.py:745
+#: ../lib/file.py:731
 #, python-format
 msgid "%s is locked by pid %d"
 msgstr "%s er låst av pid %d"
 
-#: ../lib/file.py:749
+#: ../lib/file.py:735
 msgid "Can't make a lockfile in "
 msgstr "Kan ikke lage en låsefil i"
 
-#: ../lib/file.py:762
+#: ../lib/file.py:748
 #, python-format
 msgid "%s is not writable"
 msgstr "%s er ikke skrivbar"
 
-#: ../lib/file.py:765
+#: ../lib/file.py:751
 #, fuzzy, python-format
 msgid ": %s already exists."
 msgstr "gjots: %s finnes allerede."
 
-#: ../lib/file.py:766
+#: ../lib/file.py:752
 #, python-format
 msgid "overwrite %s?"
 msgstr "skrive over %s?"
 
-#: ../lib/file.py:802
+#: ../lib/file.py:788
 #, python-format
 msgid "File changed since it was read - so it was copied to %s "
 msgstr ""

@@ -1,3 +1,9 @@
+2020-06-24   <bob.hepple@gmail.com> 3.1.8
+	gpg-agent no longer uses GPG_AGENT_INFO
+	updated French translation (Frederic Muller <fred@cm17.com>)
+	repair menubar find functions
+	fix: forward search not finding regex in newly selected item.
+	fix: Backward search in root wrapping to end of root item.
 2020-05-14   <bob.hepple@gmail.com> 3.1.7
 	fix popup context menus (right click on tree)
 	fix locale_dir when running from source tree

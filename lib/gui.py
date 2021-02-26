@@ -438,15 +438,17 @@ class gjots_gui:
         if self.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
 
-        prev = self._iter_prev(iter)
+        if self.same_iter(iter, self.get_root()):
+            return None
+        prev = self.treestore.iter_previous(iter)
         if prev:
             return self._get_deepest_child(prev)
 
         while iter:
             iter = self.treestore.iter_parent(iter)
             if not iter:
-                return None
-            prev = self._iter_prev(iter)
+                return self.treestore.get_iter_first()
+            prev = self.treestore.iter_previous(iter)
             if prev:
                 return self._get_deepest_child(prev)
         return iter
@@ -932,8 +934,8 @@ class gjots_gui:
             return
 
         iter = self.treestore.iter_children(parent)
-        if iter == None or self.same_iter(iter, this):
-            return None
+        if self.same_iter(iter, this):
+            return parent
 
         while iter:
             next = self.treestore.iter_next(iter)
@@ -1719,10 +1721,6 @@ class gjots_gui:
             print(inspect.getframeinfo(inspect.currentframe())[2])
         self.msg("")
         self.settings.set_boolean("find-backwards", 0)
-        w = self.gui_get_widget("menubar_find_entry")
-        if w:
-            w.select_region(0, -1)
-            w.grab_focus()
 
         if self.find_next():
             self.msg("Found")
@@ -1734,39 +1732,33 @@ class gjots_gui:
             print(inspect.getframeinfo(inspect.currentframe())[2])
         self.msg("")
         self.settings.set_boolean("find-backwards", 1)
-        w = self.gui_get_widget("menubar_find_entry")
-        if w:
-            w.select_region(0, -1)
-            w.grab_focus()
         if self.find_next():
             self.msg("Found")
         else:
             self.msg("Not found")
 
-    def on_menubar_find_entry_icon_press(self, widget, icon_pos, event):
+    def on_prev_button_clicked(self, widget):
         if self.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
-            print("icon_pos=", icon_pos)
-        if icon_pos == Gtk.EntryIconPosition.PRIMARY:
-            self.on_findAgainBackwards_trigger(widget)
-        else:
-            self.on_findAgain_trigger(widget)
+        self.on_findAgainBackwards_trigger(widget)
 
-    def on_menubar_find_entry_changed(self, widget):
+    def on_next_button_clicked(self, widget):
         if self.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
-            print("changed to: " + widget.get_text())
-        return 0
+        self.on_findAgain_trigger(widget)
 
-    def on_menubar_find_entry_activate(self, widget):
+    def on_menubar_find_combobox_key_release_event(self, widget, key):
         if self.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
-        self.add_string_to_combobox(widget.get_text(), prepend = True)
-        self.update_settings_from_combobox()
-        if self.find_next():
-            self.msg("Found")
-        else:
-            self.msg("Not found")
+        if key.keyval == gi.repository.Gdk.KEY_Return or key.keyval == gi.repository.Gdk.KEY_KP_Enter:
+            search_string = self.get_active_item_from_combobox()
+            if search_string:
+                self.add_string_to_combobox(search_string, prepend = True)
+                self.update_settings_from_combobox()
+                if self.find_next():
+                    self.msg("Found")
+                else:
+                    self.msg("Not found")
 
     # View menu callbacks:
     def on_topToolbarCheck_trigger(self, widget):
@@ -2257,6 +2249,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
                 #self.textBuffer.disconnect(self.textBuffer_changed_handler)
                 self.textBuffer.handler_block(self.textBuffer_changed_handler)
             self.textBuffer.set_text(body, len(body))
+
             #self.textBuffer_changed_handler = self.textBuffer.connect("changed", self.on_textBuffer_changed)
             self.textBuffer.handler_unblock(self.textBuffer_changed_handler)
             self.treestore.set_value(self.current_item, 1, body)
@@ -2304,6 +2297,8 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
                 #self.textBuffer.disconnect(self.textBuffer_changed_handler)
                 self.textBuffer.handler_block(self.textBuffer_changed_handler)
             self.textBuffer.set_text(text, len(text))
+            text_iter = self.textBuffer.get_iter_at_offset(0)
+            self.textBuffer.place_cursor(text_iter)
             self.textBuffer.handler_unblock(self.textBuffer_changed_handler)
             #self.textBuffer_changed_handler = self.textBuffer.connect("changed", self.on_textBuffer_changed)
 
@@ -2373,6 +2368,8 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
         selection.select_path(path)
         self.treeView.set_cursor(path, None, 0)
         self.treeView.scroll_to_cell(path, None, 1, 0.5, 0.5)
+        text_iter = self.textBuffer.get_iter_at_offset(0)
+        self.textBuffer.place_cursor(text_iter)
 
     def _do_goto_first_sibling(self):
         if self.debug:
@@ -2631,11 +2628,20 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
             iter = model.get_iter_first()
             s = [ ]
             while iter:
-                s += [ model.get_value(iter, 0) ]
+                value = model.get_value(iter, 0)
+                if not value:
+                    value = ""
+                s += [ value ]
                 iter = model.iter_next(iter)
             # self.settings.handler_block(self.on_settings_handler)
             self.settings.set_value("find-text", GLib.Variant('as', s))
             # self.settings.handler_unblock(self.on_settings_handler)
+
+    def get_active_item_from_combobox(self):
+        if self.debug:
+            print(inspect.getframeinfo(inspect.currentframe())[2])
+        combobox = self.gui_get_widget("menubar_find_combobox")
+        return combobox.get_child().get_text()
 
     def find_next(self):
         """
@@ -2651,6 +2657,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
         Returns 1 if something found; else 0.
 
         """
+        #self.debug = True
         if self.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
 
@@ -2659,7 +2666,6 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
         # set this to 0 when we can't find anything in the current item:
         look_in_current_item = 1
         current_tree_iter = self.get_first_selected_iter()
-
         while self.hit_start == -1:
             if look_in_current_item:
                 if self.settings.get_boolean("find-backwards"):
@@ -2686,7 +2692,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
                 zone = self.get_node_value(current_tree_iter)
                 self.start_offset = 0
 
-            search_regex = self.gui_get_widget("menubar_find_entry").get_text()
+            search_regex = self.get_active_item_from_combobox()
             if self.debug:
                 print("Searching for: ", search_regex)
 
@@ -2945,6 +2951,12 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
             cell = Gtk.CellRendererText()
             self.combobox.pack_start(cell, True)
 
+        for label in ["prev_button", "next_button", "find_button"]:
+            w = self.gui_get_widget(label)
+            image = w.get_image()
+            w.set_label("")
+            w.set_image(image)
+
         self._initialise_settings()
         self._wrangle_geometry()
         self.cut_text = None
@@ -3042,16 +3054,17 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
             "on_tree_button_press_event":   self.on_tree_button_press_event,
 
             # menutoolbar callbacks
-            "on_menubar_find_entry_icon_press": self.on_menubar_find_entry_icon_press,
-            "on_menubar_find_entry_activate": self.on_menubar_find_entry_activate,
-            "on_menubar_find_entry_changed": self.on_menubar_find_entry_changed,
+            "on_prev_button_clicked":       self.on_prev_button_clicked,
+            "on_next_button_clicked":       self.on_next_button_clicked,
+            "on_menubar_find_combobox_key_release_event": self.on_menubar_find_combobox_key_release_event,
+
             "on_gjots_focus_out_event":     self.on_gjots_focus_out_event,
         }
         self.builder.connect_signals(callbacks)
 
         self.textBuffer_changed_handler = self.textBuffer.connect("changed", self.on_textBuffer_changed)
         self.on_tree_selection_changed_handler = self.treeView.get_selection().connect("changed", self.on_tree_selection_changed)
-        self.on_combobox_handler = self.gui_get_widget("menubar_find_combobox").connect("changed", self.on_combobox_changed)
+        #self.on_combobox_handler = self.gui_get_widget("menubar_find_combobox").connect("changed", self.on_combobox_changed)
         self.on_readOnly_handler = self.gui_get_widget("readOnlyMenuItem").connect("activate", self.on_readOnly_trigger)
 
         # self.on_settings_handler = self.settings.connect("changed::find-text", self.on_settings_find_text_changed, self.gjots)

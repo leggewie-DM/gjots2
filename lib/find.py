@@ -200,7 +200,11 @@ class find_dialog:
 
         w = self.find_get_widget("findEntry")
         if w:
-            w.set_text(self.gui.gui_get_widget("menubar_find_entry").get_text())
+            current_search_text = self.gui.get_active_item_from_combobox()
+            if current_search_text:
+                w.set_text(current_search_text)
+            else:
+                w.set_text("")
 
         w = self.find_get_widget("replaceEntry")
         if w:

@@ -308,25 +308,11 @@ class gjotsfile:
                 self.gui.err_msg(_("Neither gpg2 nor gpg are available - please install one (perhaps package gnupg2) and try again"))
                 raise PasswordError
 
-        # allow agent to provide password if available:
-        if os.environ["GPG_AGENT_INFO"]:
-            prefix = ""
-            option = ""
-        else:
-            if (mode == "r"):
-                num_fields = 1
-            else:
-                num_fields = 2
-            if not reuse_password or self.gui.password == None or self.gui.password == "":
-                self.gui.password = self.get_password(num_fields, filename, mode, self.gui.password)
-            prefix = "echo \"" + self.gui.password + "\" | "
-            option = "--passphrase-fd 0 "
-
         if mode == "r":
-            f = os.popen(prefix + prog + " --batch --no-tty --decrypt --use-agent " + option + "'" + filename + "' 2>/dev/null", "r")
+            f = os.popen(prog + " --batch --no-tty --decrypt --use-agent " + "'" + filename + "' 2>/dev/null", "r")
         else:
-            scratch = tempfile.mktemp(text=True)
-            cmd = "cat > " + scratch + "; " + prefix + prog + " --batch --no-tty -o - --symmetric " + option + scratch + "> '" + filename + "' 2>/dev/null; rm " + scratch
+            scratch = tempfile.mkstemp(text=True)[1]
+            cmd = "cat > " + scratch + "; " + prog + " --batch --no-tty -o - --symmetric " + scratch + "> '" + filename + "' 2>/dev/null; rm " + scratch
 
             f = os.popen(cmd, "w")
         blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -353,7 +339,7 @@ class gjotsfile:
         if mode == "r":
             f = os.popen("echo \"" + self.gui.password + "\" | openssl des3 -d -pass stdin -in '" + filename + "' 2>&1", "r")
         else:
-            scratch = tempfile.mktemp(text=True)
+            scratch = tempfile.mkstemp(text=True)[1]
             f = os.popen("cat > " + scratch + "; echo \"" + self.gui.password + "\" | openssl des3 -pass stdin -in " + scratch + " -out '" + filename + "' 2>&1; rm " + scratch, "w")
         blank = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
         if self.gui.purge_password:

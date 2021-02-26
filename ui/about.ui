@@ -22,7 +22,9 @@ Gabriel Munoz
 
 
 </property>
-    <property name="translator_credits" translatable="yes">Rui Nibau (fr) &lt;rui.nibau@omacronides.com&gt;
+<property name="translator_credits" translatable="yes">
+Rui Nibau (fr) &lt;rui.nibau@omacronides.com&gt;
+Frederic Muller (fr) &lt;fred@cm17.com&gt;
 Robert Emil Berge (no, nb) &lt;filoktetes@linuxophic.org&gt;
 Сергей Безденежных (Sergey Bezdenezhnyh) (ru) &lt;sib-mail@mtu-net.ru&gt;
 Raimondo Giammanco (it) &lt;rongten@member.fsf.org&gt;

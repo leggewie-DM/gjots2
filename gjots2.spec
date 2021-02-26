@@ -1,7 +1,7 @@
 # -*-Mode: rpm-spec -*-
 
 Name:    gjots2
-Version: 3.1.7
+Version: 3.1.8
 Release: 1%{?dist}
 Summary: A hierarchical note jotter - organize your ideas, notes, facts in a tree
 License: GPLv2
@@ -93,6 +93,15 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 %{_mandir}/man1/docbook2gjots*
 
 %changelog
+* Mon Jun 29 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.8-1
+- fix popup context menus (right click on tree)
+- fix locale_dir when running from source tree
+- add LC_ALL=zh_TW translation
+- accomodate installation to any $prefix with setup.py
+- fix tree_select_all
+- fine tune python version requirement to >= 3.6.8 for epel8
+- try for gtksourceview4 and failover to gtksourceview3
+
 * Wed Jun 24 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.7-1
 - new version
 

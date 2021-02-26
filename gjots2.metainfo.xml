@@ -36,6 +36,15 @@ all Linux distributions.
  <url type="homepage">http://sourceforge.net/projects/gjots2</url>
  <update_contact>bob.hepple@gmail.com</update_contact>
  <releases>
+   <release version="3.1.8" date="2020-06-29">
+     <description>
+       <p>gpg-agent no longer uses GPG_AGENT_INFO</p>
+       <p>updated French translation (Frederic Muller &lt;fred@cm17.com&gt;)</p>
+       <p>repair menubar find functions</p>
+       <p>fix: forward search not finding regex in newly selected item.</p>
+       <p>fix: Backward search in root wrapping to end of root item.</p>
+     </description>
+   </release>
    <release version="3.1.7" date="2020-06-18">
      <description>
        <p>fix popup context menus (right click on tree)</p>
