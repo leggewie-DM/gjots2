@@ -1,3 +1,13 @@
+2020-03-02   <bob.hepple@gmail.com> 3.1.0
+	Change to python3
+	Change secondary windows to be of type 'popup' so they don't tile in swaywm
+	Change Gdk.KEY_* to gi.repository.Gdk.Key_*
+2020-02-18   <bob.hepple@gmail.com> 3.0.3
+	specify python2
+2017-12-23   <bob.hepple@gmail.com> 3.0.3
+	display messages in title bar so we can dispense with status bar
+2017-08-10    <bob.hepple@gmail.com> 3.0.3
+	on_quit(): popping up a dialog to ask if a save should be done on_gjots_focus_out_event() which did the save anyway! Result was that the save was done irrespective and then again if the user pressed OK!! So just save the thing - if the user wants to exit without saving then kill the process.
 2017-08-10    <bob.hepple@gmail.com> 3.0.2
 	release 3.0.2
 2017-05-17    <bob.hepple@gmail.com> 3.0.2

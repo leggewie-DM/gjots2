@@ -17,13 +17,14 @@
 #   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 #   MA 02111-1307, USA.
 
-%define ver 3.0.2
-%define rel 1
+%define ver 3.1.0
+%define rel 1.wef
 
 %define _source_filedigest_algorithm md5
 %define _binary_filedigest_algorithm md5
 %define _source_payload nil
 %define _binary_payload nil
+
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Summary: A note jotter. Organise your ideas, notes, facts in a hierarchy.
@@ -31,7 +32,7 @@ Name: gjots2
 Version: %{ver}
 Release: %{rel}
 URL: http://bhepple.freeshell.org/gjots
-#Source: http://bhepple.freeshell.org/gjots/gjots2-%{ver}.tar.gz
+#Source: http://bhepple.freeshell.org/gjots/gjots2-%%{ver}.tar.gz
 Source0: %{name}-%{version}.tgz
 License: GPLv2+
 Group: Applications/Productivity
@@ -39,8 +40,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 BuildRequires: python desktop-file-utils
 
-Requires: python
-Requires: pygobject3
+Requires: python3-gobject
+Requires: gtk3
 Requires: gtksourceview3
 
 %description
@@ -70,7 +71,7 @@ done
 %install
 
 # typically:
-#	buildroot=/var/tmp/root-gjots2-3.0.2
+#	buildroot=/var/tmp/root-gjots2-3.1.0
 #	_datadir=/usr/share
 #	_bindir=/usr/bin
 #	_libdir=/usr/lib

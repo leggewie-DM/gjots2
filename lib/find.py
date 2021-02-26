@@ -4,13 +4,13 @@ class find_dialog:
 
     def destroy(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.find_get_widget(self.name).destroy()
         self.gui.remove_tag()
 
     def saveSettings(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         w = self.find_get_widget("caseCheckbutton")
         if w:
             self.gui.settings.set_boolean("find-match-case", w.get_active())
@@ -38,22 +38,22 @@ class find_dialog:
 
     def on_findDialog_destroy(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.gui.find_dialog = None
         return
 
     def on_replaceEntry_key_press_event(self, widget, key_event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
-        if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
+        if key_event.keyval == gi.repository.Gdk.KEY_Return or key_event.keyval == gi.repository.Gdk.KEY_KP_Enter:
             self.on_replaceStartButton_clicked(widget)
-        if key_event.keyval == Gdk.KEY_Escape:
+        if key_event.keyval == gi.repository.Gdk.KEY_Escape:
             self.on_findCancelButton_clicked(widget)
         return
 
     def feedback(self, msg):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
         w = self.find_get_widget("findFeedback")
         if w:
             w.set_text(msg)
@@ -61,7 +61,7 @@ class find_dialog:
 
     def on_findStartButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.gui.sync_text_buffer()
         self.saveSettings()
         self.feedback("")
@@ -77,14 +77,14 @@ class find_dialog:
 
     def on_findCloseButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.saveSettings()
         self.destroy()
         return
 
     def on_replaceStartButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.gui.sync_text_buffer()
         self.saveSettings()
         self.feedback("")
@@ -102,7 +102,7 @@ class find_dialog:
 
     def on_replaceAllButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.gui.sync_text_buffer()
         self.saveSettings()
         total = 0
@@ -119,13 +119,13 @@ class find_dialog:
 
     def on_findCancelButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.destroy()
         return
 
     def on_findClearButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         w = self.find_get_widget("findEntry")
         if w:
             w.set_text("")
@@ -138,7 +138,7 @@ class find_dialog:
 
     def _set_readonly(self, mode):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         if mode:
             w = self.find_get_widget("replaceStartButton")
             w.hide()
@@ -165,7 +165,7 @@ class find_dialog:
 
         self.gui = gui
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
 
         callbacks = {
             "on_findDialog_destroy":                    self.on_findDialog_destroy,
@@ -213,7 +213,7 @@ class find_dialog:
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode nil)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

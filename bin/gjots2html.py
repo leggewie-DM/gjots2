@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 # TODO:
 #   1) Add option to generate the html file in chunks

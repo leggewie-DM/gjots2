@@ -6,12 +6,12 @@ import pipes
 class print_dialog:
     def destroy(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.print_get_widget(self.name).destroy()
 
     def saveSettings(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         w = self.print_get_widget("printPageRadioButton")
         if w:
             self.gui.settings.set_boolean("print-page", w.get_active())
@@ -37,23 +37,23 @@ class print_dialog:
     
     def on_printDialog_destroy(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         return
     
     def on_printCommandEntry_key_press_event(self, widget, key_event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
 
-        # to get all keysyms: print Gdk.KEY___dict__
-        if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
+        # to get all keysyms see gdk/gdkkeysyms.h
+        if key_event.keyval == gi.repository.Gdk.KEY_Return or key_event.keyval == gi.repository.Gdk.KEY_KP_Enter:
             self.on_printOKButton_clicked(widget)
-        if key_event.keyval == Gdk.KEY_Escape:
+        if key_event.keyval == gi.repository.Gdk.KEY_Escape:
             self.on_printCancelButton_clicked(widget)
         return
 
     def _get_settings(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         print_page = print_selection = print_all = page_feed = bold_titles = 0
         print_command = ""
         w = self.print_get_widget("printPageRadioButton")
@@ -94,7 +94,7 @@ class print_dialog:
         """
         
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.gui.sync_text_buffer()
         self.saveSettings()
         print_page, print_selection, print_all, page_feed, bold_titles, print_command = self._get_settings()
@@ -115,7 +115,7 @@ class print_dialog:
 
         t = pipes.Template()
         t.append(print_command, "-.")
-        scratch = tempfile.mktemp()
+        scratch = tempfile.mktemp(text = True)
         f = t.open(scratch, "w")
 
         single_page = 0
@@ -145,7 +145,7 @@ class print_dialog:
         
     def on_printCancelButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.destroy()
         return
     
@@ -156,7 +156,7 @@ class print_dialog:
 
         self.gui = gui
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
 
         callbacks = {
             "on_printDialog_destroy":                   self.on_printDialog_destroy,
@@ -195,7 +195,7 @@ class print_dialog:
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode nil)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

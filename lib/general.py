@@ -6,12 +6,12 @@ from common import *
 class general_dialog:
     def destroy(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.general_get_widget(self.name).destroy()
 
     def on_generalField1_key_press_event(self, widget, event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         if event.keyval == 65307: # Escape
             self.generalValue = CANCEL;
             return 1
@@ -32,7 +32,7 @@ class general_dialog:
 
     def on_generalField2_key_press_event(self, widget, event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         if event.keyval == 65307: # Escape
             self.generalValue = CANCEL;
             return 1
@@ -48,42 +48,42 @@ class general_dialog:
 
     def on_generalOK_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.generalValue = OK
 
     def on_generalNo_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.generalValue = NO
 
     def on_generalCancel_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.generalValue = CANCEL
 
     def on_generalTryagain_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.generalValue = TRYAGAIN
 
     def on_generalReadonly_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.generalValue = READONLY
 
     def get_field1(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         return self.field1
 
     def get_field2(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         return self.field2
 
     def get_value(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         return self.generalValue
 
     def __init__(self, gui, title, prompt, buttons, num_fields = 0, secretp = 0, feedback = "",
@@ -91,7 +91,7 @@ class general_dialog:
                  field2_label = "", field2_default = ""):
         self.gui = gui
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
 
         callbacks = {
 
@@ -187,7 +187,7 @@ class general_dialog:
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode nil)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:
