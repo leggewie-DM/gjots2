@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 # TODO:
 #   1) Add option to generate the html file in chunks

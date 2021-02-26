@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 # A command to install gjots2 using the 'standard' method for python.
 # I prefer to install with rpm or emerge but this might be useful if
@@ -86,7 +86,7 @@ setup(
         ('share/locale/de_DE/LC_MESSAGES', ['po/de_DE/LC_MESSAGES/gjots2.mo']),
         ('share/locale/en_US/LC_MESSAGES', ['po/en_US/LC_MESSAGES/gjots2.mo']),
         ('share/applications',['gjots2.desktop']),
-        ('share/appdata',['gjots2.appdata.xml']),
+        ('share/metainfo',['gjots2.metainfo.xml']),
         ('share/glib-2.0/schemas', ['org.gtk.gjots2.gschema.xml']),
     ],
     license = 'GNU GPL',

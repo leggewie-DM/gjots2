@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 # Copyright (C) 1997-2015 Bob Hepple
 # 
 # A simple script to convert a emacs outline file to gjots
@@ -15,10 +15,10 @@
 # PURPOSE.  See the GNU General Public License for more
 # details.
 # 
-# You should have received a copy of the GNU General Public
-# License along with this program; if not, write to the Free
-# Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
-# 02139, USA.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA
 
 usage() {
 	echo "Usage: $PROG [filename]

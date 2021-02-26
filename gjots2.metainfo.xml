@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2015 Bob Hepple <bob.hepple@gmail.com> -->
-<application>
- <id type="desktop">gjots2.desktop</id>
- <licence>CC0</licence>
+<component type="desktop-application">
+ <id>gjots2</id>
+ <launchable type="desktop-id">gjots2.desktop</launchable>
+ <metadata_licence>FSFAP</metadata_licence>
  <project_license>GPL-2.0</project_license>
+ <name>gjots2</name>
+ <summary>A hierarchical note jotter - organise your ideas, notes, facts in a tree</summary>
  <description>
   <p>
 gjots2(1) is a simple jotter application for your desktop - an outline processor.
@@ -31,5 +34,15 @@ all Linux distributions.
   <screenshot type="default" width="802" height="473">https://a.fsdn.com/con/app/proj/gjots2/screenshots/screenshot.png</screenshot>
  </screenshots>
  <url type="homepage">http://sourceforge.net/projects/gjots2</url>
- <updatecontact>bob.hepple@gmail.com</updatecontact>
-</application>
+ <update_contact>bob.hepple@gmail.com</update_contact>
+ <releases>
+   <release version="3.1.4" date="2020-04-19">
+     <description>
+       <p>Fix issues in RHBZ#1823599</p>
+       <p>Update more FSF addresses</p>
+       <p>Change shebangs to absolute paths (fedora required)</p>
+       <p>Change appdata to metainfo</p>
+     </description>
+   </release>
+ </releases>
+</component>
