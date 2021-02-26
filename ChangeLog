@@ -1,3 +1,12 @@
+2020-06-24   <bob.hepple@gmail.com> 3.1.9
+	ui/about.ui: remove redundant translater credits - seems to have no effect here
+	fix: some environments don't always show images in buttons
+	add tooltip for Find button
+	fix: printDialog needed import gi, os; was using old mktemp
+	Change popup dialogs type to 'top-level' instead of 'popup'!!! -
+	as documented on GtkWindow page - avoids the message: Window
+	0x560942cc2d60 is a temporary window without parent, application
+	will not be able to position it on screen.
 2020-06-24   <bob.hepple@gmail.com> 3.1.8
 	gpg-agent no longer uses GPG_AGENT_INFO
 	updated French translation (Frederic Muller <fred@cm17.com>)

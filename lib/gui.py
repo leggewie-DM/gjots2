@@ -38,6 +38,7 @@ an iterator is valid for as long as the node it refers to is valid
 Note that every selection is constrained to be of siblings only at the
 time the selection changes - so we can always make that assumption.
 
+TODO: replace self._iter_prev/next with self.treestore.iter_previous/next
 """
 
 def _insert_primary_callback(clipboard, text, user_data):
@@ -1967,6 +1968,7 @@ class gjots_gui:
         dlg.set_copyright("Copyright Bob Hepple 2002-2020")
         dlg.set_website("http://bhepple.freeshell.org/gjots2")
         dlg.set_translator_credits("""Rui Nibau (fr) <rui.nibau@omacronides.com>
+Frederic Muller (fr) <fred@cm17.com>
 Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>
 Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>
 Raimondo Giammanco (it) <rongten@member.fsf.org>
@@ -2956,6 +2958,7 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
             image = w.get_image()
             w.set_label("")
             w.set_image(image)
+            w.set_always_show_image(True)
 
         self._initialise_settings()
         self._wrangle_geometry()

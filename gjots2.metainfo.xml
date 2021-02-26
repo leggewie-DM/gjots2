@@ -36,6 +36,19 @@ all Linux distributions.
  <url type="homepage">http://sourceforge.net/projects/gjots2</url>
  <update_contact>bob.hepple@gmail.com</update_contact>
  <releases>
+   <release version="3.1.9" date="2020-07-06">
+     <description>
+       <p>ui/about.ui: remove redundant translater credits - seems to have no effect here</p>
+       <p>fix: some environments don't always show images in buttons</p>
+       <p>add tooltip for Find button</p>
+       <p>fix: printDialog needed import gi, os; was using old mktemp</p>
+       <p>Change popup dialogs type to 'top-level' instead of
+       'popup'!!! - as documented on GtkWindow page - avoids the
+       message: Window 0x560942cc2d60 is a temporary window without
+       parent, application will not be able to position it on
+       screen.</p>
+     </description>
+   </release>
    <release version="3.1.8" date="2020-06-29">
      <description>
        <p>gpg-agent no longer uses GPG_AGENT_INFO</p>

@@ -5,9 +5,9 @@
   <object class="GtkWindow" id="printDialog">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Print</property>
     <property name="window_position">mouse</property>
+    <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <signal name="destroy" handler="on_printDialog_destroy" swapped="no"/>
     <child>

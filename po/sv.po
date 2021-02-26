@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gjots2 2.3.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 14:35+1000\n"
+"POT-Creation-Date: 2020-06-30 18:18+1000\n"
 "PO-Revision-Date: 2012-05-11 08:58+1000\n"
 "Last-Translator: Morgan Antonsson <morgan.antonsson@gmail.com>\n"
 "Language-Team: Swedish <LL@li.org>\n"
@@ -17,139 +17,128 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../ui/about.ui:13
+#: ../ui/about.ui:12
 msgid "Copyright Bob Hepple 2002-2020"
 msgstr ""
 
-#: ../ui/about.ui:14
+#: ../ui/about.ui:13
 msgid "http://bhepple.freeshell.org/gjots2"
 msgstr ""
 
 #: ../ui/about.ui:25
-msgid ""
-"\n"
-"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
-"Frederic Muller (fr) <fred@cm17.com>\n"
-"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
-"Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
-"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
-"Martin Sin (cs) <martin.sin@zshk.cz>\n"
-"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
-"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
-"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
-"曹晉維 (Michael Tsao) (zh_TW) <cwtsao@sce.pccu.edu.tw>\n"
+msgid "\n"
 msgstr ""
 
-#: ../ui/fileDialog.ui:70
+#: ../ui/fileDialog.ui:69
 msgid "Open file read only"
 msgstr "Öppna som skrivskyddad"
 
-#: ../ui/fileDialog.ui:74
+#: ../ui/fileDialog.ui:73
 msgid "To open the file in read-only mode."
 msgstr "Öppna en fil i skrivskyddat läge."
 
-#: ../ui/findDialog.ui:9
+#: ../ui/findDialog.ui:8
 msgid "Find & replace"
 msgstr "Sök och ersätt"
 
-#: ../ui/findDialog.ui:35
+#: ../ui/findDialog.ui:34
 msgid "Find:"
 msgstr "Sök efter:"
 
-#: ../ui/findDialog.ui:48
+#: ../ui/findDialog.ui:47
 msgid "Replace:"
 msgstr "Ersätt med:"
 
-#: ../ui/findDialog.ui:65
+#: ../ui/findDialog.ui:64
 msgid "String to search for"
 msgstr "Sträng att söka efter"
 
-#: ../ui/findDialog.ui:81
+#: ../ui/findDialog.ui:80
 msgid "String to replace"
 msgstr "Sträng att ersätta med"
 
-#: ../ui/findDialog.ui:115 ../ui/gjots.ui:843
+#: ../ui/findDialog.ui:114 ../ui/gjots.ui:844
 msgid "Find"
 msgstr "Sök"
 
-#: ../ui/findDialog.ui:131
+#: ../ui/findDialog.ui:130
 msgid "Close"
 msgstr "Stäng"
 
-#: ../ui/findDialog.ui:147
+#: ../ui/findDialog.ui:146
 msgid "Replace"
 msgstr "Ersätt"
 
-#: ../ui/findDialog.ui:163
+#: ../ui/findDialog.ui:162
 msgid "Replace All"
 msgstr "Ersätt alla"
 
-#: ../ui/findDialog.ui:179
+#: ../ui/findDialog.ui:178
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../ui/findDialog.ui:198
+#: ../ui/findDialog.ui:197
 msgid "Clear"
 msgstr "Töm"
 
-#: ../ui/findDialog.ui:258
+#: ../ui/findDialog.ui:257
 msgid "Match case"
 msgstr "Skiftlägeskänslig"
 
-#: ../ui/findDialog.ui:262
+#: ../ui/findDialog.ui:261
 msgid "Don't ignore case"
 msgstr "Gör skillnad på gemener och versaler"
 
-#: ../ui/findDialog.ui:272
+#: ../ui/findDialog.ui:271
 msgid "Regular Expression"
 msgstr "Reguljärt uttryck"
 
-#: ../ui/findDialog.ui:276
+#: ../ui/findDialog.ui:275
 msgid "Find string is a regular expression (see 'man 7 regex')"
 msgstr "Söksträngen är ett reguljärt uttryck (se 'man 7 regex')"
 
-#: ../ui/findDialog.ui:288
+#: ../ui/findDialog.ui:287
 msgid "Backwards"
 msgstr "Bakåt"
 
-#: ../ui/findDialog.ui:292
+#: ../ui/findDialog.ui:291
 msgid "Search backwards"
 msgstr "Sök baklänges"
 
-#: ../ui/findDialog.ui:307
+#: ../ui/findDialog.ui:306
 msgid "Global"
 msgstr "Global sökning"
 
-#: ../ui/findDialog.ui:311
+#: ../ui/findDialog.ui:310
 msgid "Searches entire file not just this entry"
 msgstr "Söker i hela filen, inte bara på den här sidan"
 
-#: ../ui/findDialog.ui:328
+#: ../ui/findDialog.ui:327
 msgid " Options "
 msgstr " Inställningar "
 
-#: ../ui/fontDialog.ui:10
+#: ../ui/fontDialog.ui:9
 msgid "Select Font"
 msgstr "Välj typsnitt"
 
-#: ../ui/generalDialog.ui:10
+#: ../ui/generalDialog.ui:9
 msgid "window1"
 msgstr "fönster1"
 
-#: ../ui/generalDialog.ui:23 ../ui/generalDialog.ui:61
-#: ../ui/generalDialog.ui:116
+#: ../ui/generalDialog.ui:22 ../ui/generalDialog.ui:60
+#: ../ui/generalDialog.ui:115
 msgid "label1"
 msgstr "etikett1"
 
-#: ../ui/generalDialog.ui:47
+#: ../ui/generalDialog.ui:46
 msgid "label2"
 msgstr "etikett2"
 
-#: ../ui/generalDialog.ui:194
+#: ../ui/generalDialog.ui:193
 msgid "Try again"
 msgstr "Försök igen"
 
-#: ../ui/generalDialog.ui:210
+#: ../ui/generalDialog.ui:209
 msgid "Read only"
 msgstr "Skrivskyddad"
 
@@ -207,7 +196,7 @@ msgstr "_Visa"
 msgid "_Show All"
 msgstr "_Visa alla"
 
-#: ../ui/gjots.ui:310 ../ui/gjots.ui:1084
+#: ../ui/gjots.ui:310 ../ui/gjots.ui:1085
 msgid "Show all items below the current item"
 msgstr "Visa alla sidor under vald sida"
 
@@ -263,15 +252,15 @@ msgstr "Skapa en ny sida"
 msgid "New _Child"
 msgstr "Ny unde_rsida"
 
-#: ../ui/gjots.ui:403 ../ui/gjots.ui:919
+#: ../ui/gjots.ui:403 ../ui/gjots.ui:920
 msgid "Create a new child"
 msgstr "Skapa en ny undersida"
 
-#: ../ui/gjots.ui:420 ../ui/gjots.ui:949
+#: ../ui/gjots.ui:420 ../ui/gjots.ui:950
 msgid "Move selection up"
 msgstr "Flytta upp"
 
-#: ../ui/gjots.ui:431 ../ui/gjots.ui:964
+#: ../ui/gjots.ui:431 ../ui/gjots.ui:965
 msgid "Move selection down"
 msgstr "Flytta ned"
 
@@ -279,7 +268,7 @@ msgstr "Flytta ned"
 msgid "P_romote"
 msgstr "U_pphöj"
 
-#: ../ui/gjots.ui:442 ../ui/gjots.ui:979
+#: ../ui/gjots.ui:442 ../ui/gjots.ui:980
 msgid "Selection becomes a sibling to their parent"
 msgstr "Vald sida blir ett syskon till sin förälder"
 
@@ -287,7 +276,7 @@ msgstr "Vald sida blir ett syskon till sin förälder"
 msgid "D_emote"
 msgstr "N_edsänk"
 
-#: ../ui/gjots.ui:453 ../ui/gjots.ui:994
+#: ../ui/gjots.ui:453 ../ui/gjots.ui:995
 msgid "Selection becomes a child of the previous item"
 msgstr "Vald sida blir ett barn till föregående sida"
 
@@ -311,7 +300,7 @@ msgstr "Slå ihop valda sidor under den första sidan"
 msgid "S_ort Tree"
 msgstr "S_ortera träd"
 
-#: ../ui/gjots.ui:492 ../ui/gjots.ui:1099
+#: ../ui/gjots.ui:492 ../ui/gjots.ui:1100
 msgid "Popup the sort tree dialog"
 msgstr "Öppna dialogrutan för trädsortering"
 
@@ -363,181 +352,185 @@ msgstr "_Läs instruktioner"
 msgid "Read the online manual (using gjots)"
 msgstr "Läs instruktioner från internet (m.h.a. gjots)"
 
-#: ../ui/gjots.ui:650
+#: ../ui/gjots.ui:621
+msgid "Popup the 'Find'menu"
+msgstr ""
+
+#: ../ui/gjots.ui:651
 #, fuzzy
 msgid "Find the previous occurance"
 msgstr "Sök föregående"
 
-#: ../ui/gjots.ui:666
+#: ../ui/gjots.ui:667
 msgid "Find the next occurance"
 msgstr ""
 
-#: ../ui/gjots.ui:692
+#: ../ui/gjots.ui:693
 msgid "Save gjots document"
 msgstr "Spara gjots-dokument"
 
-#: ../ui/gjots.ui:693
+#: ../ui/gjots.ui:694
 msgid "Save"
 msgstr "Spara"
 
-#: ../ui/gjots.ui:707
+#: ../ui/gjots.ui:708
 msgid "Print this document"
 msgstr "Skriv ut dokumentet"
 
-#: ../ui/gjots.ui:708 ../ui/printDialog.ui:9
+#: ../ui/gjots.ui:709 ../ui/printDialog.ui:8
 msgid "Print"
 msgstr "Skriv ut"
 
-#: ../ui/gjots.ui:737
+#: ../ui/gjots.ui:738
 msgid "Cut selected items"
 msgstr "Klipp ut markeringen"
 
-#: ../ui/gjots.ui:738
+#: ../ui/gjots.ui:739
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: ../ui/gjots.ui:752
+#: ../ui/gjots.ui:753
 msgid "Copy selected items"
 msgstr "Kopiera markeringen"
 
-#: ../ui/gjots.ui:753
+#: ../ui/gjots.ui:754
 msgid "Copy"
 msgstr "Kopiera"
 
-#: ../ui/gjots.ui:767
+#: ../ui/gjots.ui:768
 msgid "Paste selected items"
 msgstr "Klistra in från urklipp"
 
-#: ../ui/gjots.ui:768
+#: ../ui/gjots.ui:769
 msgid "Paste"
 msgstr "Klistra in"
 
-#: ../ui/gjots.ui:797
+#: ../ui/gjots.ui:798
 msgid "Wrap the current paragraph to the current line length"
 msgstr "Radbryt vald paragraf vid inställd radlängd"
 
-#: ../ui/gjots.ui:798
+#: ../ui/gjots.ui:799
 msgid "Wrap"
 msgstr "Radbryt"
 
-#: ../ui/gjots.ui:812
+#: ../ui/gjots.ui:813
 msgid "Invoke an external editor on the current item"
 msgstr "Öppna extern redigerare för vald sida"
 
-#: ../ui/gjots.ui:813
+#: ../ui/gjots.ui:814
 msgid "Ext.Ed."
 msgstr "Ext. red."
 
-#: ../ui/gjots.ui:827
+#: ../ui/gjots.ui:828
 msgid "Add a time/date stamp (see prefs)"
 msgstr "Infoga datum och (se inställningar)"
 
-#: ../ui/gjots.ui:828
+#: ../ui/gjots.ui:829
 msgid "Date"
 msgstr "Datum/tid"
 
-#: ../ui/gjots.ui:842
+#: ../ui/gjots.ui:843
 msgid "Popup the find and replace dialog"
 msgstr "Öppna dialogrutan för sök och ersätt"
 
-#: ../ui/gjots.ui:857
+#: ../ui/gjots.ui:858
 msgid "Popup the sort dialog"
 msgstr "Öppna dialogrutan för sortering"
 
-#: ../ui/gjots.ui:858 ../ui/sortDialog.ui:16
+#: ../ui/gjots.ui:859 ../ui/sortDialog.ui:15
 msgid "Sort"
 msgstr "Sortera"
 
-#: ../ui/gjots.ui:872
+#: ../ui/gjots.ui:873
 msgid "Open gjots preferences window"
 msgstr "Öppna fönstret för gjots inställningar"
 
-#: ../ui/gjots.ui:873
+#: ../ui/gjots.ui:874
 msgid "Prefs"
 msgstr "Inställningar"
 
-#: ../ui/gjots.ui:904
+#: ../ui/gjots.ui:905
 msgid "Create a new item"
 msgstr "Skapa en ny sida"
 
-#: ../ui/gjots.ui:905 ../ui/treeContextMenu.ui:45
+#: ../ui/gjots.ui:906 ../ui/treeContextMenu.ui:45
 msgid "New Page"
 msgstr "Ny sida"
 
-#: ../ui/gjots.ui:920 ../ui/treeContextMenu.ui:52
+#: ../ui/gjots.ui:921 ../ui/treeContextMenu.ui:52
 msgid "New Child"
 msgstr "Ny undersida"
 
-#: ../ui/gjots.ui:950
+#: ../ui/gjots.ui:951
 msgid "Up"
 msgstr "Upp"
 
-#: ../ui/gjots.ui:965
+#: ../ui/gjots.ui:966
 msgid "Down"
 msgstr "Ned"
 
-#: ../ui/gjots.ui:980 ../ui/treeContextMenu.ui:74
+#: ../ui/gjots.ui:981 ../ui/treeContextMenu.ui:74
 msgid "Promote"
 msgstr "Upphöj"
 
-#: ../ui/gjots.ui:995 ../ui/treeContextMenu.ui:82
+#: ../ui/gjots.ui:996 ../ui/treeContextMenu.ui:82
 msgid "Demote"
 msgstr "Nedsänk"
 
-#: ../ui/gjots.ui:1024
+#: ../ui/gjots.ui:1025
 msgid "Split the text selection into a new item"
 msgstr "Flytta vald text till en ny sida"
 
-#: ../ui/gjots.ui:1025
+#: ../ui/gjots.ui:1026
 msgid "Split Item"
 msgstr "Dela sida"
 
-#: ../ui/gjots.ui:1039
+#: ../ui/gjots.ui:1040
 msgid "Merge selected items together"
 msgstr "Slå ihop valda sidor"
 
-#: ../ui/gjots.ui:1040 ../ui/treeContextMenu.ui:89
+#: ../ui/gjots.ui:1041 ../ui/treeContextMenu.ui:89
 msgid "Merge Items"
 msgstr "Slå ihop sidor"
 
-#: ../ui/gjots.ui:1069
+#: ../ui/gjots.ui:1070
 msgid "Hide all items except for the top level"
 msgstr "Göm alla sidor utom dem på toppnivån"
 
-#: ../ui/gjots.ui:1070 ../ui/treeContextMenu.ui:103
+#: ../ui/gjots.ui:1071 ../ui/treeContextMenu.ui:103
 msgid "Hide All"
 msgstr "Göm alla"
 
-#: ../ui/gjots.ui:1085 ../ui/treeContextMenu.ui:96
+#: ../ui/gjots.ui:1086 ../ui/treeContextMenu.ui:96
 msgid "Show All"
 msgstr "Visa alla"
 
-#: ../ui/gjots.ui:1100 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
+#: ../ui/gjots.ui:1101 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
 msgid "Sort Tree"
 msgstr "Sortera träd"
 
-#: ../ui/prefsDialog.ui:21
+#: ../ui/prefsDialog.ui:20
 msgid "gjots: preferences"
 msgstr "gjots: inställningar"
 
-#: ../ui/prefsDialog.ui:50
+#: ../ui/prefsDialog.ui:49
 msgid "Choose a font for the text panel"
 msgstr "Välj ett typsnitt för textpanelen"
 
-#: ../ui/prefsDialog.ui:66
+#: ../ui/prefsDialog.ui:65
 msgid "Date format:"
 msgstr "Datum-/tidformat:"
 
-#: ../ui/prefsDialog.ui:80
+#: ../ui/prefsDialog.ui:79
 #, fuzzy
 msgid "Format for the timestamp function (see strftime(3)) eg %F"
 msgstr "Format för datum-/tidfunktionen (se strftime(3))"
 
-#: ../ui/prefsDialog.ui:81
+#: ../ui/prefsDialog.ui:80
 msgid "%F"
 msgstr ""
 
-#: ../ui/prefsDialog.ui:100
+#: ../ui/prefsDialog.ui:99
 #, fuzzy
 msgid ""
 "External program to edit a page (%s is replaced by the name of the temporary "
@@ -546,50 +539,50 @@ msgstr ""
 "Externt program för att redigera en sida (%s byts ut mot namn på tillfällig "
 "textfil)"
 
-#: ../ui/prefsDialog.ui:101
+#: ../ui/prefsDialog.ui:100
 msgid "xterm -e vi %s"
 msgstr ""
 
-#: ../ui/prefsDialog.ui:121
+#: ../ui/prefsDialog.ui:120
 msgid "External editor"
 msgstr "Extern redigerare: "
 
-#: ../ui/prefsDialog.ui:136
+#: ../ui/prefsDialog.ui:135
 msgid "Text Line Length: "
 msgstr "Radlängd: "
 
-#: ../ui/prefsDialog.ui:150
+#: ../ui/prefsDialog.ui:149
 msgid "Line length for paragraph wrapping"
 msgstr "Radlängd för brytning av stycken"
 
-#: ../ui/prefsDialog.ui:173
+#: ../ui/prefsDialog.ui:172
 msgid "Text formatter: "
 msgstr "Textformattering: "
 
-#: ../ui/prefsDialog.ui:185
+#: ../ui/prefsDialog.ui:184
 #, fuzzy
 msgid ""
 "External program to pipe text for formatting (%d is replaced by the current "
 "line width) eg fmt -w %d "
 msgstr "Externt program för formattering (%d byts ut mot vald radlängd)"
 
-#: ../ui/prefsDialog.ui:186
+#: ../ui/prefsDialog.ui:185
 msgid "fmt -w %d "
 msgstr ""
 
-#: ../ui/prefsDialog.ui:203
+#: ../ui/prefsDialog.ui:202
 msgid "Current text font"
 msgstr "Valt typsnitt"
 
-#: ../ui/prefsDialog.ui:205
+#: ../ui/prefsDialog.ui:204
 msgid "Courier 10 Pitch 10"
 msgstr ""
 
-#: ../ui/prefsDialog.ui:225
+#: ../ui/prefsDialog.ui:224
 msgid "AutoSave interval:"
 msgstr ""
 
-#: ../ui/prefsDialog.ui:239
+#: ../ui/prefsDialog.ui:238
 msgid "Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)"
 msgstr ""
 
@@ -665,47 +658,47 @@ msgstr "t.ex. 1 för 1.2.1, a"
 msgid " Print formatting "
 msgstr " Utskriftsformat "
 
-#: ../ui/sortDialog.ui:44
+#: ../ui/sortDialog.ui:43
 msgid "Ascending"
 msgstr "Stigande ordning"
 
-#: ../ui/sortDialog.ui:48
+#: ../ui/sortDialog.ui:47
 msgid "Sort in ascending order"
 msgstr "Sorter i stigande ordning"
 
-#: ../ui/sortDialog.ui:59
+#: ../ui/sortDialog.ui:58
 msgid "Descending"
 msgstr "Fallande ordning"
 
-#: ../ui/sortDialog.ui:63
+#: ../ui/sortDialog.ui:62
 msgid "Sort in descending order"
 msgstr "Sortera i fallande ordning"
 
-#: ../ui/sortDialog.ui:77
+#: ../ui/sortDialog.ui:76
 msgid "Alphabetic"
 msgstr "Alfabetiskt"
 
-#: ../ui/sortDialog.ui:81
+#: ../ui/sortDialog.ui:80
 msgid "Sort in alphabetic order"
 msgstr "Sortera alfabetiskt"
 
-#: ../ui/sortDialog.ui:94
+#: ../ui/sortDialog.ui:93
 msgid "Numeric"
 msgstr "Numeriskt"
 
-#: ../ui/sortDialog.ui:98
+#: ../ui/sortDialog.ui:97
 msgid "Sort in numeric order"
 msgstr "Sortera numeriskt"
 
-#: ../ui/sortDialog.ui:120
+#: ../ui/sortDialog.ui:119
 msgid " Sort Parameters "
 msgstr "Sorteringsparametrar"
 
-#: ../ui/sortDialog.ui:150
+#: ../ui/sortDialog.ui:149
 msgid "How many sublevels to sort (0 for none; -1 for 'all')"
 msgstr "Antal undernivåer att sortera (0 för ingen; -1 för alla)"
 
-#: ../ui/sortDialog.ui:172
+#: ../ui/sortDialog.ui:171
 msgid " Sort Sublevels "
 msgstr "Sortera undernivåer"
 
@@ -768,188 +761,188 @@ msgstr "Skriv -h för att visa hjälptext\n"
 msgid "%s version %s"
 msgstr "%s version %s"
 
-#: ../lib/gui.py:50 ../lib/gui.py:995
+#: ../lib/gui.py:51 ../lib/gui.py:996
 msgid "Text pasted"
 msgstr "Texten klistrades in"
 
-#: ../lib/gui.py:178
+#: ../lib/gui.py:179
 #, python-format
 msgid "External formatter \"%s\" is not installed - can't format"
 msgstr "Extern formatterare \"%s\" är inte installerad - kan inte formattera"
 
-#: ../lib/gui.py:563 ../lib/gui.py:674 ../lib/gui.py:678 ../lib/gui.py:744
-#: ../lib/gui.py:748 ../lib/gui.py:811 ../lib/gui.py:816 ../lib/gui.py:1042
-#: ../lib/gui.py:1051 ../lib/gui.py:1137 ../lib/gui.py:1146 ../lib/gui.py:1182
-#: ../lib/gui.py:1187 ../lib/gui.py:1218 ../lib/gui.py:1607 ../lib/gui.py:2380
-#: ../lib/gui.py:2399 ../lib/gui.py:2428 ../lib/gui.py:2459 ../lib/file.py:466
+#: ../lib/gui.py:564 ../lib/gui.py:675 ../lib/gui.py:679 ../lib/gui.py:745
+#: ../lib/gui.py:749 ../lib/gui.py:812 ../lib/gui.py:817 ../lib/gui.py:1043
+#: ../lib/gui.py:1052 ../lib/gui.py:1138 ../lib/gui.py:1147 ../lib/gui.py:1183
+#: ../lib/gui.py:1188 ../lib/gui.py:1219 ../lib/gui.py:1608 ../lib/gui.py:2382
+#: ../lib/gui.py:2401 ../lib/gui.py:2430 ../lib/gui.py:2461 ../lib/file.py:466
 #: ../lib/file.py:471 ../lib/sortDialog.py:329 ../lib/sortDialog.py:334
-#: ../lib/printDialog.py:108 ../lib/printDialog.py:113
+#: ../lib/printDialog.py:110 ../lib/printDialog.py:115
 msgid "Nothing selected"
 msgstr "Inget är valt"
 
-#: ../lib/gui.py:567 ../lib/gui.py:683 ../lib/gui.py:752 ../lib/gui.py:821
-#: ../lib/gui.py:933 ../lib/gui.py:1223 ../lib/gui.py:2384
+#: ../lib/gui.py:568 ../lib/gui.py:684 ../lib/gui.py:753 ../lib/gui.py:822
+#: ../lib/gui.py:934 ../lib/gui.py:1224 ../lib/gui.py:2386
 #: ../lib/sortDialog.py:345
 msgid "No parent!"
 msgstr "Ingen förälder!"
 
-#: ../lib/gui.py:571 ../lib/gui.py:718
+#: ../lib/gui.py:572 ../lib/gui.py:719
 msgid "No child!"
 msgstr "Inget barn!"
 
-#: ../lib/gui.py:579 ../lib/gui.py:692
+#: ../lib/gui.py:580 ../lib/gui.py:693
 msgid "Can't go any further"
 msgstr "Kan inte fortsätta"
 
-#: ../lib/gui.py:615 ../lib/gui.py:839
+#: ../lib/gui.py:616 ../lib/gui.py:840
 msgid "Internal error!"
 msgstr "Internt fel!"
 
-#: ../lib/gui.py:756
+#: ../lib/gui.py:757
 msgid "Can't go further!"
 msgstr "Kan inte fortsätta!"
 
-#: ../lib/gui.py:972
+#: ../lib/gui.py:973
 msgid "Text cut"
 msgstr "Texten klipptes ut"
 
-#: ../lib/gui.py:983
+#: ../lib/gui.py:984
 msgid "Text copied"
 msgstr "Texten kopierades"
 
-#: ../lib/gui.py:1004
+#: ../lib/gui.py:1005
 msgid "All text selected"
 msgstr "All text är vald"
 
-#: ../lib/gui.py:1014
+#: ../lib/gui.py:1015
 msgid "All tree items selected"
 msgstr "Alla trädelement valdes"
 
-#: ../lib/gui.py:1022
+#: ../lib/gui.py:1023
 msgid "Nothing selected!"
 msgstr "Inget är valt!"
 
-#: ../lib/gui.py:1046
+#: ../lib/gui.py:1047
 msgid "Can't merge the root item"
 msgstr "Kan inte slå ihop rotelementet"
 
-#: ../lib/gui.py:1055
+#: ../lib/gui.py:1056
 msgid "Nothing to merge"
 msgstr "Inget att slå ihop"
 
-#: ../lib/gui.py:1062
+#: ../lib/gui.py:1063
 msgid "Can't merge items that have children"
 msgstr "Kan inte slå ihop sidor som har undersidor"
 
-#: ../lib/gui.py:1092
+#: ../lib/gui.py:1093
 #, python-format
 msgid "%d items merged"
 msgstr "%d element slogs ihop"
 
-#: ../lib/gui.py:1141
+#: ../lib/gui.py:1142
 msgid "Can't delete the root item"
 msgstr "Kan inte ta bort rotelementet"
 
-#: ../lib/gui.py:1174
+#: ../lib/gui.py:1175
 #, python-format
 msgid "%d tree items cut"
 msgstr "%d trädelement klipptes ut"
 
-#: ../lib/gui.py:1204
+#: ../lib/gui.py:1205
 #, python-format
 msgid "%d tree items copied"
 msgstr "%d trädelement kopierades"
 
-#: ../lib/gui.py:1213
+#: ../lib/gui.py:1214
 msgid "Nothing to paste"
 msgstr "Inget att klistra in"
 
-#: ../lib/gui.py:1236
+#: ../lib/gui.py:1237
 msgid "Tree items pasted"
 msgstr "Trädelement klistrades in"
 
-#: ../lib/gui.py:1257
+#: ../lib/gui.py:1258
 #, fuzzy
 msgid "Can't write tempfile"
 msgstr "Kan inte skriva "
 
-#: ../lib/gui.py:1277
+#: ../lib/gui.py:1278
 #, python-format
 msgid "Can't run '%s'"
 msgstr "Kan inte köra '%s'"
 
-#: ../lib/gui.py:1286
+#: ../lib/gui.py:1287
 #, fuzzy
 msgid "Can't read tempfile "
 msgstr "Kan inte läsa "
 
-#: ../lib/gui.py:1292
+#: ../lib/gui.py:1293
 msgid "text changed by external editor"
 msgstr "texten ändrades av extern redigerare"
 
-#: ../lib/gui.py:1294
+#: ../lib/gui.py:1295
 msgid "text not changed by external editor"
 msgstr "texten ändrades inte av extern redigerare"
 
-#: ../lib/gui.py:1313
+#: ../lib/gui.py:1314
 msgid ": Error"
 msgstr ": Fel"
 
-#: ../lib/gui.py:1326
+#: ../lib/gui.py:1327
 #, python-format
 msgid "Can't lock file %s: already locked by process %d"
 msgstr "Kan inte låsa filen %s: den är redan låst av process %d"
 
-#: ../lib/gui.py:1509
+#: ../lib/gui.py:1510
 msgid ": Save?"
 msgstr ": Spara?"
 
-#: ../lib/gui.py:1510
+#: ../lib/gui.py:1511
 msgid "Save current work?"
 msgstr "Spara ändringar?"
 
-#: ../lib/gui.py:1531
+#: ../lib/gui.py:1532
 msgid "New file"
 msgstr "Ny fil"
 
-#: ../lib/gui.py:1555
+#: ../lib/gui.py:1556
 msgid "Open file ..."
 msgstr "Öppna fil ..."
 
-#: ../lib/gui.py:1567
+#: ../lib/gui.py:1568
 msgid "No changes to save"
 msgstr "Inget att spara"
 
-#: ../lib/gui.py:1571 ../lib/gui.py:1592
+#: ../lib/gui.py:1572 ../lib/gui.py:1593
 msgid "Saved."
 msgstr "Sparades."
 
-#: ../lib/gui.py:1573 ../lib/gui.py:1594 ../lib/file.py:456
+#: ../lib/gui.py:1574 ../lib/gui.py:1595 ../lib/file.py:456
 msgid "Not saved."
 msgstr "Sparades inte."
 
-#: ../lib/gui.py:1588
+#: ../lib/gui.py:1589
 msgid "Nothing to save"
 msgstr "Inget att spara"
 
-#: ../lib/gui.py:1590 ../lib/file.py:693
+#: ../lib/gui.py:1591 ../lib/file.py:693
 msgid "Save as ..."
 msgstr "Spara som ..."
 
-#: ../lib/gui.py:1604
+#: ../lib/gui.py:1605
 msgid "Import from ..."
 msgstr "Importera från ..."
 
-#: ../lib/gui.py:1615
+#: ../lib/gui.py:1616
 msgid "Export to ..."
 msgstr "Exportera till ..."
 
-#: ../lib/gui.py:1929 ../lib/gui.py:1932
+#: ../lib/gui.py:1930 ../lib/gui.py:1933
 #, python-format
 msgid "%s: Warning: opening gjots2 manual from %s\n"
 msgstr "%s: Varning: öppnar gjots2-instruktioner från %s\n"
 
-#: ../lib/gui.py:2315
+#: ../lib/gui.py:2317
 msgid ""
 "gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
 "event."
@@ -957,33 +950,33 @@ msgstr ""
 "gjots2: varning: vald lista är NULL. Hoppar över ändrat trädvals-\n"
 "händelse."
 
-#: ../lib/gui.py:2388
+#: ../lib/gui.py:2390
 msgid "Can't go further"
 msgstr "Kan inte fortsätta längre"
 
-#: ../lib/gui.py:2417
+#: ../lib/gui.py:2419
 msgid "Tree is empty!"
 msgstr "Trädet är tomt!"
 
-#: ../lib/gui.py:2714
+#: ../lib/gui.py:2716
 msgid "Bad regular expression"
 msgstr "Felaktigt reguljärt uttryck"
 
-#: ../lib/gui.py:2806
+#: ../lib/gui.py:2808
 #, python-format
 msgid "%s: bad geometry specification: %s\n"
 msgstr "%s: felaktigt storleksformat: %s\n"
 
-#: ../lib/gui.py:2897
+#: ../lib/gui.py:2899
 msgid "New...>>>"
 msgstr "Ny...>>>"
 
-#: ../lib/gui.py:2934
+#: ../lib/gui.py:2936
 #, fuzzy
 msgid "Install gtksourceview to enable undo/redo"
 msgstr "Installera pygtksourceview för att slå på ångra/gör om"
 
-#: ../lib/gui.py:3099
+#: ../lib/gui.py:3102
 msgid ": version "
 msgstr ": version "
 

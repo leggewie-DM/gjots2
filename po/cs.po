@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gjots2 2.3.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 14:35+1000\n"
+"POT-Creation-Date: 2020-06-30 18:18+1000\n"
 "PO-Revision-Date: 2007-02-26 10:08+0100\n"
 "Last-Translator: Martin Sin <martin.sin@zshk.cz>\n"
 "Language-Team: Czech\n"
@@ -16,141 +16,130 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../ui/about.ui:13
+#: ../ui/about.ui:12
 #, fuzzy
 msgid "Copyright Bob Hepple 2002-2020"
 msgstr "Copyright Bob Hepple 2002-2006"
 
-#: ../ui/about.ui:14
+#: ../ui/about.ui:13
 msgid "http://bhepple.freeshell.org/gjots2"
 msgstr "http://bhepple.freeshell.org/gjots2"
 
 #: ../ui/about.ui:25
-msgid ""
-"\n"
-"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
-"Frederic Muller (fr) <fred@cm17.com>\n"
-"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
-"Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
-"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
-"Martin Sin (cs) <martin.sin@zshk.cz>\n"
-"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
-"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
-"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
-"曹晉維 (Michael Tsao) (zh_TW) <cwtsao@sce.pccu.edu.tw>\n"
+msgid "\n"
 msgstr ""
 
-#: ../ui/fileDialog.ui:70
+#: ../ui/fileDialog.ui:69
 #, fuzzy
 msgid "Open file read only"
 msgstr "Otevřít soubor ..."
 
-#: ../ui/fileDialog.ui:74
+#: ../ui/fileDialog.ui:73
 msgid "To open the file in read-only mode."
 msgstr ""
 
-#: ../ui/findDialog.ui:9
+#: ../ui/findDialog.ui:8
 msgid "Find & replace"
 msgstr "Najít & nahradit"
 
-#: ../ui/findDialog.ui:35
+#: ../ui/findDialog.ui:34
 msgid "Find:"
 msgstr "Najít:"
 
-#: ../ui/findDialog.ui:48
+#: ../ui/findDialog.ui:47
 msgid "Replace:"
 msgstr "Nahradit:"
 
-#: ../ui/findDialog.ui:65
+#: ../ui/findDialog.ui:64
 msgid "String to search for"
 msgstr "Hledaný výraz"
 
-#: ../ui/findDialog.ui:81
+#: ../ui/findDialog.ui:80
 msgid "String to replace"
 msgstr "Nahradit za"
 
-#: ../ui/findDialog.ui:115 ../ui/gjots.ui:843
+#: ../ui/findDialog.ui:114 ../ui/gjots.ui:844
 msgid "Find"
 msgstr "Najít"
 
-#: ../ui/findDialog.ui:131
+#: ../ui/findDialog.ui:130
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../ui/findDialog.ui:147
+#: ../ui/findDialog.ui:146
 msgid "Replace"
 msgstr "Nahradit"
 
-#: ../ui/findDialog.ui:163
+#: ../ui/findDialog.ui:162
 msgid "Replace All"
 msgstr "Nahradit vše"
 
-#: ../ui/findDialog.ui:179
+#: ../ui/findDialog.ui:178
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../ui/findDialog.ui:198
+#: ../ui/findDialog.ui:197
 msgid "Clear"
 msgstr "Vymazat"
 
-#: ../ui/findDialog.ui:258
+#: ../ui/findDialog.ui:257
 msgid "Match case"
 msgstr "Porovnat velikost"
 
-#: ../ui/findDialog.ui:262
+#: ../ui/findDialog.ui:261
 msgid "Don't ignore case"
 msgstr "Dbát na velikost"
 
-#: ../ui/findDialog.ui:272
+#: ../ui/findDialog.ui:271
 msgid "Regular Expression"
 msgstr "Regulární výraz"
 
-#: ../ui/findDialog.ui:276
+#: ../ui/findDialog.ui:275
 msgid "Find string is a regular expression (see 'man 7 regex')"
 msgstr "Nalezne řetězec odpovídající regulárnímu výrazu ('man 7 regex')"
 
-#: ../ui/findDialog.ui:288
+#: ../ui/findDialog.ui:287
 msgid "Backwards"
 msgstr "Zpětně"
 
-#: ../ui/findDialog.ui:292
+#: ../ui/findDialog.ui:291
 msgid "Search backwards"
 msgstr "Hledá zpětně"
 
-#: ../ui/findDialog.ui:307
+#: ../ui/findDialog.ui:306
 msgid "Global"
 msgstr "Celý"
 
-#: ../ui/findDialog.ui:311
+#: ../ui/findDialog.ui:310
 msgid "Searches entire file not just this entry"
 msgstr "Prohledá celý soubor ne pouze aktuální položku"
 
-#: ../ui/findDialog.ui:328
+#: ../ui/findDialog.ui:327
 msgid " Options "
 msgstr " Nastavení "
 
-#: ../ui/fontDialog.ui:10
+#: ../ui/fontDialog.ui:9
 msgid "Select Font"
 msgstr "Zvolit písmo"
 
-#: ../ui/generalDialog.ui:10
+#: ../ui/generalDialog.ui:9
 msgid "window1"
 msgstr "window1"
 
-#: ../ui/generalDialog.ui:23 ../ui/generalDialog.ui:61
-#: ../ui/generalDialog.ui:116
+#: ../ui/generalDialog.ui:22 ../ui/generalDialog.ui:60
+#: ../ui/generalDialog.ui:115
 msgid "label1"
 msgstr "label1"
 
-#: ../ui/generalDialog.ui:47
+#: ../ui/generalDialog.ui:46
 msgid "label2"
 msgstr "label2"
 
-#: ../ui/generalDialog.ui:194
+#: ../ui/generalDialog.ui:193
 msgid "Try again"
 msgstr "Zkusit znova"
 
-#: ../ui/generalDialog.ui:210
+#: ../ui/generalDialog.ui:209
 msgid "Read only"
 msgstr "Pouze pro čtení"
 
@@ -208,7 +197,7 @@ msgstr ""
 msgid "_Show All"
 msgstr "_Zobrazit vše"
 
-#: ../ui/gjots.ui:310 ../ui/gjots.ui:1084
+#: ../ui/gjots.ui:310 ../ui/gjots.ui:1085
 msgid "Show all items below the current item"
 msgstr "Zobrazí všechny položky pod aktuální zvolenou"
 
@@ -264,15 +253,15 @@ msgstr "Vytvoří novou stránku"
 msgid "New _Child"
 msgstr "Nový _následník"
 
-#: ../ui/gjots.ui:403 ../ui/gjots.ui:919
+#: ../ui/gjots.ui:403 ../ui/gjots.ui:920
 msgid "Create a new child"
 msgstr "Vytvoří nového potomka"
 
-#: ../ui/gjots.ui:420 ../ui/gjots.ui:949
+#: ../ui/gjots.ui:420 ../ui/gjots.ui:950
 msgid "Move selection up"
 msgstr "Přesune výběr nahoru"
 
-#: ../ui/gjots.ui:431 ../ui/gjots.ui:964
+#: ../ui/gjots.ui:431 ../ui/gjots.ui:965
 msgid "Move selection down"
 msgstr "Přesune výběr dolů"
 
@@ -280,7 +269,7 @@ msgstr "Přesune výběr dolů"
 msgid "P_romote"
 msgstr "_Zvýšit"
 
-#: ../ui/gjots.ui:442 ../ui/gjots.ui:979
+#: ../ui/gjots.ui:442 ../ui/gjots.ui:980
 msgid "Selection becomes a sibling to their parent"
 msgstr "Výběr se přesune na úroveň svého rodiče"
 
@@ -288,7 +277,7 @@ msgstr "Výběr se přesune na úroveň svého rodiče"
 msgid "D_emote"
 msgstr "_Snížit"
 
-#: ../ui/gjots.ui:453 ../ui/gjots.ui:994
+#: ../ui/gjots.ui:453 ../ui/gjots.ui:995
 msgid "Selection becomes a child of the previous item"
 msgstr "Výběr se stane potomkem předchozí položky"
 
@@ -312,7 +301,7 @@ msgstr "Spojí aktuální položky do té první"
 msgid "S_ort Tree"
 msgstr "S_etřídit strom"
 
-#: ../ui/gjots.ui:492 ../ui/gjots.ui:1099
+#: ../ui/gjots.ui:492 ../ui/gjots.ui:1100
 msgid "Popup the sort tree dialog"
 msgstr "Zobrazí dialog setřídění"
 
@@ -365,180 +354,184 @@ msgstr "Čís_t manuál"
 msgid "Read the online manual (using gjots)"
 msgstr "Přečte online manuál (pomocí gjots)"
 
-#: ../ui/gjots.ui:650
+#: ../ui/gjots.ui:621
+msgid "Popup the 'Find'menu"
+msgstr ""
+
+#: ../ui/gjots.ui:651
 msgid "Find the previous occurance"
 msgstr ""
 
-#: ../ui/gjots.ui:666
+#: ../ui/gjots.ui:667
 msgid "Find the next occurance"
 msgstr ""
 
-#: ../ui/gjots.ui:692
+#: ../ui/gjots.ui:693
 msgid "Save gjots document"
 msgstr "Uloží dokument gjots"
 
-#: ../ui/gjots.ui:693
+#: ../ui/gjots.ui:694
 msgid "Save"
 msgstr "Uložit"
 
-#: ../ui/gjots.ui:707
+#: ../ui/gjots.ui:708
 msgid "Print this document"
 msgstr "Vytiskne tento dokument"
 
-#: ../ui/gjots.ui:708 ../ui/printDialog.ui:9
+#: ../ui/gjots.ui:709 ../ui/printDialog.ui:8
 msgid "Print"
 msgstr "Tisknout"
 
-#: ../ui/gjots.ui:737
+#: ../ui/gjots.ui:738
 msgid "Cut selected items"
 msgstr "Vyjme vybrané položky"
 
-#: ../ui/gjots.ui:738
+#: ../ui/gjots.ui:739
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: ../ui/gjots.ui:752
+#: ../ui/gjots.ui:753
 msgid "Copy selected items"
 msgstr "Zkopíruje vybrané položky"
 
-#: ../ui/gjots.ui:753
+#: ../ui/gjots.ui:754
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: ../ui/gjots.ui:767
+#: ../ui/gjots.ui:768
 msgid "Paste selected items"
 msgstr "Vloží vybrané položky"
 
-#: ../ui/gjots.ui:768
+#: ../ui/gjots.ui:769
 msgid "Paste"
 msgstr "Vložit"
 
-#: ../ui/gjots.ui:797
+#: ../ui/gjots.ui:798
 msgid "Wrap the current paragraph to the current line length"
 msgstr "Nastaví zalomení řádku na zvolenou délku"
 
-#: ../ui/gjots.ui:798
+#: ../ui/gjots.ui:799
 msgid "Wrap"
 msgstr "Zalomit"
 
-#: ../ui/gjots.ui:812
+#: ../ui/gjots.ui:813
 msgid "Invoke an external editor on the current item"
 msgstr "Zobrazí aktuální položku v externím editoru"
 
-#: ../ui/gjots.ui:813
+#: ../ui/gjots.ui:814
 msgid "Ext.Ed."
 msgstr "Editor"
 
-#: ../ui/gjots.ui:827
+#: ../ui/gjots.ui:828
 msgid "Add a time/date stamp (see prefs)"
 msgstr "Přidá datum/čas (podívejte se na nastavení)"
 
-#: ../ui/gjots.ui:828
+#: ../ui/gjots.ui:829
 msgid "Date"
 msgstr "Datum"
 
-#: ../ui/gjots.ui:842
+#: ../ui/gjots.ui:843
 msgid "Popup the find and replace dialog"
 msgstr "Zobrazí okno najít a nahradit"
 
-#: ../ui/gjots.ui:857
+#: ../ui/gjots.ui:858
 msgid "Popup the sort dialog"
 msgstr "Zobrazí dialog setřídit"
 
-#: ../ui/gjots.ui:858 ../ui/sortDialog.ui:16
+#: ../ui/gjots.ui:859 ../ui/sortDialog.ui:15
 msgid "Sort"
 msgstr "Setřídit"
 
-#: ../ui/gjots.ui:872
+#: ../ui/gjots.ui:873
 msgid "Open gjots preferences window"
 msgstr "Otevře okno s nastavením gjots"
 
-#: ../ui/gjots.ui:873
+#: ../ui/gjots.ui:874
 msgid "Prefs"
 msgstr "Nastavení"
 
-#: ../ui/gjots.ui:904
+#: ../ui/gjots.ui:905
 msgid "Create a new item"
 msgstr "Vytvoří novou položku"
 
-#: ../ui/gjots.ui:905 ../ui/treeContextMenu.ui:45
+#: ../ui/gjots.ui:906 ../ui/treeContextMenu.ui:45
 msgid "New Page"
 msgstr "Nová stránka"
 
-#: ../ui/gjots.ui:920 ../ui/treeContextMenu.ui:52
+#: ../ui/gjots.ui:921 ../ui/treeContextMenu.ui:52
 msgid "New Child"
 msgstr "Nový potomek"
 
-#: ../ui/gjots.ui:950
+#: ../ui/gjots.ui:951
 msgid "Up"
 msgstr "Nahoru"
 
-#: ../ui/gjots.ui:965
+#: ../ui/gjots.ui:966
 msgid "Down"
 msgstr "Dolů"
 
-#: ../ui/gjots.ui:980 ../ui/treeContextMenu.ui:74
+#: ../ui/gjots.ui:981 ../ui/treeContextMenu.ui:74
 msgid "Promote"
 msgstr "Zvýšit"
 
-#: ../ui/gjots.ui:995 ../ui/treeContextMenu.ui:82
+#: ../ui/gjots.ui:996 ../ui/treeContextMenu.ui:82
 msgid "Demote"
 msgstr "Snížit"
 
-#: ../ui/gjots.ui:1024
+#: ../ui/gjots.ui:1025
 msgid "Split the text selection into a new item"
 msgstr "Rozdělí textový výběr do nové položky"
 
-#: ../ui/gjots.ui:1025
+#: ../ui/gjots.ui:1026
 msgid "Split Item"
 msgstr "Rozdělit položku"
 
-#: ../ui/gjots.ui:1039
+#: ../ui/gjots.ui:1040
 msgid "Merge selected items together"
 msgstr "Spojí vybrané položky dohromady"
 
-#: ../ui/gjots.ui:1040 ../ui/treeContextMenu.ui:89
+#: ../ui/gjots.ui:1041 ../ui/treeContextMenu.ui:89
 msgid "Merge Items"
 msgstr "Spojit položky"
 
-#: ../ui/gjots.ui:1069
+#: ../ui/gjots.ui:1070
 msgid "Hide all items except for the top level"
 msgstr "Skryje všechny položky kromě nejvyšší úrovně"
 
-#: ../ui/gjots.ui:1070 ../ui/treeContextMenu.ui:103
+#: ../ui/gjots.ui:1071 ../ui/treeContextMenu.ui:103
 msgid "Hide All"
 msgstr "Skrýt vše"
 
-#: ../ui/gjots.ui:1085 ../ui/treeContextMenu.ui:96
+#: ../ui/gjots.ui:1086 ../ui/treeContextMenu.ui:96
 msgid "Show All"
 msgstr "Zobrazit vše"
 
-#: ../ui/gjots.ui:1100 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
+#: ../ui/gjots.ui:1101 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
 msgid "Sort Tree"
 msgstr "Setřídit strom"
 
-#: ../ui/prefsDialog.ui:21
+#: ../ui/prefsDialog.ui:20
 msgid "gjots: preferences"
 msgstr "gjots: nastavení"
 
-#: ../ui/prefsDialog.ui:50
+#: ../ui/prefsDialog.ui:49
 msgid "Choose a font for the text panel"
 msgstr "Zvolí písmo textového panelu"
 
-#: ../ui/prefsDialog.ui:66
+#: ../ui/prefsDialog.ui:65
 msgid "Date format:"
 msgstr "Formát data:"
 
-#: ../ui/prefsDialog.ui:80
+#: ../ui/prefsDialog.ui:79
 #, fuzzy
 msgid "Format for the timestamp function (see strftime(3)) eg %F"
 msgstr "Formát pro vložení časové značky (podívejte se na strftime(3))"
 
-#: ../ui/prefsDialog.ui:81
+#: ../ui/prefsDialog.ui:80
 msgid "%F"
 msgstr "%d.%m.%Y"
 
-#: ../ui/prefsDialog.ui:100
+#: ../ui/prefsDialog.ui:99
 #, fuzzy
 msgid ""
 "External program to edit a page (%s is replaced by the name of the temporary "
@@ -547,27 +540,27 @@ msgstr ""
 "Externí program pro úpravu stránky (%s bude nahrazeno jménem dočasně "
 "vytvořeného souboru)"
 
-#: ../ui/prefsDialog.ui:101
+#: ../ui/prefsDialog.ui:100
 msgid "xterm -e vi %s"
 msgstr "xterm -e vi %s"
 
-#: ../ui/prefsDialog.ui:121
+#: ../ui/prefsDialog.ui:120
 msgid "External editor"
 msgstr "Externí editor"
 
-#: ../ui/prefsDialog.ui:136
+#: ../ui/prefsDialog.ui:135
 msgid "Text Line Length: "
 msgstr "Délka řádku s textem: "
 
-#: ../ui/prefsDialog.ui:150
+#: ../ui/prefsDialog.ui:149
 msgid "Line length for paragraph wrapping"
 msgstr "Délka řádku pro jeho zalomení"
 
-#: ../ui/prefsDialog.ui:173
+#: ../ui/prefsDialog.ui:172
 msgid "Text formatter: "
 msgstr "Formátovač textu: "
 
-#: ../ui/prefsDialog.ui:185
+#: ../ui/prefsDialog.ui:184
 #, fuzzy
 msgid ""
 "External program to pipe text for formatting (%d is replaced by the current "
@@ -576,23 +569,23 @@ msgstr ""
 "Externí program pro spojení textu při formátování (%d je nahrazeno aktuální "
 "délkou řádku)"
 
-#: ../ui/prefsDialog.ui:186
+#: ../ui/prefsDialog.ui:185
 msgid "fmt -w %d "
 msgstr "fmt -w %d "
 
-#: ../ui/prefsDialog.ui:203
+#: ../ui/prefsDialog.ui:202
 msgid "Current text font"
 msgstr "Aktuální písmo textu"
 
-#: ../ui/prefsDialog.ui:205
+#: ../ui/prefsDialog.ui:204
 msgid "Courier 10 Pitch 10"
 msgstr "Courier 10 Pitch 10"
 
-#: ../ui/prefsDialog.ui:225
+#: ../ui/prefsDialog.ui:224
 msgid "AutoSave interval:"
 msgstr ""
 
-#: ../ui/prefsDialog.ui:239
+#: ../ui/prefsDialog.ui:238
 msgid "Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)"
 msgstr ""
 
@@ -668,47 +661,47 @@ msgstr "např. 1 pro 1.2.1, a"
 msgid " Print formatting "
 msgstr " Formátování tisku "
 
-#: ../ui/sortDialog.ui:44
+#: ../ui/sortDialog.ui:43
 msgid "Ascending"
 msgstr "Vzestupně"
 
-#: ../ui/sortDialog.ui:48
+#: ../ui/sortDialog.ui:47
 msgid "Sort in ascending order"
 msgstr "Setřídí v vzestupném pořadí"
 
-#: ../ui/sortDialog.ui:59
+#: ../ui/sortDialog.ui:58
 msgid "Descending"
 msgstr "Sestupně"
 
-#: ../ui/sortDialog.ui:63
+#: ../ui/sortDialog.ui:62
 msgid "Sort in descending order"
 msgstr "Setřídí v sestupném pořadí"
 
-#: ../ui/sortDialog.ui:77
+#: ../ui/sortDialog.ui:76
 msgid "Alphabetic"
 msgstr "Abecedně"
 
-#: ../ui/sortDialog.ui:81
+#: ../ui/sortDialog.ui:80
 msgid "Sort in alphabetic order"
 msgstr "Setřídí v abecedním pořadí"
 
-#: ../ui/sortDialog.ui:94
+#: ../ui/sortDialog.ui:93
 msgid "Numeric"
 msgstr "Číselně"
 
-#: ../ui/sortDialog.ui:98
+#: ../ui/sortDialog.ui:97
 msgid "Sort in numeric order"
 msgstr "Setřídí v číselném pořadí"
 
-#: ../ui/sortDialog.ui:120
+#: ../ui/sortDialog.ui:119
 msgid " Sort Parameters "
 msgstr " Parametry třídění "
 
-#: ../ui/sortDialog.ui:150
+#: ../ui/sortDialog.ui:149
 msgid "How many sublevels to sort (0 for none; -1 for 'all')"
 msgstr "Kolik podúrovní se má třídit (0 pro žádnou; -1 pro 'všechny')"
 
-#: ../ui/sortDialog.ui:172
+#: ../ui/sortDialog.ui:171
 msgid " Sort Sublevels "
 msgstr " Počet podúrovní "
 
@@ -771,189 +764,189 @@ msgstr "Pro nápovědu zadejte -h\n"
 msgid "%s version %s"
 msgstr "%s verze %s"
 
-#: ../lib/gui.py:50 ../lib/gui.py:995
+#: ../lib/gui.py:51 ../lib/gui.py:996
 msgid "Text pasted"
 msgstr "Text vložen"
 
-#: ../lib/gui.py:178
+#: ../lib/gui.py:179
 #, python-format
 msgid "External formatter \"%s\" is not installed - can't format"
 msgstr ""
 "Externí formátovací program \"%s\" není nainstalován - nelze formátovat"
 
-#: ../lib/gui.py:563 ../lib/gui.py:674 ../lib/gui.py:678 ../lib/gui.py:744
-#: ../lib/gui.py:748 ../lib/gui.py:811 ../lib/gui.py:816 ../lib/gui.py:1042
-#: ../lib/gui.py:1051 ../lib/gui.py:1137 ../lib/gui.py:1146 ../lib/gui.py:1182
-#: ../lib/gui.py:1187 ../lib/gui.py:1218 ../lib/gui.py:1607 ../lib/gui.py:2380
-#: ../lib/gui.py:2399 ../lib/gui.py:2428 ../lib/gui.py:2459 ../lib/file.py:466
+#: ../lib/gui.py:564 ../lib/gui.py:675 ../lib/gui.py:679 ../lib/gui.py:745
+#: ../lib/gui.py:749 ../lib/gui.py:812 ../lib/gui.py:817 ../lib/gui.py:1043
+#: ../lib/gui.py:1052 ../lib/gui.py:1138 ../lib/gui.py:1147 ../lib/gui.py:1183
+#: ../lib/gui.py:1188 ../lib/gui.py:1219 ../lib/gui.py:1608 ../lib/gui.py:2382
+#: ../lib/gui.py:2401 ../lib/gui.py:2430 ../lib/gui.py:2461 ../lib/file.py:466
 #: ../lib/file.py:471 ../lib/sortDialog.py:329 ../lib/sortDialog.py:334
-#: ../lib/printDialog.py:108 ../lib/printDialog.py:113
+#: ../lib/printDialog.py:110 ../lib/printDialog.py:115
 msgid "Nothing selected"
 msgstr "Nic není vybráno"
 
-#: ../lib/gui.py:567 ../lib/gui.py:683 ../lib/gui.py:752 ../lib/gui.py:821
-#: ../lib/gui.py:933 ../lib/gui.py:1223 ../lib/gui.py:2384
+#: ../lib/gui.py:568 ../lib/gui.py:684 ../lib/gui.py:753 ../lib/gui.py:822
+#: ../lib/gui.py:934 ../lib/gui.py:1224 ../lib/gui.py:2386
 #: ../lib/sortDialog.py:345
 msgid "No parent!"
 msgstr "Není rodič!"
 
-#: ../lib/gui.py:571 ../lib/gui.py:718
+#: ../lib/gui.py:572 ../lib/gui.py:719
 msgid "No child!"
 msgstr "Není potomek!"
 
-#: ../lib/gui.py:579 ../lib/gui.py:692
+#: ../lib/gui.py:580 ../lib/gui.py:693
 msgid "Can't go any further"
 msgstr "Nemohu pokračovat"
 
-#: ../lib/gui.py:615 ../lib/gui.py:839
+#: ../lib/gui.py:616 ../lib/gui.py:840
 msgid "Internal error!"
 msgstr "Interní chyba!"
 
-#: ../lib/gui.py:756
+#: ../lib/gui.py:757
 msgid "Can't go further!"
 msgstr "Nemohu pokračovat!"
 
-#: ../lib/gui.py:972
+#: ../lib/gui.py:973
 msgid "Text cut"
 msgstr "Vyjmout text"
 
-#: ../lib/gui.py:983
+#: ../lib/gui.py:984
 msgid "Text copied"
 msgstr "Text zkopírován"
 
-#: ../lib/gui.py:1004
+#: ../lib/gui.py:1005
 msgid "All text selected"
 msgstr "Celý text vybrán"
 
-#: ../lib/gui.py:1014
+#: ../lib/gui.py:1015
 msgid "All tree items selected"
 msgstr "Všechny položky stromu vybrány"
 
-#: ../lib/gui.py:1022
+#: ../lib/gui.py:1023
 msgid "Nothing selected!"
 msgstr "Nic není vybráno!"
 
-#: ../lib/gui.py:1046
+#: ../lib/gui.py:1047
 msgid "Can't merge the root item"
 msgstr "Nemohu spojit kořenové položky"
 
-#: ../lib/gui.py:1055
+#: ../lib/gui.py:1056
 msgid "Nothing to merge"
 msgstr "Nic ke sloučení"
 
-#: ../lib/gui.py:1062
+#: ../lib/gui.py:1063
 msgid "Can't merge items that have children"
 msgstr "Nemohu sloučit položky, které obsahují potomky"
 
-#: ../lib/gui.py:1092
+#: ../lib/gui.py:1093
 #, python-format
 msgid "%d items merged"
 msgstr "%d položek sloučeno"
 
-#: ../lib/gui.py:1141
+#: ../lib/gui.py:1142
 msgid "Can't delete the root item"
 msgstr "Nemohu smazat kořenovou položku"
 
-#: ../lib/gui.py:1174
+#: ../lib/gui.py:1175
 #, python-format
 msgid "%d tree items cut"
 msgstr "%d položek stromu vyjmuto"
 
-#: ../lib/gui.py:1204
+#: ../lib/gui.py:1205
 #, python-format
 msgid "%d tree items copied"
 msgstr "%d položek stromu zkopírováno"
 
-#: ../lib/gui.py:1213
+#: ../lib/gui.py:1214
 msgid "Nothing to paste"
 msgstr "Nic k vložení"
 
-#: ../lib/gui.py:1236
+#: ../lib/gui.py:1237
 msgid "Tree items pasted"
 msgstr "Položky stromu vloženy"
 
-#: ../lib/gui.py:1257
+#: ../lib/gui.py:1258
 #, fuzzy
 msgid "Can't write tempfile"
 msgstr "Nemohu zapisovat "
 
-#: ../lib/gui.py:1277
+#: ../lib/gui.py:1278
 #, python-format
 msgid "Can't run '%s'"
 msgstr "Nemohu spustit '%s'"
 
-#: ../lib/gui.py:1286
+#: ../lib/gui.py:1287
 #, fuzzy
 msgid "Can't read tempfile "
 msgstr "Nemohu číst "
 
-#: ../lib/gui.py:1292
+#: ../lib/gui.py:1293
 msgid "text changed by external editor"
 msgstr "text změněn pomocí externího editoru"
 
-#: ../lib/gui.py:1294
+#: ../lib/gui.py:1295
 msgid "text not changed by external editor"
 msgstr "text nebyl změněn pomocí externího editoru"
 
-#: ../lib/gui.py:1313
+#: ../lib/gui.py:1314
 msgid ": Error"
 msgstr ": Chyba"
 
-#: ../lib/gui.py:1326
+#: ../lib/gui.py:1327
 #, python-format
 msgid "Can't lock file %s: already locked by process %d"
 msgstr "Nemohu zamknout soubor %s: již zamčen procesem %d"
 
-#: ../lib/gui.py:1509
+#: ../lib/gui.py:1510
 msgid ": Save?"
 msgstr ": Uložit?"
 
-#: ../lib/gui.py:1510
+#: ../lib/gui.py:1511
 msgid "Save current work?"
 msgstr "Uložit současnou práci?"
 
-#: ../lib/gui.py:1531
+#: ../lib/gui.py:1532
 msgid "New file"
 msgstr "Nový soubor"
 
-#: ../lib/gui.py:1555
+#: ../lib/gui.py:1556
 msgid "Open file ..."
 msgstr "Otevřít soubor ..."
 
-#: ../lib/gui.py:1567
+#: ../lib/gui.py:1568
 msgid "No changes to save"
 msgstr "Žádné změny k uložení"
 
-#: ../lib/gui.py:1571 ../lib/gui.py:1592
+#: ../lib/gui.py:1572 ../lib/gui.py:1593
 msgid "Saved."
 msgstr "Uloženo."
 
-#: ../lib/gui.py:1573 ../lib/gui.py:1594 ../lib/file.py:456
+#: ../lib/gui.py:1574 ../lib/gui.py:1595 ../lib/file.py:456
 msgid "Not saved."
 msgstr "Nebylo uloženo."
 
-#: ../lib/gui.py:1588
+#: ../lib/gui.py:1589
 msgid "Nothing to save"
 msgstr "Nic k uložení"
 
-#: ../lib/gui.py:1590 ../lib/file.py:693
+#: ../lib/gui.py:1591 ../lib/file.py:693
 msgid "Save as ..."
 msgstr "Uložit jako ..."
 
-#: ../lib/gui.py:1604
+#: ../lib/gui.py:1605
 msgid "Import from ..."
 msgstr "Importovat z ..."
 
-#: ../lib/gui.py:1615
+#: ../lib/gui.py:1616
 msgid "Export to ..."
 msgstr "Exportovat do ..."
 
-#: ../lib/gui.py:1929 ../lib/gui.py:1932
+#: ../lib/gui.py:1930 ../lib/gui.py:1933
 #, python-format
 msgid "%s: Warning: opening gjots2 manual from %s\n"
 msgstr "%s: Varování: otevření manuálu gjots2 z %s\n"
 
-#: ../lib/gui.py:2315
+#: ../lib/gui.py:2317
 msgid ""
 "gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
 "event."
@@ -961,32 +954,32 @@ msgstr ""
 "gjots2: varování: výběr seznamu je prázdný. Přeskakuji událost změny \n"
 "stromu."
 
-#: ../lib/gui.py:2388
+#: ../lib/gui.py:2390
 msgid "Can't go further"
 msgstr "Nemohu pokračovat"
 
-#: ../lib/gui.py:2417
+#: ../lib/gui.py:2419
 msgid "Tree is empty!"
 msgstr "Strom je prázdný!"
 
-#: ../lib/gui.py:2714
+#: ../lib/gui.py:2716
 msgid "Bad regular expression"
 msgstr "Špatný regulární výraz"
 
-#: ../lib/gui.py:2806
+#: ../lib/gui.py:2808
 #, python-format
 msgid "%s: bad geometry specification: %s\n"
 msgstr "%s: špatná specifikace rozměru: %s\n"
 
-#: ../lib/gui.py:2897
+#: ../lib/gui.py:2899
 msgid "New...>>>"
 msgstr "Nová...>>>"
 
-#: ../lib/gui.py:2934
+#: ../lib/gui.py:2936
 msgid "Install gtksourceview to enable undo/redo"
 msgstr ""
 
-#: ../lib/gui.py:3099
+#: ../lib/gui.py:3102
 msgid ": version "
 msgstr ": verze "
 

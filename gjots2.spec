@@ -1,7 +1,7 @@
 # -*-Mode: rpm-spec -*-
 
 Name:    gjots2
-Version: 3.1.8
+Version: 3.1.9
 Release: 1%{?dist}
 Summary: A hierarchical note jotter - organize your ideas, notes, facts in a tree
 License: GPLv2
@@ -93,6 +93,16 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 %{_mandir}/man1/docbook2gjots*
 
 %changelog
+* Mon Jul 06 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.9-1
+- ui/about.ui: remove redundant translater credits - seems to have no effect here
+- fix: some environments don't always show images in buttons
+- add tooltip for Find button
+- fix: printDialog needed import gi, os; was using old mktemp
+- Change popup dialogs type to 'top-level' instead of 'popup'!!! -
+- as documented on GtkWindow page - avoids the message: Window
+  0x560942cc2d60 is a temporary window without parent, application
+  will not be able to position it on screen.
+
 * Mon Jun 29 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.8-1
 - fix popup context menus (right click on tree)
 - fix locale_dir when running from source tree

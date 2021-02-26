@@ -5,7 +5,6 @@
   <object class="GtkWindow" id="findDialog">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Find &amp; replace</property>
     <property name="window_position">mouse</property>
     <property name="type_hint">dialog</property>
@@ -117,8 +116,8 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="use_underline">True</property>
-                    <accelerator key="KP_Enter" signal="clicked"/>
                     <accelerator key="Return" signal="clicked"/>
+                    <accelerator key="KP_Enter" signal="clicked"/>
                     <signal name="clicked" handler="on_findStartButton_clicked" swapped="no"/>
                   </object>
                   <packing>

@@ -12,7 +12,6 @@
   <object class="GtkWindow" id="sortDialog">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Sort</property>
     <property name="window_position">mouse</property>
     <property name="type_hint">dialog</property>
@@ -194,8 +193,8 @@
                 <property name="receives_default">False</property>
                 <property name="border_width">5</property>
                 <property name="use_stock">True</property>
-                <accelerator key="Return" signal="clicked"/>
                 <accelerator key="KP_Enter" signal="clicked"/>
+                <accelerator key="Return" signal="clicked"/>
                 <signal name="clicked" handler="on_sortOKButton_clicked" swapped="no"/>
               </object>
               <packing>

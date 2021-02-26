@@ -6,7 +6,6 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="border_width">4</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Select Font</property>
     <property name="modal">True</property>
     <property name="window_position">mouse</property>

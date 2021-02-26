@@ -2,6 +2,8 @@ import re
 import inspect
 import tempfile
 import pipes
+import gi
+import os
 
 class print_dialog:
     def destroy(self):
@@ -32,14 +34,14 @@ class print_dialog:
         w = self.print_get_widget("printCommandEntry")
         if w:
             self.gui.settings.set_string("print-command", w.get_text())
-        
+
         return
-    
+
     def on_printDialog_destroy(self, widget):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
         return
-    
+
     def on_printCommandEntry_key_press_event(self, widget, key_event):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2], vars())
@@ -76,9 +78,9 @@ class print_dialog:
         w = self.print_get_widget("printCommandEntry")
         if w:
             print_command = w.get_text()
-        
+
         return print_page, print_selection, print_all, page_feed, bold_titles, print_command
-        
+
     def on_printOKButton_clicked(self, widget):
         """
         if print_all is set then
@@ -92,7 +94,7 @@ class print_dialog:
                 else
                     print all the selected pages.
         """
-        
+
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
         self.gui.sync_text_buffer()
@@ -103,11 +105,11 @@ class print_dialog:
             this_iter = self.gui.get_root()
         else:
             this_iter = self.gui.get_first_selected_iter()
-            
+
         if not this_iter:
             self.gui.msg(_("Nothing selected"))
             return
-        
+
         last_selected = self.gui.get_last_selected_iter()
         if not last_selected:
             self.gui.msg(_("Nothing selected"))
@@ -115,7 +117,7 @@ class print_dialog:
 
         t = pipes.Template()
         t.append(print_command, "-.")
-        scratch = tempfile.mktemp(text = True)
+        scratch = tempfile.mkstemp(text = True)[1]
         f = t.open(scratch, "w")
 
         single_page = 0
@@ -142,13 +144,13 @@ class print_dialog:
         os.unlink(scratch)
         self.destroy()
         return
-        
+
     def on_printCancelButton_clicked(self, widget):
         if self.gui.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
         self.destroy()
         return
-    
+
     def __init__(self, gui):
         """
         Print dialog
@@ -190,7 +192,7 @@ class print_dialog:
         if w:
             w.set_text(self.gui.settings.get_string("print-command"))
         return
-        
+
 # print_dialog
 
 # Local variables:
