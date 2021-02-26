@@ -1,38 +1,41 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkAdjustment" id="adjustment1">
-    <property name="upper">100</property>
-    <property name="lower">-1</property>
-    <property name="page_increment">10</property>
-    <property name="step_increment">1</property>
-    <property name="page_size">10</property>
-    <property name="value">1</property>
-  </object>
-  <!-- interface-requires gtk+ 2.16 -->
+  <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="lower">-1</property>
+    <property name="upper">100</property>
+    <property name="value">1</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkWindow" id="sortDialog">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="title" translatable="yes">Sort</property>
-    <property name="type_hint">dialog</property>
     <property name="window_position">mouse</property>
-    <signal handler="on_sortDialog_destroy" name="destroy"/>
+    <property name="type_hint">dialog</property>
+    <signal name="destroy" handler="on_sortDialog_destroy" swapped="no"/>
     <child>
       <object class="GtkVBox" id="vbox6">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="border_width">10</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkFrame" id="frame5">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="label_xalign">0</property>
             <property name="shadow_type">in</property>
             <child>
               <object class="GtkAlignment" id="alignment6">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="left_padding">12</property>
                 <child>
                   <object class="GtkTable" id="table7">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="n_rows">2</property>
                     <property name="n_columns">2</property>
                     <child>
@@ -41,7 +44,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
-                        <property name="tooltip-text" translatable="yes">Sort in ascending order</property>
+                        <property name="tooltip_text" translatable="yes">Sort in ascending order</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
                       </object>
@@ -56,7 +59,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
-                        <property name="tooltip-text" translatable="yes">Sort in descending order</property>
+                        <property name="tooltip_text" translatable="yes">Sort in descending order</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">sortAscendingRadioButton</property>
@@ -74,7 +77,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
-                        <property name="tooltip-text" translatable="yes">Sort in alphabetic order</property>
+                        <property name="tooltip_text" translatable="yes">Sort in alphabetic order</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
                       </object>
@@ -91,7 +94,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
-                        <property name="tooltip-text" translatable="yes">Sort in numeric order</property>
+                        <property name="tooltip_text" translatable="yes">Sort in numeric order</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">sortAlphabeticRadioButton</property>
@@ -112,6 +115,7 @@
             <child type="label">
               <object class="GtkLabel" id="label14">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="label" translatable="yes"> Sort Parameters </property>
                 <property name="use_markup">True</property>
               </object>
@@ -126,21 +130,27 @@
         <child>
           <object class="GtkFrame" id="sortRangeFrame">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="label_xalign">0</property>
             <property name="shadow_type">in</property>
             <child>
               <object class="GtkAlignment" id="alignment7">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="left_padding">12</property>
                 <child>
                   <object class="GtkVBox" id="vbox10">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
+                    <property name="can_focus">False</property>
                     <child>
                       <object class="GtkSpinButton" id="sortSublevelsSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip-text" translatable="yes">How many sublevels to sort (0 for none; -1 for 'all')</property>
+                        <property name="tooltip_text" translatable="yes">How many sublevels to sort (0 for none; -1 for 'all')</property>
+                        <property name="primary_icon_activatable">False</property>
+                        <property name="secondary_icon_activatable">False</property>
+                        <property name="primary_icon_sensitive">True</property>
+                        <property name="secondary_icon_sensitive">True</property>
                         <property name="adjustment">adjustment1</property>
                         <property name="climb_rate">1</property>
                       </object>
@@ -157,18 +167,22 @@
             <child type="label">
               <object class="GtkLabel" id="label15">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="label" translatable="yes"> Sort Sublevels </property>
                 <property name="use_markup">True</property>
               </object>
             </child>
           </object>
           <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
         </child>
         <child>
           <object class="GtkHButtonBox" id="hbuttonbox4">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="saveOKButton">
@@ -179,9 +193,9 @@
                 <property name="receives_default">False</property>
                 <property name="border_width">5</property>
                 <property name="use_stock">True</property>
-                <signal handler="on_sortOKButton_clicked" name="clicked"/>
                 <accelerator key="KP_Enter" signal="clicked"/>
                 <accelerator key="Return" signal="clicked"/>
+                <signal name="clicked" handler="on_sortOKButton_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -198,8 +212,8 @@
                 <property name="receives_default">False</property>
                 <property name="border_width">5</property>
                 <property name="use_stock">True</property>
-                <signal handler="on_sortCancelButton_clicked" name="clicked"/>
                 <accelerator key="Escape" signal="clicked"/>
+                <signal name="clicked" handler="on_sortCancelButton_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -209,6 +223,8 @@
             </child>
           </object>
           <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
             <property name="position">2</property>
           </packing>
         </child>

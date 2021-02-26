@@ -1,12 +1,15 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
+  <!-- interface-requires gnome 0.0 -->
+  <!-- interface-naming-policy toplevel-contextual -->
   <object class="GnomeAbout" id="about">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="window_position">mouse</property>
-    <property name="icon">gjots.png</property>
+    <property name="icon">gjots2.png</property>
     <property name="type_hint">dialog</property>
-    <property name="copyright" translatable="yes">Copyright Bob Hepple 2002-2011</property>
+    <property name="copyright" translatable="yes">Copyright Bob Hepple 2002-2020</property>
     <property name="comments" translatable="yes">http://bhepple.freeshell.org/gjots2</property>
     <property name="authors">Bob Hepple
 Gabriel Munoz
@@ -16,16 +19,11 @@ Gabriel Munoz
 
 
 
+
+
 </property>
-    <property name="translator_credits" translatable="yes">Rui Nibau (fr) &lt;rui.nibau@omacronides.com&gt;
-Robert Emil Berge (no, nb) &lt;filoktetes@linuxophic.org&gt;
-Сергей Безденежных (Sergey Bezdenezhnyh) (ru) &lt;sib-mail@mtu-net.ru&gt;
-Raimondo Giammanco (it) &lt;rongten@member.fsf.org&gt;
-Martin Sin (cs) &lt;martin.sin@zshk.cz&gt;
-Cecilio Salmeron (es) &lt;s.cecilio@gmail.com&gt;
-Aleksa &#x160;u&#x161;uli&#x107; (sl) &lt;susulic@gmail.com&gt;
-Uwe Steinmann (de) &lt;uwe@steinmann.cx&gt;
+    <property name="translator_credits" translatable="yes">
 </property>
-    <property name="logo">gjots.png</property>
+    <property name="logo">gjots2.png</property>
   </object>
 </interface>

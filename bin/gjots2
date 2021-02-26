@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
 import sys, os, getopt
 import linecache
@@ -13,14 +13,14 @@ def traceit(frame, event, arg):
             filename = filename[:-1]
         name = frame.f_globals["__name__"]
         line = linecache.getline(filename, lineno)
-        print "%s:%s:%s: %s" % (event, name, lineno, line.rstrip())
+        print("%s:%s:%s: %s" % (event, name, lineno, line.rstrip()))
     return traceit
 
 def ver2str(ver):
     return ".".join(map(str,ver))
 
 def usage():
-    print _("""Usage: gjots [OPTIONS] [FILENAME]
+    print(_("""Usage: gjots [OPTIONS] [FILENAME]
 A gtk/X11 jotter
 
 OPTIONS:
@@ -34,12 +34,16 @@ OPTIONS:
 
 FILENAME:
     gjots data filename (default is $HOME/.gjotsfile)
-""")
+"""))
 
 if __name__ == '__main__':
     dirName, progName = os.path.split(sys.argv[0])
-    prefix = sys.prefix
+    prefix = sys.prefix # /usr or /usr/local or ???
 
+    # maybe we're installed somewhere weird like ~/foo/bar/bin
+    d, b = os.path.split(dirName)
+    if b == "bin":
+        prefix = d
     #
     # Add the library path to the system load path
     #
@@ -49,8 +53,14 @@ if __name__ == '__main__':
         prefix = localdir
         sys.path = [ localdir ] + sys.path
         sys.stderr.write("%s: Warning: running modules from %s\n" % (progName, localdir))
+        locale_dir = os.curdir + "/po"
     else:
-        sys.path = [ get_python_lib() + '/gjots2' ] + sys.path
+        p = get_python_lib()
+        if p.startswith(sys.prefix):
+            p = p[len(sys.prefix):]
+            p = prefix + "/" + p
+        sys.path = [ p + '/gjots2' ] + sys.path
+        locale_dir = prefix + "/share/locale"
 
     # i18n support
     import gettext
@@ -59,30 +69,26 @@ if __name__ == '__main__':
     # Locale setting in Gtk.Builder appears somewhat broken under Python. See:
     #   https://bugzilla.gnome.org/show_bug.cgi?id=574520
     locale_domain = "gjots2"
-    locale_dir = prefix + "/share/locale"
-    
+
     gettext.bindtextdomain(locale_domain, locale_dir)
     locale.setlocale(locale.LC_ALL, '')
     gettext.textdomain(locale_domain)
-    gettext.install(locale_domain, localedir=locale_dir, unicode=True)
+    gettext.install(locale_domain, localedir=locale_dir)
     try:
         locale.bindtextdomain(locale_domain, locale_dir)
         locale.bind_textdomain_codeset(locale_domain, 'UTF-8')
     except locale.Error:
-        print "Couldn't bind the translation domain. Some translations won't work."
+        print("Couldn't bind the translation domain. Some translations won't work.")
     _ = gettext.gettext
 
     #
     # python version
     #
-    pyver = (2,5)
-    if sys.version_info[:2] < pyver:
+    pyver = (3,6,8)
+    if sys.version_info[:3] < pyver:
         sys.stderr.write(_("%s requires python%s or higher.") % (progName, ver2str(pyver)))
         sys.exit(1)
 
-    #
-    # pygtk version
-    #
     import gi
     gi.require_version("Gtk", "3.0")
 
@@ -91,7 +97,7 @@ if __name__ == '__main__':
 
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hdrtg:V", ["help", "debug", "readonly", "trace", "geometry=", "version"])
-    except getopt.GetoptError, errmsg:
+    except getopt.GetoptError as errmsg:
         sys.stderr.write("%s: %s\n" % (progName, errmsg))
         sys.stderr.write(_("Use -h for help\n"))
         sys.exit(2)
@@ -107,7 +113,7 @@ if __name__ == '__main__':
             usage()
             sys.exit(0)
         if o in ("-V", "--version"):
-            print _("%s version %s") % (progName, gjots_version)
+            print(_("%s version %s") % (progName, gjots_version))
             sys.exit(0)
         if o in ("-p", "--purge-password"):
             purge_password = 1
@@ -132,10 +138,9 @@ if __name__ == '__main__':
 
     Gtk.main()
 
-
 # Local variables:
 # eval:(setq compile-command "./gjots2 test.gjots")
-# eval:(setq-default indent-tabs-mode 1)
+# eval:(setq-default indent-tabs-mode nil)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

@@ -73,7 +73,7 @@ brings it up practically instantly.
 \NewEntry
 Installing
 
-If possible, use RPM - better package management than setup.py
+If possible, use dnf/yum/rpm or apt - better package management than setup.py
 \NewFolder
 \NewEntry
 RPM-based systems
@@ -83,13 +83,42 @@ latest package from the homepage
 
 VERSION=_VERSION_
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
-yum install gjots2-${VERSION}-1.noarch.rpm
+dnf install gjots2
 
+There are builds on COPR: 
+https://copr.fedorainfracloud.org/coprs/wef/gjots2/
+\NewEntry
+From the tarball source
+
+VERSION=_VERSION_
+wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
+
+If installing from the tarball, after unpacking the tar file and
+cd'ing to it do this:
+
+	python setup.py install [ --prefix=/usr/... ]
+  glib-compile-schemas $prefix/share/glib-2.0/schemas
+  
+Uninstall with the uninstall.sh script provided here.
+
+On some systems, you may have permission problems with system-wide
+installations from source. All new directories installed should
+have permissions 0755, and all installed files should have
+permissions 0644, with the exception of 'docbook2gjots', 'gjots2',
+'gjots2docbook', 'gjots2emacs', 'gjots2org' and 'gjots2html',
+which should have permissions 0755.
+\NewFolder
 \NewEntry
 Prerequisites
 
-Let yum take the strain ... otherwise ...
+Let yum/dnf/apt take the strain ... otherwise ...
 
+Version 3.1.0+:
+Install sourceview4
+Install gtk3
+Install python3-gobject
+
+Earlier versions:
 Install pygtksourceview to enable Undo/Redo
 
 For gjots2-2.x.x: (Fedora <= 20 Centos <= 6)
@@ -109,25 +138,7 @@ PYTHONPATH eg.
 
 gjots2 was written with glade-3 so if you want to change or fix the
 code you will need to install it too.  Otherwise, it's just python!
-\NewEntry
-From the tarball source
-
-VERSION=_VERSION_
-wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
-
-If installing from the tarball, after unpacking the tar file and
-cd'ing to it do this:
-
-	python setup.py install [ --prefix=/usr/... ]
-
-Uninstall with the uninstall.sh script provided here.
-
-On some systems, you may have permission problems with system-wide
-installations from source. All new directories installed should have
-permissions 0755, and all installed files should have permissions
-0644, with the exception of 'docbook2gjots', 'gjots2',
-'gjots2docbook', 'gjots2emacs', 'gjots2org' and 'gjots2html', which should have
-permissions 0755.
+\EndFolder
 \EndFolder
 \NewEntry
 Contributing
@@ -135,7 +146,7 @@ Contributing
 We have two mailing lists setup for development and support of gjots:
 
 <NOTE: these are SPAM-infested - I rarely look at them! better send to
-bhepple@freeshell.org>
+bob.hepple@gmail.com>
 
   Gjots Developers <gjots2-devel@lists.sourceforge.net>:
     http://lists.sourceforge.net/lists/listinfo/gjots2-devel
@@ -169,7 +180,7 @@ your name and email address in the Authors and License
 section.
 
 If you want to contribute please get in touch with me at
-bhepple@freeshell.org, to make sure work is not duplicated.
+bob.hepple@gmail.com, to make sure work is not duplicated.
 
 For general ideas, please see "Planned Features".
 \NewEntry
@@ -730,7 +741,7 @@ Development status
 
 
 If you have ideas on how to improve gjots2, please email to
-bhepple@gmail.com
+bob.hepple@gmail.com
 
 
 
@@ -747,7 +758,7 @@ Localisation
 As of version 2.3.0, gjots2 is internationalized and
 ready for translations. If you would like to see your
 language supported, please contact the mailing list on
-bhepple@freeshell.org
+bob.hepple@gmail.com
 
 Check the webpage for localisations already complete.
 
@@ -803,7 +814,7 @@ The sort dialog can't set itself to the values stored in gconf.
 Platforms
 
 Tested on the following platforms:
-  Fedora-21
+  Fedora-31
 
 Older version were tested on:
   Gentoo Linux i386
@@ -897,7 +908,7 @@ Authors & Licence
 Authors
 
 Written by:
-	Bob Hepple <bhepple@freeshell.org>
+	Bob Hepple <bob.hepple@gmail.com>
 
 Assistance from:
 	Gabriel Munoz <munozga@gmail.com>
@@ -938,8 +949,8 @@ Copyright (C) 2002 DSP Popeck
 		    GNU GENERAL PUBLIC LICENSE
 		       Version 2, June 1991
 
- Copyright (C) 1989, 1991 Free Software Foundation, Inc.
-     59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ Copyright (C) 1989, 1991 Free Software Foundation
+ 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 

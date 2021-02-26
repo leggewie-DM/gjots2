@@ -1,9 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 2.16 -->
+  <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkFontSelectionDialog" id="fontselectiondialog">
     <property name="visible">True</property>
+    <property name="can_focus">False</property>
     <property name="border_width">4</property>
     <property name="title" translatable="yes">Select Font</property>
     <property name="modal">True</property>
@@ -12,34 +13,55 @@
     <child internal-child="font_selection">
       <object class="GtkFontSelection" id="fontselection1">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="border_width">4</property>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="0">fontOK</action-widget>
+      <action-widget response="0">fontApply</action-widget>
+      <action-widget response="0">fontCancel</action-widget>
+    </action-widgets>
     <child internal-child="cancel_button">
       <object class="GtkButton" id="fontCancel">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="can_default">True</property>
         <property name="receives_default">False</property>
-        <signal handler="on_fontCancel_clicked" name="clicked"/>
+        <signal name="clicked" handler="on_fontCancel_clicked" swapped="no"/>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="0">fontOK</action-widget>
+      <action-widget response="0">fontApply</action-widget>
+      <action-widget response="0">fontCancel</action-widget>
+    </action-widgets>
     <child internal-child="apply_button">
       <object class="GtkButton" id="fontApply">
         <property name="can_focus">True</property>
         <property name="can_default">True</property>
         <property name="receives_default">False</property>
-        <signal handler="on_fontApply_clicked" name="clicked"/>
+        <signal name="clicked" handler="on_fontApply_clicked" swapped="no"/>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="0">fontOK</action-widget>
+      <action-widget response="0">fontApply</action-widget>
+      <action-widget response="0">fontCancel</action-widget>
+    </action-widgets>
     <child internal-child="ok_button">
       <object class="GtkButton" id="fontOK">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="can_default">True</property>
         <property name="receives_default">False</property>
-        <signal handler="on_fontOK_clicked" name="clicked"/>
+        <signal name="clicked" handler="on_fontOK_clicked" swapped="no"/>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="0">fontOK</action-widget>
+      <action-widget response="0">fontApply</action-widget>
+      <action-widget response="0">fontCancel</action-widget>
+    </action-widgets>
   </object>
 </interface>

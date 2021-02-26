@@ -13,7 +13,7 @@ MANUAL DE GJOTS2
                  Queensland
                  Australia
 
-                 Versión 3.0.2
+                 Versión 3.1.9
 
 
       bhepple@freeshell.org
@@ -55,7 +55,7 @@ Sistemas basados en RPM
 
 Simplemente haga lo siguiente:
 
-VERSION=3.0.2
+VERSION=3.1.9
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 yum install gjots2-${VERSION}-1.noarch.rpm
 
@@ -115,7 +115,7 @@ app-office/gjots2 ~x86
 
 Realizado esto, hacer:
 
-VERSION=3.0.2
+VERSION=3.1.9
 CAT=/usr/local/portage/app-office/gjots2
 cd /usr/portage/distfiles
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
@@ -128,7 +128,7 @@ emerge gjots2
 \NewEntry
 Desde fuente en un tarball
 
-VERSION=3.0.2
+VERSION=3.1.9
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 Si se instala desde un tarball, despues de extraer el contenido del archivo tar y de hacer cd en el contenido, hay que hacer lo siguiente:
@@ -748,8 +748,8 @@ Copyright (C) 2002 DSP Popeck
 		    GNU GENERAL PUBLIC LICENSE
 		       Version 2, June 1991
 
- Copyright (C) 1989, 1991 Free Software Foundation, Inc.
-     59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ Copyright (C) 1989, 1991 Free Software Foundation
+ 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 

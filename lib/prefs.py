@@ -1,36 +1,30 @@
+import gi
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-from gi.repository import GConf
+import gi
 import inspect
 
 from common import *
 
-"""
-
-OK, yeah, I know - strictly speaking we should have a nofifier in here
-in case something else (eg gconf-editor) changes a setting while we
-are in here, but quite honestly - really!
-
-"""
-
 class font_dialog:
     def destroy(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.fonts_get_widget(self.name).destroy()
 
     def on_fontCancel_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.value = CANCEL
 
     def on_fontApply_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.value = OK
 
     def on_fontOK_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.value = OK
 
     def __init__(self, gui):
@@ -40,7 +34,7 @@ class font_dialog:
 
         self.gui = gui
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
 
         callbacks = {
             "on_fontCancel_clicked":                    self.on_fontCancel_clicked,
@@ -61,12 +55,12 @@ class font_dialog:
 class prefs_dialog:
     def destroy(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.prefs_get_widget(self.name).destroy()
 
     def on_fontButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         f = font_dialog(self.gui)
         if f.value == OK:
             self.fontName_entry.set_text(f.fontselectiondialog.get_font_name())
@@ -74,7 +68,7 @@ class prefs_dialog:
         
     def on_prefsOK_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         
         self.gui.settings.set_int("line-length",            self.lineLength_spinbutton.get_value_as_int())
         self.gui.settings.set_string("text-formatter",  self.textFormatter_entry.get_text())
@@ -87,51 +81,51 @@ class prefs_dialog:
 
     def on_prefsCancel_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.destroy()
     
     def on_textFormatter_key_press_event(self, widget, key_event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
-        if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
+        if key_event.keyval == gi.repository.Gdk.KEY_Return or key_event.keyval == gi.repository.Gdk.KEY_KP_Enter:
             self.on_prefsOK_clicked(widget)
-        if key_event.keyval == Gdk.KEY_Escape:
+        if key_event.keyval == gi.repository.Gdk.KEY_Escape:
             self.on_prefsCancel_clicked(widget)
         return
     
     def on_lineLength_key_press_event(self, widget, key_event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
-        if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
+        if key_event.keyval == gi.repository.Gdk.KEY_Return or key_event.keyval == gi.repository.Gdk.KEY_KP_Enter:
             self.on_prefsOK_clicked(widget)
-        if key_event.keyval == Gdk.KEY_Escape:
+        if key_event.keyval == gi.repository.Gdk.KEY_Escape:
             self.on_prefsCancel_clicked(widget)
         return
     
     def on_externalEditor_key_press_event(self, widget, key_event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
-        if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
+        if key_event.keyval == gi.repository.Gdk.KEY_Return or key_event.keyval == gi.repository.Gdk.KEY_KP_Enter:
             self.on_prefsOK_clicked(widget)
-        if key_event.keyval == Gdk.KEY_Escape:
+        if key_event.keyval == gi.repository.Gdk.KEY_Escape:
             self.on_prefsCancel_clicked(widget)
         return
     
     def on_dateFormat_key_press_event(self, widget, key_event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
-        if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
+        if key_event.keyval == gi.repository.Gdk.KEY_Return or key_event.keyval == gi.repository.Gdk.KEY_KP_Enter:
             self.on_prefsOK_clicked(widget)
-        if key_event.keyval == Gdk.KEY_Escape:
+        if key_event.keyval == gi.repository.Gdk.KEY_Escape:
             self.on_prefsCancel_clicked(widget)
         return
     
     def on_fontName_key_press_event(self, widget, key_event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
-        if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
+        if key_event.keyval == gi.repository.Gdk.KEY_Return or key_event.keyval == gi.repository.Gdk.KEY_KP_Enter:
             self.on_prefsOK_clicked(widget)
-        if key_event.keyval == Gdk.KEY_Escape:
+        if key_event.keyval == gi.repository.Gdk.KEY_Escape:
             self.on_prefsCancel_clicked(widget)
         return
 
@@ -142,7 +136,7 @@ class prefs_dialog:
 
         self.gui = gui
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
 
         callbacks = {
             "on_fontButton_clicked":                    self.on_fontButton_clicked,
@@ -176,7 +170,7 @@ class prefs_dialog:
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode nil)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

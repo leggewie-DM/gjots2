@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gjots2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-06 21:07+1000\n"
+"POT-Creation-Date: 2020-06-30 18:18+1000\n"
 "PO-Revision-Date: 2006-01-16 15:35+0100\n"
 "Last-Translator: Robert Emil Berge\n"
 "Language-Team:  <nb@li.org>\n"
@@ -18,443 +18,522 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11\n"
 
-#: ../gjots.glade2:43 ../ui/gjots.ui:24
+#: ../ui/about.ui:12
+#, fuzzy
+msgid "Copyright Bob Hepple 2002-2020"
+msgstr "Copyright Bob Hepple 2002-2006"
+
+#: ../ui/about.ui:13
+msgid "http://bhepple.freeshell.org/gjots2"
+msgstr "http://bhepple.freeshell.org/gjots2"
+
+#: ../ui/about.ui:25
+msgid "\n"
+msgstr ""
+
+#: ../ui/fileDialog.ui:69
+#, fuzzy
+msgid "Open file read only"
+msgstr "Åpne fil ..."
+
+#: ../ui/fileDialog.ui:73
+msgid "To open the file in read-only mode."
+msgstr ""
+
+#: ../ui/findDialog.ui:8
+msgid "Find & replace"
+msgstr "Finn og erstatt"
+
+#: ../ui/findDialog.ui:34
+msgid "Find:"
+msgstr "Finn:"
+
+#: ../ui/findDialog.ui:47
+msgid "Replace:"
+msgstr "Erstatt:"
+
+#: ../ui/findDialog.ui:64
+msgid "String to search for"
+msgstr "Tekst å søke etter"
+
+#: ../ui/findDialog.ui:80
+msgid "String to replace"
+msgstr "Tekst å erstatte med"
+
+#: ../ui/findDialog.ui:114 ../ui/gjots.ui:844
+msgid "Find"
+msgstr "Finn"
+
+#: ../ui/findDialog.ui:130
+msgid "Close"
+msgstr "Lukk"
+
+#: ../ui/findDialog.ui:146
+msgid "Replace"
+msgstr "Erstatt"
+
+#: ../ui/findDialog.ui:162
+msgid "Replace All"
+msgstr "Erstatt alle"
+
+#: ../ui/findDialog.ui:178
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../ui/findDialog.ui:197
+msgid "Clear"
+msgstr "Nullstill"
+
+#: ../ui/findDialog.ui:257
+msgid "Match case"
+msgstr "Bruk kapitalisering"
+
+#: ../ui/findDialog.ui:261
+msgid "Don't ignore case"
+msgstr "Ikke overse store og små bokstaver"
+
+#: ../ui/findDialog.ui:271
+msgid "Regular Expression"
+msgstr "Regulært uttrykk"
+
+#: ../ui/findDialog.ui:275
+msgid "Find string is a regular expression (see 'man 7 regex')"
+msgstr "Søketekst er et regulært uttrykk (se man 7 regex)"
+
+#: ../ui/findDialog.ui:287
+msgid "Backwards"
+msgstr "Bakover"
+
+#: ../ui/findDialog.ui:291
+msgid "Search backwards"
+msgstr "Søk bakover"
+
+#: ../ui/findDialog.ui:306
+msgid "Global"
+msgstr "Globalt"
+
+#: ../ui/findDialog.ui:310
+msgid "Searches entire file not just this entry"
+msgstr "Søker i hele filen, ikke bare dette elementet"
+
+#: ../ui/findDialog.ui:327
+msgid " Options "
+msgstr "Innstillinger"
+
+#: ../ui/fontDialog.ui:9
+msgid "Select Font"
+msgstr "Velg skrifttype"
+
+#: ../ui/generalDialog.ui:9
+msgid "window1"
+msgstr "vindu1"
+
+#: ../ui/generalDialog.ui:22 ../ui/generalDialog.ui:60
+#: ../ui/generalDialog.ui:115
+msgid "label1"
+msgstr "merkelapp1"
+
+#: ../ui/generalDialog.ui:46
+msgid "label2"
+msgstr "merkelapp2"
+
+#: ../ui/generalDialog.ui:193
+msgid "Try again"
+msgstr "Prøv igjen"
+
+#: ../ui/generalDialog.ui:209
+msgid "Read only"
+msgstr "Skrivebeskyttet"
+
+#: ../ui/gjots.ui:24
 msgid "_File"
 msgstr ""
 
-#: ../gjots.glade2:70
-msgid "Recent"
-msgstr ""
-
-#: ../gjots.glade2:108 ../ui/gjots.ui:91
-msgid "Import items from a gjots file"
-msgstr "Importer elementer fra en gjots-fil"
-
-#: ../gjots.glade2:109
+#: ../ui/gjots.ui:88
 msgid "_Import"
 msgstr "_Importer"
 
-#: ../gjots.glade2:118 ../ui/gjots.ui:102
-msgid "Export selected items to a gjots file"
-msgstr "Eksporter valgte elementer til en gjots fil"
+#: ../ui/gjots.ui:91
+msgid "Import items from a gjots file"
+msgstr "Importer elementer fra en gjots-fil"
 
-#: ../gjots.glade2:119 ../ui/gjots.ui:99
+#: ../ui/gjots.ui:99
 msgid "_Export"
 msgstr "_Eksporter"
 
-#: ../gjots.glade2:150 ../ui/gjots.ui:135
+#: ../ui/gjots.ui:102
+msgid "Export selected items to a gjots file"
+msgstr "Eksporter valgte elementer til en gjots fil"
+
+#: ../ui/gjots.ui:135
 msgid "Toggle the read-only flag if possible"
 msgstr "Skift flagget for skrivebeskyttelse hvis mulig"
 
-#: ../gjots.glade2:151 ../ui/gjots.ui:136
+#: ../ui/gjots.ui:136
 msgid "_Read-only"
 msgstr "_Skrivebeskyttet"
 
-#: ../gjots.glade2:168
-msgid "Exit gjots"
+#: ../ui/gjots.ui:152
+#, fuzzy
+msgid "Exit gjots2"
 msgstr "Avslutt gjots"
 
-#: ../gjots.glade2:182 ../ui/gjots.ui:167
+#: ../ui/gjots.ui:167
 msgid "_Edit"
 msgstr ""
 
-#: ../gjots.glade2:269
+#: ../ui/gjots.ui:263
 #, fuzzy
 msgid "Find Next"
 msgstr "Finn"
 
-#: ../gjots.glade2:291 ../ui/gjots.ui:273
+#: ../ui/gjots.ui:273
 msgid "Find Previous"
 msgstr ""
 
-#: ../gjots.glade2:332 ../ui/gjots.ui:299
+#: ../ui/gjots.ui:299
 msgid "_View"
 msgstr ""
 
-#: ../gjots.glade2:341 ../gjots.glade2:1257 ../ui/gjots.ui:310
-#: ../ui/gjots.ui:1062
-msgid "Show all items below the current item"
-msgstr "Vis alle elementer under valgte element"
-
-#: ../gjots.glade2:342 ../ui/gjots.ui:307
+#: ../ui/gjots.ui:307
 msgid "_Show All"
 msgstr "Vis _alt"
 
-#: ../gjots.glade2:351 ../ui/gjots.ui:321
-msgid "Hide all items except the top level"
-msgstr "Skjul alle elementer utenom øverste nivå"
+#: ../ui/gjots.ui:310 ../ui/gjots.ui:1085
+msgid "Show all items below the current item"
+msgstr "Vis alle elementer under valgte element"
 
-#: ../gjots.glade2:352 ../ui/gjots.ui:318
+#: ../ui/gjots.ui:318
 msgid "_Hide All"
 msgstr "_Skjul alt"
 
-#: ../gjots.glade2:367 ../ui/gjots.ui:337
+#: ../ui/gjots.ui:321
+msgid "Hide all items except the top level"
+msgstr "Skjul alle elementer utenom øverste nivå"
+
+#: ../ui/gjots.ui:337
 msgid "Toggles the main toolbar"
 msgstr "Skrur av/på hoved-verktøylinjen"
 
-#: ../gjots.glade2:368 ../ui/gjots.ui:338
+#: ../ui/gjots.ui:338
 msgid "To_p Toolbar"
 msgstr "Ø_verste verktøylinje"
 
-#: ../gjots.glade2:378 ../ui/gjots.ui:347
+#: ../ui/gjots.ui:347
 msgid "Toggles tree tool bar"
 msgstr "Skrur av/på tree-verktøylinjen"
 
-#: ../gjots.glade2:379 ../ui/gjots.ui:348
+#: ../ui/gjots.ui:348
 msgid "Tre_e Toolbar"
 msgstr "_Tre-verktøylinje"
 
-#: ../gjots.glade2:389 ../ui/gjots.ui:357
+#: ../ui/gjots.ui:357
 msgid "Show the related icon text"
 msgstr "Vis tilhørende ikontekst"
 
-#: ../gjots.glade2:390 ../ui/gjots.ui:358
+#: ../ui/gjots.ui:358
 msgid "Show _Icon Text"
 msgstr "Vis ikontekst"
 
-#: ../gjots.glade2:400 ../ui/gjots.ui:367
+#: ../ui/gjots.ui:367
 msgid "Status _Bar"
 msgstr "Status_linje"
 
-#: ../gjots.glade2:414 ../ui/gjots.ui:380
+#: ../ui/gjots.ui:380
 msgid "_Tree"
 msgstr "_Tre"
 
-#: ../gjots.glade2:423 ../ui/gjots.ui:391
-msgid "Create a new page"
-msgstr "Lag nytt element"
-
-#: ../gjots.glade2:424 ../ui/gjots.ui:388
+#: ../ui/gjots.ui:388
 msgid "_New Page"
 msgstr "_Nytt element"
 
-#: ../gjots.glade2:445
-msgid "Create a new child "
-msgstr "Lag et nytt underelement"
+#: ../ui/gjots.ui:391
+msgid "Create a new page"
+msgstr "Lag nytt element"
 
-#: ../gjots.glade2:446 ../ui/gjots.ui:399
+#: ../ui/gjots.ui:400
 msgid "New _Child"
 msgstr "Nytt _underelement"
 
-#: ../gjots.glade2:461 ../gjots.glade2:1087 ../ui/gjots.ui:419
-#: ../ui/gjots.ui:927
+#: ../ui/gjots.ui:403 ../ui/gjots.ui:920
+msgid "Create a new child"
+msgstr "Lag et nytt underelement"
+
+#: ../ui/gjots.ui:420 ../ui/gjots.ui:950
 msgid "Move selection up"
 msgstr "Flytt valgte elementer opp"
 
-#: ../gjots.glade2:462 ../gjots.glade2:1088 ../ui/gjots.ui:928
-msgid "Up"
-msgstr "Opp"
-
-#: ../gjots.glade2:471 ../gjots.glade2:1105 ../ui/gjots.ui:430
-#: ../ui/gjots.ui:942
+#: ../ui/gjots.ui:431 ../ui/gjots.ui:965
 msgid "Move selection down"
 msgstr "Flytt valgte elementer ned"
 
-#: ../gjots.glade2:472 ../gjots.glade2:1106 ../ui/gjots.ui:943
-msgid "Down"
-msgstr "Ned"
-
-#: ../gjots.glade2:481 ../gjots.glade2:1123 ../ui/gjots.ui:441
-#: ../ui/gjots.ui:957
-msgid "Selection becomes a sibling to their parent"
-msgstr "Utvalg kommer på samme nivå som overelement"
-
-#: ../gjots.glade2:482 ../ui/gjots.ui:438
+#: ../ui/gjots.ui:439
 msgid "P_romote"
 msgstr "_Forfrem"
 
-#: ../gjots.glade2:503 ../gjots.glade2:1141 ../ui/gjots.ui:452
-#: ../ui/gjots.ui:972
-msgid "Selection becomes a child of the previous item"
-msgstr "Utvalg blir underelement til elementet før"
+#: ../ui/gjots.ui:442 ../ui/gjots.ui:980
+msgid "Selection becomes a sibling to their parent"
+msgstr "Utvalg kommer på samme nivå som overelement"
 
-#: ../gjots.glade2:504 ../ui/gjots.ui:449
+#: ../ui/gjots.ui:450
 msgid "D_emote"
 msgstr "_Degrader"
 
-#: ../gjots.glade2:531 ../ui/gjots.ui:469
-msgid "Make a new item from the current selection"
-msgstr "Lag et nytt element fra utvalg"
+#: ../ui/gjots.ui:453 ../ui/gjots.ui:995
+msgid "Selection becomes a child of the previous item"
+msgstr "Utvalg blir underelement til elementet før"
 
-#: ../gjots.glade2:532 ../ui/gjots.ui:466
+#: ../ui/gjots.ui:467
 msgid "_Split Item"
 msgstr "Del _element"
 
-#: ../gjots.glade2:541 ../ui/gjots.ui:480
-msgid "Merge current items into the first one"
-msgstr "Slå sammen valgte elementer inn i det første"
+#: ../ui/gjots.ui:470
+msgid "Make a new item from the current selection"
+msgstr "Lag et nytt element fra utvalg"
 
-#: ../gjots.glade2:542 ../ui/gjots.ui:477
+#: ../ui/gjots.ui:478
 msgid "_Merge Items"
 msgstr "_Slå sammen elementer"
 
-#: ../gjots.glade2:557 ../gjots.glade2:1275 ../ui/gjots.ui:491
-#: ../ui/gjots.ui:1077
-msgid "Popup the sort tree dialog"
-msgstr "Åpne dialogvindu for å sortere treet"
+#: ../ui/gjots.ui:481
+msgid "Merge current items into the first one"
+msgstr "Slå sammen valgte elementer inn i det første"
 
-#: ../gjots.glade2:558 ../ui/gjots.ui:488
+#: ../ui/gjots.ui:489
 msgid "S_ort Tree"
 msgstr "So_rter treet"
 
-#: ../gjots.glade2:571 ../ui/gjots.ui:505
+#: ../ui/gjots.ui:492 ../ui/gjots.ui:1100
+msgid "Popup the sort tree dialog"
+msgstr "Åpne dialogvindu for å sortere treet"
+
+#: ../ui/gjots.ui:506
 msgid "Te_xt"
 msgstr "Te_kst"
 
-#: ../gjots.glade2:580 ../ui/gjots.ui:516
-msgid "Format the current paragraph"
-msgstr "Formater gjeldende avsnitt"
-
-#: ../gjots.glade2:581 ../ui/gjots.ui:513
+#: ../ui/gjots.ui:514
 msgid "_Format"
 msgstr "_Formater"
 
-#: ../gjots.glade2:591 ../ui/gjots.ui:528
-msgid "Add a time/date stamp (see preferences)"
-msgstr "Sett inn tid/dato (see innstillinger)"
+#: ../ui/gjots.ui:517
+msgid "Format the current paragraph"
+msgstr "Formater gjeldende avsnitt"
 
-#: ../gjots.glade2:592 ../ui/gjots.ui:525
+#: ../ui/gjots.ui:526
 msgid "_Time stamp"
 msgstr "_Tidsstempel"
 
-#: ../gjots.glade2:611 ../ui/gjots.ui:539
-msgid "Edit current item in an external editor"
-msgstr "Rediger gjeldende element i et eksternt skriveprogram"
+#: ../ui/gjots.ui:529
+msgid "Add a time/date stamp (see preferences)"
+msgstr "Sett inn tid/dato (see innstillinger)"
 
-#: ../gjots.glade2:612 ../ui/gjots.ui:536
+#: ../ui/gjots.ui:538
 msgid "_External Edit"
 msgstr "_Rediger eksternt"
 
-#: ../gjots.glade2:633 ../ui/gjots.ui:550
-msgid "Popup the sort text dialog"
-msgstr "Åpne dialogvindu for å sortere tekst"
+#: ../ui/gjots.ui:541
+msgid "Edit current item in an external editor"
+msgstr "Rediger gjeldende element i et eksternt skriveprogram"
 
-#: ../gjots.glade2:634 ../ui/gjots.ui:547
+#: ../ui/gjots.ui:549
 msgid "_Sort Text"
 msgstr "_Sorter tekst"
 
-#: ../gjots.glade2:647 ../ui/gjots.ui:564
+#: ../ui/gjots.ui:552
+msgid "Popup the sort text dialog"
+msgstr "Åpne dialogvindu for å sortere tekst"
+
+#: ../ui/gjots.ui:566
 msgid "_Help"
 msgstr ""
 
-#: ../gjots.glade2:656 ../ui/gjots.ui:575
-msgid "Read the online manual (using gjots)"
-msgstr "Les manualen fra internet (med gjots)"
-
-#: ../gjots.glade2:657 ../ui/gjots.ui:572
+#: ../ui/gjots.ui:574
 #, fuzzy
 msgid "_Read Manual"
 msgstr "Les manualen"
 
-#: ../gjots.glade2:678
-#, fuzzy
-msgid "About gjots2"
-msgstr "Avslutt gjots"
+#: ../ui/gjots.ui:577
+msgid "Read the online manual (using gjots)"
+msgstr "Les manualen fra internet (med gjots)"
 
-#: ../gjots.glade2:709
-#, fuzzy
-msgid " Find: "
-msgstr "Finn:"
+#: ../ui/gjots.ui:621
+msgid "Popup the 'Find'menu"
+msgstr ""
 
-#: ../gjots.glade2:765 ../ui/gjots.ui:670
+#: ../ui/gjots.ui:651
+msgid "Find the previous occurance"
+msgstr ""
+
+#: ../ui/gjots.ui:667
+msgid "Find the next occurance"
+msgstr ""
+
+#: ../ui/gjots.ui:693
 msgid "Save gjots document"
 msgstr "Lagre gjots-dokumentet"
 
-#: ../gjots.glade2:766 ../ui/gjots.ui:671
+#: ../ui/gjots.ui:694
 msgid "Save"
 msgstr "Lagre"
 
-#: ../gjots.glade2:783 ../ui/gjots.ui:685
+#: ../ui/gjots.ui:708
 msgid "Print this document"
 msgstr "Skriv ut dette dokumentet"
 
-#: ../gjots.glade2:784 ../gjots.glade2:2664 ../ui/gjots.ui:686
-#: ../ui/printDialog.ui:7
+#: ../ui/gjots.ui:709 ../ui/printDialog.ui:8
 msgid "Print"
 msgstr "Skriv ut"
 
-#: ../gjots.glade2:823 ../ui/gjots.ui:715
+#: ../ui/gjots.ui:738
 msgid "Cut selected items"
 msgstr "Klipp ut valgte elementer"
 
-#: ../gjots.glade2:824 ../ui/gjots.ui:716
+#: ../ui/gjots.ui:739
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: ../gjots.glade2:841 ../ui/gjots.ui:730
+#: ../ui/gjots.ui:753
 msgid "Copy selected items"
 msgstr "Kopier valgte elementer"
 
-#: ../gjots.glade2:842 ../ui/gjots.ui:731
+#: ../ui/gjots.ui:754
 msgid "Copy"
 msgstr "Kopier"
 
-#: ../gjots.glade2:859 ../ui/gjots.ui:745
+#: ../ui/gjots.ui:768
 msgid "Paste selected items"
 msgstr "Lim inn valgte elementer"
 
-#: ../gjots.glade2:860 ../ui/gjots.ui:746
+#: ../ui/gjots.ui:769
 msgid "Paste"
 msgstr "Lim inn"
 
-#: ../gjots.glade2:899 ../ui/gjots.ui:775
+#: ../ui/gjots.ui:798
 msgid "Wrap the current paragraph to the current line length"
 msgstr "Bryt gjeldene avsnitt til valgt linjelengde"
 
-#: ../gjots.glade2:900 ../ui/gjots.ui:776
+#: ../ui/gjots.ui:799
 msgid "Wrap"
 msgstr "Bryt"
 
-#: ../gjots.glade2:917 ../ui/gjots.ui:790
+#: ../ui/gjots.ui:813
 msgid "Invoke an external editor on the current item"
 msgstr "Start et eksternt skriveprogram for gjeldene element"
 
-#: ../gjots.glade2:918 ../ui/gjots.ui:791
+#: ../ui/gjots.ui:814
 msgid "Ext.Ed."
 msgstr "Ekst.prg."
 
-#: ../gjots.glade2:935 ../ui/gjots.ui:805
+#: ../ui/gjots.ui:828
 msgid "Add a time/date stamp (see prefs)"
 msgstr "Sett inn stempel for tid/dato (se innstillinger)"
 
-#: ../gjots.glade2:936 ../ui/gjots.ui:806
+#: ../ui/gjots.ui:829
 msgid "Date"
 msgstr "Dato"
 
-#: ../gjots.glade2:953 ../ui/gjots.ui:820
+#: ../ui/gjots.ui:843
 msgid "Popup the find and replace dialog"
 msgstr "Åpne dialogvinduet for finn/erstatt"
 
-#: ../gjots.glade2:954 ../gjots.glade2:2360 ../ui/findDialog.ui:97
-#: ../ui/gjots.ui:821
-msgid "Find"
-msgstr "Finn"
-
-#: ../gjots.glade2:971 ../ui/gjots.ui:835
+#: ../ui/gjots.ui:858
 msgid "Popup the sort dialog"
 msgstr "Åpne dialogvinduet for å sortere"
 
-#: ../gjots.glade2:972 ../gjots.glade2:3148 ../ui/gjots.ui:836
-#: ../ui/sortDialog.ui:15
+#: ../ui/gjots.ui:859 ../ui/sortDialog.ui:15
 msgid "Sort"
 msgstr "Sorter"
 
-#: ../gjots.glade2:989 ../ui/gjots.ui:850
+#: ../ui/gjots.ui:873
 msgid "Open gjots preferences window"
 msgstr "Åpne vinduet for gjots innstillinger"
 
-#: ../gjots.glade2:990 ../ui/gjots.ui:851
+#: ../ui/gjots.ui:874
 msgid "Prefs"
 msgstr "Innstillinger"
 
-#: ../gjots.glade2:1029 ../ui/gjots.ui:882
+#: ../ui/gjots.ui:905
 msgid "Create a new item"
 msgstr "Lag et nytt element"
 
-#: ../gjots.glade2:1030 ../gjots.glade2:3628 ../ui/gjots.ui:883
-#: ../ui/treeContextMenu.ui:45
+#: ../ui/gjots.ui:906 ../ui/treeContextMenu.ui:45
 msgid "New Page"
 msgstr "Nytt element"
 
-#: ../gjots.glade2:1047 ../ui/gjots.ui:402 ../ui/gjots.ui:897
-msgid "Create a new child"
-msgstr "Lag et nytt underelement"
-
-#: ../gjots.glade2:1048 ../gjots.glade2:3649 ../ui/gjots.ui:898
-#: ../ui/treeContextMenu.ui:52
+#: ../ui/gjots.ui:921 ../ui/treeContextMenu.ui:52
 msgid "New Child"
 msgstr "Nytt underelement"
 
-#: ../gjots.glade2:1124 ../gjots.glade2:3692 ../ui/gjots.ui:958
-#: ../ui/treeContextMenu.ui:74
+#: ../ui/gjots.ui:951
+msgid "Up"
+msgstr "Opp"
+
+#: ../ui/gjots.ui:966
+msgid "Down"
+msgstr "Ned"
+
+#: ../ui/gjots.ui:981 ../ui/treeContextMenu.ui:74
 msgid "Promote"
 msgstr "Forfrem"
 
-#: ../gjots.glade2:1142 ../gjots.glade2:3713 ../ui/gjots.ui:973
-#: ../ui/treeContextMenu.ui:82
+#: ../ui/gjots.ui:996 ../ui/treeContextMenu.ui:82
 msgid "Demote"
 msgstr "Degrader"
 
-#: ../gjots.glade2:1181 ../ui/gjots.ui:1002
+#: ../ui/gjots.ui:1025
 msgid "Split the text selection into a new item"
 msgstr "Skill ut tekstutvalget til et nytt element"
 
-#: ../gjots.glade2:1182 ../ui/gjots.ui:1003
+#: ../ui/gjots.ui:1026
 msgid "Split Item"
 msgstr "Del element"
 
-#: ../gjots.glade2:1199 ../ui/gjots.ui:1017
+#: ../ui/gjots.ui:1040
 msgid "Merge selected items together"
 msgstr "Slå sammen valgte elementer"
 
-#: ../gjots.glade2:1200 ../gjots.glade2:3740 ../ui/gjots.ui:1018
-#: ../ui/treeContextMenu.ui:89
+#: ../ui/gjots.ui:1041 ../ui/treeContextMenu.ui:89
 msgid "Merge Items"
 msgstr "Slå sammen elementer"
 
-#: ../gjots.glade2:1239 ../ui/gjots.ui:1047
+#: ../ui/gjots.ui:1070
 msgid "Hide all items except for the top level"
 msgstr "Skjul alle elementer utenom øverste nivå"
 
-#: ../gjots.glade2:1240 ../gjots.glade2:3784 ../ui/gjots.ui:1048
-#: ../ui/treeContextMenu.ui:103
+#: ../ui/gjots.ui:1071 ../ui/treeContextMenu.ui:103
 msgid "Hide All"
 msgstr "Skjul alt"
 
-#: ../gjots.glade2:1258 ../gjots.glade2:3765 ../ui/gjots.ui:1063
-#: ../ui/treeContextMenu.ui:96
+#: ../ui/gjots.ui:1086 ../ui/treeContextMenu.ui:96
 msgid "Show All"
 msgstr "Vis alt"
 
-#: ../gjots.glade2:1276 ../gjots.glade2:3809 ../lib/sortDialog.py:313
-#: ../ui/gjots.ui:1078 ../ui/treeContextMenu.ui:110
+#: ../ui/gjots.ui:1101 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
 msgid "Sort Tree"
 msgstr "Sorter treet"
 
-#: ../gjots.glade2:1407 ../ui/generalDialog.ui:9
-msgid "window1"
-msgstr "vindu1"
-
-#: ../gjots.glade2:1430 ../gjots.glade2:1491 ../gjots.glade2:1572
-#: ../ui/generalDialog.ui:21 ../ui/generalDialog.ui:56
-#: ../ui/generalDialog.ui:102
-msgid "label1"
-msgstr "merkelapp1"
-
-#: ../gjots.glade2:1464 ../ui/generalDialog.ui:43
-msgid "label2"
-msgstr "merkelapp2"
-
-#: ../gjots.glade2:1658 ../ui/generalDialog.ui:178
-msgid "Try again"
-msgstr "Prøv igjen"
-
-#: ../gjots.glade2:1671 ../ui/generalDialog.ui:194
-msgid "Read only"
-msgstr "Skrivebeskyttet"
-
-#: ../gjots.glade2:1691 ../ui/prefsDialog.ui:25
+#: ../ui/prefsDialog.ui:20
 msgid "gjots: preferences"
 msgstr "gjots: innstillinger"
 
-#: ../gjots.glade2:1724 ../ui/prefsDialog.ui:48
+#: ../ui/prefsDialog.ui:49
 msgid "Choose a font for the text panel"
 msgstr "Velg en skrifttype for tekstpanelet"
 
-#: ../gjots.glade2:1745 ../ui/prefsDialog.ui:64
+#: ../ui/prefsDialog.ui:65
 msgid "Date format:"
 msgstr "Datoformat:"
 
-#: ../gjots.glade2:1773 ../ui/prefsDialog.ui:78
+#: ../ui/prefsDialog.ui:79
 #, fuzzy
 msgid "Format for the timestamp function (see strftime(3)) eg %F"
 msgstr "Format for datostempelfunksjonen (se strftime(3))"
 
-#: ../gjots.glade2:1778 ../ui/prefsDialog.ui:79
+#: ../ui/prefsDialog.ui:80
 msgid "%F"
 msgstr "%F"
 
-#: ../gjots.glade2:1796 ../ui/prefsDialog.ui:98
+#: ../ui/prefsDialog.ui:99
 #, fuzzy
 msgid ""
 "External program to edit a page (%s is replaced by the name of the temporary "
@@ -463,43 +542,27 @@ msgstr ""
 "Eksternt program for å redigere et element (%s blir byttet ut med en "
 "midlertidig fil for redigering)"
 
-#: ../gjots.glade2:1801 ../ui/prefsDialog.ui:99
+#: ../ui/prefsDialog.ui:100
 msgid "xterm -e vi %s"
 msgstr "xterm -e vi %s"
 
-#: ../gjots.glade2:1819 ../ui/prefsDialog.ui:119
+#: ../ui/prefsDialog.ui:120
 msgid "External editor"
 msgstr "Eksternt skriveprogram"
 
-#: ../gjots.glade2:1847 ../ui/prefsDialog.ui:134
+#: ../ui/prefsDialog.ui:135
 msgid "Text Line Length: "
 msgstr "Linjelengde for tekst:"
 
-#: ../gjots.glade2:1875 ../ui/prefsDialog.ui:148
+#: ../ui/prefsDialog.ui:149
 msgid "Line length for paragraph wrapping"
 msgstr "Linjelengde for avsnittsbryting"
 
-#: ../gjots.glade2:1898 ../ui/prefsDialog.ui:171
+#: ../ui/prefsDialog.ui:172
 msgid "Text formatter: "
 msgstr "Tekstformatering:"
 
-#: ../gjots.glade2:1926 ../ui/prefsDialog.ui:201
-msgid "Current text font"
-msgstr "Valgt skrifttype"
-
-#: ../gjots.glade2:1931 ../ui/prefsDialog.ui:203
-msgid "Courier 10 Pitch 10"
-msgstr "Courier 10 Pitch 10"
-
-#: ../gjots.glade2:1949 ../ui/prefsDialog.ui:223
-msgid "AutoSave interval:"
-msgstr ""
-
-#: ../gjots.glade2:1977 ../ui/prefsDialog.ui:237
-msgid "Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)"
-msgstr ""
-
-#: ../gjots.glade2:2000 ../ui/prefsDialog.ui:183
+#: ../ui/prefsDialog.ui:184
 #, fuzzy
 msgid ""
 "External program to pipe text for formatting (%d is replaced by the current "
@@ -507,237 +570,152 @@ msgid ""
 msgstr ""
 "Eksternt program for formatering (%d blir byttet ut med valgt linjelengde)"
 
-#: ../gjots.glade2:2005 ../ui/prefsDialog.ui:184
+#: ../ui/prefsDialog.ui:185
 msgid "fmt -w %d "
 msgstr "fmt -w %d"
 
-#: ../gjots.glade2:2023 ../ui/prefsDialog.ui:261
-msgid "Auto ReadOnly timeout:"
+#: ../ui/prefsDialog.ui:202
+msgid "Current text font"
+msgstr "Valgt skrifttype"
+
+#: ../ui/prefsDialog.ui:204
+msgid "Courier 10 Pitch 10"
+msgstr "Courier 10 Pitch 10"
+
+#: ../ui/prefsDialog.ui:224
+msgid "AutoSave interval:"
 msgstr ""
 
-#: ../gjots.glade2:2051 ../ui/prefsDialog.ui:275
-msgid "The number of second after losing focus that ReadOnly should be set."
+#: ../ui/prefsDialog.ui:238
+msgid "Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)"
 msgstr ""
 
-#: ../gjots.glade2:2136 ../ui/fontDialog.ui:8
-msgid "Select Font"
-msgstr "Velg skrifttype"
-
-#: ../gjots.glade2:2186
-msgid "abcdefghijk ABCDEFGHIJK"
-msgstr "abcdefghijk ABCDEFGHIJK"
-
-#: ../gjots.glade2:2198 ../ui/findDialog.ui:7
-msgid "Find & replace"
-msgstr "Finn og erstatt"
-
-#: ../gjots.glade2:2238 ../ui/findDialog.ui:29
-msgid "Find:"
-msgstr "Finn:"
-
-#: ../gjots.glade2:2266 ../ui/findDialog.ui:41
-msgid "Replace:"
-msgstr "Erstatt:"
-
-#: ../gjots.glade2:2294 ../ui/findDialog.ui:58
-msgid "String to search for"
-msgstr "Tekst å søke etter"
-
-#: ../gjots.glade2:2319 ../ui/findDialog.ui:70
-msgid "String to replace"
-msgstr "Tekst å erstatte med"
-
-#: ../gjots.glade2:2382 ../ui/findDialog.ui:113
-msgid "Close"
-msgstr "Lukk"
-
-#: ../gjots.glade2:2402 ../ui/findDialog.ui:129
-msgid "Replace"
-msgstr "Erstatt"
-
-#: ../gjots.glade2:2422 ../ui/findDialog.ui:161
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: ../gjots.glade2:2443 ../ui/findDialog.ui:145
-msgid "Replace All"
-msgstr "Erstatt alle"
-
-#: ../gjots.glade2:2463 ../ui/findDialog.ui:180
-msgid "Clear"
-msgstr "Nullstill"
-
-#: ../gjots.glade2:2540 ../ui/findDialog.ui:252
-msgid "Find string is a regular expression (see 'man 7 regex')"
-msgstr "Søketekst er et regulært uttrykk (se man 7 regex)"
-
-#: ../gjots.glade2:2542 ../ui/findDialog.ui:248
-msgid "Regular Expression"
-msgstr "Regulært uttrykk"
-
-#: ../gjots.glade2:2562 ../ui/findDialog.ui:287
-msgid "Searches entire file not just this entry"
-msgstr "Søker i hele filen, ikke bare dette elementet"
-
-#: ../gjots.glade2:2564 ../ui/findDialog.ui:283
-msgid "Global"
-msgstr "Globalt"
-
-#: ../gjots.glade2:2585 ../ui/findDialog.ui:238
-msgid "Don't ignore case"
-msgstr "Ikke overse store og små bokstaver"
-
-#: ../gjots.glade2:2587 ../ui/findDialog.ui:234
-msgid "Match case"
-msgstr "Bruk kapitalisering"
-
-#: ../gjots.glade2:2607 ../ui/findDialog.ui:268
-msgid "Search backwards"
-msgstr "Søk bakover"
-
-#: ../gjots.glade2:2609 ../ui/findDialog.ui:264
-msgid "Backwards"
-msgstr "Bakover"
-
-#: ../gjots.glade2:2632 ../ui/findDialog.ui:303
-msgid " Options "
-msgstr "Innstillinger"
-
-#: ../gjots.glade2:2714 ../ui/printDialog.ui:32
+#: ../ui/printDialog.ui:38
 msgid "e.g. lpr: "
 msgstr "f.eks. lpr:"
 
-#: ../gjots.glade2:2739 ../ui/printDialog.ui:48
+#: ../ui/printDialog.ui:54
 msgid "print command (can be a shell expression)"
 msgstr "Utskriftkommando (kan være et skallutrykk)"
 
-#: ../gjots.glade2:2767 ../ui/printDialog.ui:63
+#: ../ui/printDialog.ui:76
 msgid " Print command "
 msgstr "Utskriftskommando"
 
-#: ../gjots.glade2:2822 ../ui/printDialog.ui:91
-msgid "Print the current page"
-msgstr "Skriv ut gjeldene element"
-
-#: ../gjots.glade2:2824 ../ui/printDialog.ui:87
+#: ../ui/printDialog.ui:104
 msgid "Page"
 msgstr "Element"
 
-#: ../gjots.glade2:2842 ../ui/printDialog.ui:107
-msgid "Print the selected pages or text"
-msgstr "Skriv ut valgte elementer eller valgt tekst"
+#: ../ui/printDialog.ui:108
+msgid "Print the current page"
+msgstr "Skriv ut gjeldene element"
 
-#: ../gjots.glade2:2844 ../ui/printDialog.ui:103
+#: ../ui/printDialog.ui:120
 msgid "Selection"
 msgstr "Utvalg"
 
-#: ../gjots.glade2:2863 ../ui/printDialog.ui:124
-msgid "Print the entire gjots file"
-msgstr "Skriv ut hele gjots-filen"
+#: ../ui/printDialog.ui:124
+msgid "Print the selected pages or text"
+msgstr "Skriv ut valgte elementer eller valgt tekst"
 
-#: ../gjots.glade2:2865 ../ui/printDialog.ui:120
+#: ../ui/printDialog.ui:137
 msgid "All"
 msgstr "Alt"
 
-#: ../gjots.glade2:2888 ../ui/printDialog.ui:142
+#: ../ui/printDialog.ui:141
+msgid "Print the entire gjots file"
+msgstr "Skriv ut hele gjots-filen"
+
+#: ../ui/printDialog.ui:160
 msgid " Print Range "
 msgstr "Utskriftsrekkevidde"
 
-#: ../gjots.glade2:2949 ../ui/printDialog.ui:174
-msgid "Feeds a page before every new gjots item"
-msgstr "Mater ut en blank side før hvert element"
-
-#: ../gjots.glade2:2951 ../ui/printDialog.ui:170
+#: ../ui/printDialog.ui:193
 msgid "Page feeds"
 msgstr "Blanke forsider"
 
-#: ../gjots.glade2:2968 ../ui/printDialog.ui:189
-msgid "Print the gjots item titles in bold"
-msgstr "Skriv ut gjots elementtitler med fet skrift"
+#: ../ui/printDialog.ui:197
+msgid "Feeds a page before every new gjots item"
+msgstr "Mater ut en blank side før hvert element"
 
-#: ../gjots.glade2:2970 ../ui/printDialog.ui:186
+#: ../ui/printDialog.ui:209
 msgid "Bold titles"
 msgstr "Fete titler"
 
-#: ../gjots.glade2:2989 ../ui/printDialog.ui:201
+#: ../ui/printDialog.ui:212
+msgid "Print the gjots item titles in bold"
+msgstr "Skriv ut gjots elementtitler med fet skrift"
+
+#: ../ui/printDialog.ui:224
 msgid "Auto Number"
 msgstr "Autonumrering"
 
-#: ../gjots.glade2:3020 ../ui/printDialog.ui:224
+#: ../ui/printDialog.ui:251
 msgid "Auto-number format: "
 msgstr "Autonumererings-format"
 
-#: ../gjots.glade2:3044 ../ui/printDialog.ui:235
+#: ../ui/printDialog.ui:262
 msgid "eg. 1 for 1.2.1, a"
 msgstr "f.eks. 1 for 1.2.1, a"
 
-#: ../gjots.glade2:3075 ../ui/printDialog.ui:253
+#: ../ui/printDialog.ui:289
 msgid " Print formatting "
 msgstr "Utskriftsformat"
 
-#: ../gjots.glade2:3201 ../ui/sortDialog.ui:44
-msgid "Sort in ascending order"
-msgstr "Sorter i stigende rekkefølge"
-
-#: ../gjots.glade2:3203 ../ui/sortDialog.ui:40
+#: ../ui/sortDialog.ui:43
 msgid "Ascending"
 msgstr "Stigende"
 
-#: ../gjots.glade2:3224 ../ui/sortDialog.ui:77
-msgid "Sort in alphabetic order"
-msgstr "Sorter alfabetisk"
+#: ../ui/sortDialog.ui:47
+msgid "Sort in ascending order"
+msgstr "Sorter i stigende rekkefølge"
 
-#: ../gjots.glade2:3226 ../ui/sortDialog.ui:73
-msgid "Alphabetic"
-msgstr "Alfabetisk"
-
-#: ../gjots.glade2:3247 ../ui/sortDialog.ui:94
-msgid "Sort in numeric order"
-msgstr "Sorter numerisk"
-
-#: ../gjots.glade2:3249 ../ui/sortDialog.ui:90
-msgid "Numeric"
-msgstr "Numerisk"
-
-#: ../gjots.glade2:3271 ../ui/sortDialog.ui:59
-msgid "Sort in descending order"
-msgstr "Sorter i synkende rekkefølge"
-
-#: ../gjots.glade2:3273 ../ui/sortDialog.ui:55
+#: ../ui/sortDialog.ui:58
 msgid "Descending"
 msgstr "Synkende"
 
-#: ../gjots.glade2:3299 ../ui/sortDialog.ui:115
+#: ../ui/sortDialog.ui:62
+msgid "Sort in descending order"
+msgstr "Sorter i synkende rekkefølge"
+
+#: ../ui/sortDialog.ui:76
+msgid "Alphabetic"
+msgstr "Alfabetisk"
+
+#: ../ui/sortDialog.ui:80
+msgid "Sort in alphabetic order"
+msgstr "Sorter alfabetisk"
+
+#: ../ui/sortDialog.ui:93
+msgid "Numeric"
+msgstr "Numerisk"
+
+#: ../ui/sortDialog.ui:97
+msgid "Sort in numeric order"
+msgstr "Sorter numerisk"
+
+#: ../ui/sortDialog.ui:119
 msgid " Sort Parameters "
 msgstr "Sorteringsparametre"
 
-#: ../gjots.glade2:3354 ../ui/sortDialog.ui:143
+#: ../ui/sortDialog.ui:149
 msgid "How many sublevels to sort (0 for none; -1 for 'all')"
 msgstr "Antall undernivåer som skal sorteres (0 for ingen; -1 for 'alle')"
 
-#: ../gjots.glade2:3378 ../ui/sortDialog.ui:160
+#: ../ui/sortDialog.ui:171
 msgid " Sort Sublevels "
 msgstr "Sorter undernivåer"
 
-#: ../gjots.glade2:3528 ../ui/fileDialog.ui:28
-msgid "To open the file in read-only mode."
-msgstr ""
-
-#: ../gjots.glade2:3530 ../ui/fileDialog.ui:24
-#, fuzzy
-msgid "Open file read only"
-msgstr "Åpne fil ..."
-
-#: ../gjots.glade2:3598 ../ui/treeContextMenu.ui:30
+#: ../ui/treeContextMenu.ui:30
 #, fuzzy
 msgid "Select _All"
 msgstr "Velg fil"
 
-#: ../gjots.glade2:3834 ../ui/treeContextMenu.ui:117
+#: ../ui/treeContextMenu.ui:117
 msgid "Import"
 msgstr "Importer"
 
-#: ../gjots.glade2:3853 ../ui/treeContextMenu.ui:124
+#: ../ui/treeContextMenu.ui:124
 msgid "Export"
 msgstr "Eksporter"
 
@@ -750,7 +728,6 @@ msgid ""
 "OPTIONS:\n"
 "-h, --help:                         this help\n"
 "-d, --debug:                        debug to stdout\n"
-"-2, --glade2:                       use glade-2 gui if available\n"
 "-t, --trace:                        trace lines as they execute\n"
 "-g 123x456, --geometry=123x456:     initial geometry (X x Y)\n"
 "-p, --purge-password                don't remember password\n"
@@ -774,227 +751,203 @@ msgstr ""
 "FILNAVN:\n"
 "\tgjots data filenavn (standard er $HOME/.gjotsfile)\n"
 
-#: ../gjots2:83
+#: ../gjots2:89
 #, python-format
 msgid "%s requires python%s or higher."
 msgstr "%s krever python%s eller høyere."
 
-#: ../gjots2:93
-#, fuzzy, python-format
-msgid "%s requires pygtk-%s.\n"
-msgstr "%s krever pygtk-%s."
-
-#: ../gjots2:105
+#: ../gjots2:102
 msgid "Use -h for help\n"
 msgstr "Bruk -h for hjelp\n"
 
-#: ../gjots2:120
+#: ../gjots2:116
 #, python-format
 msgid "%s version %s"
 msgstr "%s versjon %s"
 
-#: ../lib/gui.py:46 ../lib/gui.py:1084
+#: ../lib/gui.py:51 ../lib/gui.py:996
 msgid "Text pasted"
 msgstr "Limt inn tekst"
 
-#: ../lib/gui.py:168
+#: ../lib/gui.py:179
 #, python-format
 msgid "External formatter \"%s\" is not installed - can't format"
 msgstr ""
 "Eksternt formateringsprogram \"%s\" er ikke installert - kan ikke formatere"
 
-#: ../lib/gui.py:420
-msgid "not initialised"
-msgstr "ikke initialisert"
-
-#: ../lib/gui.py:674 ../lib/gui.py:772 ../lib/gui.py:776 ../lib/gui.py:842
-#: ../lib/gui.py:846 ../lib/gui.py:905 ../lib/gui.py:910 ../lib/gui.py:1127
-#: ../lib/gui.py:1136 ../lib/gui.py:1222 ../lib/gui.py:1231 ../lib/gui.py:1267
-#: ../lib/gui.py:1272 ../lib/gui.py:1303 ../lib/gui.py:1694 ../lib/gui.py:2468
-#: ../lib/gui.py:2487 ../lib/gui.py:2516 ../lib/gui.py:2547 ../lib/file.py:460
-#: ../lib/file.py:465 ../lib/sortDialog.py:247 ../lib/sortDialog.py:252
+#: ../lib/gui.py:564 ../lib/gui.py:675 ../lib/gui.py:679 ../lib/gui.py:745
+#: ../lib/gui.py:749 ../lib/gui.py:812 ../lib/gui.py:817 ../lib/gui.py:1043
+#: ../lib/gui.py:1052 ../lib/gui.py:1138 ../lib/gui.py:1147 ../lib/gui.py:1183
+#: ../lib/gui.py:1188 ../lib/gui.py:1219 ../lib/gui.py:1608 ../lib/gui.py:2382
+#: ../lib/gui.py:2401 ../lib/gui.py:2430 ../lib/gui.py:2461 ../lib/file.py:466
+#: ../lib/file.py:471 ../lib/sortDialog.py:329 ../lib/sortDialog.py:334
 #: ../lib/printDialog.py:110 ../lib/printDialog.py:115
 msgid "Nothing selected"
 msgstr "Ingenting er valgt"
 
-#: ../lib/gui.py:678 ../lib/gui.py:781 ../lib/gui.py:850 ../lib/gui.py:915
-#: ../lib/gui.py:1022 ../lib/gui.py:1308 ../lib/gui.py:2472
-#: ../lib/sortDialog.py:263
+#: ../lib/gui.py:568 ../lib/gui.py:684 ../lib/gui.py:753 ../lib/gui.py:822
+#: ../lib/gui.py:934 ../lib/gui.py:1224 ../lib/gui.py:2386
+#: ../lib/sortDialog.py:345
 msgid "No parent!"
 msgstr "Overelement finnes ikke!"
 
-#: ../lib/gui.py:682 ../lib/gui.py:816
+#: ../lib/gui.py:572 ../lib/gui.py:719
 msgid "No child!"
 msgstr "Underelement finnes ikke!"
 
-#: ../lib/gui.py:690 ../lib/gui.py:790
+#: ../lib/gui.py:580 ../lib/gui.py:693
 msgid "Can't go any further"
 msgstr "Kan ikke gå videre"
 
-#: ../lib/gui.py:717 ../lib/gui.py:933
+#: ../lib/gui.py:616 ../lib/gui.py:840
 msgid "Internal error!"
 msgstr "Intern feil!"
 
-#: ../lib/gui.py:854
+#: ../lib/gui.py:757
 msgid "Can't go further!"
 msgstr "Kan ikke gå videre!"
 
-#: ../lib/gui.py:1061
+#: ../lib/gui.py:973
 msgid "Text cut"
 msgstr "Utklipt tekst"
 
-#: ../lib/gui.py:1072
+#: ../lib/gui.py:984
 msgid "Text copied"
 msgstr "Kopiert tekst"
 
-#: ../lib/gui.py:1093
+#: ../lib/gui.py:1005
 msgid "All text selected"
 msgstr "Hele den valgte teksten"
 
-#: ../lib/gui.py:1099
+#: ../lib/gui.py:1015
 msgid "All tree items selected"
 msgstr "Alle valgte tre-elementer"
 
-#: ../lib/gui.py:1107
+#: ../lib/gui.py:1023
 msgid "Nothing selected!"
 msgstr "Ingenting er valgt!"
 
-#: ../lib/gui.py:1131
+#: ../lib/gui.py:1047
 msgid "Can't merge the root item"
 msgstr "Kan ikke slå sammen rot-elementet"
 
-#: ../lib/gui.py:1140
+#: ../lib/gui.py:1056
 msgid "Nothing to merge"
 msgstr "Ingenting å slå sammen"
 
-#: ../lib/gui.py:1147
+#: ../lib/gui.py:1063
 msgid "Can't merge items that have children"
 msgstr "Kan ikke slå sammen elementer som har underelementer"
 
-#: ../lib/gui.py:1177
+#: ../lib/gui.py:1093
 #, python-format
 msgid "%d items merged"
 msgstr "%d elementer slått sammen"
 
-#: ../lib/gui.py:1226
+#: ../lib/gui.py:1142
 msgid "Can't delete the root item"
 msgstr "Kan ikke slette rot-elementet"
 
-#: ../lib/gui.py:1259
+#: ../lib/gui.py:1175
 #, python-format
 msgid "%d tree items cut"
 msgstr "%d tre-elementer klippet ut"
 
-#: ../lib/gui.py:1289
+#: ../lib/gui.py:1205
 #, python-format
 msgid "%d tree items copied"
 msgstr "%d tre-elementer kopiert"
 
-#: ../lib/gui.py:1298
+#: ../lib/gui.py:1214
 msgid "Nothing to paste"
 msgstr "Ingenting å lime inn"
 
-#: ../lib/gui.py:1319
+#: ../lib/gui.py:1237
 msgid "Tree items pasted"
 msgstr "Tre-elementer limt inn"
 
-#: ../lib/gui.py:1339
-msgid "Can't write "
+#: ../lib/gui.py:1258
+#, fuzzy
+msgid "Can't write tempfile"
 msgstr "Kan ikke skrive"
 
-#: ../lib/gui.py:1349
+#: ../lib/gui.py:1278
 #, python-format
 msgid "Can't run '%s'"
 msgstr "Kan ikke kjøre '%s'"
 
-#: ../lib/gui.py:1358
-msgid "Can't read "
+#: ../lib/gui.py:1287
+#, fuzzy
+msgid "Can't read tempfile "
 msgstr "Kan ikke lese"
 
-#: ../lib/gui.py:1366
+#: ../lib/gui.py:1293
 msgid "text changed by external editor"
 msgstr "tekst redigert med eksternt skriveprogram"
 
-#: ../lib/gui.py:1368
+#: ../lib/gui.py:1295
 msgid "text not changed by external editor"
 msgstr "Tekst som ikke er redigert med eksternt skriveprogram"
 
-#: ../lib/gui.py:1386
+#: ../lib/gui.py:1314
 msgid ": Error"
 msgstr ": Feil"
 
-#: ../lib/gui.py:1399
+#: ../lib/gui.py:1327
 #, python-format
 msgid "Can't lock file %s: already locked by process %d"
 msgstr "Kan ikke låse filen %s: allerede låst av prosess %d"
 
-#: ../lib/gui.py:1594
+#: ../lib/gui.py:1510
 msgid ": Save?"
 msgstr ": Lagre?"
 
-#: ../lib/gui.py:1595
+#: ../lib/gui.py:1511
 msgid "Save current work?"
 msgstr "Lagre forandringer?"
 
-#: ../lib/gui.py:1616
+#: ../lib/gui.py:1532
 msgid "New file"
 msgstr "Ny fil"
 
-#: ../lib/gui.py:1640
+#: ../lib/gui.py:1556
 msgid "Open file ..."
 msgstr "Åpne fil ..."
 
-#: ../lib/gui.py:1653
+#: ../lib/gui.py:1568
 msgid "No changes to save"
 msgstr "Ingen forandringer å lagre"
 
-#: ../lib/gui.py:1657 ../lib/gui.py:1679
+#: ../lib/gui.py:1572 ../lib/gui.py:1593
 msgid "Saved."
 msgstr "Lagret."
 
-#: ../lib/gui.py:1659 ../lib/gui.py:1681 ../lib/file.py:450
+#: ../lib/gui.py:1574 ../lib/gui.py:1595 ../lib/file.py:456
 msgid "Not saved."
 msgstr "Ikke lagret."
 
-#: ../lib/gui.py:1675
+#: ../lib/gui.py:1589
 msgid "Nothing to save"
 msgstr "Ingenting å lagre"
 
-#: ../lib/gui.py:1677 ../lib/file.py:693
+#: ../lib/gui.py:1591 ../lib/file.py:693
 msgid "Save as ..."
 msgstr "Lagre som ..."
 
-#: ../lib/gui.py:1691
+#: ../lib/gui.py:1605
 msgid "Import from ..."
 msgstr "Importer fra ..."
 
-#: ../lib/gui.py:1702
+#: ../lib/gui.py:1616
 msgid "Export to ..."
 msgstr "Eksporter til ..."
 
-#: ../lib/gui.py:2045 ../lib/gui.py:2048
+#: ../lib/gui.py:1930 ../lib/gui.py:1933
 #, python-format
 msgid "%s: Warning: opening gjots2 manual from %s\n"
 msgstr "%s: Advarser: åpner gjots2-manualen fra %s\n"
 
-#: ../lib/gui.py:2088
-msgid ""
-"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
-"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
-"Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>\n"
-"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
-"Martin Sin (cs) <martin.sin@zshk.cz>\n"
-"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
-"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
-"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
-"Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"
-msgstr ""
-
-#: ../lib/gui.py:2406
-msgid "pygtk-2.2 is required for this application!"
-msgstr "pygtk-2.2 kreves for dette programmet!"
-
-#: ../lib/gui.py:2412
+#: ../lib/gui.py:2317
 msgid ""
 "gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
 "event."
@@ -1002,213 +955,222 @@ msgstr ""
 "gjots2: advarsel: Utvalgslisten er NULL. Hopper over tre-utvalg forandret\n"
 "hendelse."
 
-#: ../lib/gui.py:2476
+#: ../lib/gui.py:2390
 msgid "Can't go further"
 msgstr "Kan ikke gå videre"
 
-#: ../lib/gui.py:2505
+#: ../lib/gui.py:2419
 msgid "Tree is empty!"
 msgstr "Treet er tomt!"
 
-#: ../lib/gui.py:2778
+#: ../lib/gui.py:2716
 msgid "Bad regular expression"
 msgstr "Feilaktig regulært uttrykk"
 
-#: ../lib/gui.py:2870
+#: ../lib/gui.py:2808
 #, python-format
 msgid "%s: bad geometry specification: %s\n"
 msgstr "%s: feil spesifikasjon av vindustørelse: %s\n"
 
-#: ../lib/gui.py:3082
+#: ../lib/gui.py:2899
 msgid "New...>>>"
 msgstr "Ny...>>>"
 
-#: ../lib/gui.py:3129
-msgid "Install pygtksourceview to enable undo/redo"
+#: ../lib/gui.py:2936
+msgid "Install gtksourceview to enable undo/redo"
 msgstr ""
 
-#: ../lib/gui.py:3197
+#: ../lib/gui.py:3102
 msgid ": version "
 msgstr ": versjon "
 
-#: ../lib/find.py:81 ../lib/find.py:104
+#: ../lib/find.py:70 ../lib/find.py:93
 msgid "Not found"
 msgstr "Ikke funnet"
 
-#: ../lib/find.py:83
+#: ../lib/find.py:72
 msgid "Found"
 msgstr "Funnet"
 
-#: ../lib/find.py:107
+#: ../lib/find.py:96
 msgid "Replace?"
 msgstr "Erstatt?"
 
-#: ../lib/find.py:124
+#: ../lib/find.py:113
 #, python-format
 msgid "%d substitutions"
 msgstr "%d erstatninger"
 
-#: ../lib/file.py:251
+#: ../lib/file.py:255
 msgid "Enter password for "
 msgstr "Skriv inn passord for"
 
-#: ../lib/file.py:253
+#: ../lib/file.py:257
 #, fuzzy
-msgid "gjots2: Enter Password"
+msgid ": Enter Password"
 msgstr "gjots: Skriv inn passord"
 
-#: ../lib/file.py:255
+#: ../lib/file.py:259
 msgid "Password: "
 msgstr "Passord:"
 
-#: ../lib/file.py:256
+#: ../lib/file.py:260
 msgid "Confirm: "
 msgstr "Bekreft:"
 
-#: ../lib/file.py:264
+#: ../lib/file.py:268
 msgid "Password was not confirmed"
 msgstr "Passordet ble ikke bekreftet"
 
-#: ../lib/file.py:271
+#: ../lib/file.py:275
 msgid "Could not find the ccrypt program - please install it and try again"
 msgstr "Kunne ikke finne programmet ccrypt - installer det og forsøk igjen"
 
-#: ../lib/file.py:304
+#: ../lib/file.py:308
 msgid ""
 "Neither gpg2 nor gpg are available - please install one (perhaps package "
 "gnupg2) and try again"
 msgstr ""
 
-#: ../lib/file.py:338
+#: ../lib/file.py:328
 #, fuzzy
 msgid "No openssl program - please install it and try again"
 msgstr "Kunne ikke finne programmet openssl - installer det og forsøk igjen"
 
-#: ../lib/file.py:406
+#: ../lib/file.py:354
+#, fuzzy
+msgid "No org2gjots program - please install it and try again"
+msgstr "Kunne ikke finne programmet openssl - installer det og forsøk igjen"
+
+#: ../lib/file.py:412
 msgid "Can't open \""
 msgstr "Kan ikke opne \""
 
-#: ../lib/file.py:409
+#: ../lib/file.py:415
 msgid "Bad password"
 msgstr "Feilaktig passord"
 
-#: ../lib/file.py:412
+#: ../lib/file.py:418
 msgid "File cannot be locked"
 msgstr "Filen kan ikke låses"
 
-#: ../lib/file.py:425 ../lib/file.py:483
+#: ../lib/file.py:431 ../lib/file.py:489
 msgid "failed!"
 msgstr ""
 
-#: ../lib/file.py:451
+#: ../lib/file.py:457
 msgid "Can't write to "
 msgstr "Kan ikke skrive til"
 
-#: ../lib/file.py:454
+#: ../lib/file.py:460
 msgid "Can't lock file"
 msgstr "Kan ikke låse filen"
 
-#: ../lib/file.py:599
+#: ../lib/file.py:597
 #, python-format
 msgid "%s is not readable"
 msgstr "%s er ikke lesbar"
 
-#: ../lib/file.py:615
+#: ../lib/file.py:613
 #, python-format
 msgid "%s: no permission"
 msgstr "%s: ikke tilgang"
 
-#: ../lib/file.py:617
+#: ../lib/file.py:615
 #, python-format
 msgid "%s: locked by process number %d"
 msgstr "%s: låst av prosess nummer %d"
 
-#: ../lib/file.py:619
+#: ../lib/file.py:617
 #, fuzzy
-msgid "gjots2: can't lock file."
+msgid ": can't lock file."
 msgstr "gjots: kan ikke låse fil."
-
-#: ../lib/file.py:657
-#, fuzzy, python-format
-msgid "gjots2: %s changed"
-msgstr "gjots: %s finnes allerede."
-
-#: ../lib/file.py:658
-#, python-format
-msgid ""
-"'%s' has changed since it was read.\n"
-"overwrite anyway?"
-msgstr ""
 
 #: ../lib/file.py:705
 msgid "That file is already open!"
 msgstr "Den filen er allerede åpen!"
 
-#: ../lib/file.py:724
+#: ../lib/file.py:713 ../lib/file.py:787
+#, fuzzy
+msgid ": file has changed"
+msgstr "gjots: %s finnes allerede."
+
+#: ../lib/file.py:714
+#, python-format
+msgid "File changed since it was read - copied to %s "
+msgstr ""
+
+#: ../lib/file.py:731
 #, python-format
 msgid "%s is locked by pid %d"
 msgstr "%s er låst av pid %d"
 
-#: ../lib/file.py:728
+#: ../lib/file.py:735
 msgid "Can't make a lockfile in "
 msgstr "Kan ikke lage en låsefil i"
 
-#: ../lib/file.py:741
+#: ../lib/file.py:748
 #, python-format
 msgid "%s is not writable"
 msgstr "%s er ikke skrivbar"
 
-#: ../lib/file.py:744
+#: ../lib/file.py:751
 #, fuzzy, python-format
-msgid "gjots2: %s already exists."
+msgid ": %s already exists."
 msgstr "gjots: %s finnes allerede."
 
-#: ../lib/file.py:745
+#: ../lib/file.py:752
 #, python-format
 msgid "overwrite %s?"
 msgstr "skrive over %s?"
 
-#: ../lib/sortDialog.py:103
+#: ../lib/file.py:788
+#, python-format
+msgid "File changed since it was read - so it was copied to %s "
+msgstr ""
+
+#: ../lib/sortDialog.py:125
 msgid "_get_settings: Cant find sortAscendingRadioButton"
 msgstr "_get_settings: Kan ikke finne sortAscendingRadioButton"
 
-#: ../lib/sortDialog.py:139
+#: ../lib/sortDialog.py:165
 msgid "Internal error"
 msgstr "Intern feil"
 
-#: ../lib/sortDialog.py:221
+#: ../lib/sortDialog.py:303
 msgid "Nothing to sort!"
 msgstr "Ingenting å sortere!"
 
-#: ../lib/sortDialog.py:317
+#: ../lib/sortDialog.py:398
 msgid "Sort Text"
 msgstr "Sorter tekst"
 
-#: ../ui/about.ui:9
+#~ msgid "Exit gjots"
+#~ msgstr "Avslutt gjots"
+
+#~ msgid "Create a new child "
+#~ msgstr "Lag et nytt underelement"
+
 #, fuzzy
-msgid "Copyright Bob Hepple 2002-2011"
-msgstr "Copyright Bob Hepple 2002-2006"
+#~ msgid "About gjots2"
+#~ msgstr "Avslutt gjots"
 
-#: ../ui/about.ui:10
-msgid "http://bhepple.freeshell.org/gjots2"
-msgstr "http://bhepple.freeshell.org/gjots2"
-
-#: ../ui/about.ui:20
-msgid ""
-"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
-"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
-"Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
-"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
-"Martin Sin (cs) <martin.sin@zshk.cz>\n"
-"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
-"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
-"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
-msgstr ""
-
-#: ../ui/gjots.ui:152
 #, fuzzy
-msgid "Exit gjots2"
-msgstr "Avslutt gjots"
+#~ msgid " Find: "
+#~ msgstr "Finn:"
+
+#~ msgid "abcdefghijk ABCDEFGHIJK"
+#~ msgstr "abcdefghijk ABCDEFGHIJK"
+
+#, fuzzy, python-format
+#~ msgid "%s requires pygtk-%s.\n"
+#~ msgstr "%s krever pygtk-%s."
+
+#~ msgid "not initialised"
+#~ msgstr "ikke initialisert"
+
+#~ msgid "pygtk-2.2 is required for this application!"
+#~ msgstr "pygtk-2.2 kreves for dette programmet!"
 
 #~ msgid "Store and organise your random notes"
 #~ msgstr "Organiser og ta vare på dine uordnede notater"

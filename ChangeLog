@@ -1,3 +1,54 @@
+2020-06-24   <bob.hepple@gmail.com> 3.1.9
+	ui/about.ui: remove redundant translater credits - seems to have no effect here
+	fix: some environments don't always show images in buttons
+	add tooltip for Find button
+	fix: printDialog needed import gi, os; was using old mktemp
+	Change popup dialogs type to 'top-level' instead of 'popup'!!! -
+	as documented on GtkWindow page - avoids the message: Window
+	0x560942cc2d60 is a temporary window without parent, application
+	will not be able to position it on screen.
+2020-06-24   <bob.hepple@gmail.com> 3.1.8
+	gpg-agent no longer uses GPG_AGENT_INFO
+	updated French translation (Frederic Muller <fred@cm17.com>)
+	repair menubar find functions
+	fix: forward search not finding regex in newly selected item.
+	fix: Backward search in root wrapping to end of root item.
+2020-05-14   <bob.hepple@gmail.com> 3.1.7
+	fix popup context menus (right click on tree)
+	fix locale_dir when running from source tree
+	add LC_ALL=zh_TW translation
+	accomodate installation to any $prefix with setup.py
+	fix tree_select_all
+	fine tune python version requirement to >= 3.6.8 for epel8
+	try for gtksourceview4 and failover to gtksourceview3
+2020-05-03   <bob.hepple@gmail.com> 3.1.6
+	response to RHBZ#1823599
+2020-05-02   <bob.hepple@gmail.com> 3.1.5
+	response to RHBZ#1823599
+2020-04-19   <bob.hepple@gmail.com> 3.1.4
+	Update more FSF addresses
+	Change shebangs to absolute paths (fedora required)
+	Change appdata to metainfo
+2020-04-17   <bob.hepple@gmail.com> 3.1.3
+	Update FSF address
+2020-03-14   <bob.hepple@gmail.com> 3.1.3
+	enable writing to file with spaces in the name
+2020-03-09   <bob.hepple@gmail.com> 3.1.2
+	when writing to org file, output goes to stdout rather than the file!
+2020-03-08   <bob.hepple@gmail.com> 3.1.1
+	doco goes in /usr/share/doc/gjots2 ie not versioned
+	update tools to python3
+	merge patches and .spec file from fedora-30 srpm
+2020-03-02   <bob.hepple@gmail.com> 3.1.0
+	Change to python3
+	Change secondary windows to be of type 'popup' so they don't tile in swaywm
+	Change Gdk.KEY_* to gi.repository.Gdk.Key_*
+2020-02-18   <bob.hepple@gmail.com> 3.0.3
+	specify python2
+2017-12-23   <bob.hepple@gmail.com> 3.0.3
+	display messages in title bar so we can dispense with status bar
+2017-08-10    <bob.hepple@gmail.com> 3.0.3
+	on_quit(): popping up a dialog to ask if a save should be done on_gjots_focus_out_event() which did the save anyway! Result was that the save was done irrespective and then again if the user pressed OK!! So just save the thing - if the user wants to exit without saving then kill the process.
 2017-08-10    <bob.hepple@gmail.com> 3.0.2
 	release 3.0.2
 2017-05-17    <bob.hepple@gmail.com> 3.0.2

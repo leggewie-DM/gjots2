@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2015 Bob Hepple <bob.hepple@gmail.com> -->
+<component type="desktop-application">
+ <id>org.freeshell.bhepple.gjots2</id>
+ <launchable type="desktop-id">gjots2.desktop</launchable>
+ <metadata_licence>FSFAP</metadata_licence>
+ <project_license>GPL-2.0</project_license>
+ <name>gjots2</name>
+ <summary>A hierarchical note jotter - organise your ideas, notes, facts in a tree</summary>
+ <description>
+  <p>
+gjots2(1) is a simple jotter application for your desktop - an outline processor.
+You can use gjots2(1) to organise your jottings into a tree structure,
+adding thoughts and miscellany as you go. You can get it to spit out
+HTML, XML, postscript, pdf, man etc etc (see the online manual for an
+example of the HTML conversion).
+  </p>
+  <p>
+You can use it to "mind-map" your compositions - write down all your
+thoughts and then start organising them into a tree. By manipulating
+the tree you can easily reorder your thoughts and structure them
+appropriately. I use it for all my notes on Unix, my personal bits and
+pieces, recipes and even PINs and passwords. I also use it to write
+DOCBOOK XML documents.
+  </p>
+  <p>
+gjots2(1) supports the use of ccrypt(1), gpg(1) and openssl(1) to
+encrypt and decrypt files. Just make sure the encryption packages that
+you want to use are installed as they are not all a standard part of
+all Linux distributions.
+  </p>
+ </description>
+ <screenshots>
+  <screenshot type="default" width="802" height="473">https://a.fsdn.com/con/app/proj/gjots2/screenshots/screenshot.png</screenshot>
+ </screenshots>
+ <url type="homepage">http://sourceforge.net/projects/gjots2</url>
+ <update_contact>bob.hepple@gmail.com</update_contact>
+ <releases>
+   <release version="3.1.9" date="2020-07-06">
+     <description>
+       <p>ui/about.ui: remove redundant translater credits - seems to have no effect here</p>
+       <p>fix: some environments don't always show images in buttons</p>
+       <p>add tooltip for Find button</p>
+       <p>fix: printDialog needed import gi, os; was using old mktemp</p>
+       <p>Change popup dialogs type to 'top-level' instead of
+       'popup'!!! - as documented on GtkWindow page - avoids the
+       message: Window 0x560942cc2d60 is a temporary window without
+       parent, application will not be able to position it on
+       screen.</p>
+     </description>
+   </release>
+   <release version="3.1.8" date="2020-06-29">
+     <description>
+       <p>gpg-agent no longer uses GPG_AGENT_INFO</p>
+       <p>updated French translation (Frederic Muller &lt;fred@cm17.com&gt;)</p>
+       <p>repair menubar find functions</p>
+       <p>fix: forward search not finding regex in newly selected item.</p>
+       <p>fix: Backward search in root wrapping to end of root item.</p>
+     </description>
+   </release>
+   <release version="3.1.7" date="2020-06-18">
+     <description>
+       <p>fix popup context menus (right click on tree)</p>
+       <p>fix locale_dir when running from source tree</p>
+       <p>add LC_ALL=zh_TW translation</p>
+       <p>accomodate installation to any $prefix with setup.py</p>
+       <p>fix tree_select_all</p>
+       <p>fine tune python version requirement to >= 3.6.8 for epel8</p>
+       <p>try for gtksourceview4 and failover to gtksourceview3</p>
+     </description>
+   </release>
+   <release version="3.1.6" date="2020-05-03">
+     <description>
+       <p>Fix issues in RHBZ#1823599</p>
+     </description>
+   </release>
+   <release version="3.1.5" date="2020-05-02">
+     <description>
+       <p>Fix issues in RHBZ#1823599</p>
+     </description>
+   </release>
+   <release version="3.1.4" date="2020-04-19">
+     <description>
+       <p>Fix issues in RHBZ#1823599</p>
+       <p>Update more FSF addresses</p>
+       <p>Change shebangs to absolute paths (fedora required)</p>
+       <p>Change appdata to metainfo</p>
+     </description>
+   </release>
+ </releases>
+</component>

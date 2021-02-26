@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # Use this if you installed with setup.py
 
@@ -8,8 +8,8 @@
 usage() {
 	echo "Usage: $PROG [prefix]"
 	echo
-	echo "<prefix> is the location which was used to install with setup.py (default is /usr)"
-	echo "eg $PROG /usr/local"
+	echo "<prefix> is the location which was used to install with setup.py (default is /usr/local)"
+	echo "eg $PROG /usr"
 }
 
 PROG=$(basename "$0")
@@ -25,7 +25,7 @@ while true ; do
 	esac
 done
 
-prefix=${1:-"/usr"}
+prefix=${1:-"/usr/local"}
 
 [[ -f $prefix/bin/gjots2 ]] || {
 	echo "gjots2 was not found at $prefix/bin" >&2
@@ -33,10 +33,9 @@ prefix=${1:-"/usr"}
 }
 
 rm -rf $prefix/lib/gjots2 $prefix/share/doc/gjots2-* $prefix/share/gjots2
-rm -f $prefix/bin/gjots2html $prefix/bin/docbook2gjots $prefix/bin/gjots2 $prefix/bin/gjots2docbook $prefix/bin/gjots2lpr
+rm -f $prefix/bin/gjots2html $prefix/bin/docbook2gjots $prefix/bin/gjots2 $prefix/bin/gjots2docbook $prefix/bin/gjots2lpr $prefix/bin/gjots2org $prefix/bin/org2gjots $prefix/bin/gjots2emacs $prefix/bin/gjots2html.py $prefix/bin/gjots2
 rm -f $prefix/share/man/man1/gjots2html.1 $prefix/share/man/man1/docbook2gjots.1 $prefix/share/man/man1/gjots2.1 $prefix/share/man/man1/gjots2docbook.1
-rm -f $prefix/share/pixmaps/gjots.png $prefix/share/applications/gjots2.desktop
-rm -f $prefix/share/glib-2.0/schemas/org.gtk.gjots2.gschema.xml $prefix/share/appdata/gjots2.appdata.xml
-for LOCALE in en_US fr no nb ru cs it es sl sv de_DE; do
-	rm -f $prefix/share/locale/$LOCALE/LC_MESSAGES/gjots2.mo
-done
+rm -f $prefix/share/pixmaps/gjots2.png $prefix/share/applications/gjots2.desktop
+rm -f $prefix/share/glib-2.0/schemas/org.gtk.gjots2.gschema.xml $prefix/share/metainfo/gjots2.metainfo.xml
+rm -f $prefix/share/locale/*/LC_MESSAGES/gjots2.mo
+rm -rf $prefix/lib/python*/site-packages/gjots2*

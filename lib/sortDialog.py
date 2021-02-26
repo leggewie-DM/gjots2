@@ -13,11 +13,34 @@ by the _safe_float routine.
 
 """
 
+# from: https://docs.python.org/3/howto/sorting.html
+def cmp_to_key(mycmp):
+    'Convert a cmp= function into a key= function'
+    class K:
+        def __init__(self, obj, *args):
+            self.obj = obj
+        def __lt__(self, other):
+            return mycmp(self.obj, other.obj) < 0
+        def __gt__(self, other):
+            return mycmp(self.obj, other.obj) > 0
+        def __eq__(self, other):
+            return mycmp(self.obj, other.obj) == 0
+        def __le__(self, other):
+            return mycmp(self.obj, other.obj) <= 0
+        def __ge__(self, other):
+            return mycmp(self.obj, other.obj) >= 0
+        def __ne__(self, other):
+            return mycmp(self.obj, other.obj) != 0
+    return K
+
+def cmp(a, b):
+    return (a > b) - (a < b)
+
 def _sort_function_alpha_asc(x, y):
-    return cmp(string.lower(x[1]), string.lower(y[1]))
+    return cmp(x[1].lower(), y[1].lower())
 
 def _sort_function_alpha_des(x, y):
-    return -cmp(string.lower(x[1]), string.lower(y[1]))
+    return -cmp(x[1].lower(), y[1].lower())
 
 def _safe_float(xin):
     """
@@ -54,17 +77,17 @@ def _sort_function_num_des(x, y):
 class sort_dialog:
     def destroy(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.sort_get_widget(self.name).destroy()
 
     def saveSettings(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         w = self.sort_get_widget("sortAscendingRadioButton")
         if w:
             self.gui.settings.set_boolean("sort-ascending", w.get_active())
         else:
-            print "Cant find sortAscendingRadioButton"
+            print("Cant find sortAscendingRadioButton")
         w = self.sort_get_widget("sortAlphabeticRadioButton")
         if w:
             self.gui.settings.set_boolean("sort-alpha", w.get_active())
@@ -77,29 +100,29 @@ class sort_dialog:
     
     def on_sortDialog_destroy(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         return
     
     def on_sortCommandEntry_key_press_event(self, widget, key_event):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
 
-        # to get all keysyms: print Gdk.KEY___dict__
-        if key_event.keyval == Gdk.KEY_Return or key_event.keyval == Gdk.KEY_KP_Enter:
+        # to get all keysyms see gdk/gdkkeysyms.h
+        if key_event.keyval == gi.repository.Gdk.KEY_Return or key_event.keyval == gi.repository.Gdk.KEY_KP_Enter:
             self.on_sortOKButton_clicked(widget)
-        if key_event.keyval == Gdk.KEY_Escape:
+        if key_event.keyval == gi.repository.Gdk.KEY_Escape:
             self.on_sortCancelButton_clicked(widget)
         return
 
     def _get_settings(self):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         sort_ascending = sort_alpha = sort_items = sort_sublevels = 0
         w = self.sort_get_widget("sortAscendingRadioButton")
         if w:
             sort_ascending = w.get_active()
         else:
-            print _("_get_settings: Cant find sortAscendingRadioButton")
+            print(_("_get_settings: Cant find sortAscendingRadioButton"))
         w = self.sort_get_widget("sortAlphabeticRadioButton")
         if w:
             sort_alpha = w.get_active()
@@ -123,8 +146,8 @@ class sort_dialog:
         Sorting only takes place on the title, not on the body.
         """
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2], vars()
-            print "Item = ", self.gui.treestore.get_value(item, 0)
+            print(inspect.getframeinfo(inspect.currentframe())[2], vars())
+            print("Item = ", self.gui.treestore.get_value(item, 0))
 
         item_path = self.gui.treestore.get_path(item)
         item_was_expanded = self.gui.treeView.row_expanded(item_path)
@@ -172,14 +195,14 @@ class sort_dialog:
         # Do the sort
         if sort_alpha:
             if sort_ascending:
-                sort_list.sort(_sort_function_alpha_asc)
+                sort_list.sort(key=cmp_to_key(_sort_function_alpha_asc))
             else:
-                sort_list.sort(_sort_function_alpha_des)
+                sort_list.sort(key=cmp_to_key(_sort_function_alpha_des))
         else:
             if sort_ascending:
-                sort_list.sort(_sort_function_num_asc)
+                sort_list.sort(key=cmp_to_key(_sort_function_num_asc))
             else:
-                sort_list.sort(_sort_function_num_des)
+                sort_list.sort(key=cmp_to_key(_sort_function_num_des))
         #print "sort_list after sort = ", sort_list
 
         # Extract a reorder list from the sorted list
@@ -264,7 +287,7 @@ class sort_dialog:
         """
         
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.gui.sync_text_buffer()
         self.saveSettings()
         sort_ascending, sort_alpha, sort_items, sort_sublevels = self._get_settings()
@@ -282,16 +305,16 @@ class sort_dialog:
             text_list = body.split('\n')
             if sort_alpha:
                 if sort_ascending:
-                    text_list.sort(lambda x, y: cmp(string.lower(x), string.lower(y)))
+                    text_list.sort(key=str.lower)
                 else:
-                    text_list.sort(lambda x, y: -cmp(string.lower(x), string.lower(y)))
+                    text_list.sort(key=str.lower, reverse=True)
             else:
                 if sort_ascending:
-                    text_list.sort(lambda x, y: cmp(x, y))
+                    text_list.sort()
                 else:
-                    text_list.sort(lambda x, y: -cmp(x, y))
+                    text_list.sort(reverse=True)
                 
-            body = string.join(text_list, "\n")
+            body = "\n".join(text_list)
             self.gui.textBuffer.delete(start_text, end_text)
             self.gui.textBuffer.insert(start_text, body, len(body))
             self.gui._set_dirtyflag()
@@ -328,7 +351,7 @@ class sort_dialog:
         
     def on_sortCancelButton_clicked(self, widget):
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.destroy()
         return
 
@@ -343,7 +366,7 @@ class sort_dialog:
 
         self.gui = gui
         if self.gui.debug:
-            print inspect.getframeinfo(inspect.currentframe())[2]
+            print(inspect.getframeinfo(inspect.currentframe())[2])
 
         callbacks = {
             "on_sortDialog_destroy":                    self.on_sortDialog_destroy,
@@ -380,7 +403,7 @@ class sort_dialog:
 
 # Local variables:
 # eval:(setq compile-command "cd ..; ./gjots2 test.gjots")
-# eval:(setq indent-tabs-mode 1)
+# eval:(setq indent-tabs-mode nil)
 # eval:(setq tab-width 4)
 # eval:(setq python-indent 4)
 # End:

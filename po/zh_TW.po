@@ -1,33 +1,29 @@
-# Translation of gjots2.po to Slovenian
-# Messages master file for gjots2.
-# Copyright (C) 2005-2006 Bob Hepple
-# This file is distributed under the same license as the gjots2 package.
-# Bob Hepple <bhepple@freeshell.org>, 2005.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: gjots2 2.3.0\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 18:18+1000\n"
-"PO-Revision-Date: 2012-02-25 18:28+0200\n"
-"Last-Translator: Aleksa Šušulić <susulic@gmail.com>\n"
-"Language-Team: Slovenian\n"
-"Language: \n"
+"PO-Revision-Date: 2020-05-13 17:06+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Slovenian\n"
-"X-Poedit-Country: Slovenia\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: ../ui/about.ui:12
 msgid "Copyright Bob Hepple 2002-2020"
-msgstr ""
+msgstr "Bob Hepple版權所有2002-2020"
 
 #: ../ui/about.ui:13
 msgid "http://bhepple.freeshell.org/gjots2"
-msgstr ""
+msgstr "http://bhepple.freeshell.org/gjots2"
 
 #: ../ui/about.ui:25
 msgid "\n"
@@ -35,334 +31,335 @@ msgstr ""
 
 #: ../ui/fileDialog.ui:69
 msgid "Open file read only"
-msgstr "Odpri datoteko samo za branje"
+msgstr "唯讀開啟檔案"
 
 #: ../ui/fileDialog.ui:73
 msgid "To open the file in read-only mode."
-msgstr "Za odpiranje datoteke v načinu samo za branje."
+msgstr "以唯讀模式開啟檔案"
 
 #: ../ui/findDialog.ui:8
 msgid "Find & replace"
-msgstr "Najdi in zamenjaj"
+msgstr "尋找取代"
 
 #: ../ui/findDialog.ui:34
+#, fuzzy
 msgid "Find:"
-msgstr "Najdi:"
+msgstr "尋找: "
 
 #: ../ui/findDialog.ui:47
+#, fuzzy
 msgid "Replace:"
-msgstr "Zamenjaj:"
+msgstr "取代: "
 
 #: ../ui/findDialog.ui:64
 msgid "String to search for"
-msgstr "Najdi ta črkovni niz"
+msgstr "搜尋字串"
 
 #: ../ui/findDialog.ui:80
 msgid "String to replace"
-msgstr "Zamenjaj s tem črkovnim nizom"
+msgstr "取代字串"
 
 #: ../ui/findDialog.ui:114 ../ui/gjots.ui:844
 msgid "Find"
-msgstr "Najdi"
+msgstr "尋找"
 
 #: ../ui/findDialog.ui:130
 msgid "Close"
-msgstr "Zapri"
+msgstr "闗閉"
 
 #: ../ui/findDialog.ui:146
 msgid "Replace"
-msgstr "Zamenjaj"
+msgstr "取代"
 
 #: ../ui/findDialog.ui:162
 msgid "Replace All"
-msgstr "Zamenjaj vse"
+msgstr "全部取代"
 
 #: ../ui/findDialog.ui:178
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "取消"
 
 #: ../ui/findDialog.ui:197
 msgid "Clear"
-msgstr "Počisti"
+msgstr "清除"
 
 #: ../ui/findDialog.ui:257
 msgid "Match case"
-msgstr "Upoštevaj velikost črk"
+msgstr "大小寫匹配"
 
 #: ../ui/findDialog.ui:261
 msgid "Don't ignore case"
-msgstr "Ne zanemari velikosti črk"
+msgstr "區分大小寫"
 
 #: ../ui/findDialog.ui:271
 msgid "Regular Expression"
-msgstr "Logični izraz"
+msgstr "正規表達"
 
 #: ../ui/findDialog.ui:275
 msgid "Find string is a regular expression (see 'man 7 regex')"
-msgstr "Iskani črkovni niz je logični izraz (glej 'man 7 regex')"
+msgstr "用正規表達尋找字串"
 
 #: ../ui/findDialog.ui:287
 msgid "Backwards"
-msgstr "Nazaj"
+msgstr "反向"
 
 #: ../ui/findDialog.ui:291
 msgid "Search backwards"
-msgstr "Išči nazaj"
+msgstr "向後搜尋"
 
 #: ../ui/findDialog.ui:306
 msgid "Global"
-msgstr "Povsod"
+msgstr "全域"
 
 #: ../ui/findDialog.ui:310
 msgid "Searches entire file not just this entry"
-msgstr "Preišče celotno datoteko, ne le to postavko"
+msgstr "搜尋整個檔案，而不僅是此頁"
 
 #: ../ui/findDialog.ui:327
 msgid " Options "
-msgstr " Možnosti"
+msgstr " 選項 "
 
 #: ../ui/fontDialog.ui:9
 msgid "Select Font"
-msgstr "Izberi pisavo"
+msgstr "選擇字型"
 
 #: ../ui/generalDialog.ui:9
 msgid "window1"
-msgstr "window1"
+msgstr "視窗1"
 
 #: ../ui/generalDialog.ui:22 ../ui/generalDialog.ui:60
 #: ../ui/generalDialog.ui:115
 msgid "label1"
-msgstr "label1"
+msgstr "標籤1"
 
 #: ../ui/generalDialog.ui:46
 msgid "label2"
-msgstr "label2"
+msgstr "標籤2"
 
 #: ../ui/generalDialog.ui:193
 msgid "Try again"
-msgstr "Poskusi znova"
+msgstr "再試一式"
 
 #: ../ui/generalDialog.ui:209
 msgid "Read only"
-msgstr "Samo za branje"
+msgstr "唯讀"
 
 #: ../ui/gjots.ui:24
 msgid "_File"
-msgstr "_Datoteka"
+msgstr "檔案(_F)"
 
 #: ../ui/gjots.ui:88
 msgid "_Import"
-msgstr "_Uvozi"
+msgstr "匯入(_I)"
 
 #: ../ui/gjots.ui:91
 msgid "Import items from a gjots file"
-msgstr "Uvozi postavke iz datoteke gjots"
+msgstr "從gjots檔案匯入項目"
 
 #: ../ui/gjots.ui:99
 msgid "_Export"
-msgstr "_Izvozi"
+msgstr "匯出(_E)"
 
 #: ../ui/gjots.ui:102
 msgid "Export selected items to a gjots file"
-msgstr "Izvozi izbrane postavke v datoteko gjots"
+msgstr "匯出已選項目為gjots檔案"
 
 #: ../ui/gjots.ui:135
 msgid "Toggle the read-only flag if possible"
-msgstr "Po možnosti preklopi zastavico samo za branje"
+msgstr "如有可能切換唯讀旗標"
 
 #: ../ui/gjots.ui:136
 msgid "_Read-only"
-msgstr "_Samo za branje"
+msgstr "唯讀(_R)"
 
 #: ../ui/gjots.ui:152
-#, fuzzy
 msgid "Exit gjots2"
-msgstr "Končaj gjots"
+msgstr "結束gjots2"
 
 #: ../ui/gjots.ui:167
 msgid "_Edit"
-msgstr "_Uredi"
+msgstr "編輯(_E)"
 
 #: ../ui/gjots.ui:263
 msgid "Find Next"
-msgstr "Najdi naslednje"
+msgstr "找下一個"
 
 #: ../ui/gjots.ui:273
 msgid "Find Previous"
-msgstr ""
+msgstr "找上一個"
 
 #: ../ui/gjots.ui:299
 msgid "_View"
-msgstr "_Pogled"
+msgstr "檢視(_V)"
 
 #: ../ui/gjots.ui:307
 msgid "_Show All"
-msgstr "_Pokaži vse"
+msgstr "顯示全部(_S)"
 
 #: ../ui/gjots.ui:310 ../ui/gjots.ui:1085
 msgid "Show all items below the current item"
-msgstr "Pokaži vse podpostavke pod trenutno postavko"
+msgstr "顯示在現行項目下的全部項目"
 
 #: ../ui/gjots.ui:318
 msgid "_Hide All"
-msgstr "_Skrij vse"
+msgstr "隱藏全部(_H)"
 
 #: ../ui/gjots.ui:321
 msgid "Hide all items except the top level"
-msgstr "Skrij vse postavke razen najvišje ravni"
+msgstr "除最上層外隱藏全部項目"
 
 #: ../ui/gjots.ui:337
 msgid "Toggles the main toolbar"
-msgstr "Preklopi glavno orodno vrstico"
+msgstr "切換主工具列"
 
 #: ../ui/gjots.ui:338
 msgid "To_p Toolbar"
-msgstr "_Zgornja orodna vrstica"
+msgstr "上方工具列(_P)"
 
 #: ../ui/gjots.ui:347
 msgid "Toggles tree tool bar"
-msgstr "Preklopi drevesno vrstico"
+msgstr "切換樹狀工具列"
 
 #: ../ui/gjots.ui:348
 msgid "Tre_e Toolbar"
-msgstr "_Drevesna vrstica"
+msgstr "樹工具列(_E)"
 
 #: ../ui/gjots.ui:357
 msgid "Show the related icon text"
-msgstr "Pokaži pripadajoče besedilo k ikonam"
+msgstr "顯示相關圖示文字"
 
 #: ../ui/gjots.ui:358
 msgid "Show _Icon Text"
-msgstr "Pokaži besedilo k _ikonam"
+msgstr "顯示圖示文字(_I)"
 
 #: ../ui/gjots.ui:367
 msgid "Status _Bar"
-msgstr "Vrstica _stanja"
+msgstr "狀態帶"
 
 #: ../ui/gjots.ui:380
 msgid "_Tree"
-msgstr "_Drevo"
+msgstr "樹(_T)"
 
 #: ../ui/gjots.ui:388
 msgid "_New Page"
-msgstr "_Nova stran"
+msgstr "新頁面(_N)"
 
 #: ../ui/gjots.ui:391
 msgid "Create a new page"
-msgstr "Ustvari novo stran"
+msgstr "建立新頁面"
 
 #: ../ui/gjots.ui:400
 msgid "New _Child"
-msgstr "Nova _podpostavka"
+msgstr "新子項(_C)"
 
 #: ../ui/gjots.ui:403 ../ui/gjots.ui:920
 msgid "Create a new child"
-msgstr "Ustvari novo podpostavko"
+msgstr "建立新子項"
 
 #: ../ui/gjots.ui:420 ../ui/gjots.ui:950
 msgid "Move selection up"
-msgstr "Premakni izbor navzgor"
+msgstr "選擇項目向上移"
 
 #: ../ui/gjots.ui:431 ../ui/gjots.ui:965
 msgid "Move selection down"
-msgstr "Premakni izbor navzdol"
+msgstr "選取項目向下移"
 
 #: ../ui/gjots.ui:439
 msgid "P_romote"
-msgstr "Po_višaj"
+msgstr "升級(_P)"
 
 #: ../ui/gjots.ui:442 ../ui/gjots.ui:980
 msgid "Selection becomes a sibling to their parent"
-msgstr "Izbor postane enakovreden nadrejenemu"
+msgstr "選擇項目移至同一層"
 
 #: ../ui/gjots.ui:450
 msgid "D_emote"
-msgstr "Po_nižaj"
+msgstr "降級(_D)"
 
 #: ../ui/gjots.ui:453 ../ui/gjots.ui:995
 msgid "Selection becomes a child of the previous item"
-msgstr "Izbor postane podpostavka prejšnje postavke"
+msgstr "使成為前一項目之子項"
 
 #: ../ui/gjots.ui:467
 msgid "_Split Item"
-msgstr "_Odcepi postavko"
+msgstr "分割項目(_S)"
 
 #: ../ui/gjots.ui:470
 msgid "Make a new item from the current selection"
-msgstr "Ustvari novo postavko iz trenutnega izbora"
+msgstr "從現行選擇中製作一個新的項目"
 
 #: ../ui/gjots.ui:478
 msgid "_Merge Items"
-msgstr "_Spoji postavke"
+msgstr "合併項目(_M)"
 
 #: ../ui/gjots.ui:481
 msgid "Merge current items into the first one"
-msgstr "Spoji trenutne postavke v prvo postavko"
+msgstr "將現行項目合併至第一個"
 
 #: ../ui/gjots.ui:489
 msgid "S_ort Tree"
-msgstr "S_ortiraj drevo"
+msgstr "排序樹(_S)"
 
 #: ../ui/gjots.ui:492 ../ui/gjots.ui:1100
 msgid "Popup the sort tree dialog"
-msgstr "Prikaži dialog za razvrščanje drevesa"
+msgstr "彈出排序樹對話框"
 
 #: ../ui/gjots.ui:506
 msgid "Te_xt"
-msgstr "_Besedilo"
+msgstr "文字(_X)"
 
 #: ../ui/gjots.ui:514
 msgid "_Format"
-msgstr "_Oblikuj"
+msgstr "格式化(_F)"
 
 #: ../ui/gjots.ui:517
 msgid "Format the current paragraph"
-msgstr "Oblikuj trenutni odstavek"
+msgstr "格式化現行段落"
 
 #: ../ui/gjots.ui:526
 msgid "_Time stamp"
-msgstr "Vstavi _datum in uro"
+msgstr "日期戳記(_T)"
 
 #: ../ui/gjots.ui:529
 msgid "Add a time/date stamp (see preferences)"
-msgstr "Vstavi datum/uro (glej možnosti)"
+msgstr "新增時間/日期戳記（詳見偏好）"
 
 #: ../ui/gjots.ui:538
 msgid "_External Edit"
-msgstr "_Zunanji urejevalnik"
+msgstr "外部編輯器(_E)"
 
 #: ../ui/gjots.ui:541
 msgid "Edit current item in an external editor"
-msgstr "Uredi trenutno postavko z zunanjim urejevalnikom"
+msgstr "在外部編輯器中編輯現行項目"
 
 #: ../ui/gjots.ui:549
-#, fuzzy
 msgid "_Sort Text"
-msgstr "Razvrsti besedilo"
+msgstr "文字排序(_S)"
 
 #: ../ui/gjots.ui:552
 msgid "Popup the sort text dialog"
-msgstr "Prikaži dialog za razvrščanje besedila"
+msgstr "彈出文字排序對話框"
 
 #: ../ui/gjots.ui:566
 msgid "_Help"
-msgstr "_Pomoč"
+msgstr "說明(_H)"
 
 #: ../ui/gjots.ui:574
 msgid "_Read Manual"
-msgstr "_Preberi priročnik"
+msgstr "閱讀手冊(_R)"
 
 #: ../ui/gjots.ui:577
 msgid "Read the online manual (using gjots)"
-msgstr "Preberi priloženi priročnik s programom gjots"
+msgstr "閱讀線上手冊(用gjots)"
 
 #: ../ui/gjots.ui:621
 msgid "Popup the 'Find'menu"
 msgstr ""
 
 #: ../ui/gjots.ui:651
+#, fuzzy
 msgid "Find the previous occurance"
-msgstr ""
+msgstr "找上一個"
 
 #: ../ui/gjots.ui:667
 msgid "Find the next occurance"
@@ -370,177 +367,173 @@ msgstr ""
 
 #: ../ui/gjots.ui:693
 msgid "Save gjots document"
-msgstr "Shrani dokument gjots"
+msgstr "儲存gjots文件"
 
 #: ../ui/gjots.ui:694
 msgid "Save"
-msgstr "Shrani"
+msgstr "儲存"
 
 #: ../ui/gjots.ui:708
 msgid "Print this document"
-msgstr "Natisni ta dokument"
+msgstr "列印此文件"
 
 #: ../ui/gjots.ui:709 ../ui/printDialog.ui:8
 msgid "Print"
-msgstr "Natisni"
+msgstr "列印"
 
 #: ../ui/gjots.ui:738
 msgid "Cut selected items"
-msgstr "Izreži izbrane postavke"
+msgstr "剪下已選項目"
 
 #: ../ui/gjots.ui:739
 msgid "Cut"
-msgstr "Izreži"
+msgstr "剪下"
 
 #: ../ui/gjots.ui:753
 msgid "Copy selected items"
-msgstr "Kopiraj izbrane postavke"
+msgstr "複製已選項目"
 
 #: ../ui/gjots.ui:754
 msgid "Copy"
-msgstr "Kopiraj"
+msgstr "複製"
 
 #: ../ui/gjots.ui:768
 msgid "Paste selected items"
-msgstr "Prilepi izbrane postavke"
+msgstr "貼上已選項目"
 
 #: ../ui/gjots.ui:769
 msgid "Paste"
-msgstr "Prilepi"
+msgstr "貼上"
 
 #: ../ui/gjots.ui:798
 msgid "Wrap the current paragraph to the current line length"
-msgstr "Prelomi trenutni odstavek po trenutni dolžini vrstice"
+msgstr "以現行列長自動換行此段落"
 
 #: ../ui/gjots.ui:799
 msgid "Wrap"
-msgstr "Prelom"
+msgstr "自動換行"
 
 #: ../ui/gjots.ui:813
 msgid "Invoke an external editor on the current item"
-msgstr "Uredi trenutno postavko z zunanjim urejevalnikom"
+msgstr "在現行項目上調用外部編輯器"
 
 #: ../ui/gjots.ui:814
 msgid "Ext.Ed."
-msgstr "Zun.Ur."
+msgstr "Ext.Ed."
 
 #: ../ui/gjots.ui:828
 msgid "Add a time/date stamp (see prefs)"
-msgstr "Vstavi datum in čas (glej možnosti)"
+msgstr "新增時間/日期戳記（詳見偏好）"
 
 #: ../ui/gjots.ui:829
 msgid "Date"
-msgstr "Datum"
+msgstr "日期"
 
 #: ../ui/gjots.ui:843
 msgid "Popup the find and replace dialog"
-msgstr "Prikaži dialog najdi in zamenjaj"
+msgstr "彈出尋找和取代對話框"
 
 #: ../ui/gjots.ui:858
 msgid "Popup the sort dialog"
-msgstr "Prikaži dialog za razvrščanje"
+msgstr "彈出排序對話框"
 
 #: ../ui/gjots.ui:859 ../ui/sortDialog.ui:15
 msgid "Sort"
-msgstr "Razvrsti"
+msgstr "排序"
 
 #: ../ui/gjots.ui:873
 msgid "Open gjots preferences window"
-msgstr "Odpri okno z možnostmi programa gjots"
+msgstr "開啟gjots偏好視窗"
 
 #: ../ui/gjots.ui:874
 msgid "Prefs"
-msgstr "Možnosti"
+msgstr "偏好"
 
 #: ../ui/gjots.ui:905
 msgid "Create a new item"
-msgstr "Ustvari novo postavko"
+msgstr "建立新項目"
 
 #: ../ui/gjots.ui:906 ../ui/treeContextMenu.ui:45
 msgid "New Page"
-msgstr "Nova stran"
+msgstr "新頁"
 
 #: ../ui/gjots.ui:921 ../ui/treeContextMenu.ui:52
 msgid "New Child"
-msgstr "Nova podpostavka"
+msgstr "新子項"
 
 #: ../ui/gjots.ui:951
 msgid "Up"
-msgstr "Gor"
+msgstr "向上"
 
 #: ../ui/gjots.ui:966
 msgid "Down"
-msgstr "Dol"
+msgstr "向下"
 
 #: ../ui/gjots.ui:981 ../ui/treeContextMenu.ui:74
 msgid "Promote"
-msgstr "Povišaj"
+msgstr "升級"
 
 #: ../ui/gjots.ui:996 ../ui/treeContextMenu.ui:82
 msgid "Demote"
-msgstr "Ponižaj"
+msgstr "降級"
 
 #: ../ui/gjots.ui:1025
 msgid "Split the text selection into a new item"
-msgstr "Odcepi izbrano besedilo v novo postavko"
+msgstr "將所選文字分隔為新項目"
 
 #: ../ui/gjots.ui:1026
 msgid "Split Item"
-msgstr "Odcepi postavko"
+msgstr "分隔項目"
 
 #: ../ui/gjots.ui:1040
 msgid "Merge selected items together"
-msgstr "Spoji izbrane postavke"
+msgstr "合併已選項目"
 
 #: ../ui/gjots.ui:1041 ../ui/treeContextMenu.ui:89
 msgid "Merge Items"
-msgstr "Spoji postavke"
+msgstr "合併項目"
 
 #: ../ui/gjots.ui:1070
 msgid "Hide all items except for the top level"
-msgstr "Skrij vse postavke razen najvišje ravni"
+msgstr "隱藏所有項目除最上層外"
 
 #: ../ui/gjots.ui:1071 ../ui/treeContextMenu.ui:103
 msgid "Hide All"
-msgstr "Skrij vse"
+msgstr "全部隱藏"
 
 #: ../ui/gjots.ui:1086 ../ui/treeContextMenu.ui:96
 msgid "Show All"
-msgstr "Pokaži vse"
+msgstr "全部顯示"
 
 #: ../ui/gjots.ui:1101 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
 msgid "Sort Tree"
-msgstr "Razvrsti drevo"
+msgstr "排序樹"
 
 #: ../ui/prefsDialog.ui:20
 msgid "gjots: preferences"
-msgstr "gjots: možnosti"
+msgstr "gjots: 偏好"
 
 #: ../ui/prefsDialog.ui:49
 msgid "Choose a font for the text panel"
-msgstr "Izberi pisavo za podokno z besedilom"
+msgstr "為文字面板選擇一種字型"
 
 #: ../ui/prefsDialog.ui:65
 msgid "Date format:"
-msgstr "Format datuma:"
+msgstr "日期格式:"
 
 #: ../ui/prefsDialog.ui:79
-#, fuzzy
 msgid "Format for the timestamp function (see strftime(3)) eg %F"
-msgstr "Format za časovni žig (glej strftime(3))"
+msgstr "時間戳記函數格式（詳見strftime（3）），例如 %F"
 
 #: ../ui/prefsDialog.ui:80
 msgid "%F"
 msgstr "%F"
 
 #: ../ui/prefsDialog.ui:99
-#, fuzzy
 msgid ""
 "External program to edit a page (%s is replaced by the name of the temporary "
 "edit file) eg xterm -e vi %s"
-msgstr ""
-"Zunanji urejevalnik strani (%s se zamenja z imenom začasne datoteke za "
-"urejanje)"
+msgstr "以外部程式編輯頁面（%s 替換為臨時編輯檔案），例如 xterm -e vi %s"
 
 #: ../ui/prefsDialog.ui:100
 msgid "xterm -e vi %s"
@@ -548,179 +541,177 @@ msgstr "xterm -e vi %s"
 
 #: ../ui/prefsDialog.ui:120
 msgid "External editor"
-msgstr "Zunanji urejevalnik"
+msgstr "外部編輯"
 
 #: ../ui/prefsDialog.ui:135
 msgid "Text Line Length: "
-msgstr "Dolžina vrstice z besedilom:"
+msgstr "文字長度: "
 
 #: ../ui/prefsDialog.ui:149
 msgid "Line length for paragraph wrapping"
-msgstr "Dolžina vrstice za prelom odstavka"
+msgstr "段落自動換行的行長"
 
 #: ../ui/prefsDialog.ui:172
 msgid "Text formatter: "
-msgstr "Oblikovalnik besedila: "
+msgstr "文字格式: "
 
 #: ../ui/prefsDialog.ui:184
-#, fuzzy
 msgid ""
 "External program to pipe text for formatting (%d is replaced by the current "
 "line width) eg fmt -w %d "
 msgstr ""
-"Zunanji program, kateremu posredujemo (po cevi) besedilo v formatiranje (%d "
-"se zamenja s trenutno širino vrstice)"
+"以外部程式進行管道文字(pipe text)格式化（%d 替換為現行行寬），例如fmt -w %d "
 
 #: ../ui/prefsDialog.ui:185
 msgid "fmt -w %d "
-msgstr "fmt -w %d"
+msgstr "fmt -w %d "
 
 #: ../ui/prefsDialog.ui:202
 msgid "Current text font"
-msgstr "Trenutna pisava za besedilo"
+msgstr "現行字型"
 
 #: ../ui/prefsDialog.ui:204
 msgid "Courier 10 Pitch 10"
-msgstr "Courier 10 Pitch 10"
+msgstr "Courier 10 間距 10"
 
 #: ../ui/prefsDialog.ui:224
+#, fuzzy
 msgid "AutoSave interval:"
-msgstr ""
+msgstr "自動儲存間隔: "
 
 #: ../ui/prefsDialog.ui:238
 msgid "Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)"
-msgstr ""
+msgstr "秒數為0時不自動儲存"
 
 #: ../ui/printDialog.ui:38
 msgid "e.g. lpr: "
-msgstr "npr. lpr: "
+msgstr "例如 lpr: "
 
 #: ../ui/printDialog.ui:54
 msgid "print command (can be a shell expression)"
-msgstr "ukaz za tiskanje (lahko je lupinski izraz)"
+msgstr "列印指令(可以是shell表達式)"
 
 #: ../ui/printDialog.ui:76
 msgid " Print command "
-msgstr " Ukaz za tiskanje "
+msgstr " 列印指令 "
 
 #: ../ui/printDialog.ui:104
 msgid "Page"
-msgstr "Stran"
+msgstr "頁面"
 
 #: ../ui/printDialog.ui:108
 msgid "Print the current page"
-msgstr "Natisni trenutno stran"
+msgstr "列印目前頁面"
 
 #: ../ui/printDialog.ui:120
 msgid "Selection"
-msgstr "Izbor"
+msgstr "選擇"
 
 #: ../ui/printDialog.ui:124
 msgid "Print the selected pages or text"
-msgstr "Natisni izbrane strani ali besedilo"
+msgstr "列印已選頁面或本文"
 
 #: ../ui/printDialog.ui:137
 msgid "All"
-msgstr "Vse"
+msgstr "全部"
 
 #: ../ui/printDialog.ui:141
 msgid "Print the entire gjots file"
-msgstr "Natisni celotno datoteko gjots"
+msgstr "列印整個gjots檔案"
 
 #: ../ui/printDialog.ui:160
 msgid " Print Range "
-msgstr " Interval za tisk "
+msgstr " 列印範圍 "
 
 #: ../ui/printDialog.ui:193
 msgid "Page feeds"
-msgstr "Nova stran"
+msgstr "插入頁面"
 
 #: ../ui/printDialog.ui:197
 msgid "Feeds a page before every new gjots item"
-msgstr "Vsako novo postavko natisne na novo stran"
+msgstr "在每個新gjots項目前插入新頁"
 
 #: ../ui/printDialog.ui:209
 msgid "Bold titles"
-msgstr "Krepki naslovi"
+msgstr "粗體標題"
 
 #: ../ui/printDialog.ui:212
 msgid "Print the gjots item titles in bold"
-msgstr "Natisne naslove postavk s krepko pisavo"
+msgstr "以粗體列印gjots項目標題"
 
 #: ../ui/printDialog.ui:224
 msgid "Auto Number"
-msgstr "Samooštevilčevanje"
+msgstr "自動編號"
 
 #: ../ui/printDialog.ui:251
 msgid "Auto-number format: "
-msgstr "Format samooštevilčevanja: "
+msgstr "自動編號格式: "
 
 #: ../ui/printDialog.ui:262
 msgid "eg. 1 for 1.2.1, a"
-msgstr "npr. 1 za 1.2.1, a"
+msgstr "例如. 1 for 1.2.1, a"
 
 #: ../ui/printDialog.ui:289
 msgid " Print formatting "
-msgstr " Oblikovanje tiska "
+msgstr " 列印格式 "
 
 #: ../ui/sortDialog.ui:43
 msgid "Ascending"
-msgstr "Naraščajoče"
+msgstr "遞增"
 
 #: ../ui/sortDialog.ui:47
 msgid "Sort in ascending order"
-msgstr "Razvrsti naraščajoče"
+msgstr "以遞增排序"
 
 #: ../ui/sortDialog.ui:58
 msgid "Descending"
-msgstr "Padajoče"
+msgstr "遞減"
 
 #: ../ui/sortDialog.ui:62
 msgid "Sort in descending order"
-msgstr "Razvrsti padajoče"
+msgstr "以遞減排序"
 
 #: ../ui/sortDialog.ui:76
 msgid "Alphabetic"
-msgstr "Po abecedi"
+msgstr "字母"
 
 #: ../ui/sortDialog.ui:80
 msgid "Sort in alphabetic order"
-msgstr "Razvrsti po abecedi"
+msgstr "以字母排序"
 
 #: ../ui/sortDialog.ui:93
 msgid "Numeric"
-msgstr "Numerično"
+msgstr "數字"
 
 #: ../ui/sortDialog.ui:97
 msgid "Sort in numeric order"
-msgstr "Razvrsti po numeričnem vrstnem redu"
+msgstr "以數字排序"
 
 #: ../ui/sortDialog.ui:119
 msgid " Sort Parameters "
-msgstr " Parametri razvrščanja "
+msgstr " 排序參數 "
 
 #: ../ui/sortDialog.ui:149
 msgid "How many sublevels to sort (0 for none; -1 for 'all')"
-msgstr "Koliko podravni naj se razvrsti (0 za nobeno; -1 za 'vse')"
+msgstr "要排序多少次階 (0 沒有; -1 全部)"
 
 #: ../ui/sortDialog.ui:171
 msgid " Sort Sublevels "
-msgstr " Podravni razvrščanja "
+msgstr " 排序次階 "
 
 #: ../ui/treeContextMenu.ui:30
 msgid "Select _All"
-msgstr "Izberi _Vse"
+msgstr "全部選擇(_A)"
 
 #: ../ui/treeContextMenu.ui:117
 msgid "Import"
-msgstr "Uvozi"
+msgstr "匯入"
 
 #: ../ui/treeContextMenu.ui:124
 msgid "Export"
-msgstr "Izvozi"
+msgstr "匯出"
 
 #: ../gjots2:23
-#, fuzzy
 msgid ""
 "Usage: gjots [OPTIONS] [FILENAME]\n"
 "A gtk/X11 jotter\n"
@@ -737,44 +728,43 @@ msgid ""
 "FILENAME:\n"
 "    gjots data filename (default is $HOME/.gjotsfile)\n"
 msgstr ""
-"Raba: gjots [MOŽNOSTI] [DATOTEKA]\n"
-"Jotter za gnome-2/X11\n"
+"Usage: gjots [OPTIONS] [FILENAME]\n"
+"A gtk/X11 jotter\n"
 "\n"
-"MOŽNOSTI:\n"
-"-h, --help:                         ta pomoč\n"
-"-d, --debug:                        pošlji razhroščevalne informacije na "
-"stdout\n"
-"-t, --trace:                        sledi vrsticam med izvajanjem\n"
-"-g 123x456, --geometry=123x456:     začetna geometrija (X x Y)\n"
-"-p, --purge-password\t\t\t\tne pomni gesla\n"
-"-r, --readonly:                     brez urejanja (ari zaklepanja)\n"
-"-V, --version:                      izpiši različico in zaključi\n"
+"OPTIONS:\n"
+"-h, --help:                         此文件\n"
+"-d, --debug:                        除錯至stdout\n"
+"-t, --trace:                        執行時描線(trace lines)\n"
+"-g 123x456, --geometry=123x456:     初始幾何(X x Y)\n"
+"-p, --purge-password                不記憶密碼\n"
+"-r, --readonly:                     不編輯 (或鎖定)\n"
+"-V, --version:                      列印版本且離開\n"
 "\n"
-"DATOTEKA:\n"
-"\time podatkovne datoteke gjots (privzeto $HOME/.gjotsfile)\n"
+"FILENAME:\n"
+"    gjots 資料的檔名 (預設值為 $HOME/.gjotsfile)\n"
 
 #: ../gjots2:89
 #, python-format
 msgid "%s requires python%s or higher."
-msgstr "%s zahteva python%s ali višji."
+msgstr "%s 需要 python%s 或更高."
 
 #: ../gjots2:102
 msgid "Use -h for help\n"
-msgstr "Uporabite -h za pomoč\n"
+msgstr "使用 -h 取得說明\n"
 
 #: ../gjots2:116
 #, python-format
 msgid "%s version %s"
-msgstr "%s različica %s"
+msgstr "%s 版本 %s"
 
 #: ../lib/gui.py:51 ../lib/gui.py:996
 msgid "Text pasted"
-msgstr "Besedilo prilepljeno"
+msgstr "貼上文字"
 
 #: ../lib/gui.py:179
 #, python-format
 msgid "External formatter \"%s\" is not installed - can't format"
-msgstr "Zunanji oblikovalnik \"%s\" ni nameščen - ni moč formatirati"
+msgstr "未安裝外部格式化程式\"%s\" -無法格式化"
 
 #: ../lib/gui.py:564 ../lib/gui.py:675 ../lib/gui.py:679 ../lib/gui.py:745
 #: ../lib/gui.py:749 ../lib/gui.py:812 ../lib/gui.py:817 ../lib/gui.py:1043
@@ -784,467 +774,400 @@ msgstr "Zunanji oblikovalnik \"%s\" ni nameščen - ni moč formatirati"
 #: ../lib/file.py:471 ../lib/sortDialog.py:329 ../lib/sortDialog.py:334
 #: ../lib/printDialog.py:110 ../lib/printDialog.py:115
 msgid "Nothing selected"
-msgstr "Nič ni izbrano"
+msgstr "尚未選擇"
 
 #: ../lib/gui.py:568 ../lib/gui.py:684 ../lib/gui.py:753 ../lib/gui.py:822
 #: ../lib/gui.py:934 ../lib/gui.py:1224 ../lib/gui.py:2386
 #: ../lib/sortDialog.py:345
 msgid "No parent!"
-msgstr "Ni nadrejenega!"
+msgstr "沒有父項!"
 
 #: ../lib/gui.py:572 ../lib/gui.py:719
 msgid "No child!"
-msgstr "Ni podrejenega!"
+msgstr "沒有子項!"
 
 #: ../lib/gui.py:580 ../lib/gui.py:693
 msgid "Can't go any further"
-msgstr "Ni moč nadaljevati"
+msgstr "沒有下一個"
 
 #: ../lib/gui.py:616 ../lib/gui.py:840
 msgid "Internal error!"
-msgstr "Notranja napaka!"
+msgstr "內部錯誤!"
 
 #: ../lib/gui.py:757
 msgid "Can't go further!"
-msgstr "Ni moč nadaljevati!"
+msgstr "沒有下一個!"
 
 #: ../lib/gui.py:973
 msgid "Text cut"
-msgstr "Besedilo izrezano"
+msgstr "剪下文字"
 
 #: ../lib/gui.py:984
 msgid "Text copied"
-msgstr "Besedilo kopirano"
+msgstr "複製文字"
 
 #: ../lib/gui.py:1005
 msgid "All text selected"
-msgstr "Celotno besedilo izbrano"
+msgstr "已選所有文字"
 
 #: ../lib/gui.py:1015
 msgid "All tree items selected"
-msgstr "Vse drevesne postavke izbrane"
+msgstr "已選所有樹項目"
 
 #: ../lib/gui.py:1023
 msgid "Nothing selected!"
-msgstr "Nič ni izbrano!"
+msgstr "尚未選擇!"
 
 #: ../lib/gui.py:1047
 msgid "Can't merge the root item"
-msgstr "Ni moč združiti korenske postavke"
+msgstr "無法合併根項目"
 
 #: ../lib/gui.py:1056
 msgid "Nothing to merge"
-msgstr "Ni česa združiti"
+msgstr "無可合併項"
 
 #: ../lib/gui.py:1063
 msgid "Can't merge items that have children"
-msgstr "Ni moč združiti postavk, ki imajo podpostavke"
+msgstr "無法合併有子之項目"
 
 #: ../lib/gui.py:1093
 #, python-format
 msgid "%d items merged"
-msgstr "združeno %d postavk"
+msgstr "%d 個項目已合併"
 
 #: ../lib/gui.py:1142
 msgid "Can't delete the root item"
-msgstr "Ni moč izbrisati korenske postavke"
+msgstr "無法刪除根項目"
 
 #: ../lib/gui.py:1175
 #, python-format
 msgid "%d tree items cut"
-msgstr "izrezano %d drevesnih postavk"
+msgstr "%d 個樹項目已剪下"
 
 #: ../lib/gui.py:1205
 #, python-format
 msgid "%d tree items copied"
-msgstr "kopirano %d drevesnih postavk"
+msgstr "%d 個樹項目已複製"
 
 #: ../lib/gui.py:1214
 msgid "Nothing to paste"
-msgstr "Ni česa prilepiti"
+msgstr "沒有可貼上的"
 
 #: ../lib/gui.py:1237
 msgid "Tree items pasted"
-msgstr "Drevesne postavke prilepljene"
+msgstr "樹項目已貼上"
 
 #: ../lib/gui.py:1258
-#, fuzzy
 msgid "Can't write tempfile"
-msgstr "Ni moč pisati "
+msgstr "無法寫入暫存檔"
 
 #: ../lib/gui.py:1278
 #, python-format
 msgid "Can't run '%s'"
-msgstr "Ni moč zagnati '%s'"
+msgstr "無法運行 '%s'"
 
 #: ../lib/gui.py:1287
-#, fuzzy
 msgid "Can't read tempfile "
-msgstr "Ni moč prebrati "
+msgstr "無法讀取暫存檔 "
 
 #: ../lib/gui.py:1293
 msgid "text changed by external editor"
-msgstr "besedilo spremenjeno z zunanjim urejevalnikom"
+msgstr "文字已被外部編輯器更改"
 
 #: ../lib/gui.py:1295
 msgid "text not changed by external editor"
-msgstr "besedilo ni spremenjeno z zunanjim urejevalnikom"
+msgstr "文字未由外部編輯器更改"
 
 #: ../lib/gui.py:1314
 msgid ": Error"
-msgstr ": Napaka"
+msgstr ": 錯誤"
 
 #: ../lib/gui.py:1327
 #, python-format
 msgid "Can't lock file %s: already locked by process %d"
-msgstr "Ni moč zakleniti datoteke %s, ker jo je že zaklenil proces %d"
+msgstr "無法鎖定檔案 %s: 已被程序 %d鎖定"
 
 #: ../lib/gui.py:1510
 msgid ": Save?"
-msgstr ": Shranim?"
+msgstr ": 儲存?"
 
 #: ../lib/gui.py:1511
 msgid "Save current work?"
-msgstr "Shranim tekoče delo?"
+msgstr "儲存現行工作?"
 
 #: ../lib/gui.py:1532
 msgid "New file"
-msgstr "Nova datoteka"
+msgstr "新文件"
 
 #: ../lib/gui.py:1556
 msgid "Open file ..."
-msgstr "Odpri datoteko ..."
+msgstr "開啟檔案..."
 
 #: ../lib/gui.py:1568
 msgid "No changes to save"
-msgstr "Ni sprememb, ki bi jih bilo treba shraniti"
+msgstr "沒有需要儲存的改變"
 
 #: ../lib/gui.py:1572 ../lib/gui.py:1593
 msgid "Saved."
-msgstr "Shranjeno."
+msgstr "已存檔."
 
 #: ../lib/gui.py:1574 ../lib/gui.py:1595 ../lib/file.py:456
 msgid "Not saved."
-msgstr "Ni shranjeno."
+msgstr "沒有儲存."
 
 #: ../lib/gui.py:1589
 msgid "Nothing to save"
-msgstr "Ni česa shraniti"
+msgstr "沒有可儲存的"
 
 #: ../lib/gui.py:1591 ../lib/file.py:693
 msgid "Save as ..."
-msgstr "Shrani kot ..."
+msgstr "另存新檔..."
 
 #: ../lib/gui.py:1605
 msgid "Import from ..."
-msgstr "Uvozi iz ..."
+msgstr "從...匯入"
 
 #: ../lib/gui.py:1616
 msgid "Export to ..."
-msgstr "Izvozi v ..."
+msgstr "匯出到 ..."
 
 #: ../lib/gui.py:1930 ../lib/gui.py:1933
 #, python-format
 msgid "%s: Warning: opening gjots2 manual from %s\n"
-msgstr "%s: Pozor: odpiram priročnik gjots2 iz %s\n"
+msgstr "%s: 警告: 從 %s 開啟gjots2手冊\n"
 
 #: ../lib/gui.py:2317
 msgid ""
 "gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
 "event."
-msgstr ""
-"gjots2: pozor: seznam izborov je NULL. Dogodek spremenjenega drevesnega "
-"izbora \n"
-"bo preskočen."
+msgstr "gjots2: 警告: 選取清單為 NULL。跳過選取樹變更。"
 
 #: ../lib/gui.py:2390
 msgid "Can't go further"
-msgstr "Ni moč nadaljevati"
+msgstr "沒有下一個"
 
 #: ../lib/gui.py:2419
 msgid "Tree is empty!"
-msgstr "Drevo je prazno!"
+msgstr "樹是空的!"
 
 #: ../lib/gui.py:2716
 msgid "Bad regular expression"
-msgstr "Napačen logični izraz"
+msgstr "錯誤的正規表達式"
 
 #: ../lib/gui.py:2808
 #, python-format
 msgid "%s: bad geometry specification: %s\n"
-msgstr "%s: napačna specifikacija geometrije: %s\n"
+msgstr "%s: 幾何規格不正確: %s\n"
 
 #: ../lib/gui.py:2899
 msgid "New...>>>"
-msgstr "Novo...>>>"
+msgstr "新...>>>"
 
 #: ../lib/gui.py:2936
 msgid "Install gtksourceview to enable undo/redo"
-msgstr ""
+msgstr "安裝gtksourceview以啟用撤消/重做"
 
 #: ../lib/gui.py:3102
 msgid ": version "
-msgstr ": različica "
+msgstr ": 版本 "
 
 #: ../lib/find.py:70 ../lib/find.py:93
 msgid "Not found"
-msgstr "Ni moč najti"
+msgstr "未找到"
 
 #: ../lib/find.py:72
 msgid "Found"
-msgstr "Najdeno"
+msgstr "找到"
 
 #: ../lib/find.py:96
 msgid "Replace?"
-msgstr "Zamenjam?"
+msgstr "取代?"
 
 #: ../lib/find.py:113
 #, python-format
 msgid "%d substitutions"
-msgstr "%d zamenjav"
+msgstr "取代 %d 個"
 
 #: ../lib/file.py:255
 msgid "Enter password for "
-msgstr "Vnesite geslo za "
+msgstr "輸入密碼 "
 
 #: ../lib/file.py:257
-#, fuzzy
 msgid ": Enter Password"
-msgstr "gjots2: Vnesite geslo"
+msgstr ": 輸入密碼"
 
 #: ../lib/file.py:259
 msgid "Password: "
-msgstr "Geslo: "
+msgstr "密碼: "
 
 #: ../lib/file.py:260
 msgid "Confirm: "
-msgstr "Potrdi: "
+msgstr "再確認: "
 
 #: ../lib/file.py:268
 msgid "Password was not confirmed"
-msgstr "Geslo ni potrjeno"
+msgstr "密碼尚未確認"
 
 #: ../lib/file.py:275
 msgid "Could not find the ccrypt program - please install it and try again"
-msgstr "Ni moč najti programa ccrypt - namestite ga in poskusite znova"
+msgstr "找不到ccrypt程式-請安裝它，然後重試"
 
 #: ../lib/file.py:308
 msgid ""
 "Neither gpg2 nor gpg are available - please install one (perhaps package "
 "gnupg2) and try again"
-msgstr ""
+msgstr "gpg2和gpg都存在-請擇一(也許是gnupg2軟件包)然後重試"
 
 #: ../lib/file.py:328
-#, fuzzy
 msgid "No openssl program - please install it and try again"
-msgstr "Ni moč najti programa openssl - namestite ga in poskusite znova"
+msgstr "沒有openssl程式-請安裝它，然後重試"
 
 #: ../lib/file.py:354
-#, fuzzy
 msgid "No org2gjots program - please install it and try again"
-msgstr "Ni moč najti programa openssl - namestite ga in poskusite znova"
+msgstr "沒有org2gjots程式-請安裝它，然後重試"
 
 #: ../lib/file.py:412
 msgid "Can't open \""
-msgstr "Ni moč odpreti \""
+msgstr "無法開啟 \""
 
 #: ../lib/file.py:415
 msgid "Bad password"
-msgstr "Napačno geslo"
+msgstr "密碼錯誤"
 
 #: ../lib/file.py:418
 msgid "File cannot be locked"
-msgstr "Datoteke ni moč zakleniti"
+msgstr "檔案無法鎖定"
 
 #: ../lib/file.py:431 ../lib/file.py:489
 msgid "failed!"
-msgstr ""
+msgstr "失敗了!"
 
 #: ../lib/file.py:457
 msgid "Can't write to "
-msgstr "Ni moč pisati v "
+msgstr "無法寫入至 "
 
 #: ../lib/file.py:460
 msgid "Can't lock file"
-msgstr "Ni moč zakleniti datoteke"
+msgstr "無法鎖定黨案"
 
 #: ../lib/file.py:597
 #, python-format
 msgid "%s is not readable"
-msgstr "%s ni moč prebrati "
+msgstr "%s 不可讀取"
 
 #: ../lib/file.py:613
 #, python-format
 msgid "%s: no permission"
-msgstr "%s: ni dovoljenja"
+msgstr "%s: 沒有權限"
 
 #: ../lib/file.py:615
 #, python-format
 msgid "%s: locked by process number %d"
-msgstr "%s: zaklenil proces št. %d"
+msgstr "%s:已被程序 %d 鎖定"
 
 #: ../lib/file.py:617
-#, fuzzy
 msgid ": can't lock file."
-msgstr "gjots2: ni moč zakleniti datoteke."
+msgstr ": 無法鎖定檔案."
 
 #: ../lib/file.py:705
 msgid "That file is already open!"
-msgstr "Datoteka je že odprta!"
+msgstr "該檔案已經開啟!"
 
 #: ../lib/file.py:713 ../lib/file.py:787
-#, fuzzy
 msgid ": file has changed"
-msgstr "gjots2: %s se je spremenil"
+msgstr ": 檔案已更改"
 
 #: ../lib/file.py:714
-#, fuzzy, python-format
+#, python-format
 msgid "File changed since it was read - copied to %s "
-msgstr ""
-"'%s' se je spremenil, odkar je bil prebran.\n"
-"vseeno prepišem?"
+msgstr "文件自開啟後已被更改-複製到 %s "
 
 #: ../lib/file.py:731
 #, python-format
 msgid "%s is locked by pid %d"
-msgstr "%s je zaklenil proces pid %d"
+msgstr "%s 被 pid %d 鎖定"
 
 #: ../lib/file.py:735
 msgid "Can't make a lockfile in "
-msgstr "Ni moč ustvariti datoteke za zaklepanje v "
+msgstr "無法建立鎖定文件於 "
 
 #: ../lib/file.py:748
 #, python-format
 msgid "%s is not writable"
-msgstr "%s ni pisljiv"
+msgstr "%s 不可寫入"
 
 #: ../lib/file.py:751
-#, fuzzy, python-format
+#, python-format
 msgid ": %s already exists."
-msgstr "gjots2: %s že obstaja."
+msgstr "%s 已存在."
 
 #: ../lib/file.py:752
 #, python-format
 msgid "overwrite %s?"
-msgstr "prepišem %s?"
+msgstr "覆蓋 %s?"
 
 #: ../lib/file.py:788
 #, python-format
 msgid "File changed since it was read - so it was copied to %s "
-msgstr ""
+msgstr "文件自開啟後已被更改-已將其複製到 %s "
 
 #: ../lib/sortDialog.py:125
 msgid "_get_settings: Cant find sortAscendingRadioButton"
-msgstr "_get_settings: Ni moč najti sortAscendingRadioButton"
+msgstr "_get_settings: 無法找到 sortAscendingRadioButton"
 
 #: ../lib/sortDialog.py:165
 msgid "Internal error"
-msgstr "Notranja napaka"
+msgstr "內部錯誤"
 
 #: ../lib/sortDialog.py:303
 msgid "Nothing to sort!"
-msgstr "Ni česa razvrščati!"
+msgstr "沒有可排序的!"
 
 #: ../lib/sortDialog.py:398
 msgid "Sort Text"
-msgstr "Razvrsti besedilo"
+msgstr "文字排序"
+
+#, fuzzy
+#~ msgid ""
+#~ "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+#~ "Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
+#~ "Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
+#~ "Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
+#~ "Martin Sin (cs) <martin.sin@zshk.cz>\n"
+#~ "Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
+#~ "Aleksa Šušulić (sl) <susulic@gmail.com>\n"
+#~ "Uwe Steinmann (de) <uwe@steinmann.cx>\n"
+#~ "曹晉維 (Michael Tsao) (zh_TW) <cwtsao@sce.pccu.edu.tw>\n"
+#~ msgstr ""
+#~ "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+#~ "Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
+#~ "Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
+#~ "Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
+#~ "Martin Sin (cs) <martin.sin@zshk.cz>\n"
+#~ "Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
+#~ "Aleksa Šušulić (sl) <susulic@gmail.com>\n"
+#~ "Uwe Steinmann (de) <uwe@steinmann.cx>\n"
 
 #~ msgid "Recent"
-#~ msgstr "Nedavne datoteke"
+#~ msgstr "最近"
 
-#, fuzzy
 #~ msgid "Exit gjots"
-#~ msgstr "Končaj gjots"
+#~ msgstr "結束gjots"
 
 #~ msgid "Create a new child "
-#~ msgstr "Ustvari novo podpostavko"
+#~ msgstr "建立新子項 "
 
-#, fuzzy
 #~ msgid "About gjots2"
-#~ msgstr "Končaj gjots"
+#~ msgstr "關於gjots2"
 
-#, fuzzy
 #~ msgid " Find: "
-#~ msgstr " Najdi:"
+#~ msgstr " 尋找: "
 
-#, python-format
-#~ msgid "%s requires pygtk-%s.\n"
-#~ msgstr "%s zahteva pygtk-%s.\n"
+#~ msgid "Auto ReadOnly timeout:"
+#~ msgstr "自動唯讀逾時:"
 
-#~ msgid "not initialised"
-#~ msgstr "ni inicializirano"
+#~ msgid "The number of second after losing focus that ReadOnly should be set."
+#~ msgstr "失去焦點指定秒數後設定唯讀"
 
-#~ msgid "pygtk-2.2 is required for this application!"
-#~ msgstr "ta aplikacija zahteva pygtk-2.2!"
-
-#~ msgid "%s: Warning: running modules from %s\n"
-#~ msgstr "%s: Pozor: zaganjam module iz %s\n"
-
-#~ msgid "Could not find the gpg program - please install it and try again"
-#~ msgstr "Ni moč najti programa gpg - namestite ga in poskusite znova"
-
-#~ msgid "_Settings"
-#~ msgstr "_Nastavitve"
-
-#~ msgid "gtk-new"
-#~ msgstr "gtk-new"
-
-#~ msgid "gtk-open"
-#~ msgstr "gtk-open"
-
-#~ msgid "gtk-save"
-#~ msgstr "gtk-save"
-
-#~ msgid "gtk-save-as"
-#~ msgstr "gtk-save-as"
-
-#~ msgid "gtk-print"
-#~ msgstr "gtk-print"
-
-#~ msgid "gtk-quit"
-#~ msgstr "gtk-quit"
-
-#~ msgid "gtk-undo"
-#~ msgstr "gtk-undo"
-
-#~ msgid "gtk-redo"
-#~ msgstr "gtk-redo"
-
-#~ msgid "gtk-cut"
-#~ msgstr "gtk-cut"
-
-#~ msgid "gtk-copy"
-#~ msgstr "gtk-copy"
-
-#~ msgid "gtk-paste"
-#~ msgstr "gtk-paste"
-
-#~ msgid "gtk-select-all"
-#~ msgstr "gtk-select-all"
-
-#~ msgid "gtk-find"
-#~ msgstr "gtk-find"
-
-#~ msgid "gtk-preferences"
-#~ msgstr "gtk-preferences"
-
-#~ msgid "gtk-go-up"
-#~ msgstr "gtk-go-up"
-
-#~ msgid "gtk-go-down"
-#~ msgstr "gtk-go-down"
-
-#~ msgid "gtk-about"
-#~ msgstr "gtk-about"
-
-#~ msgid "gtk-ok"
-#~ msgstr "gtk-ok"
-
-#~ msgid "gtk-no"
-#~ msgstr "gtk-no"
-
-#~ msgid "gtk-cancel"
-#~ msgstr "gtk-cancel"
-
-#~ msgid "gtk-select-font"
-#~ msgstr "gtk-select-font"
+#~ msgid "abcdefghijk ABCDEFGHIJK"
+#~ msgstr "abcdefghijk ABCDEFGHIJK"
