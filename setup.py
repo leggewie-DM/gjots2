@@ -7,7 +7,7 @@
 # Install gjots2 with:
 #               python setup.py install
 # or perhaps:
-#               python setup.py install --prefix=/usr/local
+#               python setup.py install --prefix=/usr
 
 # Please help! How do I get this script to automatically generate the
 # .pyc files at installation time?
@@ -17,12 +17,8 @@
 # and use.
 
 import os, sys
-sys.path = [os.curdir+ '/lib'] + sys.path
-
 from distutils.core import setup
 from lib.version import *
-
-datadir = "lib/gjots2"
 
 setup(
     name = "gjots2",
@@ -33,12 +29,9 @@ setup(
     author_email = "bob.hepple@gmail.com",
     url = "http://bhepple.freeshell.org/gjots/",
     scripts = ['bin/gjots2','bin/gjots2docbook','bin/docbook2gjots','bin/gjots2html','bin/gjots2html.py','bin/gjots2lpr','bin/gjots2emacs','bin/gjots2org','bin/org2gjots'],
+    package_dir = {'': '.', 'gjots2': 'lib'},
+    packages = ['gjots2'],
     data_files = [
-        ( 'lib/gjots2',
-          [
-              'lib/__init__.py', 'lib/file.py', 'lib/general.py', 'lib/prefs.py', 'lib/common.py', 'lib/find.py', 'lib/gui.py', 'lib/prefs.py', 'lib/version.py', 'lib/printDialog.py', 'lib/sortDialog.py'
-          ]
-        ),
         ( 'share/man/man1',
           [
               'doc/man/man1/gjots2.1','doc/man/man1/gjots2docbook.1','doc/man/man1/docbook2gjots.1','doc/man/man1/gjots2html.1'
@@ -84,6 +77,7 @@ setup(
         ('share/locale/sl/LC_MESSAGES', ['po/sl/LC_MESSAGES/gjots2.mo']),
         ('share/locale/sv/LC_MESSAGES', ['po/sv/LC_MESSAGES/gjots2.mo']),
         ('share/locale/de_DE/LC_MESSAGES', ['po/de_DE/LC_MESSAGES/gjots2.mo']),
+        ('share/locale/zh_TW/LC_MESSAGES', ['po/zh_TW/LC_MESSAGES/gjots2.mo']),
         ('share/locale/en_US/LC_MESSAGES', ['po/en_US/LC_MESSAGES/gjots2.mo']),
         ('share/applications',['gjots2.desktop']),
         ('share/metainfo',['gjots2.metainfo.xml']),
@@ -92,3 +86,5 @@ setup(
     license = 'GNU GPL',
     platforms = 'posix',
 )
+
+print("\n*** Now run 'glib-compile-schemas $prefix/share/glib-2.0/schemas ***'\n")

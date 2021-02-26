@@ -38,8 +38,12 @@ FILENAME:
 
 if __name__ == '__main__':
     dirName, progName = os.path.split(sys.argv[0])
-    prefix = sys.prefix
+    prefix = sys.prefix # /usr or /usr/local or ???
 
+    # maybe we're installed somewhere weird like ~/foo/bar/bin
+    d, b = os.path.split(dirName)
+    if b == "bin":
+        prefix = d
     #
     # Add the library path to the system load path
     #
@@ -49,8 +53,14 @@ if __name__ == '__main__':
         prefix = localdir
         sys.path = [ localdir ] + sys.path
         sys.stderr.write("%s: Warning: running modules from %s\n" % (progName, localdir))
+        locale_dir = os.curdir + "/po"
     else:
-        sys.path = [ get_python_lib() + '/gjots2' ] + sys.path
+        p = get_python_lib()
+        if p.startswith(sys.prefix):
+            p = p[len(sys.prefix):]
+            p = prefix + "/" + p
+        sys.path = [ p + '/gjots2' ] + sys.path
+        locale_dir = prefix + "/share/locale"
 
     # i18n support
     import gettext
@@ -59,7 +69,6 @@ if __name__ == '__main__':
     # Locale setting in Gtk.Builder appears somewhat broken under Python. See:
     #   https://bugzilla.gnome.org/show_bug.cgi?id=574520
     locale_domain = "gjots2"
-    locale_dir = prefix + "/share/locale"
 
     gettext.bindtextdomain(locale_domain, locale_dir)
     locale.setlocale(locale.LC_ALL, '')
@@ -75,8 +84,8 @@ if __name__ == '__main__':
     #
     # python version
     #
-    pyver = (3,7)
-    if sys.version_info[:2] < pyver:
+    pyver = (3,6,8)
+    if sys.version_info[:3] < pyver:
         sys.stderr.write(_("%s requires python%s or higher.") % (progName, ver2str(pyver)))
         sys.exit(1)
 

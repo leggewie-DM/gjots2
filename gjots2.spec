@@ -1,7 +1,7 @@
 # -*-Mode: rpm-spec -*-
 
 Name:    gjots2
-Version: 3.1.6
+Version: 3.1.7
 Release: 1%{?dist}
 Summary: A hierarchical note jotter - organize your ideas, notes, facts in a tree
 License: GPLv2
@@ -11,13 +11,14 @@ Source0: https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
 BuildArch: noarch
 
 BuildRequires: python3-devel
-BuildRequires: python3-setuptools
 BuildRequires: libappstream-glib
 BuildRequires: desktop-file-utils
 
 Requires: python3-gobject
 Requires: gtk3
-Requires: gtksourceview4
+
+# epel has gtksourceview3 only. f-31/2 also have gtksourceview4. Maybe use weak dependencies?
+Requires: gtksourceview3
 
 %description
 
@@ -35,9 +36,6 @@ structure them appropriately.
 %prep
 %autosetup -p1
 
-# setup.py installs python code in /usr/local/lib/gjots2, but we want
-# /usr/lib/python3.7/site-packages/gjots2:
-sed -i -e 's@lib/gjots2@lib/python%{python3_version}/site-packages/gjots2@g' setup.py
 # Convert to utf-8
 for file in doc/man/man1/*.1; do
     iconv -f ISO-8859-1 -t UTF-8 -o $file.new $file && \
@@ -95,6 +93,15 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 %{_mandir}/man1/docbook2gjots*
 
 %changelog
+* Wed Jun 24 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.7-1
+- new version
+
+* Tue May 26 2020 Miro Hrončok <mhroncok@redhat.com> - 3.1.6-3
+- Rebuilt for Python 3.9
+
+* Sun May 03 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.6-2
+- remove BR for python3-setuptools
+
 * Sun May 03 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.6-1
 - rebuilt in response to RHBZ#1823599
 

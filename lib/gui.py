@@ -2,8 +2,11 @@
 
 import os, sys
 import gi
-gi.require_version('GtkSource', '3.0')
-gi.require_version("Gtk", "3.0")
+
+try:
+    gi.require_version('GtkSource', '4')
+except:
+    gi.require_version('GtkSource', '3.0')
 from gi.repository import GObject, Gio, Gtk, Gdk, GdkPixbuf, GLib
 import tempfile
 from gi.repository import Pango
@@ -309,7 +312,11 @@ class gjots_gui:
         if self.debug:
             print(inspect.getframeinfo(inspect.currentframe())[2])
 
-        self.settings = Gio.Settings.new("org.gtk.gjots2")
+        try:
+            self.settings = Gio.Settings.new("org.gtk.gjots2")
+        except:
+            print("You need to run 'glib-compile-schemas $prefix/share/glib-2.0/schemas'")
+            sys.exit(1)
 
         # handle startup defaults:
 
@@ -996,8 +1003,12 @@ class gjots_gui:
         return
 
     def _do_tree_select_all(self):
+        if self.debug:
+            print(inspect.getframeinfo(inspect.currentframe())[2])
         self.msg("")
+        self.treeView.get_selection().handler_block(self.on_tree_selection_changed_handler)
         self.treeView.get_selection().select_all()
+        self.treeView.get_selection().handler_unblock(self.on_tree_selection_changed_handler)
         self.msg(_("All tree items selected"))
 
     def _do_split_item(self):
@@ -1971,7 +1982,8 @@ Martin Sin (cs) <martin.sin@zshk.cz>
 Cecilio Salmeron (es) <s.cecilio@gmail.com>
 Aleksa Šušulić (sl) <susulic@gmail.com>
 Uwe Steinmann (de) <uwe@steinmann.cx>
-Morgan Antonsson (sv) <morgan.antonsson@gmail.com>""")
+Morgan Antonsson (sv) <morgan.antonsson@gmail.com>
+曹晉維 (Michael Tsao) (zh_TW) <cwtsao@sce.pccu.edu.tw>""")
         def close(w, res):
             #if res == Gtk.ResponseType.CANCEL:
             w.hide()
@@ -2540,14 +2552,14 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>""")
                 for row in selected:
                     if row == path:
                         treeview.grab_focus()
-                        self.treeContextMenu_get_widget("treeContextMenu").popup(None, None, None, event.button, time)
+                        self.treeContextMenu_get_widget("treeContextMenu").popup(None, None, None, event.button, time, Gtk.get_current_event_time())
                         return 1
                 # If we get here, then we need to de-select the current
                 # selection and select the path that has been right-clicked.
                 selection.unselect_all()
                 selection.select_path(path)
                 treeview.grab_focus()
-                self.treeContextMenu_get_widget("treeContextMenu").popup(None, None, None, event.button, time)
+                self.treeContextMenu_get_widget("treeContextMenu").popup(None, None, None, event.button, time, Gtk.get_current_event_time())
             return 1
         return 0 # allow further signal propagation
 

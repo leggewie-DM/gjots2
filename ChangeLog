@@ -1,3 +1,11 @@
+2020-05-14   <bob.hepple@gmail.com> 3.1.7
+	fix popup context menus (right click on tree)
+	fix locale_dir when running from source tree
+	add LC_ALL=zh_TW translation
+	accomodate installation to any $prefix with setup.py
+	fix tree_select_all
+	fine tune python version requirement to >= 3.6.8 for epel8
+	try for gtksourceview4 and failover to gtksourceview3
 2020-05-03   <bob.hepple@gmail.com> 3.1.6
 	response to RHBZ#1823599
 2020-05-02   <bob.hepple@gmail.com> 3.1.5

@@ -36,6 +36,17 @@ all Linux distributions.
  <url type="homepage">http://sourceforge.net/projects/gjots2</url>
  <update_contact>bob.hepple@gmail.com</update_contact>
  <releases>
+   <release version="3.1.7" date="2020-06-18">
+     <description>
+       <p>fix popup context menus (right click on tree)</p>
+       <p>fix locale_dir when running from source tree</p>
+       <p>add LC_ALL=zh_TW translation</p>
+       <p>accomodate installation to any $prefix with setup.py</p>
+       <p>fix tree_select_all</p>
+       <p>fine tune python version requirement to >= 3.6.8 for epel8</p>
+       <p>try for gtksourceview4 and failover to gtksourceview3</p>
+     </description>
+   </release>
    <release version="3.1.6" date="2020-05-03">
      <description>
        <p>Fix issues in RHBZ#1823599</p>

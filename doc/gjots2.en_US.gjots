@@ -97,7 +97,8 @@ If installing from the tarball, after unpacking the tar file and
 cd'ing to it do this:
 
 	python setup.py install [ --prefix=/usr/... ]
-
+  glib-compile-schemas $prefix/share/glib-2.0/schemas
+  
 Uninstall with the uninstall.sh script provided here.
 
 On some systems, you may have permission problems with system-wide

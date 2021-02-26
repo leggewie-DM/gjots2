@@ -13,7 +13,7 @@ GJOTS2 MANUAL
                  Queensland
                  Australia
 
-                 Version 3.1.6
+                 Version 3.1.7
 
 
       bob.hepple@gmail.com
@@ -80,7 +80,7 @@ RPM-based systems
 fedora includes gjots2 but is often out of date - better get the
 latest package from the homepage
 
-VERSION=3.1.6
+VERSION=3.1.7
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}-1.noarch.rpm
 dnf install gjots2
 
@@ -89,14 +89,15 @@ https://copr.fedorainfracloud.org/coprs/wef/gjots2/
 \NewEntry
 From the tarball source
 
-VERSION=3.1.6
+VERSION=3.1.7
 wget http://bhepple.freeshell.org/gjots/gjots2-${VERSION}.tgz
 
 If installing from the tarball, after unpacking the tar file and
 cd'ing to it do this:
 
 	python setup.py install [ --prefix=/usr/... ]
-
+  glib-compile-schemas $prefix/share/glib-2.0/schemas
+  
 Uninstall with the uninstall.sh script provided here.
 
 On some systems, you may have permission problems with system-wide

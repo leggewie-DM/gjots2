@@ -91,6 +91,9 @@ src_install() {
 	insinto /usr/share/locale/de_DE/LC_MESSAGES
 	doins po/de_DE/LC_MESSAGES/gjots2.mo
 
+	insinto /usr/share/locale/zh_TW/LC_MESSAGES
+	doins po/zh_TW/LC_MESSAGES/gjots2.mo
+
 	insinto /usr/share/locale/sv/LC_MESSAGES
 	doins po/sv/LC_MESSAGES/gjots2.mo
 }

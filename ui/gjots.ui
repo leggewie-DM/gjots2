@@ -4,7 +4,7 @@
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkWindow" id="gjots">
     <property name="can_focus">False</property>
-	<signal name="focus_out_event" handler="on_gjots_focus_out_event"/>
+    <signal name="focus-out-event" handler="on_gjots_focus_out_event" swapped="no"/>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -85,7 +85,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="importMenuItem">
-                            <property name="label">_Import</property>
+                            <property name="label" translatable="yes">_Import</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="tooltip_text" translatable="yes">Import items from a gjots file</property>
@@ -260,7 +260,7 @@
                         </child>
                         <child>
                           <object class="GtkImageMenuItem" id="findAgainMenuItem">
-                            <property name="label">Find Next</property>
+                            <property name="label" translatable="yes">Find Next</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="use_stock">False</property>
@@ -529,8 +529,8 @@
                             <property name="tooltip_text" translatable="yes">Add a time/date stamp (see preferences)</property>
                             <property name="use_underline">True</property>
                             <property name="use_stock">False</property>
-                            <signal name="activate" handler="on_timeStamp_trigger" swapped="no"/>
                             <accelerator key="t" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                            <signal name="activate" handler="on_timeStamp_trigger" swapped="no"/>
                           </object>
                         </child>
                         <child>
@@ -633,18 +633,6 @@
                 <property name="can_focus">True</property>
                 <property name="has_entry">True</property>
                 <property name="entry_text_column">0</property>
-                <child internal-child="entry">
-                  <object class="GtkEntry" id="menubar_find_entry">
-                    <property name="can_focus">True</property>
-                    <property name="truncate_multiline">True</property>
-                    <property name="overwrite_mode">True</property>
-                    <property name="primary_icon_stock">gtk-media-previous</property>
-                    <property name="secondary_icon_stock">gtk-media-next</property>
-                    <signal name="changed" handler="on_menubar_find_entry_changed" swapped="no"/>
-                    <signal name="activate" handler="on_menubar_find_entry_activate" swapped="no"/>
-                    <signal name="icon-press" handler="on_menubar_find_entry_icon_press" swapped="no"/>
-                  </object>
-                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -1109,12 +1097,9 @@
                         <property name="can_focus">True</property>
                         <property name="headers_visible">False</property>
                         <property name="reorderable">True</property>
-                        <signal name="button-press-event" handler="on_tree_button_press_event" swapped="no"/>
                         <signal name="drag-drop" handler="on_tree_drag_drop" swapped="no"/>
                         <signal name="key-press-event" handler="on_tree_key_press_event" swapped="no"/>
-                        <child internal-child="selection">
-                          <object class="GtkTreeSelection" id="treeview-selection1"/>
-                        </child>
+                        <signal name="button-press-event" handler="on_tree_button_press_event" swapped="no"/>
                       </object>
                     </child>
                   </object>
@@ -1133,9 +1118,9 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="wrap_mode">word</property>
-                        <signal name="button-press-event" handler="on_textView_button_press_event" swapped="no"/>
-                        <signal name="key-press-event" handler="on_textView_key_press_event" swapped="no"/>
                         <signal name="move-cursor" handler="on_textView_move_cursor" swapped="no"/>
+                        <signal name="key-press-event" handler="on_textView_key_press_event" swapped="no"/>
+                        <signal name="button-press-event" handler="on_textView_button_press_event" swapped="no"/>
                         <signal name="button-release-event" handler="on_textView_button_release_event" swapped="no"/>
                       </object>
                     </child>

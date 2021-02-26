@@ -1,34 +1,32 @@
-# Messages master file for gjots2.
-# Copyright (C) 2005-2006 Bob Hepple
-# This file is distributed under the same license as the gjots2 package.
-# Bob Hepple <bhepple@freeshell.org>, 2005.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gjots2 2.3.0\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-24 11:50+1000\n"
-"PO-Revision-Date: 2006-02-27 19:57+0100\n"
-"Last-Translator: Raimondo Giammanco <rongten@member.fsf.org>\n"
-"Language-Team: Italian\n"
-"Language: \n"
+"PO-Revision-Date: 2020-05-13 17:06+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-Country: ITALY\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: ../ui/about.ui:13
-#, fuzzy
 msgid "Copyright Bob Hepple 2002-2020"
-msgstr "Diritti di Autore Bob Hepple 2002-2006"
+msgstr "Bob Hepple版權所有2002-2020"
 
 #: ../ui/about.ui:14
 msgid "http://bhepple.freeshell.org/gjots2"
 msgstr "http://bhepple.freeshell.org/gjots2"
 
 #: ../ui/about.ui:25
+#, fuzzy
 msgid ""
 "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
 "Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
@@ -40,505 +38,507 @@ msgid ""
 "Uwe Steinmann (de) <uwe@steinmann.cx>\n"
 "曹晉維 (Michael Tsao) (zh_TW) <cwtsao@sce.pccu.edu.tw>\n"
 msgstr ""
+"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
+"Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
+"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
+"Martin Sin (cs) <martin.sin@zshk.cz>\n"
+"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
+"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
+"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
 
 #: ../ui/fileDialog.ui:70
-#, fuzzy
 msgid "Open file read only"
-msgstr "Aprire archivio ..."
+msgstr "唯讀開啟檔案"
 
 #: ../ui/fileDialog.ui:74
 msgid "To open the file in read-only mode."
-msgstr ""
+msgstr "以唯讀模式開啟檔案"
 
 #: ../ui/findDialog.ui:9
 msgid "Find & replace"
-msgstr "Ricerca & Sostituisce"
+msgstr "尋找取代"
 
 #: ../ui/findDialog.ui:35
+#, fuzzy
 msgid "Find:"
-msgstr "Ricerca:"
+msgstr "尋找: "
 
 #: ../ui/findDialog.ui:48
+#, fuzzy
 msgid "Replace:"
-msgstr "Sostituisce:"
+msgstr "取代: "
 
 #: ../ui/findDialog.ui:65
 msgid "String to search for"
-msgstr "Frase da ricercare"
+msgstr "搜尋字串"
 
 #: ../ui/findDialog.ui:81
 msgid "String to replace"
-msgstr "Frase da sostituire"
+msgstr "取代字串"
 
 #: ../ui/findDialog.ui:115 ../ui/gjots.ui:810
 msgid "Find"
-msgstr "Ricerca"
+msgstr "尋找"
 
 #: ../ui/findDialog.ui:131
 msgid "Close"
-msgstr "Chiude"
+msgstr "闗閉"
 
 #: ../ui/findDialog.ui:147
 msgid "Replace"
-msgstr "Sostituisce"
+msgstr "取代"
 
 #: ../ui/findDialog.ui:163
 msgid "Replace All"
-msgstr "Sostituisce Tutti"
+msgstr "全部取代"
 
 #: ../ui/findDialog.ui:179
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "取消"
 
 #: ../ui/findDialog.ui:198
 msgid "Clear"
-msgstr "Pulisci"
+msgstr "清除"
 
 #: ../ui/findDialog.ui:258
 msgid "Match case"
-msgstr "Fai coincidere maiuscole e minuscole"
+msgstr "大小寫匹配"
 
 #: ../ui/findDialog.ui:262
 msgid "Don't ignore case"
-msgstr "Non ignorare maiuscole e minuscole"
+msgstr "區分大小寫"
 
 #: ../ui/findDialog.ui:272
 msgid "Regular Expression"
-msgstr "Espressione Regolare"
+msgstr "正規表達"
 
 #: ../ui/findDialog.ui:276
 msgid "Find string is a regular expression (see 'man 7 regex')"
-msgstr "La frase da ricercare è una espressione normale (see 'man 7 regex')"
+msgstr "用正規表達尋找字串"
 
 #: ../ui/findDialog.ui:288
 msgid "Backwards"
-msgstr "Indietro"
+msgstr "反向"
 
 #: ../ui/findDialog.ui:292
 msgid "Search backwards"
-msgstr "Ricerca all'indietro"
+msgstr "向後搜尋"
 
 #: ../ui/findDialog.ui:307
 msgid "Global"
-msgstr "Globale"
+msgstr "全域"
 
 #: ../ui/findDialog.ui:311
 msgid "Searches entire file not just this entry"
-msgstr "Ricerda l'intero documento non solo questo appunto"
+msgstr "搜尋整個檔案，而不僅是此頁"
 
 #: ../ui/findDialog.ui:328
 msgid " Options "
-msgstr " Opzioni"
+msgstr " 選項 "
 
 #: ../ui/fontDialog.ui:10
 msgid "Select Font"
-msgstr "Seleziona tipo di carattere di testo"
+msgstr "選擇字型"
 
 #: ../ui/generalDialog.ui:10
 msgid "window1"
-msgstr "Finestra1"
+msgstr "視窗1"
 
 #: ../ui/generalDialog.ui:23 ../ui/generalDialog.ui:61
 #: ../ui/generalDialog.ui:116
 msgid "label1"
-msgstr "Nome1"
+msgstr "標籤1"
 
 #: ../ui/generalDialog.ui:47
 msgid "label2"
-msgstr "Nome2"
+msgstr "標籤2"
 
 #: ../ui/generalDialog.ui:194
 msgid "Try again"
-msgstr "Prova di nuovo"
+msgstr "再試一式"
 
 #: ../ui/generalDialog.ui:210
 msgid "Read only"
-msgstr "Sola Lettura"
+msgstr "唯讀"
 
 #: ../ui/gjots.ui:24
 msgid "_File"
-msgstr ""
+msgstr "檔案(_F)"
 
 #: ../ui/gjots.ui:88
 msgid "_Import"
-msgstr "_Importa"
+msgstr "匯入(_I)"
 
 #: ../ui/gjots.ui:91
 msgid "Import items from a gjots file"
-msgstr "Importa degli appunti a partire da un archivio gjots pre-esistente"
+msgstr "從gjots檔案匯入項目"
 
 #: ../ui/gjots.ui:99
 msgid "_Export"
-msgstr "_Esporta"
+msgstr "匯出(_E)"
 
 #: ../ui/gjots.ui:102
 msgid "Export selected items to a gjots file"
-msgstr "Esporta gli appunti selezionati in un archivio gjots"
+msgstr "匯出已選項目為gjots檔案"
 
 #: ../ui/gjots.ui:135
 msgid "Toggle the read-only flag if possible"
-msgstr "(De)Seleziona la modalità di sola lettura se possibile"
+msgstr "如有可能切換唯讀旗標"
 
 #: ../ui/gjots.ui:136
 msgid "_Read-only"
-msgstr "_Sola-Lettura"
+msgstr "唯讀(_R)"
 
 #: ../ui/gjots.ui:152
-#, fuzzy
 msgid "Exit gjots2"
-msgstr "Chiudi gjots ed Esci"
+msgstr "結束gjots2"
 
 #: ../ui/gjots.ui:167
 msgid "_Edit"
-msgstr ""
+msgstr "編輯(_E)"
 
 #: ../ui/gjots.ui:263
-#, fuzzy
 msgid "Find Next"
-msgstr "Ricerca"
+msgstr "找下一個"
 
 #: ../ui/gjots.ui:273
 msgid "Find Previous"
-msgstr ""
+msgstr "找上一個"
 
 #: ../ui/gjots.ui:299
 msgid "_View"
-msgstr ""
+msgstr "檢視(_V)"
 
 #: ../ui/gjots.ui:307
 msgid "_Show All"
-msgstr "_Mostra Tutto"
+msgstr "顯示全部(_S)"
 
 #: ../ui/gjots.ui:310 ../ui/gjots.ui:1051
 msgid "Show all items below the current item"
-msgstr "Mostra tutti gli appunti al di sotto di quello attuale"
+msgstr "顯示在現行項目下的全部項目"
 
 #: ../ui/gjots.ui:318
 msgid "_Hide All"
-msgstr "_Nascondi Tutti"
+msgstr "隱藏全部(_H)"
 
 #: ../ui/gjots.ui:321
 msgid "Hide all items except the top level"
-msgstr "Nascondi tutti gli appunti tranne quelli in primo piano"
+msgstr "除最上層外隱藏全部項目"
 
 #: ../ui/gjots.ui:337
 msgid "Toggles the main toolbar"
-msgstr "(De)Seleziona la barra degli strumenti principale"
+msgstr "切換主工具列"
 
 #: ../ui/gjots.ui:338
 msgid "To_p Toolbar"
-msgstr "Barra degli Strumenti _Superiore"
+msgstr "上方工具列(_P)"
 
 #: ../ui/gjots.ui:347
 msgid "Toggles tree tool bar"
-msgstr "(De)Seleziona la Barra degli Strumenti per la gestione dell'elenco"
+msgstr "切換樹狀工具列"
 
 #: ../ui/gjots.ui:348
 msgid "Tre_e Toolbar"
-msgstr "Barra degli Strumenti dell'_elenco"
+msgstr "樹工具列(_E)"
 
 #: ../ui/gjots.ui:357
 msgid "Show the related icon text"
-msgstr "Mostra il testo relativo alle icone"
+msgstr "顯示相關圖示文字"
 
 #: ../ui/gjots.ui:358
 msgid "Show _Icon Text"
-msgstr "Mostra il testo delle _Icone"
+msgstr "顯示圖示文字(_I)"
 
 #: ../ui/gjots.ui:367
 msgid "Status _Bar"
-msgstr "Barra di _Stato"
+msgstr "狀態帶"
 
 #: ../ui/gjots.ui:380
 msgid "_Tree"
-msgstr "_Elenco"
+msgstr "樹(_T)"
 
 #: ../ui/gjots.ui:388
 msgid "_New Page"
-msgstr "Nuova _Appunto"
+msgstr "新頁面(_N)"
 
 #: ../ui/gjots.ui:391
 msgid "Create a new page"
-msgstr "Crea un nuovo appunto"
+msgstr "建立新頁面"
 
 #: ../ui/gjots.ui:400
 msgid "New _Child"
-msgstr "Nuovo _Particolare"
+msgstr "新子項(_C)"
 
 #: ../ui/gjots.ui:403 ../ui/gjots.ui:886
 msgid "Create a new child"
-msgstr "Crea un nuovo particolare"
+msgstr "建立新子項"
 
 #: ../ui/gjots.ui:420 ../ui/gjots.ui:916
 msgid "Move selection up"
-msgstr "Sposta l'appunto selezionato più sopra"
+msgstr "選擇項目向上移"
 
 #: ../ui/gjots.ui:431 ../ui/gjots.ui:931
 msgid "Move selection down"
-msgstr "Sposta l'appunto selezionato più in basso"
+msgstr "選取項目向下移"
 
 #: ../ui/gjots.ui:439
 msgid "P_romote"
-msgstr "P_romuovi"
+msgstr "升級(_P)"
 
 #: ../ui/gjots.ui:442 ../ui/gjots.ui:946
 msgid "Selection becomes a sibling to their parent"
-msgstr "Il particolare selezionato diventa fratello dell'attuale genitore"
+msgstr "選擇項目移至同一層"
 
 #: ../ui/gjots.ui:450
 msgid "D_emote"
-msgstr "R_etrocedi"
+msgstr "降級(_D)"
 
 #: ../ui/gjots.ui:453 ../ui/gjots.ui:961
 msgid "Selection becomes a child of the previous item"
-msgstr "L'appunto selezionato diventa un particolare del precedente appunto"
+msgstr "使成為前一項目之子項"
 
 #: ../ui/gjots.ui:467
 msgid "_Split Item"
-msgstr "_Dividi appunto"
+msgstr "分割項目(_S)"
 
 #: ../ui/gjots.ui:470
 msgid "Make a new item from the current selection"
-msgstr "Crea un nuovo appunto a partire dal testo attualmente selezionato"
+msgstr "從現行選擇中製作一個新的項目"
 
 #: ../ui/gjots.ui:478
 msgid "_Merge Items"
-msgstr "_Unisci appunti"
+msgstr "合併項目(_M)"
 
 #: ../ui/gjots.ui:481
 msgid "Merge current items into the first one"
-msgstr "Unisci gli appunti attuali al primo"
+msgstr "將現行項目合併至第一個"
 
 #: ../ui/gjots.ui:489
 msgid "S_ort Tree"
-msgstr "R_iordina Elenco"
+msgstr "排序樹(_S)"
 
 #: ../ui/gjots.ui:492 ../ui/gjots.ui:1066
 msgid "Popup the sort tree dialog"
-msgstr "Apri la finestra di riordino elenco"
+msgstr "彈出排序樹對話框"
 
 #: ../ui/gjots.ui:506
 msgid "Te_xt"
-msgstr "Te_sto"
+msgstr "文字(_X)"
 
 #: ../ui/gjots.ui:514
 msgid "_Format"
-msgstr "_Impagina"
+msgstr "格式化(_F)"
 
 #: ../ui/gjots.ui:517
 msgid "Format the current paragraph"
-msgstr "Impagina il paragrafo attuale"
+msgstr "格式化現行段落"
 
 #: ../ui/gjots.ui:526
 msgid "_Time stamp"
-msgstr "_Data/Ora"
+msgstr "日期戳記(_T)"
 
 #: ../ui/gjots.ui:529
 msgid "Add a time/date stamp (see preferences)"
-msgstr "Aggiunge una data/ora (secondo le opzioni)"
+msgstr "新增時間/日期戳記（詳見偏好）"
 
 #: ../ui/gjots.ui:538
 msgid "_External Edit"
-msgstr "_Videoscrittura Esterna"
+msgstr "外部編輯器(_E)"
 
 #: ../ui/gjots.ui:541
 msgid "Edit current item in an external editor"
-msgstr "Modifica l'appunto attuale in un programma esterno di videoscrittura"
+msgstr "在外部編輯器中編輯現行項目"
 
 #: ../ui/gjots.ui:549
 msgid "_Sort Text"
-msgstr "_Riordina Testo"
+msgstr "文字排序(_S)"
 
 #: ../ui/gjots.ui:552
 msgid "Popup the sort text dialog"
-msgstr "Mostra la finestra di riordino testo"
+msgstr "彈出文字排序對話框"
 
 #: ../ui/gjots.ui:566
 msgid "_Help"
-msgstr ""
+msgstr "說明(_H)"
 
 #: ../ui/gjots.ui:574
-#, fuzzy
 msgid "_Read Manual"
-msgstr "_Leggi Il Manuale"
+msgstr "閱讀手冊(_R)"
 
 #: ../ui/gjots.ui:577
 msgid "Read the online manual (using gjots)"
-msgstr "Leggi il manuale online (usando gjots)"
+msgstr "閱讀線上手冊(用gjots)"
 
 #: ../ui/gjots.ui:659
 msgid "Save gjots document"
-msgstr "Salva documento gjots"
+msgstr "儲存gjots文件"
 
 #: ../ui/gjots.ui:660
 msgid "Save"
-msgstr "Salva"
+msgstr "儲存"
 
 #: ../ui/gjots.ui:674
 msgid "Print this document"
-msgstr "Stampa questo documento"
+msgstr "列印此文件"
 
 #: ../ui/gjots.ui:675 ../ui/printDialog.ui:9
 msgid "Print"
-msgstr "Stampa"
+msgstr "列印"
 
 #: ../ui/gjots.ui:704
 msgid "Cut selected items"
-msgstr "Taglia appunti selezionati"
+msgstr "剪下已選項目"
 
 #: ../ui/gjots.ui:705
 msgid "Cut"
-msgstr "Taglia"
+msgstr "剪下"
 
 #: ../ui/gjots.ui:719
 msgid "Copy selected items"
-msgstr "Copia appunti selezionati"
+msgstr "複製已選項目"
 
 #: ../ui/gjots.ui:720
 msgid "Copy"
-msgstr "Copia"
+msgstr "複製"
 
 #: ../ui/gjots.ui:734
 msgid "Paste selected items"
-msgstr "Incolla appunti selezionati"
+msgstr "貼上已選項目"
 
 #: ../ui/gjots.ui:735
 msgid "Paste"
-msgstr "Incolla"
+msgstr "貼上"
 
 #: ../ui/gjots.ui:764
 msgid "Wrap the current paragraph to the current line length"
-msgstr "Incolonna il paragrafo attuale rispetto alla attuale lunghezza di riga"
+msgstr "以現行列長自動換行此段落"
 
 #: ../ui/gjots.ui:765
 msgid "Wrap"
-msgstr "Incolonna"
+msgstr "自動換行"
 
 #: ../ui/gjots.ui:779
 msgid "Invoke an external editor on the current item"
-msgstr "Apri un programma di videoscrittura esterno per l'appunto attuale"
+msgstr "在現行項目上調用外部編輯器"
 
 #: ../ui/gjots.ui:780
 msgid "Ext.Ed."
-msgstr "Vid.Est."
+msgstr "Ext.Ed."
 
 #: ../ui/gjots.ui:794
 msgid "Add a time/date stamp (see prefs)"
-msgstr "Addiunge una data/ora (secondo le opzioni)"
+msgstr "新增時間/日期戳記（詳見偏好）"
 
 #: ../ui/gjots.ui:795
 msgid "Date"
-msgstr "Data"
+msgstr "日期"
 
 #: ../ui/gjots.ui:809
 msgid "Popup the find and replace dialog"
-msgstr "Apre la finestra di ricerca e sostituzione"
+msgstr "彈出尋找和取代對話框"
 
 #: ../ui/gjots.ui:824
 msgid "Popup the sort dialog"
-msgstr "Apre la finestra di riordino"
+msgstr "彈出排序對話框"
 
 #: ../ui/gjots.ui:825 ../ui/sortDialog.ui:16
 msgid "Sort"
-msgstr "Riordina"
+msgstr "排序"
 
 #: ../ui/gjots.ui:839
 msgid "Open gjots preferences window"
-msgstr "Apre la finestra delle opzioni di gjots"
+msgstr "開啟gjots偏好視窗"
 
 #: ../ui/gjots.ui:840
 msgid "Prefs"
-msgstr "Opzioni"
+msgstr "偏好"
 
 #: ../ui/gjots.ui:871
 msgid "Create a new item"
-msgstr "Crea un nuovo appunto"
+msgstr "建立新項目"
 
 #: ../ui/gjots.ui:872 ../ui/treeContextMenu.ui:45
 msgid "New Page"
-msgstr "Nuovo Appunto"
+msgstr "新頁"
 
 #: ../ui/gjots.ui:887 ../ui/treeContextMenu.ui:52
 msgid "New Child"
-msgstr "Nuovo particolare"
+msgstr "新子項"
 
 #: ../ui/gjots.ui:917
 msgid "Up"
-msgstr "Sopra"
+msgstr "向上"
 
 #: ../ui/gjots.ui:932
 msgid "Down"
-msgstr "Sotto"
+msgstr "向下"
 
 #: ../ui/gjots.ui:947 ../ui/treeContextMenu.ui:74
 msgid "Promote"
-msgstr "Promuovi"
+msgstr "升級"
 
 #: ../ui/gjots.ui:962 ../ui/treeContextMenu.ui:82
 msgid "Demote"
-msgstr "Retrocedi"
+msgstr "降級"
 
 #: ../ui/gjots.ui:991
 msgid "Split the text selection into a new item"
-msgstr "Dividi il testo selezionato in un nuovo appunto"
+msgstr "將所選文字分隔為新項目"
 
 #: ../ui/gjots.ui:992
 msgid "Split Item"
-msgstr "Dividi appunto"
+msgstr "分隔項目"
 
 #: ../ui/gjots.ui:1006
 msgid "Merge selected items together"
-msgstr "Unisce assieme gli appunti selezionati"
+msgstr "合併已選項目"
 
 #: ../ui/gjots.ui:1007 ../ui/treeContextMenu.ui:89
 msgid "Merge Items"
-msgstr "Unisci appunti"
+msgstr "合併項目"
 
 #: ../ui/gjots.ui:1036
 msgid "Hide all items except for the top level"
-msgstr "Nascondi tutti gli appunti tranne quelli in primo piano"
+msgstr "隱藏所有項目除最上層外"
 
 #: ../ui/gjots.ui:1037 ../ui/treeContextMenu.ui:103
 msgid "Hide All"
-msgstr "Nascondi Tutto"
+msgstr "全部隱藏"
 
 #: ../ui/gjots.ui:1052 ../ui/treeContextMenu.ui:96
 msgid "Show All"
-msgstr "Mostra Tutto"
+msgstr "全部顯示"
 
 #: ../ui/gjots.ui:1067 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:394
 msgid "Sort Tree"
-msgstr "Riordina Elenco"
+msgstr "排序樹"
 
 #: ../ui/prefsDialog.ui:21
 msgid "gjots: preferences"
-msgstr "gjots: opzioni"
+msgstr "gjots: 偏好"
 
 #: ../ui/prefsDialog.ui:50
 msgid "Choose a font for the text panel"
-msgstr "Scegle un tipo di carattere per la sezione testo"
+msgstr "為文字面板選擇一種字型"
 
 #: ../ui/prefsDialog.ui:66
 msgid "Date format:"
-msgstr "Formato della data:"
+msgstr "日期格式:"
 
 #: ../ui/prefsDialog.ui:80
-#, fuzzy
 msgid "Format for the timestamp function (see strftime(3)) eg %F"
-msgstr "Formato per la funzione di stampa data (see strftime(3))"
+msgstr "時間戳記函數格式（詳見strftime（3）），例如 %F"
 
 #: ../ui/prefsDialog.ui:81
 msgid "%F"
 msgstr "%F"
 
 #: ../ui/prefsDialog.ui:100
-#, fuzzy
 msgid ""
 "External program to edit a page (%s is replaced by the name of the temporary "
 "edit file) eg xterm -e vi %s"
-msgstr ""
-"Programma Esterno per modificare un appunto (%s viene sostituito dal nome "
-"del file da modificare temporaneo)"
+msgstr "以外部程式編輯頁面（%s 替換為臨時編輯檔案），例如 xterm -e vi %s"
 
 #: ../ui/prefsDialog.ui:101
 msgid "xterm -e vi %s"
@@ -546,28 +546,26 @@ msgstr "xterm -e vi %s"
 
 #: ../ui/prefsDialog.ui:121
 msgid "External editor"
-msgstr "Programma di videoscrittura esterno"
+msgstr "外部編輯"
 
 #: ../ui/prefsDialog.ui:136
 msgid "Text Line Length: "
-msgstr "Altezza della linea di testo:"
+msgstr "文字長度: "
 
 #: ../ui/prefsDialog.ui:150
 msgid "Line length for paragraph wrapping"
-msgstr "Lunghezza di riga per l'incolonnamento dei paragrafi"
+msgstr "段落自動換行的行長"
 
 #: ../ui/prefsDialog.ui:173
 msgid "Text formatter: "
-msgstr "Impaginatore del testo: "
+msgstr "文字格式: "
 
 #: ../ui/prefsDialog.ui:185
-#, fuzzy
 msgid ""
 "External program to pipe text for formatting (%d is replaced by the current "
 "line width) eg fmt -w %d "
 msgstr ""
-"Programma Esterno to cui incanalare il testo per impaginazione (%d viene "
-"sostituito dalla attualelunghezza di riga)"
+"以外部程式進行管道文字(pipe text)格式化（%d 替換為現行行寬），例如fmt -w %d "
 
 #: ../ui/prefsDialog.ui:186
 msgid "fmt -w %d "
@@ -575,152 +573,150 @@ msgstr "fmt -w %d "
 
 #: ../ui/prefsDialog.ui:203
 msgid "Current text font"
-msgstr "Tipo di carattere di testo attuale"
+msgstr "現行字型"
 
 #: ../ui/prefsDialog.ui:205
 msgid "Courier 10 Pitch 10"
-msgstr "Courier 10 Pitch 10"
+msgstr "Courier 10 間距 10"
 
 #: ../ui/prefsDialog.ui:225
+#, fuzzy
 msgid "AutoSave interval:"
-msgstr ""
+msgstr "自動儲存間隔: "
 
 #: ../ui/prefsDialog.ui:239
 msgid "Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)"
-msgstr ""
+msgstr "秒數為0時不自動儲存"
 
 #: ../ui/printDialog.ui:38
 msgid "e.g. lpr: "
-msgstr "i.e. lpr: "
+msgstr "例如 lpr: "
 
 #: ../ui/printDialog.ui:54
 msgid "print command (can be a shell expression)"
-msgstr "comando di stampa (puo' trattarsi di una espressione da shell)"
+msgstr "列印指令(可以是shell表達式)"
 
 #: ../ui/printDialog.ui:76
 msgid " Print command "
-msgstr " Comando di Stampa"
+msgstr " 列印指令 "
 
 #: ../ui/printDialog.ui:104
 msgid "Page"
-msgstr "Appunto"
+msgstr "頁面"
 
 #: ../ui/printDialog.ui:108
 msgid "Print the current page"
-msgstr "Stampa l'appunto attuale"
+msgstr "列印目前頁面"
 
 #: ../ui/printDialog.ui:120
 msgid "Selection"
-msgstr "Selezione"
+msgstr "選擇"
 
 #: ../ui/printDialog.ui:124
 msgid "Print the selected pages or text"
-msgstr "Stampa le pagine od il testo selezionati"
+msgstr "列印已選頁面或本文"
 
 #: ../ui/printDialog.ui:137
 msgid "All"
-msgstr "Tutti"
+msgstr "全部"
 
 #: ../ui/printDialog.ui:141
 msgid "Print the entire gjots file"
-msgstr "Stampa l'intero documento gjots"
+msgstr "列印整個gjots檔案"
 
 #: ../ui/printDialog.ui:160
 msgid " Print Range "
-msgstr " Dominio di Stampa"
+msgstr " 列印範圍 "
 
 #: ../ui/printDialog.ui:193
 msgid "Page feeds"
-msgstr "Produci una nuova pagina"
+msgstr "插入頁面"
 
 #: ../ui/printDialog.ui:197
 msgid "Feeds a page before every new gjots item"
-msgstr "Produci una nuova pagina prima di ogni nuovo appunto di gjots"
+msgstr "在每個新gjots項目前插入新頁"
 
 #: ../ui/printDialog.ui:209
 msgid "Bold titles"
-msgstr "Titoli in Grassetto"
+msgstr "粗體標題"
 
 #: ../ui/printDialog.ui:212
 msgid "Print the gjots item titles in bold"
-msgstr "Stampa i nomi degli appunti gjots in grassetto"
+msgstr "以粗體列印gjots項目標題"
 
 #: ../ui/printDialog.ui:224
 msgid "Auto Number"
-msgstr "Numerazione Automatica"
+msgstr "自動編號"
 
 #: ../ui/printDialog.ui:251
 msgid "Auto-number format: "
-msgstr "Formato della numerazione automatica"
+msgstr "自動編號格式: "
 
 #: ../ui/printDialog.ui:262
 msgid "eg. 1 for 1.2.1, a"
-msgstr "i.e. 1 per 1.2.1, a"
+msgstr "例如. 1 for 1.2.1, a"
 
 #: ../ui/printDialog.ui:289
 msgid " Print formatting "
-msgstr " Formattazione del processo di stampa "
+msgstr " 列印格式 "
 
 #: ../ui/sortDialog.ui:44
 msgid "Ascending"
-msgstr "Crescente"
+msgstr "遞增"
 
 #: ../ui/sortDialog.ui:48
 msgid "Sort in ascending order"
-msgstr "Ordina in senso crescente"
+msgstr "以遞增排序"
 
 #: ../ui/sortDialog.ui:59
 msgid "Descending"
-msgstr "Decrescente"
+msgstr "遞減"
 
 #: ../ui/sortDialog.ui:63
 msgid "Sort in descending order"
-msgstr "Ordina in senso decresente"
+msgstr "以遞減排序"
 
 #: ../ui/sortDialog.ui:77
 msgid "Alphabetic"
-msgstr "Alfabetico"
+msgstr "字母"
 
 #: ../ui/sortDialog.ui:81
 msgid "Sort in alphabetic order"
-msgstr "Ordina in senso Alfabetico"
+msgstr "以字母排序"
 
 #: ../ui/sortDialog.ui:94
 msgid "Numeric"
-msgstr "Ordinale"
+msgstr "數字"
 
 #: ../ui/sortDialog.ui:98
 msgid "Sort in numeric order"
-msgstr "Ordina in senso ordinale"
+msgstr "以數字排序"
 
 #: ../ui/sortDialog.ui:120
 msgid " Sort Parameters "
-msgstr " Opzioni di riordino"
+msgstr " 排序參數 "
 
 #: ../ui/sortDialog.ui:150
 msgid "How many sublevels to sort (0 for none; -1 for 'all')"
-msgstr ""
-"Quanti sottolivelli devono essere ordinati (0 per nessuno; -1 per 'tutti')"
+msgstr "要排序多少次階 (0 沒有; -1 全部)"
 
 #: ../ui/sortDialog.ui:172
 msgid " Sort Sublevels "
-msgstr " Ordina i Sottolivelli"
+msgstr " 排序次階 "
 
 #: ../ui/treeContextMenu.ui:30
-#, fuzzy
 msgid "Select _All"
-msgstr "Seleziona Archivio"
+msgstr "全部選擇(_A)"
 
 #: ../ui/treeContextMenu.ui:117
 msgid "Import"
-msgstr "Importa"
+msgstr "匯入"
 
 #: ../ui/treeContextMenu.ui:124
 msgid "Export"
-msgstr "Esporta"
+msgstr "匯出"
 
 #: ../gjots2:23
-#, fuzzy
 msgid ""
 "Usage: gjots [OPTIONS] [FILENAME]\n"
 "A gtk/X11 jotter\n"
@@ -737,45 +733,43 @@ msgid ""
 "FILENAME:\n"
 "    gjots data filename (default is $HOME/.gjotsfile)\n"
 msgstr ""
-"Uso: gjots [OPZIONI] [NOME ARCHIVIO]\n"
-"A gnome-2/X11 jotter\n"
+"Usage: gjots [OPTIONS] [FILENAME]\n"
+"A gtk/X11 jotter\n"
 "\n"
-"OPZIONI:\n"
-"-h, --help:                         Questo Aiuto\n"
-"-d, --debug:                        Fornisci informazioni di errore alla "
-"porta di errore standard (stdout)\n"
-"-g 123x456, --geometry=123x456:     Dimensioni iniziali a schermo della "
-"finestra (X x Y)\n"
-"-p, --purge-password\t\t\t\tNon memorizzare la parola d'ordine\n"
-"-r, --readonly:                     Nessuna modifica (o presa di possesso)\n"
-"-V, --version:                      Stampa la versione del programma ed "
-"esci\n"
+"OPTIONS:\n"
+"-h, --help:                         此文件\n"
+"-d, --debug:                        除錯至stdout\n"
+"-t, --trace:                        執行時描線(trace lines)\n"
+"-g 123x456, --geometry=123x456:     初始幾何(X x Y)\n"
+"-p, --purge-password                不記憶密碼\n"
+"-r, --readonly:                     不編輯 (或鎖定)\n"
+"-V, --version:                      列印版本且離開\n"
 "\n"
 "FILENAME:\n"
-"\tgjots data filename (default is $HOME/.gjotsfile)\n"
+"    gjots 資料的檔名 (預設值為 $HOME/.gjotsfile)\n"
 
 #: ../gjots2:89
 #, python-format
 msgid "%s requires python%s or higher."
-msgstr "%s ha bisogno di python%s o superiore."
+msgstr "%s 需要 python%s 或更高."
 
 #: ../gjots2:102
 msgid "Use -h for help\n"
-msgstr "Usare -h per avere un aiuto\n"
+msgstr "使用 -h 取得說明\n"
 
 #: ../gjots2:116
 #, python-format
 msgid "%s version %s"
-msgstr "%s versione %s"
+msgstr "%s 版本 %s"
 
 #: ../lib/gui.py:50 ../lib/gui.py:993
 msgid "Text pasted"
-msgstr "Testo incollato"
+msgstr "貼上文字"
 
 #: ../lib/gui.py:178
 #, python-format
 msgid "External formatter \"%s\" is not installed - can't format"
-msgstr "Impaginatore esterno \"%s\" non è installato - non posso impaginare"
+msgstr "未安裝外部格式化程式\"%s\" -無法格式化"
 
 #: ../lib/gui.py:561 ../lib/gui.py:672 ../lib/gui.py:676 ../lib/gui.py:742
 #: ../lib/gui.py:746 ../lib/gui.py:809 ../lib/gui.py:814 ../lib/gui.py:1040
@@ -785,448 +779,379 @@ msgstr "Impaginatore esterno \"%s\" non è installato - non posso impaginare"
 #: ../lib/file.py:485 ../lib/sortDialog.py:329 ../lib/sortDialog.py:334
 #: ../lib/printDialog.py:108 ../lib/printDialog.py:113
 msgid "Nothing selected"
-msgstr "Nessuna selezione"
+msgstr "尚未選擇"
 
 #: ../lib/gui.py:565 ../lib/gui.py:681 ../lib/gui.py:750 ../lib/gui.py:819
 #: ../lib/gui.py:931 ../lib/gui.py:1221 ../lib/gui.py:2387
 #: ../lib/sortDialog.py:345
 msgid "No parent!"
-msgstr "Nessun genitore!"
+msgstr "沒有父項!"
 
 #: ../lib/gui.py:569 ../lib/gui.py:716
 msgid "No child!"
-msgstr "Nessun particolare!"
+msgstr "沒有子項!"
 
 #: ../lib/gui.py:577 ../lib/gui.py:690
 msgid "Can't go any further"
-msgstr "Non è possibile procedere oltre"
+msgstr "沒有下一個"
 
 #: ../lib/gui.py:613 ../lib/gui.py:837
 msgid "Internal error!"
-msgstr "Errore interno!"
+msgstr "內部錯誤!"
 
 #: ../lib/gui.py:754
 msgid "Can't go further!"
-msgstr "Non è possibile procedere"
+msgstr "沒有下一個!"
 
 #: ../lib/gui.py:970
 msgid "Text cut"
-msgstr "Copia ed elimina testo"
+msgstr "剪下文字"
 
 #: ../lib/gui.py:981
 msgid "Text copied"
-msgstr "Testo copiato"
+msgstr "複製文字"
 
 #: ../lib/gui.py:1002
 msgid "All text selected"
-msgstr "Tutto il testo selezionato"
+msgstr "已選所有文字"
 
 #: ../lib/gui.py:1012
 msgid "All tree items selected"
-msgstr "Tutti gli appunti dell'elenco selezionati"
+msgstr "已選所有樹項目"
 
 #: ../lib/gui.py:1020
 msgid "Nothing selected!"
-msgstr "Nessuna selezione!"
+msgstr "尚未選擇!"
 
 #: ../lib/gui.py:1044
 msgid "Can't merge the root item"
-msgstr "Non è possibile unire l'appunto principale"
+msgstr "無法合併根項目"
 
 #: ../lib/gui.py:1053
 msgid "Nothing to merge"
-msgstr "Nulla da unire"
+msgstr "無可合併項"
 
 #: ../lib/gui.py:1060
 msgid "Can't merge items that have children"
-msgstr "Non è possibile unire appunti con particolari"
+msgstr "無法合併有子之項目"
 
 #: ../lib/gui.py:1090
 #, python-format
 msgid "%d items merged"
-msgstr "%d appunti unificati"
+msgstr "%d 個項目已合併"
 
 #: ../lib/gui.py:1139
 msgid "Can't delete the root item"
-msgstr "Non è possibile cancellare l'appunto principale"
+msgstr "無法刪除根項目"
 
 #: ../lib/gui.py:1172
 #, python-format
 msgid "%d tree items cut"
-msgstr "%d appunto(i) dell'elenco copiato(i) e cancellato(i)"
+msgstr "%d 個樹項目已剪下"
 
 #: ../lib/gui.py:1202
 #, python-format
 msgid "%d tree items copied"
-msgstr "%d appunto(i) dell'elenco copiato(i)"
+msgstr "%d 個樹項目已複製"
 
 #: ../lib/gui.py:1211
 msgid "Nothing to paste"
-msgstr "Niente da incollare"
+msgstr "沒有可貼上的"
 
 #: ../lib/gui.py:1234
 msgid "Tree items pasted"
-msgstr "Incollato(i) appunto(i) dell'elenco"
+msgstr "樹項目已貼上"
 
 #: ../lib/gui.py:1255
-#, fuzzy
 msgid "Can't write tempfile"
-msgstr "Non è possibile scrivere "
+msgstr "無法寫入暫存檔"
 
 #: ../lib/gui.py:1275
 #, python-format
 msgid "Can't run '%s'"
-msgstr "Non è possibile eseguire '%s'"
+msgstr "無法運行 '%s'"
 
 #: ../lib/gui.py:1284
-#, fuzzy
 msgid "Can't read tempfile "
-msgstr "Non è possibile leggere "
+msgstr "無法讀取暫存檔 "
 
 #: ../lib/gui.py:1290
 msgid "text changed by external editor"
-msgstr "testo modificato dal programma esterno"
+msgstr "文字已被外部編輯器更改"
 
 #: ../lib/gui.py:1292
 msgid "text not changed by external editor"
-msgstr "testo non modificato dal programma esterno"
+msgstr "文字未由外部編輯器更改"
 
 #: ../lib/gui.py:1311
 msgid ": Error"
-msgstr ": Errore"
+msgstr ": 錯誤"
 
 #: ../lib/gui.py:1324
 #, python-format
 msgid "Can't lock file %s: already locked by process %d"
-msgstr "Non è possibile bloccare larchivio %s: è già bloccato dal processo %d"
+msgstr "無法鎖定檔案 %s: 已被程序 %d鎖定"
 
 #: ../lib/gui.py:1507
 msgid ": Save?"
-msgstr " Memorizzare?"
+msgstr ": 儲存?"
 
 #: ../lib/gui.py:1508
 msgid "Save current work?"
-msgstr "Memorizzare il documento attuale?"
+msgstr "儲存現行工作?"
 
 #: ../lib/gui.py:1529
 msgid "New file"
-msgstr "Nuovo archivio"
+msgstr "新文件"
 
 #: ../lib/gui.py:1553
 msgid "Open file ..."
-msgstr "Aprire archivio ..."
+msgstr "開啟檔案..."
 
 #: ../lib/gui.py:1565
 msgid "No changes to save"
-msgstr "Nessun cambiamento da memorizzare"
+msgstr "沒有需要儲存的改變"
 
 #: ../lib/gui.py:1569 ../lib/gui.py:1590
 msgid "Saved."
-msgstr "Memorizzato."
+msgstr "已存檔."
 
 #: ../lib/gui.py:1571 ../lib/gui.py:1592 ../lib/file.py:470
 msgid "Not saved."
-msgstr "Non memorizzato."
+msgstr "沒有儲存."
 
 #: ../lib/gui.py:1586
 msgid "Nothing to save"
-msgstr "Niente da memorizzare"
+msgstr "沒有可儲存的"
 
 #: ../lib/gui.py:1588 ../lib/file.py:707
 msgid "Save as ..."
-msgstr "Memorizza con nome ..."
+msgstr "另存新檔..."
 
 #: ../lib/gui.py:1602
 msgid "Import from ..."
-msgstr "Importa da ..."
+msgstr "從...匯入"
 
 #: ../lib/gui.py:1613
 msgid "Export to ..."
-msgstr "Esporta a ..."
+msgstr "匯出到 ..."
 
 #: ../lib/gui.py:1937 ../lib/gui.py:1940
 #, python-format
 msgid "%s: Warning: opening gjots2 manual from %s\n"
-msgstr "%s: Attenzione: il manuale di gjots2 viene aperto da %s\n"
+msgstr "%s: 警告: 從 %s 開啟gjots2手冊\n"
 
 #: ../lib/gui.py:2320
 msgid ""
 "gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
 "event."
-msgstr ""
-"gjots2: attenzione: la lista delle selezioni è vuota. Non eseguire "
-"l'operazione di cambio\n"
-"evento dell'elenco"
+msgstr "gjots2: 警告: 選取清單為 NULL。跳過選取樹變更。"
 
 #: ../lib/gui.py:2391
 msgid "Can't go further"
-msgstr "Non è possibile procedere"
+msgstr "沒有下一個"
 
 #: ../lib/gui.py:2420
 msgid "Tree is empty!"
-msgstr "L'elenco è vuoto!"
+msgstr "樹是空的!"
 
 #: ../lib/gui.py:2708
 msgid "Bad regular expression"
-msgstr "Espressione regolare non corretta"
+msgstr "錯誤的正規表達式"
 
 #: ../lib/gui.py:2800
 #, python-format
 msgid "%s: bad geometry specification: %s\n"
-msgstr "%s: non corrette informazioni geometriche:%s\n"
+msgstr "%s: 幾何規格不正確: %s\n"
 
 #: ../lib/gui.py:2891
 msgid "New...>>>"
-msgstr "Nuovo...>>>"
+msgstr "新...>>>"
 
 #: ../lib/gui.py:2928
 msgid "Install gtksourceview to enable undo/redo"
-msgstr ""
+msgstr "安裝gtksourceview以啟用撤消/重做"
 
 #: ../lib/gui.py:3086
 msgid ": version "
-msgstr ": versione "
+msgstr ": 版本 "
 
 #: ../lib/find.py:70 ../lib/find.py:93
 msgid "Not found"
-msgstr "Non trovato"
+msgstr "未找到"
 
 #: ../lib/find.py:72
 msgid "Found"
-msgstr "Trovato"
+msgstr "找到"
 
 #: ../lib/find.py:96
 msgid "Replace?"
-msgstr "Sostituire?"
+msgstr "取代?"
 
 #: ../lib/find.py:113
 #, python-format
 msgid "%d substitutions"
-msgstr "%d sostituzioni"
+msgstr "取代 %d 個"
 
 #: ../lib/file.py:255
 msgid "Enter password for "
-msgstr "Immettere parola d'ordine per "
+msgstr "輸入密碼 "
 
 #: ../lib/file.py:257
-#, fuzzy
 msgid ": Enter Password"
-msgstr "gjots: Immettere parola d'ordine"
+msgstr ": 輸入密碼"
 
 #: ../lib/file.py:259
 msgid "Password: "
-msgstr "Parola d'ordine: "
+msgstr "密碼: "
 
 #: ../lib/file.py:260
 msgid "Confirm: "
-msgstr "Confermare: "
+msgstr "再確認: "
 
 #: ../lib/file.py:268
 msgid "Password was not confirmed"
-msgstr "La parola d'ordine non è stata confermata"
+msgstr "密碼尚未確認"
 
 #: ../lib/file.py:275
 msgid "Could not find the ccrypt program - please install it and try again"
-msgstr ""
-"Non è stato possibile trovare il programma ccrypt - per favore installarlo e "
-"provare di nuovo dopo"
+msgstr "找不到ccrypt程式-請安裝它，然後重試"
 
 #: ../lib/file.py:308
 msgid ""
 "Neither gpg2 nor gpg are available - please install one (perhaps package "
 "gnupg2) and try again"
-msgstr ""
+msgstr "gpg2和gpg都存在-請擇一(也許是gnupg2軟件包)然後重試"
 
 #: ../lib/file.py:342
-#, fuzzy
 msgid "No openssl program - please install it and try again"
-msgstr ""
-"Non è stato possibile trovare il programma openssl - per favore installarlo "
-"e provare di nuovo dopo"
+msgstr "沒有openssl程式-請安裝它，然後重試"
 
 #: ../lib/file.py:368
-#, fuzzy
 msgid "No org2gjots program - please install it and try again"
-msgstr ""
-"Non è stato possibile trovare il programma openssl - per favore installarlo "
-"e provare di nuovo dopo"
+msgstr "沒有org2gjots程式-請安裝它，然後重試"
 
 #: ../lib/file.py:426
 msgid "Can't open \""
-msgstr "Non è possibile aprire \""
+msgstr "無法開啟 \""
 
 #: ../lib/file.py:429
 msgid "Bad password"
-msgstr "Parola d'ordine errata"
+msgstr "密碼錯誤"
 
 #: ../lib/file.py:432
 msgid "File cannot be locked"
-msgstr "L'archivio non puo' essere bloccato"
+msgstr "檔案無法鎖定"
 
 #: ../lib/file.py:445 ../lib/file.py:503
 msgid "failed!"
-msgstr ""
+msgstr "失敗了!"
 
 #: ../lib/file.py:471
 msgid "Can't write to "
-msgstr "Non è possibile scrivere su "
+msgstr "無法寫入至 "
 
 #: ../lib/file.py:474
 msgid "Can't lock file"
-msgstr "Non è possibile bloccare l'archivio"
+msgstr "無法鎖定黨案"
 
 #: ../lib/file.py:611
 #, python-format
 msgid "%s is not readable"
-msgstr "%s è illeggibile"
+msgstr "%s 不可讀取"
 
 #: ../lib/file.py:627
 #, python-format
 msgid "%s: no permission"
-msgstr "%s: nessun permesso"
+msgstr "%s: 沒有權限"
 
 #: ../lib/file.py:629
 #, python-format
 msgid "%s: locked by process number %d"
-msgstr "%s: bloccato dal processo numero %d"
+msgstr "%s:已被程序 %d 鎖定"
 
 #: ../lib/file.py:631
-#, fuzzy
 msgid ": can't lock file."
-msgstr "gjots: non è possibile bloccare l'archivio."
+msgstr ": 無法鎖定檔案."
 
 #: ../lib/file.py:719
 msgid "That file is already open!"
-msgstr "Quell'archivio è già stato aperto!"
+msgstr "該檔案已經開啟!"
 
 #: ../lib/file.py:727 ../lib/file.py:801
-#, fuzzy
 msgid ": file has changed"
-msgstr "gjots: %s esiste di già."
+msgstr ": 檔案已更改"
 
 #: ../lib/file.py:728
 #, python-format
 msgid "File changed since it was read - copied to %s "
-msgstr ""
+msgstr "文件自開啟後已被更改-複製到 %s "
 
 #: ../lib/file.py:745
 #, python-format
 msgid "%s is locked by pid %d"
-msgstr "%s è bloccato dal pid %d"
+msgstr "%s 被 pid %d 鎖定"
 
 #: ../lib/file.py:749
 msgid "Can't make a lockfile in "
-msgstr "Non è possibile creare un file di blocco in "
+msgstr "無法建立鎖定文件於 "
 
 #: ../lib/file.py:762
 #, python-format
 msgid "%s is not writable"
-msgstr "%s non è riscrivibile"
+msgstr "%s 不可寫入"
 
 #: ../lib/file.py:765
-#, fuzzy, python-format
+#, python-format
 msgid ": %s already exists."
-msgstr "gjots: %s esiste di già."
+msgstr "%s 已存在."
 
 #: ../lib/file.py:766
 #, python-format
 msgid "overwrite %s?"
-msgstr "sovrascrivere %s?"
+msgstr "覆蓋 %s?"
 
 #: ../lib/file.py:802
 #, python-format
 msgid "File changed since it was read - so it was copied to %s "
-msgstr ""
+msgstr "文件自開啟後已被更改-已將其複製到 %s "
 
 #: ../lib/sortDialog.py:125
 msgid "_get_settings: Cant find sortAscendingRadioButton"
-msgstr "_get_settings: Non posso trovare sortAscendingRadioButton"
+msgstr "_get_settings: 無法找到 sortAscendingRadioButton"
 
 #: ../lib/sortDialog.py:165
 msgid "Internal error"
-msgstr "Errore Interno"
+msgstr "內部錯誤"
 
 #: ../lib/sortDialog.py:303
 msgid "Nothing to sort!"
-msgstr "Niente da riordinare!"
+msgstr "沒有可排序的!"
 
 #: ../lib/sortDialog.py:398
 msgid "Sort Text"
-msgstr "Riordina Testo"
+msgstr "文字排序"
+
+#~ msgid "Recent"
+#~ msgstr "最近"
 
 #~ msgid "Exit gjots"
-#~ msgstr "Chiudi gjots ed Esci"
+#~ msgstr "結束gjots"
 
 #~ msgid "Create a new child "
-#~ msgstr "Crea un nuovo particolare"
+#~ msgstr "建立新子項 "
 
-#, fuzzy
 #~ msgid "About gjots2"
-#~ msgstr "Chiudi gjots ed Esci"
+#~ msgstr "關於gjots2"
 
-#, fuzzy
 #~ msgid " Find: "
-#~ msgstr "Ricerca:"
+#~ msgstr " 尋找: "
+
+#~ msgid "Auto ReadOnly timeout:"
+#~ msgstr "自動唯讀逾時:"
+
+#~ msgid "The number of second after losing focus that ReadOnly should be set."
+#~ msgstr "失去焦點指定秒數後設定唯讀"
 
 #~ msgid "abcdefghijk ABCDEFGHIJK"
 #~ msgstr "abcdefghijk ABCDEFGHIJK"
-
-#, fuzzy, python-format
-#~ msgid "%s requires pygtk-%s.\n"
-#~ msgstr "%s ha bisogno di pygtk-%s."
-
-#~ msgid "not initialised"
-#~ msgstr "non attivato"
-
-#~ msgid "pygtk-2.2 is required for this application!"
-#~ msgstr "pygtk-2.2 è necessario per questo programma!"
-
-#~ msgid "Store and organise your random notes"
-#~ msgstr "Memorizza ed organizza i tuoi vari appunti"
-
-#~ msgid "Gjots2 Jotter"
-#~ msgstr "Gjots2 Jotter"
-
-#~ msgid "gjots"
-#~ msgstr "gjots"
-
-#~ msgid "_New"
-#~ msgstr "_Nuovo"
-
-#~ msgid "_Quit"
-#~ msgstr "_Chiudi"
-
-#~ msgid "_Toolbars"
-#~ msgstr "_Barre degli Strumenti"
-
-#~ msgid "_Up"
-#~ msgstr "_Sopra"
-
-#~ msgid "_Down"
-#~ msgstr "_Basso"
-
-#~ msgid "Create a new gjots document"
-#~ msgstr "Crea un nuovo documento gjots"
-
-#~ msgid "Open an existing gjots document"
-#~ msgstr "Apri un documento gjots esistente"
-
-#~ msgid "Open"
-#~ msgstr "Apri"
-
-#~ msgid "Back"
-#~ msgstr "Indietro"
-
-#~ msgid "Forward"
-#~ msgstr "Avanti"
-
-#~ msgid "Copyright Raimondo Giammanco 2006"
-#~ msgstr "Diritti di Autore Raimondo Giammanco 2006"
-
-#~ msgid "%s: Warning: running modules from %s\n"
-#~ msgstr "%s: Attenzione: moduli eseguiti da %s\n"
-
-#~ msgid "Could not find the gpg program - please install it and try again"
-#~ msgstr ""
-#~ "Non è stato possibile trovare il programma gpg- per favore installarlo e "
-#~ "provare di nuovo dopo"
