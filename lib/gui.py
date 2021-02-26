@@ -2224,7 +2224,11 @@ Morgan Antonsson (sv) <morgan.antonsson@gmail.com>""")
 
         body = self.textBuffer.get_text(self.textBuffer.get_start_iter(), self.textBuffer.get_end_iter(), False)
 
-        temp_flag = self.treestore.get_value(self.current_item, 2)
+        try:
+            temp_flag = self.treestore.get_value(self.current_item, 2)
+        except:
+            temp_flag = False
+
         if temp_flag:
             # body = [left]New...[right]
             temp_text_pos = body.find(self.temp_text)

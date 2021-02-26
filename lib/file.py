@@ -559,7 +559,7 @@ class gjotsfile:
 
         if self.last_file == None:
             self.last_file = os.environ["HOME"]
-        self.last_file = self.gui.backtick("readlink -n -m " + self.last_file)
+        self.last_file = self.gui.backtick(("readlink -n -m " + self.last_file).encode())
         self.fileselection_dialog.set_filename(self.last_file)
 
         all_filter = Gtk.FileFilter()

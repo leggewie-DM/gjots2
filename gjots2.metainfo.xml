@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2015 Bob Hepple <bob.hepple@gmail.com> -->
 <component type="desktop-application">
- <id>gjots2</id>
+ <id>org.freeshell.bhepple.gjots2</id>
  <launchable type="desktop-id">gjots2.desktop</launchable>
  <metadata_licence>FSFAP</metadata_licence>
  <project_license>GPL-2.0</project_license>
@@ -36,6 +36,11 @@ all Linux distributions.
  <url type="homepage">http://sourceforge.net/projects/gjots2</url>
  <update_contact>bob.hepple@gmail.com</update_contact>
  <releases>
+   <release version="3.1.5" date="2020-05-02">
+     <description>
+       <p>Fix issues in RHBZ#1823599</p>
+     </description>
+   </release>
    <release version="3.1.4" date="2020-04-19">
      <description>
        <p>Fix issues in RHBZ#1823599</p>

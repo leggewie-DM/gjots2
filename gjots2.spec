@@ -1,10 +1,10 @@
 # -*-Mode: rpm-spec -*-
 
 Name:    gjots2
-Version: 3.1.4
+Version: 3.1.5
 Release: 1%{?dist}
-Summary: A hierarchical note jotter - organise your ideas, notes, facts in a tree
-License: GPLv2+
+Summary: A hierarchical note jotter - organize your ideas, notes, facts in a tree
+License: GPLv2
 URL:     http://bhepple.freeshell.org/gjots
 Source0: https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
 
@@ -21,22 +21,23 @@ Requires: gtksourceview4
 
 %description
 
-gjots2 ("gee-jots" or, if you prefer, "gyachts"!) is a way to marshall
-and organise your text notes in a convenient, hierarchical way. For
+gjots2 ("gee-jots" or, if you prefer, "gyachts"!) is a way to marshal
+and organize your text notes in a convenient, hierarchical way. For
 example, use it for all your notes on Unix, personal bits and pieces,
 recipes and even PINs and passwords (encrypted with ccrypt(1), gpg(1)
 or openssl(1)).
 
 You can also use it to "mind-map" your compositions - write down all
-your thoughts and then start to organise them into a tree. By
+your thoughts and then start to organize them into a tree. By
 manipulating the tree you can easily reorder your thoughts and
 structure them appropriately.
 
 %prep
 %autosetup -p1
 
+# setup.py installs python code in /usr/local/lib/gjots2, but we want
+# /usr/lib/python3.7/site-packages/gjots2:
 sed -i -e 's@lib/gjots2@lib/python%{python3_version}/site-packages/gjots2@g' setup.py
-sed -i -e 's@Icon=gjots2@Icon=gjots@g' gjots2.desktop
 # Convert to utf-8
 for file in doc/man/man1/*.1; do
     iconv -f ISO-8859-1 -t UTF-8 -o $file.new $file && \
@@ -58,16 +59,17 @@ done
 
 %find_lang %{name}
 
-%check
 desktop-file-install \
         --dir %{buildroot}%{_datadir}/applications              \
         --remove-category Application                           \
         %{name}.desktop
 
+%check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
 
 %files -f gjots2.lang
-%doc AUTHORS COPYING ChangeLog README doc/gjots2.gjots
+%license COPYING
+%doc AUTHORS ChangeLog README doc/gjots2.gjots
 %doc %lang(en_US) doc/gjots2.en_US.gjots
 %doc %lang(fr) doc/gjots2.fr.gjots
 %doc %lang(nb) doc/gjots2.nb.gjots
@@ -93,6 +95,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 %{_mandir}/man1/docbook2gjots*
 
 %changelog
+* Sat May 02 2020 Bob Hepple <bob.hepple@gmail.com> - 3.1.5-1
+- in response to RHBZ#1823599
+
 * Sun Apr 19 2020 <bob.hepple@gmail.com> - 3.1.4-1
 - Update more FSF addresses
 - Change shebangs to absolute paths (fedora required)

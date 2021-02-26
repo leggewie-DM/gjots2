@@ -1,3 +1,5 @@
+2020-05-02   <bob.hepple@gmail.com> 3.1.5
+	response to RHBZ#1823599
 2020-04-19   <bob.hepple@gmail.com> 3.1.4
 	Update more FSF addresses
 	Change shebangs to absolute paths (fedora required)
