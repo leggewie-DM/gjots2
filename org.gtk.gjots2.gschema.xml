@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gtk.gjots2" path="/org/gtk/gjots2/">
+	
+    <key type="i" name="line-length">
+      <default>70</default>
+      <summary>line width</summary>
+      <description>text line width for wrapping</description>
+    </key>
+	
+    <key type="i" name="auto-save-interval">
+      <default>0</default>
+      <summary>auto save interval</summary>
+      <description>data will be auto saved after this time in seconds</description>
+    </key>
+ 	
+    <key type="i" name="auto-readonly-timeout">
+      <default>0</default>
+      <summary>auto readonly timeout</summary>
+      <description>data will be made read only after this time in seconds</description>
+    </key>
+	
+    <key type="s" name="text-formatter">
+      <default>"fmt -w %d"</default>
+      <summary>text formatter</summary>
+      <description>external command to format text</description>
+    </key>
+	
+    <key type="s" name="external-editor">
+      <default>"xdg-open %s"</default>
+      <summary>external editor</summary>
+      <description>external editor</description>
+    </key>
+	
+    <key type="s" name="date-format">
+      <default>"%F"</default>
+      <summary>date format</summary>
+      <description>date format ('man date' for values)</description>
+    </key>
+	
+    <key type="s" name="text-font">
+      <default>"Courier 10 Pitch 10"</default>
+      <summary>text font</summary>
+      <description>text font</description>
+    </key>
+	
+    <key type="b" name="top-toolbar">
+      <default>true</default>
+      <summary>top toolbar</summary>
+      <description>top toolbar</description>
+    </key>
+	
+    <key type="b" name="side-toolbar">
+      <default>true</default>
+      <summary>side toolbar</summary>
+      <description>side toolbar</description>
+    </key>
+	
+    <key type="b" name="show-icon-text">
+      <default>false</default>
+      <summary>show icon text</summary>
+      <description>show text with icons in the user interface</description>
+    </key>
+	
+    <key type="b" name="status-bar">
+      <default>false</default>
+      <summary>status bar</summary>
+      <description>display status bar</description>
+    </key>
+	
+    <key type="i" name="pane-position">
+      <default>211</default>
+      <summary>pane position</summary>
+      <description>pane position</description>
+    </key>
+	
+    <key type="b" name="initialised">
+      <default>false</default>
+      <summary>initialised</summary>
+      <description>initialised</description>
+    </key>
+	
+    <key type="as" name="find-text">
+      <default>[""]</default>
+      <summary>find-text</summary>
+      <description>find-text</description>
+    </key>
+	
+    <key type="s" name="replace-text">
+      <default>""</default>
+      <summary>replace-text</summary>
+      <description>replace-text</description>
+    </key>
+	
+    <key type="b" name="find-match-case">
+      <default>false</default>
+      <summary>find-match-case</summary>
+      <description>find-match-case</description>
+    </key>
+	
+    <key type="b" name="find-global">
+      <default>true</default>
+      <summary>find-global</summary>
+      <description>find-global</description>
+    </key>
+	
+    <key type="b" name="find-regex">
+      <default>false</default>
+      <summary>find-regex</summary>
+      <description>find-regex</description>
+    </key>
+	
+    <key type="b" name="find-backwards">
+      <default>false</default>
+      <summary>find-backwards</summary>
+      <description>find-backwards</description>
+    </key>
+	
+    <key type="i" name="width">
+      <default>0</default>
+      <summary>width</summary>
+      <description>width</description>
+    </key>
+	
+    <key type="i" name="height">
+      <default>0</default>
+      <summary>height</summary>
+      <description>height</description>
+    </key>
+	
+    <key type="b" name="print-page">
+      <default>true</default>
+      <summary>print-page</summary>
+      <description>print-page</description>
+    </key>
+	
+    <key type="b" name="print-selection">
+      <default>false</default>
+      <summary>print-selection</summary>
+      <description>print-selection</description>
+    </key>
+	
+    <key type="b" name="print-all">
+      <default>false</default>
+      <summary>print-all</summary>
+      <description>print-all</description>
+    </key>
+	
+    <key type="s" name="print-command">
+      <default>"gjots2lpr $1"</default>
+      <summary>print-command</summary>
+      <description>print-command</description>
+    </key>
+	
+    <key type="b" name="print-page-feed">
+      <default>false</default>
+      <summary>print-page-feed</summary>
+      <description>print-page-feed</description>
+    </key>
+	
+    <key type="b" name="print-bold-title">
+      <default>false</default>
+      <summary>print-bold-title</summary>
+      <description>print-bold-title</description>
+    </key>
+	
+    <key type="b" name="sort-ascending">
+      <default>true</default>
+      <summary>sort-ascending</summary>
+      <description>sort-ascending</description>
+    </key>
+	
+    <key type="b" name="sort-alpha">
+      <default>true</default>
+      <summary>sort-alpha</summary>
+      <description>sort-alpha</description>
+    </key>
+	
+    <key type="b" name="sort-items">
+      <default>true</default>
+      <summary>sort-items</summary>
+      <description>sort-items</description>
+    </key>
+	
+    <key type="i" name="sort-sublevels">
+      <default>1</default>
+      <summary>sort-sublevels</summary>
+      <description>sort-sublevels</description>
+    </key>
+	
+  </schema>
+</schemalist>

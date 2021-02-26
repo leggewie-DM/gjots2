@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gjots2 2.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-08 00:54+1000\n"
+"POT-Creation-Date: 2014-02-06 21:07+1000\n"
 "PO-Revision-Date: 2012-02-25 18:28+0200\n"
 "Last-Translator: Aleksa Šušulić <susulic@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -21,682 +21,729 @@ msgstr ""
 "X-Poedit-Country: Slovenia\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../ui/about.ui:9
-msgid "Copyright Bob Hepple 2002-2012"
+#: ../gjots.glade2:43 ../ui/gjots.ui:24
+msgid "_File"
+msgstr "_Datoteka"
+
+#: ../gjots.glade2:70
+msgid "Recent"
+msgstr "Nedavne datoteke"
+
+#: ../gjots.glade2:108 ../ui/gjots.ui:91
+msgid "Import items from a gjots file"
+msgstr "Uvozi postavke iz datoteke gjots"
+
+#: ../gjots.glade2:109
+msgid "_Import"
+msgstr "_Uvozi"
+
+#: ../gjots.glade2:118 ../ui/gjots.ui:102
+msgid "Export selected items to a gjots file"
+msgstr "Izvozi izbrane postavke v datoteko gjots"
+
+#: ../gjots.glade2:119 ../ui/gjots.ui:99
+msgid "_Export"
+msgstr "_Izvozi"
+
+#: ../gjots.glade2:150 ../ui/gjots.ui:135
+msgid "Toggle the read-only flag if possible"
+msgstr "Po možnosti preklopi zastavico samo za branje"
+
+#: ../gjots.glade2:151 ../ui/gjots.ui:136
+msgid "_Read-only"
+msgstr "_Samo za branje"
+
+#: ../gjots.glade2:168
+#, fuzzy
+msgid "Exit gjots"
+msgstr "Končaj gjots"
+
+#: ../gjots.glade2:182 ../ui/gjots.ui:167
+msgid "_Edit"
+msgstr "_Uredi"
+
+#: ../gjots.glade2:269
+msgid "Find Next"
+msgstr "Najdi naslednje"
+
+#: ../gjots.glade2:291 ../ui/gjots.ui:273
+msgid "Find Previous"
 msgstr ""
 
-#: ../ui/about.ui:10
-msgid "http://bhepple.freeshell.org/gjots2"
-msgstr ""
+#: ../gjots.glade2:332 ../ui/gjots.ui:299
+msgid "_View"
+msgstr "_Pogled"
 
-#: ../ui/about.ui:20
-msgid ""
-"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
-"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
-"Sergey Bezdenezhnyh (ru) <sib-mail@mtu-net.ru>\n"
-"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
-"Martin Sin (cs) <martin.sin@zshk.cz>\n"
-"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
-"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
-"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
-msgstr ""
+#: ../gjots.glade2:341 ../gjots.glade2:1257 ../ui/gjots.ui:310
+#: ../ui/gjots.ui:1062
+msgid "Show all items below the current item"
+msgstr "Pokaži vse podpostavke pod trenutno postavko"
 
-#: ../ui/fileDialog.ui:23
-msgid "Open file read only"
-msgstr "Odpri datoteko samo za branje"
+#: ../gjots.glade2:342 ../ui/gjots.ui:307
+msgid "_Show All"
+msgstr "_Pokaži vse"
 
-#: ../ui/fileDialog.ui:27
-msgid "To open the file in read-only mode."
-msgstr "Za odpiranje datoteke v načinu samo za branje."
+#: ../gjots.glade2:351 ../ui/gjots.ui:321
+msgid "Hide all items except the top level"
+msgstr "Skrij vse postavke razen najvišje ravni"
 
-#: ../ui/findDialog.ui:7
-msgid "Find & replace"
-msgstr "Najdi in zamenjaj"
+#: ../gjots.glade2:352 ../ui/gjots.ui:318
+msgid "_Hide All"
+msgstr "_Skrij vse"
 
-#: ../ui/findDialog.ui:28
-msgid "Find:"
-msgstr "Najdi:"
+#: ../gjots.glade2:367 ../ui/gjots.ui:337
+msgid "Toggles the main toolbar"
+msgstr "Preklopi glavno orodno vrstico"
 
-#: ../ui/findDialog.ui:40
-msgid "Replace:"
-msgstr "Zamenjaj:"
+#: ../gjots.glade2:368 ../ui/gjots.ui:338
+msgid "To_p Toolbar"
+msgstr "_Zgornja orodna vrstica"
 
-#: ../ui/findDialog.ui:57
-msgid "String to search for"
-msgstr "Najdi ta črkovni niz"
+#: ../gjots.glade2:378 ../ui/gjots.ui:347
+msgid "Toggles tree tool bar"
+msgstr "Preklopi drevesno vrstico"
 
-#: ../ui/findDialog.ui:69
-msgid "String to replace"
-msgstr "Zamenjaj s tem črkovnim nizom"
+#: ../gjots.glade2:379 ../ui/gjots.ui:348
+msgid "Tre_e Toolbar"
+msgstr "_Drevesna vrstica"
 
-#: ../ui/findDialog.ui:96 ../ui/gjots.ui:876
+#: ../gjots.glade2:389 ../ui/gjots.ui:357
+msgid "Show the related icon text"
+msgstr "Pokaži pripadajoče besedilo k ikonam"
+
+#: ../gjots.glade2:390 ../ui/gjots.ui:358
+msgid "Show _Icon Text"
+msgstr "Pokaži besedilo k _ikonam"
+
+#: ../gjots.glade2:400 ../ui/gjots.ui:367
+msgid "Status _Bar"
+msgstr "Vrstica _stanja"
+
+#: ../gjots.glade2:414 ../ui/gjots.ui:380
+msgid "_Tree"
+msgstr "_Drevo"
+
+#: ../gjots.glade2:423 ../ui/gjots.ui:391
+msgid "Create a new page"
+msgstr "Ustvari novo stran"
+
+#: ../gjots.glade2:424 ../ui/gjots.ui:388
+msgid "_New Page"
+msgstr "_Nova stran"
+
+#: ../gjots.glade2:445
+msgid "Create a new child "
+msgstr "Ustvari novo podpostavko"
+
+#: ../gjots.glade2:446 ../ui/gjots.ui:399
+msgid "New _Child"
+msgstr "Nova _podpostavka"
+
+#: ../gjots.glade2:461 ../gjots.glade2:1087 ../ui/gjots.ui:419
+#: ../ui/gjots.ui:927
+msgid "Move selection up"
+msgstr "Premakni izbor navzgor"
+
+#: ../gjots.glade2:462 ../gjots.glade2:1088 ../ui/gjots.ui:928
+msgid "Up"
+msgstr "Gor"
+
+#: ../gjots.glade2:471 ../gjots.glade2:1105 ../ui/gjots.ui:430
+#: ../ui/gjots.ui:942
+msgid "Move selection down"
+msgstr "Premakni izbor navzdol"
+
+#: ../gjots.glade2:472 ../gjots.glade2:1106 ../ui/gjots.ui:943
+msgid "Down"
+msgstr "Dol"
+
+#: ../gjots.glade2:481 ../gjots.glade2:1123 ../ui/gjots.ui:441
+#: ../ui/gjots.ui:957
+msgid "Selection becomes a sibling to their parent"
+msgstr "Izbor postane enakovreden nadrejenemu"
+
+#: ../gjots.glade2:482 ../ui/gjots.ui:438
+msgid "P_romote"
+msgstr "Po_višaj"
+
+#: ../gjots.glade2:503 ../gjots.glade2:1141 ../ui/gjots.ui:452
+#: ../ui/gjots.ui:972
+msgid "Selection becomes a child of the previous item"
+msgstr "Izbor postane podpostavka prejšnje postavke"
+
+#: ../gjots.glade2:504 ../ui/gjots.ui:449
+msgid "D_emote"
+msgstr "Po_nižaj"
+
+#: ../gjots.glade2:531 ../ui/gjots.ui:469
+msgid "Make a new item from the current selection"
+msgstr "Ustvari novo postavko iz trenutnega izbora"
+
+#: ../gjots.glade2:532 ../ui/gjots.ui:466
+msgid "_Split Item"
+msgstr "_Odcepi postavko"
+
+#: ../gjots.glade2:541 ../ui/gjots.ui:480
+msgid "Merge current items into the first one"
+msgstr "Spoji trenutne postavke v prvo postavko"
+
+#: ../gjots.glade2:542 ../ui/gjots.ui:477
+msgid "_Merge Items"
+msgstr "_Spoji postavke"
+
+#: ../gjots.glade2:557 ../gjots.glade2:1275 ../ui/gjots.ui:491
+#: ../ui/gjots.ui:1077
+msgid "Popup the sort tree dialog"
+msgstr "Prikaži dialog za razvrščanje drevesa"
+
+#: ../gjots.glade2:558 ../ui/gjots.ui:488
+msgid "S_ort Tree"
+msgstr "S_ortiraj drevo"
+
+#: ../gjots.glade2:571 ../ui/gjots.ui:505
+msgid "Te_xt"
+msgstr "_Besedilo"
+
+#: ../gjots.glade2:580 ../ui/gjots.ui:516
+msgid "Format the current paragraph"
+msgstr "Oblikuj trenutni odstavek"
+
+#: ../gjots.glade2:581 ../ui/gjots.ui:513
+msgid "_Format"
+msgstr "_Oblikuj"
+
+#: ../gjots.glade2:591 ../ui/gjots.ui:528
+msgid "Add a time/date stamp (see preferences)"
+msgstr "Vstavi datum/uro (glej možnosti)"
+
+#: ../gjots.glade2:592 ../ui/gjots.ui:525
+msgid "_Time stamp"
+msgstr "Vstavi _datum in uro"
+
+#: ../gjots.glade2:611 ../ui/gjots.ui:539
+msgid "Edit current item in an external editor"
+msgstr "Uredi trenutno postavko z zunanjim urejevalnikom"
+
+#: ../gjots.glade2:612 ../ui/gjots.ui:536
+msgid "_External Edit"
+msgstr "_Zunanji urejevalnik"
+
+#: ../gjots.glade2:633 ../ui/gjots.ui:550
+msgid "Popup the sort text dialog"
+msgstr "Prikaži dialog za razvrščanje besedila"
+
+#: ../gjots.glade2:634 ../ui/gjots.ui:547
+#, fuzzy
+msgid "_Sort Text"
+msgstr "Razvrsti besedilo"
+
+#: ../gjots.glade2:647 ../ui/gjots.ui:564
+msgid "_Help"
+msgstr "_Pomoč"
+
+#: ../gjots.glade2:656 ../ui/gjots.ui:575
+msgid "Read the online manual (using gjots)"
+msgstr "Preberi priloženi priročnik s programom gjots"
+
+#: ../gjots.glade2:657 ../ui/gjots.ui:572
+msgid "_Read Manual"
+msgstr "_Preberi priročnik"
+
+#: ../gjots.glade2:678
+#, fuzzy
+msgid "About gjots2"
+msgstr "Končaj gjots"
+
+#: ../gjots.glade2:709
+#, fuzzy
+msgid " Find: "
+msgstr " Najdi:"
+
+#: ../gjots.glade2:765 ../ui/gjots.ui:670
+msgid "Save gjots document"
+msgstr "Shrani dokument gjots"
+
+#: ../gjots.glade2:766 ../ui/gjots.ui:671
+msgid "Save"
+msgstr "Shrani"
+
+#: ../gjots.glade2:783 ../ui/gjots.ui:685
+msgid "Print this document"
+msgstr "Natisni ta dokument"
+
+#: ../gjots.glade2:784 ../gjots.glade2:2664 ../ui/gjots.ui:686
+#: ../ui/printDialog.ui:7
+msgid "Print"
+msgstr "Natisni"
+
+#: ../gjots.glade2:823 ../ui/gjots.ui:715
+msgid "Cut selected items"
+msgstr "Izreži izbrane postavke"
+
+#: ../gjots.glade2:824 ../ui/gjots.ui:716
+msgid "Cut"
+msgstr "Izreži"
+
+#: ../gjots.glade2:841 ../ui/gjots.ui:730
+msgid "Copy selected items"
+msgstr "Kopiraj izbrane postavke"
+
+#: ../gjots.glade2:842 ../ui/gjots.ui:731
+msgid "Copy"
+msgstr "Kopiraj"
+
+#: ../gjots.glade2:859 ../ui/gjots.ui:745
+msgid "Paste selected items"
+msgstr "Prilepi izbrane postavke"
+
+#: ../gjots.glade2:860 ../ui/gjots.ui:746
+msgid "Paste"
+msgstr "Prilepi"
+
+#: ../gjots.glade2:899 ../ui/gjots.ui:775
+msgid "Wrap the current paragraph to the current line length"
+msgstr "Prelomi trenutni odstavek po trenutni dolžini vrstice"
+
+#: ../gjots.glade2:900 ../ui/gjots.ui:776
+msgid "Wrap"
+msgstr "Prelom"
+
+#: ../gjots.glade2:917 ../ui/gjots.ui:790
+msgid "Invoke an external editor on the current item"
+msgstr "Uredi trenutno postavko z zunanjim urejevalnikom"
+
+#: ../gjots.glade2:918 ../ui/gjots.ui:791
+msgid "Ext.Ed."
+msgstr "Zun.Ur."
+
+#: ../gjots.glade2:935 ../ui/gjots.ui:805
+msgid "Add a time/date stamp (see prefs)"
+msgstr "Vstavi datum in čas (glej možnosti)"
+
+#: ../gjots.glade2:936 ../ui/gjots.ui:806
+msgid "Date"
+msgstr "Datum"
+
+#: ../gjots.glade2:953 ../ui/gjots.ui:820
+msgid "Popup the find and replace dialog"
+msgstr "Prikaži dialog najdi in zamenjaj"
+
+#: ../gjots.glade2:954 ../gjots.glade2:2360 ../ui/findDialog.ui:97
+#: ../ui/gjots.ui:821
 msgid "Find"
 msgstr "Najdi"
 
-#: ../ui/findDialog.ui:112
-msgid "Close"
-msgstr "Zapri"
+#: ../gjots.glade2:971 ../ui/gjots.ui:835
+msgid "Popup the sort dialog"
+msgstr "Prikaži dialog za razvrščanje"
 
-#: ../ui/findDialog.ui:128
-msgid "Replace"
-msgstr "Zamenjaj"
+#: ../gjots.glade2:972 ../gjots.glade2:3148 ../ui/gjots.ui:836
+#: ../ui/sortDialog.ui:15
+msgid "Sort"
+msgstr "Razvrsti"
 
-#: ../ui/findDialog.ui:144
-msgid "Replace All"
-msgstr "Zamenjaj vse"
+#: ../gjots.glade2:989 ../ui/gjots.ui:850
+msgid "Open gjots preferences window"
+msgstr "Odpri okno z možnostmi programa gjots"
 
-#: ../ui/findDialog.ui:160
-msgid "Cancel"
-msgstr "Prekliči"
+#: ../gjots.glade2:990 ../ui/gjots.ui:851
+msgid "Prefs"
+msgstr "Možnosti"
 
-#: ../ui/findDialog.ui:179
-msgid "Clear"
-msgstr "Počisti"
+#: ../gjots.glade2:1029 ../ui/gjots.ui:882
+msgid "Create a new item"
+msgstr "Ustvari novo postavko"
 
-#: ../ui/findDialog.ui:233
-msgid "Match case"
-msgstr "Upoštevaj velikost črk"
+#: ../gjots.glade2:1030 ../gjots.glade2:3628 ../ui/gjots.ui:883
+#: ../ui/treeContextMenu.ui:45
+msgid "New Page"
+msgstr "Nova stran"
 
-#: ../ui/findDialog.ui:237
-msgid "Don't ignore case"
-msgstr "Ne zanemari velikosti črk"
+#: ../gjots.glade2:1047 ../ui/gjots.ui:402 ../ui/gjots.ui:897
+msgid "Create a new child"
+msgstr "Ustvari novo podpostavko"
 
-#: ../ui/findDialog.ui:247
-msgid "Regular Expression"
-msgstr "Logični izraz"
+#: ../gjots.glade2:1048 ../gjots.glade2:3649 ../ui/gjots.ui:898
+#: ../ui/treeContextMenu.ui:52
+msgid "New Child"
+msgstr "Nova podpostavka"
 
-#: ../ui/findDialog.ui:251
-msgid "Find string is a regular expression (see 'man 7 regex')"
-msgstr "Iskani črkovni niz je logični izraz (glej 'man 7 regex')"
+#: ../gjots.glade2:1124 ../gjots.glade2:3692 ../ui/gjots.ui:958
+#: ../ui/treeContextMenu.ui:74
+msgid "Promote"
+msgstr "Povišaj"
 
-#: ../ui/findDialog.ui:263
-msgid "Backwards"
-msgstr "Nazaj"
+#: ../gjots.glade2:1142 ../gjots.glade2:3713 ../ui/gjots.ui:973
+#: ../ui/treeContextMenu.ui:82
+msgid "Demote"
+msgstr "Ponižaj"
 
-#: ../ui/findDialog.ui:267
-msgid "Search backwards"
-msgstr "Išči nazaj"
+#: ../gjots.glade2:1181 ../ui/gjots.ui:1002
+msgid "Split the text selection into a new item"
+msgstr "Odcepi izbrano besedilo v novo postavko"
 
-#: ../ui/findDialog.ui:282
-msgid "Global"
-msgstr "Povsod"
+#: ../gjots.glade2:1182 ../ui/gjots.ui:1003
+msgid "Split Item"
+msgstr "Odcepi postavko"
 
-#: ../ui/findDialog.ui:286
-msgid "Searches entire file not just this entry"
-msgstr "Preišče celotno datoteko, ne le to postavko"
+#: ../gjots.glade2:1199 ../ui/gjots.ui:1017
+msgid "Merge selected items together"
+msgstr "Spoji izbrane postavke"
 
-#: ../ui/findDialog.ui:302
-msgid " Options "
-msgstr " Možnosti"
+#: ../gjots.glade2:1200 ../gjots.glade2:3740 ../ui/gjots.ui:1018
+#: ../ui/treeContextMenu.ui:89
+msgid "Merge Items"
+msgstr "Spoji postavke"
 
-#: ../ui/fontDialog.ui:8
-msgid "Select Font"
-msgstr "Izberi pisavo"
+#: ../gjots.glade2:1239 ../ui/gjots.ui:1047
+msgid "Hide all items except for the top level"
+msgstr "Skrij vse postavke razen najvišje ravni"
 
-#: ../ui/generalDialog.ui:9
+#: ../gjots.glade2:1240 ../gjots.glade2:3784 ../ui/gjots.ui:1048
+#: ../ui/treeContextMenu.ui:103
+msgid "Hide All"
+msgstr "Skrij vse"
+
+#: ../gjots.glade2:1258 ../gjots.glade2:3765 ../ui/gjots.ui:1063
+#: ../ui/treeContextMenu.ui:96
+msgid "Show All"
+msgstr "Pokaži vse"
+
+#: ../gjots.glade2:1276 ../gjots.glade2:3809 ../lib/sortDialog.py:313
+#: ../ui/gjots.ui:1078 ../ui/treeContextMenu.ui:110
+msgid "Sort Tree"
+msgstr "Razvrsti drevo"
+
+#: ../gjots.glade2:1407 ../ui/generalDialog.ui:9
 msgid "window1"
 msgstr "window1"
 
+#: ../gjots.glade2:1430 ../gjots.glade2:1491 ../gjots.glade2:1572
 #: ../ui/generalDialog.ui:21 ../ui/generalDialog.ui:56
 #: ../ui/generalDialog.ui:102
 msgid "label1"
 msgstr "label1"
 
-#: ../ui/generalDialog.ui:43
+#: ../gjots.glade2:1464 ../ui/generalDialog.ui:43
 msgid "label2"
 msgstr "label2"
 
-#: ../ui/generalDialog.ui:178
+#: ../gjots.glade2:1658 ../ui/generalDialog.ui:178
 msgid "Try again"
 msgstr "Poskusi znova"
 
-#: ../ui/generalDialog.ui:194
+#: ../gjots.glade2:1671 ../ui/generalDialog.ui:194
 msgid "Read only"
 msgstr "Samo za branje"
 
-#: ../ui/gjots.ui:23
-msgid "_File"
-msgstr "_Datoteka"
-
-#: ../ui/gjots.ui:92
-msgid "Import items from a gjots file"
-msgstr "Uvozi postavke iz datoteke gjots"
-
-#: ../ui/gjots.ui:101
-msgid "_Export"
-msgstr "_Izvozi"
-
-#: ../ui/gjots.ui:104
-msgid "Export selected items to a gjots file"
-msgstr "Izvozi izbrane postavke v datoteko gjots"
-
-#: ../ui/gjots.ui:140
-msgid "Toggle the read-only flag if possible"
-msgstr "Po možnosti preklopi zastavico samo za branje"
-
-#: ../ui/gjots.ui:142
-msgid "_Read-only"
-msgstr "_Samo za branje"
-
-#: ../ui/gjots.ui:158
-#, fuzzy
-msgid "Exit gjots2"
-msgstr "Končaj gjots"
-
-#: ../ui/gjots.ui:175
-msgid "_Edit"
-msgstr "_Uredi"
-
-#: ../ui/gjots.ui:287
-msgid "Find Previous"
-msgstr ""
-
-#: ../ui/gjots.ui:316
-msgid "_View"
-msgstr "_Pogled"
-
-#: ../ui/gjots.ui:324
-msgid "_Show All"
-msgstr "_Pokaži vse"
-
-#: ../ui/gjots.ui:327 ../ui/gjots.ui:1131
-msgid "Show all items below the current item"
-msgstr "Pokaži vse podpostavke pod trenutno postavko"
-
-#: ../ui/gjots.ui:336
-msgid "_Hide All"
-msgstr "_Skrij vse"
-
-#: ../ui/gjots.ui:339
-msgid "Hide all items except the top level"
-msgstr "Skrij vse postavke razen najvišje ravni"
-
-#: ../ui/gjots.ui:357
-msgid "Toggles the main toolbar"
-msgstr "Preklopi glavno orodno vrstico"
-
-#: ../ui/gjots.ui:359
-msgid "To_p Toolbar"
-msgstr "_Zgornja orodna vrstica"
-
-#: ../ui/gjots.ui:368
-msgid "Toggles tree tool bar"
-msgstr "Preklopi drevesno vrstico"
-
-#: ../ui/gjots.ui:370
-msgid "Tre_e Toolbar"
-msgstr "_Drevesna vrstica"
-
-#: ../ui/gjots.ui:379
-msgid "Show the related icon text"
-msgstr "Pokaži pripadajoče besedilo k ikonam"
-
-#: ../ui/gjots.ui:381
-msgid "Show _Icon Text"
-msgstr "Pokaži besedilo k _ikonam"
-
-#: ../ui/gjots.ui:391
-msgid "Status _Bar"
-msgstr "Vrstica _stanja"
-
-#: ../ui/gjots.ui:405
-msgid "_Tree"
-msgstr "_Drevo"
-
-#: ../ui/gjots.ui:413
-msgid "_New Page"
-msgstr "_Nova stran"
-
-#: ../ui/gjots.ui:416
-msgid "Create a new page"
-msgstr "Ustvari novo stran"
-
-#: ../ui/gjots.ui:425
-msgid "New _Child"
-msgstr "Nova _podpostavka"
-
-#: ../ui/gjots.ui:428 ../ui/gjots.ui:955
-msgid "Create a new child"
-msgstr "Ustvari novo podpostavko"
-
-#: ../ui/gjots.ui:447 ../ui/gjots.ui:987
-msgid "Move selection up"
-msgstr "Premakni izbor navzgor"
-
-#: ../ui/gjots.ui:459 ../ui/gjots.ui:1003
-msgid "Move selection down"
-msgstr "Premakni izbor navzdol"
-
-#: ../ui/gjots.ui:468
-msgid "P_romote"
-msgstr "Po_višaj"
-
-#: ../ui/gjots.ui:471 ../ui/gjots.ui:1019
-msgid "Selection becomes a sibling to their parent"
-msgstr "Izbor postane enakovreden nadrejenemu"
-
-#: ../ui/gjots.ui:480
-msgid "D_emote"
-msgstr "Po_nižaj"
-
-#: ../ui/gjots.ui:483 ../ui/gjots.ui:1035
-msgid "Selection becomes a child of the previous item"
-msgstr "Izbor postane podpostavka prejšnje postavke"
-
-#: ../ui/gjots.ui:499
-msgid "_Split Item"
-msgstr "_Odcepi postavko"
-
-#: ../ui/gjots.ui:502
-msgid "Make a new item from the current selection"
-msgstr "Ustvari novo postavko iz trenutnega izbora"
-
-#: ../ui/gjots.ui:511
-msgid "_Merge Items"
-msgstr "_Spoji postavke"
-
-#: ../ui/gjots.ui:514
-msgid "Merge current items into the first one"
-msgstr "Spoji trenutne postavke v prvo postavko"
-
-#: ../ui/gjots.ui:523
-msgid "S_ort Tree"
-msgstr "S_ortiraj drevo"
-
-#: ../ui/gjots.ui:526 ../ui/gjots.ui:1147
-msgid "Popup the sort tree dialog"
-msgstr "Prikaži dialog za razvrščanje drevesa"
-
-#: ../ui/gjots.ui:542
-msgid "Te_xt"
-msgstr "_Besedilo"
-
-#: ../ui/gjots.ui:550
-msgid "_Format"
-msgstr "_Oblikuj"
-
-#: ../ui/gjots.ui:553
-msgid "Format the current paragraph"
-msgstr "Oblikuj trenutni odstavek"
-
-#: ../ui/gjots.ui:563
-msgid "_Time stamp"
-msgstr "Vstavi _datum in uro"
-
-#: ../ui/gjots.ui:566
-msgid "Add a time/date stamp (see preferences)"
-msgstr "Vstavi datum/uro (glej možnosti)"
-
-#: ../ui/gjots.ui:575
-msgid "_External Edit"
-msgstr "_Zunanji urejevalnik"
-
-#: ../ui/gjots.ui:578
-msgid "Edit current item in an external editor"
-msgstr "Uredi trenutno postavko z zunanjim urejevalnikom"
-
-#: ../ui/gjots.ui:587
-#, fuzzy
-msgid "_Sort Text"
-msgstr "Razvrsti besedilo"
-
-#: ../ui/gjots.ui:590
-msgid "Popup the sort text dialog"
-msgstr "Prikaži dialog za razvrščanje besedila"
-
-#: ../ui/gjots.ui:606
-msgid "_Help"
-msgstr "_Pomoč"
-
-#: ../ui/gjots.ui:614
-msgid "_Read Manual"
-msgstr "_Preberi priročnik"
-
-#: ../ui/gjots.ui:617
-msgid "Read the online manual (using gjots)"
-msgstr "Preberi priloženi priročnik s programom gjots"
-
-#: ../ui/gjots.ui:714
-msgid "Save gjots document"
-msgstr "Shrani dokument gjots"
-
-#: ../ui/gjots.ui:716
-msgid "Save"
-msgstr "Shrani"
-
-#: ../ui/gjots.ui:730
-msgid "Print this document"
-msgstr "Natisni ta dokument"
-
-#: ../ui/gjots.ui:732 ../ui/printDialog.ui:7
-msgid "Print"
-msgstr "Natisni"
-
-#: ../ui/gjots.ui:762
-msgid "Cut selected items"
-msgstr "Izreži izbrane postavke"
-
-#: ../ui/gjots.ui:764
-msgid "Cut"
-msgstr "Izreži"
-
-#: ../ui/gjots.ui:778
-msgid "Copy selected items"
-msgstr "Kopiraj izbrane postavke"
-
-#: ../ui/gjots.ui:780
-msgid "Copy"
-msgstr "Kopiraj"
-
-#: ../ui/gjots.ui:794
-msgid "Paste selected items"
-msgstr "Prilepi izbrane postavke"
-
-#: ../ui/gjots.ui:796
-msgid "Paste"
-msgstr "Prilepi"
-
-#: ../ui/gjots.ui:826
-msgid "Wrap the current paragraph to the current line length"
-msgstr "Prelomi trenutni odstavek po trenutni dolžini vrstice"
-
-#: ../ui/gjots.ui:828
-msgid "Wrap"
-msgstr "Prelom"
-
-#: ../ui/gjots.ui:842
-msgid "Invoke an external editor on the current item"
-msgstr "Uredi trenutno postavko z zunanjim urejevalnikom"
-
-#: ../ui/gjots.ui:844
-msgid "Ext.Ed."
-msgstr "Zun.Ur."
-
-#: ../ui/gjots.ui:858
-msgid "Add a time/date stamp (see prefs)"
-msgstr "Vstavi datum in čas (glej možnosti)"
-
-#: ../ui/gjots.ui:860
-msgid "Date"
-msgstr "Datum"
-
-#: ../ui/gjots.ui:874
-msgid "Popup the find and replace dialog"
-msgstr "Prikaži dialog najdi in zamenjaj"
-
-#: ../ui/gjots.ui:890
-msgid "Popup the sort dialog"
-msgstr "Prikaži dialog za razvrščanje"
-
-#: ../ui/gjots.ui:892 ../ui/sortDialog.ui:15
-msgid "Sort"
-msgstr "Razvrsti"
-
-#: ../ui/gjots.ui:906
-msgid "Open gjots preferences window"
-msgstr "Odpri okno z možnostmi programa gjots"
-
-#: ../ui/gjots.ui:908
-msgid "Prefs"
-msgstr "Možnosti"
-
-#: ../ui/gjots.ui:939
-msgid "Create a new item"
-msgstr "Ustvari novo postavko"
-
-#: ../ui/gjots.ui:941 ../ui/treeContextMenu.ui:45
-msgid "New Page"
-msgstr "Nova stran"
-
-#: ../ui/gjots.ui:957 ../ui/treeContextMenu.ui:52
-msgid "New Child"
-msgstr "Nova podpostavka"
-
-#: ../ui/gjots.ui:989
-msgid "Up"
-msgstr "Gor"
-
-#: ../ui/gjots.ui:1005
-msgid "Down"
-msgstr "Dol"
-
-#: ../ui/gjots.ui:1021 ../ui/treeContextMenu.ui:74
-msgid "Promote"
-msgstr "Povišaj"
-
-#: ../ui/gjots.ui:1037 ../ui/treeContextMenu.ui:82
-msgid "Demote"
-msgstr "Ponižaj"
-
-#: ../ui/gjots.ui:1067
-msgid "Split the text selection into a new item"
-msgstr "Odcepi izbrano besedilo v novo postavko"
-
-#: ../ui/gjots.ui:1069
-msgid "Split Item"
-msgstr "Odcepi postavko"
-
-#: ../ui/gjots.ui:1083
-msgid "Merge selected items together"
-msgstr "Spoji izbrane postavke"
-
-#: ../ui/gjots.ui:1085 ../ui/treeContextMenu.ui:89
-msgid "Merge Items"
-msgstr "Spoji postavke"
-
-#: ../ui/gjots.ui:1115
-msgid "Hide all items except for the top level"
-msgstr "Skrij vse postavke razen najvišje ravni"
-
-#: ../ui/gjots.ui:1117 ../ui/treeContextMenu.ui:103
-msgid "Hide All"
-msgstr "Skrij vse"
-
-#: ../ui/gjots.ui:1133 ../ui/treeContextMenu.ui:96
-msgid "Show All"
-msgstr "Pokaži vse"
-
-#: ../ui/gjots.ui:1149 ../ui/treeContextMenu.ui:110 ../lib/sortDialog.py:308
-msgid "Sort Tree"
-msgstr "Razvrsti drevo"
-
-#: ../ui/prefsDialog.ui:15
+#: ../gjots.glade2:1691 ../ui/prefsDialog.ui:25
 msgid "gjots: preferences"
 msgstr "gjots: možnosti"
 
-#: ../ui/prefsDialog.ui:35
+#: ../gjots.glade2:1724 ../ui/prefsDialog.ui:48
 msgid "Choose a font for the text panel"
 msgstr "Izberi pisavo za podokno z besedilom"
 
-#: ../ui/prefsDialog.ui:50
+#: ../gjots.glade2:1745 ../ui/prefsDialog.ui:64
 msgid "Date format:"
 msgstr "Format datuma:"
 
-#: ../ui/prefsDialog.ui:64
-msgid "Format for the timestamp function (see strftime(3))"
+#: ../gjots.glade2:1773 ../ui/prefsDialog.ui:78
+#, fuzzy
+msgid "Format for the timestamp function (see strftime(3)) eg %F"
 msgstr "Format za časovni žig (glej strftime(3))"
 
-#: ../ui/prefsDialog.ui:65
+#: ../gjots.glade2:1778 ../ui/prefsDialog.ui:79
 msgid "%F"
 msgstr "%F"
 
-#: ../ui/prefsDialog.ui:80
+#: ../gjots.glade2:1796 ../ui/prefsDialog.ui:98
+#, fuzzy
 msgid ""
 "External program to edit a page (%s is replaced by the name of the temporary "
-"edit file)"
+"edit file) eg xterm -e vi %s"
 msgstr ""
 "Zunanji urejevalnik strani (%s se zamenja z imenom začasne datoteke za "
 "urejanje)"
 
-#: ../ui/prefsDialog.ui:81
+#: ../gjots.glade2:1801 ../ui/prefsDialog.ui:99
 msgid "xterm -e vi %s"
 msgstr "xterm -e vi %s"
 
-#: ../ui/prefsDialog.ui:96
+#: ../gjots.glade2:1819 ../ui/prefsDialog.ui:119
 msgid "External editor"
 msgstr "Zunanji urejevalnik"
 
-#: ../ui/prefsDialog.ui:110
+#: ../gjots.glade2:1847 ../ui/prefsDialog.ui:134
 msgid "Text Line Length: "
 msgstr "Dolžina vrstice z besedilom:"
 
-#: ../ui/prefsDialog.ui:124
+#: ../gjots.glade2:1875 ../ui/prefsDialog.ui:148
 msgid "Line length for paragraph wrapping"
 msgstr "Dolžina vrstice za prelom odstavka"
 
-#: ../ui/prefsDialog.ui:142
+#: ../gjots.glade2:1898 ../ui/prefsDialog.ui:171
 msgid "Text formatter: "
 msgstr "Oblikovalnik besedila: "
 
-#: ../ui/prefsDialog.ui:154
+#: ../gjots.glade2:1926 ../ui/prefsDialog.ui:201
+msgid "Current text font"
+msgstr "Trenutna pisava za besedilo"
+
+#: ../gjots.glade2:1931 ../ui/prefsDialog.ui:203
+msgid "Courier 10 Pitch 10"
+msgstr "Courier 10 Pitch 10"
+
+#: ../gjots.glade2:1949 ../ui/prefsDialog.ui:223
+msgid "AutoSave interval:"
+msgstr ""
+
+#: ../gjots.glade2:1977 ../ui/prefsDialog.ui:237
+msgid "Seconds of inactivity to trigger an AutoSave (0 = no AutoSave)"
+msgstr ""
+
+#: ../gjots.glade2:2000 ../ui/prefsDialog.ui:183
+#, fuzzy
 msgid ""
 "External program to pipe text for formatting (%d is replaced by the current "
-"line width)"
+"line width) eg fmt -w %d "
 msgstr ""
 "Zunanji program, kateremu posredujemo (po cevi) besedilo v formatiranje (%d "
 "se zamenja s trenutno širino vrstice)"
 
-#: ../ui/prefsDialog.ui:155
+#: ../gjots.glade2:2005 ../ui/prefsDialog.ui:184
 msgid "fmt -w %d "
 msgstr "fmt -w %d"
 
-#: ../ui/prefsDialog.ui:168
-msgid "Current text font"
-msgstr "Trenutna pisava za besedilo"
+#: ../gjots.glade2:2023 ../ui/prefsDialog.ui:261
+msgid "Auto ReadOnly timeout:"
+msgstr ""
 
-#: ../ui/prefsDialog.ui:170
-msgid "Courier 10 Pitch 10"
-msgstr "Courier 10 Pitch 10"
+#: ../gjots.glade2:2051 ../ui/prefsDialog.ui:275
+msgid "The number of second after losing focus that ReadOnly should be set."
+msgstr ""
 
-#: ../ui/printDialog.ui:31
+#: ../gjots.glade2:2136 ../ui/fontDialog.ui:8
+msgid "Select Font"
+msgstr "Izberi pisavo"
+
+#: ../gjots.glade2:2186
+msgid "abcdefghijk ABCDEFGHIJK"
+msgstr ""
+
+#: ../gjots.glade2:2198 ../ui/findDialog.ui:7
+msgid "Find & replace"
+msgstr "Najdi in zamenjaj"
+
+#: ../gjots.glade2:2238 ../ui/findDialog.ui:29
+msgid "Find:"
+msgstr "Najdi:"
+
+#: ../gjots.glade2:2266 ../ui/findDialog.ui:41
+msgid "Replace:"
+msgstr "Zamenjaj:"
+
+#: ../gjots.glade2:2294 ../ui/findDialog.ui:58
+msgid "String to search for"
+msgstr "Najdi ta črkovni niz"
+
+#: ../gjots.glade2:2319 ../ui/findDialog.ui:70
+msgid "String to replace"
+msgstr "Zamenjaj s tem črkovnim nizom"
+
+#: ../gjots.glade2:2382 ../ui/findDialog.ui:113
+msgid "Close"
+msgstr "Zapri"
+
+#: ../gjots.glade2:2402 ../ui/findDialog.ui:129
+msgid "Replace"
+msgstr "Zamenjaj"
+
+#: ../gjots.glade2:2422 ../ui/findDialog.ui:161
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: ../gjots.glade2:2443 ../ui/findDialog.ui:145
+msgid "Replace All"
+msgstr "Zamenjaj vse"
+
+#: ../gjots.glade2:2463 ../ui/findDialog.ui:180
+msgid "Clear"
+msgstr "Počisti"
+
+#: ../gjots.glade2:2540 ../ui/findDialog.ui:252
+msgid "Find string is a regular expression (see 'man 7 regex')"
+msgstr "Iskani črkovni niz je logični izraz (glej 'man 7 regex')"
+
+#: ../gjots.glade2:2542 ../ui/findDialog.ui:248
+msgid "Regular Expression"
+msgstr "Logični izraz"
+
+#: ../gjots.glade2:2562 ../ui/findDialog.ui:287
+msgid "Searches entire file not just this entry"
+msgstr "Preišče celotno datoteko, ne le to postavko"
+
+#: ../gjots.glade2:2564 ../ui/findDialog.ui:283
+msgid "Global"
+msgstr "Povsod"
+
+#: ../gjots.glade2:2585 ../ui/findDialog.ui:238
+msgid "Don't ignore case"
+msgstr "Ne zanemari velikosti črk"
+
+#: ../gjots.glade2:2587 ../ui/findDialog.ui:234
+msgid "Match case"
+msgstr "Upoštevaj velikost črk"
+
+#: ../gjots.glade2:2607 ../ui/findDialog.ui:268
+msgid "Search backwards"
+msgstr "Išči nazaj"
+
+#: ../gjots.glade2:2609 ../ui/findDialog.ui:264
+msgid "Backwards"
+msgstr "Nazaj"
+
+#: ../gjots.glade2:2632 ../ui/findDialog.ui:303
+msgid " Options "
+msgstr " Možnosti"
+
+#: ../gjots.glade2:2714 ../ui/printDialog.ui:32
 msgid "e.g. lpr: "
 msgstr "npr. lpr: "
 
-#: ../ui/printDialog.ui:47
+#: ../gjots.glade2:2739 ../ui/printDialog.ui:48
 msgid "print command (can be a shell expression)"
 msgstr "ukaz za tiskanje (lahko je lupinski izraz)"
 
-#: ../ui/printDialog.ui:62
+#: ../gjots.glade2:2767 ../ui/printDialog.ui:63
 msgid " Print command "
 msgstr " Ukaz za tiskanje "
 
-#: ../ui/printDialog.ui:86
-msgid "Page"
-msgstr "Stran"
-
-#: ../ui/printDialog.ui:90
+#: ../gjots.glade2:2822 ../ui/printDialog.ui:91
 msgid "Print the current page"
 msgstr "Natisni trenutno stran"
 
-#: ../ui/printDialog.ui:102
-msgid "Selection"
-msgstr "Izbor"
+#: ../gjots.glade2:2824 ../ui/printDialog.ui:87
+msgid "Page"
+msgstr "Stran"
 
-#: ../ui/printDialog.ui:106
+#: ../gjots.glade2:2842 ../ui/printDialog.ui:107
 msgid "Print the selected pages or text"
 msgstr "Natisni izbrane strani ali besedilo"
 
-#: ../ui/printDialog.ui:119
-msgid "All"
-msgstr "Vse"
+#: ../gjots.glade2:2844 ../ui/printDialog.ui:103
+msgid "Selection"
+msgstr "Izbor"
 
-#: ../ui/printDialog.ui:123
+#: ../gjots.glade2:2863 ../ui/printDialog.ui:124
 msgid "Print the entire gjots file"
 msgstr "Natisni celotno datoteko gjots"
 
-#: ../ui/printDialog.ui:141
+#: ../gjots.glade2:2865 ../ui/printDialog.ui:120
+msgid "All"
+msgstr "Vse"
+
+#: ../gjots.glade2:2888 ../ui/printDialog.ui:142
 msgid " Print Range "
 msgstr " Interval za tisk "
 
-#: ../ui/printDialog.ui:169
-msgid "Page feeds"
-msgstr "Nova stran"
-
-#: ../ui/printDialog.ui:173
+#: ../gjots.glade2:2949 ../ui/printDialog.ui:174
 msgid "Feeds a page before every new gjots item"
 msgstr "Vsako novo postavko natisne na novo stran"
 
-#: ../ui/printDialog.ui:185
-msgid "Bold titles"
-msgstr "Krepki naslovi"
+#: ../gjots.glade2:2951 ../ui/printDialog.ui:170
+msgid "Page feeds"
+msgstr "Nova stran"
 
-#: ../ui/printDialog.ui:188
+#: ../gjots.glade2:2968 ../ui/printDialog.ui:189
 msgid "Print the gjots item titles in bold"
 msgstr "Natisne naslove postavk s krepko pisavo"
 
-#: ../ui/printDialog.ui:200
+#: ../gjots.glade2:2970 ../ui/printDialog.ui:186
+msgid "Bold titles"
+msgstr "Krepki naslovi"
+
+#: ../gjots.glade2:2989 ../ui/printDialog.ui:201
 msgid "Auto Number"
 msgstr "Samooštevilčevanje"
 
-#: ../ui/printDialog.ui:223
+#: ../gjots.glade2:3020 ../ui/printDialog.ui:224
 msgid "Auto-number format: "
 msgstr "Format samooštevilčevanja: "
 
-#: ../ui/printDialog.ui:234
+#: ../gjots.glade2:3044 ../ui/printDialog.ui:235
 msgid "eg. 1 for 1.2.1, a"
 msgstr "npr. 1 za 1.2.1, a"
 
-#: ../ui/printDialog.ui:252
+#: ../gjots.glade2:3075 ../ui/printDialog.ui:253
 msgid " Print formatting "
 msgstr " Oblikovanje tiska "
 
-#: ../ui/sortDialog.ui:39
-msgid "Ascending"
-msgstr "Naraščajoče"
-
-#: ../ui/sortDialog.ui:43
+#: ../gjots.glade2:3201 ../ui/sortDialog.ui:44
 msgid "Sort in ascending order"
 msgstr "Razvrsti naraščajoče"
 
-#: ../ui/sortDialog.ui:54
-msgid "Descending"
-msgstr "Padajoče"
+#: ../gjots.glade2:3203 ../ui/sortDialog.ui:40
+msgid "Ascending"
+msgstr "Naraščajoče"
 
-#: ../ui/sortDialog.ui:58
-msgid "Sort in descending order"
-msgstr "Razvrsti padajoče"
-
-#: ../ui/sortDialog.ui:72
-msgid "Alphabetic"
-msgstr "Po abecedi"
-
-#: ../ui/sortDialog.ui:76
+#: ../gjots.glade2:3224 ../ui/sortDialog.ui:77
 msgid "Sort in alphabetic order"
 msgstr "Razvrsti po abecedi"
 
-#: ../ui/sortDialog.ui:89
-msgid "Numeric"
-msgstr "Numerično"
+#: ../gjots.glade2:3226 ../ui/sortDialog.ui:73
+msgid "Alphabetic"
+msgstr "Po abecedi"
 
-#: ../ui/sortDialog.ui:93
+#: ../gjots.glade2:3247 ../ui/sortDialog.ui:94
 msgid "Sort in numeric order"
 msgstr "Razvrsti po numeričnem vrstnem redu"
 
-#: ../ui/sortDialog.ui:114
+#: ../gjots.glade2:3249 ../ui/sortDialog.ui:90
+msgid "Numeric"
+msgstr "Numerično"
+
+#: ../gjots.glade2:3271 ../ui/sortDialog.ui:59
+msgid "Sort in descending order"
+msgstr "Razvrsti padajoče"
+
+#: ../gjots.glade2:3273 ../ui/sortDialog.ui:55
+msgid "Descending"
+msgstr "Padajoče"
+
+#: ../gjots.glade2:3299 ../ui/sortDialog.ui:115
 msgid " Sort Parameters "
 msgstr " Parametri razvrščanja "
 
-#: ../ui/sortDialog.ui:142
+#: ../gjots.glade2:3354 ../ui/sortDialog.ui:143
 msgid "How many sublevels to sort (0 for none; -1 for 'all')"
 msgstr "Koliko podravni naj se razvrsti (0 za nobeno; -1 za 'vse')"
 
-#: ../ui/sortDialog.ui:159
+#: ../gjots.glade2:3378 ../ui/sortDialog.ui:160
 msgid " Sort Sublevels "
 msgstr " Podravni razvrščanja "
 
-#: ../ui/treeContextMenu.ui:30
+#: ../gjots.glade2:3528 ../ui/fileDialog.ui:28
+msgid "To open the file in read-only mode."
+msgstr "Za odpiranje datoteke v načinu samo za branje."
+
+#: ../gjots.glade2:3530 ../ui/fileDialog.ui:24
+msgid "Open file read only"
+msgstr "Odpri datoteko samo za branje"
+
+#: ../gjots.glade2:3598 ../ui/treeContextMenu.ui:30
 msgid "Select _All"
 msgstr "Izberi _Vse"
 
-#: ../ui/treeContextMenu.ui:117
+#: ../gjots.glade2:3834 ../ui/treeContextMenu.ui:117
 msgid "Import"
 msgstr "Uvozi"
 
-#: ../ui/treeContextMenu.ui:124
+#: ../gjots.glade2:3853 ../ui/treeContextMenu.ui:124
 msgid "Export"
 msgstr "Izvozi"
 
-#: ../gjots2:28
+#: ../gjots2:23
 #, fuzzy
 msgid ""
 "Usage: gjots [OPTIONS] [FILENAME]\n"
@@ -705,14 +752,15 @@ msgid ""
 "OPTIONS:\n"
 "-h, --help:                         this help\n"
 "-d, --debug:                        debug to stdout\n"
+"-2, --glade2:                       use glade-2 gui if available\n"
 "-t, --trace:                        trace lines as they execute\n"
 "-g 123x456, --geometry=123x456:     initial geometry (X x Y)\n"
-"-p, --purge-password\t\t\t\tdon't remember password\n"
+"-p, --purge-password                don't remember password\n"
 "-r, --readonly:                     no editing (or locking)\n"
 "-V, --version:                      print the version and exit\n"
 "\n"
 "FILENAME:\n"
-"\tgjots data filename (default is $HOME/.gjotsfile)\n"
+"    gjots data filename (default is $HOME/.gjotsfile)\n"
 msgstr ""
 "Raba: gjots [MOŽNOSTI] [DATOTEKA]\n"
 "Jotter za gnome-2/X11\n"
@@ -730,216 +778,209 @@ msgstr ""
 "DATOTEKA:\n"
 "\time podatkovne datoteke gjots (privzeto $HOME/.gjotsfile)\n"
 
-#: ../gjots2:54
+#: ../gjots2:83
 #, python-format
 msgid "%s requires python%s or higher."
 msgstr "%s zahteva python%s ali višji."
 
-#: ../gjots2:64
+#: ../gjots2:93
 #, python-format
 msgid "%s requires pygtk-%s.\n"
 msgstr "%s zahteva pygtk-%s.\n"
 
-#: ../gjots2:77
-#, python-format
-msgid "%s: Warning: running modules from %s\n"
-msgstr "%s: Pozor: zaganjam module iz %s\n"
-
-#: ../gjots2:90
+#: ../gjots2:105
 msgid "Use -h for help\n"
 msgstr "Uporabite -h za pomoč\n"
 
-#: ../gjots2:104
+#: ../gjots2:120
 #, python-format
 msgid "%s version %s"
 msgstr "%s različica %s"
 
-#: ../lib/gui.py:140
+#: ../lib/gui.py:46 ../lib/gui.py:1084
+msgid "Text pasted"
+msgstr "Besedilo prilepljeno"
+
+#: ../lib/gui.py:168
 #, python-format
 msgid "External formatter \"%s\" is not installed - can't format"
 msgstr "Zunanji oblikovalnik \"%s\" ni nameščen - ni moč formatirati"
 
-#: ../lib/gui.py:399
+#: ../lib/gui.py:420
 msgid "not initialised"
 msgstr "ni inicializirano"
 
-#: ../lib/gui.py:657 ../lib/gui.py:698 ../lib/gui.py:702
-#: ../lib/gui.py:744 ../lib/gui.py:748 ../lib/gui.py:807
-#: ../lib/gui.py:812 ../lib/gui.py:1025 ../lib/gui.py:1034
-#: ../lib/gui.py:1117 ../lib/gui.py:1126 ../lib/gui.py:1159
-#: ../lib/gui.py:1164 ../lib/gui.py:1190 ../lib/gui.py:1551
-#: ../lib/gui.py:2279 ../lib/gui.py:2298 ../lib/gui.py:2327
-#: ../lib/gui.py:2357 ../lib/file.py:439 ../lib/file.py:444
-#: ../lib/sortDialog.py:247 ../lib/sortDialog.py:252
+#: ../lib/gui.py:674 ../lib/gui.py:772 ../lib/gui.py:776 ../lib/gui.py:842
+#: ../lib/gui.py:846 ../lib/gui.py:905 ../lib/gui.py:910 ../lib/gui.py:1127
+#: ../lib/gui.py:1136 ../lib/gui.py:1222 ../lib/gui.py:1231 ../lib/gui.py:1267
+#: ../lib/gui.py:1272 ../lib/gui.py:1303 ../lib/gui.py:1694 ../lib/gui.py:2468
+#: ../lib/gui.py:2487 ../lib/gui.py:2516 ../lib/gui.py:2547 ../lib/file.py:460
+#: ../lib/file.py:465 ../lib/sortDialog.py:247 ../lib/sortDialog.py:252
 #: ../lib/printDialog.py:110 ../lib/printDialog.py:115
 msgid "Nothing selected"
 msgstr "Nič ni izbrano"
 
-#: ../lib/gui.py:661 ../lib/gui.py:707 ../lib/gui.py:752
-#: ../lib/gui.py:817 ../lib/gui.py:920 ../lib/gui.py:1195
-#: ../lib/gui.py:2283 ../lib/sortDialog.py:263
+#: ../lib/gui.py:678 ../lib/gui.py:781 ../lib/gui.py:850 ../lib/gui.py:915
+#: ../lib/gui.py:1022 ../lib/gui.py:1308 ../lib/gui.py:2472
+#: ../lib/sortDialog.py:263
 msgid "No parent!"
 msgstr "Ni nadrejenega!"
 
-#: ../lib/gui.py:665 ../lib/gui.py:718
+#: ../lib/gui.py:682 ../lib/gui.py:816
 msgid "No child!"
 msgstr "Ni podrejenega!"
 
-#: ../lib/gui.py:668 ../lib/gui.py:712
+#: ../lib/gui.py:690 ../lib/gui.py:790
 msgid "Can't go any further"
 msgstr "Ni moč nadaljevati"
 
-#: ../lib/gui.py:675 ../lib/gui.py:835
+#: ../lib/gui.py:717 ../lib/gui.py:933
 msgid "Internal error!"
 msgstr "Notranja napaka!"
 
-#: ../lib/gui.py:756
+#: ../lib/gui.py:854
 msgid "Can't go further!"
 msgstr "Ni moč nadaljevati!"
 
-#: ../lib/gui.py:959
+#: ../lib/gui.py:1061
 msgid "Text cut"
 msgstr "Besedilo izrezano"
 
-#: ../lib/gui.py:970
+#: ../lib/gui.py:1072
 msgid "Text copied"
 msgstr "Besedilo kopirano"
 
-#: ../lib/gui.py:982
-msgid "Text pasted"
-msgstr "Besedilo prilepljeno"
-
-#: ../lib/gui.py:991
+#: ../lib/gui.py:1093
 msgid "All text selected"
 msgstr "Celotno besedilo izbrano"
 
-#: ../lib/gui.py:997
+#: ../lib/gui.py:1099
 msgid "All tree items selected"
 msgstr "Vse drevesne postavke izbrane"
 
-#: ../lib/gui.py:1005
+#: ../lib/gui.py:1107
 msgid "Nothing selected!"
 msgstr "Nič ni izbrano!"
 
-#: ../lib/gui.py:1029
+#: ../lib/gui.py:1131
 msgid "Can't merge the root item"
 msgstr "Ni moč združiti korenske postavke"
 
-#: ../lib/gui.py:1038
+#: ../lib/gui.py:1140
 msgid "Nothing to merge"
 msgstr "Ni česa združiti"
 
-#: ../lib/gui.py:1045
+#: ../lib/gui.py:1147
 msgid "Can't merge items that have children"
 msgstr "Ni moč združiti postavk, ki imajo podpostavke"
 
-#: ../lib/gui.py:1075
+#: ../lib/gui.py:1177
 #, python-format
 msgid "%d items merged"
 msgstr "združeno %d postavk"
 
-#: ../lib/gui.py:1121
+#: ../lib/gui.py:1226
 msgid "Can't delete the root item"
 msgstr "Ni moč izbrisati korenske postavke"
 
-#: ../lib/gui.py:1151
+#: ../lib/gui.py:1259
 #, python-format
 msgid "%d tree items cut"
 msgstr "izrezano %d drevesnih postavk"
 
-#: ../lib/gui.py:1178
+#: ../lib/gui.py:1289
 #, python-format
 msgid "%d tree items copied"
 msgstr "kopirano %d drevesnih postavk"
 
-#: ../lib/gui.py:1185
+#: ../lib/gui.py:1298
 msgid "Nothing to paste"
 msgstr "Ni česa prilepiti"
 
-#: ../lib/gui.py:1201
+#: ../lib/gui.py:1319
 msgid "Tree items pasted"
 msgstr "Drevesne postavke prilepljene"
 
-#: ../lib/gui.py:1221
+#: ../lib/gui.py:1339
 msgid "Can't write "
 msgstr "Ni moč pisati "
 
-#: ../lib/gui.py:1231
+#: ../lib/gui.py:1349
 #, python-format
 msgid "Can't run '%s'"
 msgstr "Ni moč zagnati '%s'"
 
-#: ../lib/gui.py:1240
+#: ../lib/gui.py:1358
 msgid "Can't read "
 msgstr "Ni moč prebrati "
 
-#: ../lib/gui.py:1248
+#: ../lib/gui.py:1366
 msgid "text changed by external editor"
 msgstr "besedilo spremenjeno z zunanjim urejevalnikom"
 
-#: ../lib/gui.py:1250
+#: ../lib/gui.py:1368
 msgid "text not changed by external editor"
 msgstr "besedilo ni spremenjeno z zunanjim urejevalnikom"
 
-#: ../lib/gui.py:1268
+#: ../lib/gui.py:1386
 msgid ": Error"
 msgstr ": Napaka"
 
-#: ../lib/gui.py:1281
+#: ../lib/gui.py:1399
 #, python-format
 msgid "Can't lock file %s: already locked by process %d"
 msgstr "Ni moč zakleniti datoteke %s, ker jo je že zaklenil proces %d"
 
-#: ../lib/gui.py:1455
+#: ../lib/gui.py:1594
 msgid ": Save?"
 msgstr ": Shranim?"
 
-#: ../lib/gui.py:1456
+#: ../lib/gui.py:1595
 msgid "Save current work?"
 msgstr "Shranim tekoče delo?"
 
-#: ../lib/gui.py:1477
+#: ../lib/gui.py:1616
 msgid "New file"
 msgstr "Nova datoteka"
 
-#: ../lib/gui.py:1501
+#: ../lib/gui.py:1640
 msgid "Open file ..."
 msgstr "Odpri datoteko ..."
 
-#: ../lib/gui.py:1512
+#: ../lib/gui.py:1653
 msgid "No changes to save"
 msgstr "Ni sprememb, ki bi jih bilo treba shraniti"
 
-#: ../lib/gui.py:1516 ../lib/gui.py:1536
+#: ../lib/gui.py:1657 ../lib/gui.py:1679
 msgid "Saved."
 msgstr "Shranjeno."
 
-#: ../lib/gui.py:1518 ../lib/gui.py:1538 ../lib/file.py:429
+#: ../lib/gui.py:1659 ../lib/gui.py:1681 ../lib/file.py:450
 msgid "Not saved."
 msgstr "Ni shranjeno."
 
-#: ../lib/gui.py:1532
+#: ../lib/gui.py:1675
 msgid "Nothing to save"
 msgstr "Ni česa shraniti"
 
-#: ../lib/gui.py:1534 ../lib/file.py:651
+#: ../lib/gui.py:1677 ../lib/file.py:693
 msgid "Save as ..."
 msgstr "Shrani kot ..."
 
-#: ../lib/gui.py:1548
+#: ../lib/gui.py:1691
 msgid "Import from ..."
 msgstr "Uvozi iz ..."
 
-#: ../lib/gui.py:1559
+#: ../lib/gui.py:1702
 msgid "Export to ..."
 msgstr "Izvozi v ..."
 
-#: ../lib/gui.py:1878 ../lib/gui.py:1881
+#: ../lib/gui.py:2045 ../lib/gui.py:2048
 #, python-format
 msgid "%s: Warning: opening gjots2 manual from %s\n"
 msgstr "%s: Pozor: odpiram priročnik gjots2 iz %s\n"
 
-#: ../lib/gui.py:1921
+#: ../lib/gui.py:2088
 msgid ""
 "Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
 "Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
@@ -948,14 +989,15 @@ msgid ""
 "Martin Sin (cs) <martin.sin@zshk.cz>\n"
 "Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
 "Aleksa Šušulić (sl) <susulic@gmail.com>\n"
-"Uwe Steinmann (de) <uwe@steinmann.cx>"
+"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
+"Morgan Antonsson (sv) <morgan.antonsson@gmail.com>"
 msgstr ""
 
-#: ../lib/gui.py:2217
+#: ../lib/gui.py:2406
 msgid "pygtk-2.2 is required for this application!"
 msgstr "ta aplikacija zahteva pygtk-2.2!"
 
-#: ../lib/gui.py:2223
+#: ../lib/gui.py:2412
 msgid ""
 "gjots2: warning: selection list is NULL. Skipping tree selection changed \n"
 "event."
@@ -964,129 +1006,136 @@ msgstr ""
 "izbora \n"
 "bo preskočen."
 
-#: ../lib/gui.py:2287
+#: ../lib/gui.py:2476
 msgid "Can't go further"
 msgstr "Ni moč nadaljevati"
 
-#: ../lib/gui.py:2316
+#: ../lib/gui.py:2505
 msgid "Tree is empty!"
 msgstr "Drevo je prazno!"
 
-#: ../lib/gui.py:2585
+#: ../lib/gui.py:2778
 msgid "Bad regular expression"
 msgstr "Napačen logični izraz"
 
-#: ../lib/gui.py:2678
+#: ../lib/gui.py:2870
 #, python-format
 msgid "%s: bad geometry specification: %s\n"
 msgstr "%s: napačna specifikacija geometrije: %s\n"
 
-#: ../lib/gui.py:2882
+#: ../lib/gui.py:3082
 msgid "New...>>>"
 msgstr "Novo...>>>"
 
-#: ../lib/gui.py:2914
+#: ../lib/gui.py:3129
 msgid "Install pygtksourceview to enable undo/redo"
 msgstr ""
 
-#: ../lib/gui.py:2967
+#: ../lib/gui.py:3197
 msgid ": version "
 msgstr ": različica "
 
-#: ../lib/find.py:77 ../lib/find.py:100
+#: ../lib/find.py:81 ../lib/find.py:104
 msgid "Not found"
 msgstr "Ni moč najti"
 
-#: ../lib/find.py:79
+#: ../lib/find.py:83
 msgid "Found"
 msgstr "Najdeno"
 
-#: ../lib/find.py:103
+#: ../lib/find.py:107
 msgid "Replace?"
 msgstr "Zamenjam?"
 
-#: ../lib/find.py:120
+#: ../lib/find.py:124
 #, python-format
 msgid "%d substitutions"
 msgstr "%d zamenjav"
 
-#: ../lib/file.py:250
+#: ../lib/file.py:251
 msgid "Enter password for "
 msgstr "Vnesite geslo za "
 
-#: ../lib/file.py:252
+#: ../lib/file.py:253
 msgid "gjots2: Enter Password"
 msgstr "gjots2: Vnesite geslo"
 
-#: ../lib/file.py:254
+#: ../lib/file.py:255
 msgid "Password: "
 msgstr "Geslo: "
 
-#: ../lib/file.py:255
+#: ../lib/file.py:256
 msgid "Confirm: "
 msgstr "Potrdi: "
 
-#: ../lib/file.py:263
+#: ../lib/file.py:264
 msgid "Password was not confirmed"
 msgstr "Geslo ni potrjeno"
 
-#: ../lib/file.py:270
+#: ../lib/file.py:271
 msgid "Could not find the ccrypt program - please install it and try again"
 msgstr "Ni moč najti programa ccrypt - namestite ga in poskusite znova"
 
-#: ../lib/file.py:299
-msgid "Could not find the gpg program - please install it and try again"
-msgstr "Ni moč najti programa gpg - namestite ga in poskusite znova"
+#: ../lib/file.py:304
+msgid ""
+"Neither gpg2 nor gpg are available - please install one (perhaps package "
+"gnupg2) and try again"
+msgstr ""
 
-#: ../lib/file.py:324
-msgid "Could not find the openssl program - please install it and try again"
+#: ../lib/file.py:338
+#, fuzzy
+msgid "No openssl program - please install it and try again"
 msgstr "Ni moč najti programa openssl - namestite ga in poskusite znova"
 
-#: ../lib/file.py:387
+#: ../lib/file.py:406
 msgid "Can't open \""
 msgstr "Ni moč odpreti \""
 
-#: ../lib/file.py:390
+#: ../lib/file.py:409
 msgid "Bad password"
 msgstr "Napačno geslo"
 
-#: ../lib/file.py:393
+#: ../lib/file.py:412
 msgid "File cannot be locked"
 msgstr "Datoteke ni moč zakleniti"
 
-#: ../lib/file.py:430
+#: ../lib/file.py:425 ../lib/file.py:483
+msgid "failed!"
+msgstr ""
+
+#: ../lib/file.py:451
 msgid "Can't write to "
 msgstr "Ni moč pisati v "
 
-#: ../lib/file.py:433
+#: ../lib/file.py:454
 msgid "Can't lock file"
 msgstr "Ni moč zakleniti datoteke"
 
-#: ../lib/file.py:560
+#: ../lib/file.py:599
 #, python-format
 msgid "%s is not readable"
 msgstr "%s ni moč prebrati "
 
-#: ../lib/file.py:576
+#: ../lib/file.py:615
 #, python-format
 msgid "%s: no permission"
 msgstr "%s: ni dovoljenja"
 
-#: ../lib/file.py:578
+#: ../lib/file.py:617
 #, python-format
 msgid "%s: locked by process number %d"
 msgstr "%s: zaklenil proces št. %d"
 
-#: ../lib/file.py:580
+#: ../lib/file.py:619
 msgid "gjots2: can't lock file."
 msgstr "gjots2: ni moč zakleniti datoteke."
 
-#: ../lib/file.py:618
+#: ../lib/file.py:657
 #, python-format
 msgid "gjots2: %s changed"
 msgstr "gjots2: %s se je spremenil"
 
-#: ../lib/file.py:619
+#: ../lib/file.py:658
 #, python-format
 msgid ""
 "'%s' has changed since it was read.\n"
@@ -1095,30 +1144,30 @@ msgstr ""
 "'%s' se je spremenil, odkar je bil prebran.\n"
 "vseeno prepišem?"
 
-#: ../lib/file.py:663
+#: ../lib/file.py:705
 msgid "That file is already open!"
 msgstr "Datoteka je že odprta!"
 
-#: ../lib/file.py:680
+#: ../lib/file.py:724
 #, python-format
 msgid "%s is locked by pid %d"
 msgstr "%s je zaklenil proces pid %d"
 
-#: ../lib/file.py:684
+#: ../lib/file.py:728
 msgid "Can't make a lockfile in "
 msgstr "Ni moč ustvariti datoteke za zaklepanje v "
 
-#: ../lib/file.py:697
+#: ../lib/file.py:741
 #, python-format
 msgid "%s is not writable"
 msgstr "%s ni pisljiv"
 
-#: ../lib/file.py:700
+#: ../lib/file.py:744
 #, python-format
 msgid "gjots2: %s already exists."
 msgstr "gjots2: %s že obstaja."
 
-#: ../lib/file.py:701
+#: ../lib/file.py:745
 #, python-format
 msgid "overwrite %s?"
 msgstr "prepišem %s?"
@@ -1135,25 +1184,40 @@ msgstr "Notranja napaka"
 msgid "Nothing to sort!"
 msgstr "Ni česa razvrščati!"
 
-#: ../lib/sortDialog.py:312
+#: ../lib/sortDialog.py:317
 msgid "Sort Text"
 msgstr "Razvrsti besedilo"
 
-#~ msgid "Recent"
-#~ msgstr "Nedavne datoteke"
+#: ../ui/about.ui:9
+msgid "Copyright Bob Hepple 2002-2011"
+msgstr ""
 
-#~ msgid "_Import"
-#~ msgstr "_Uvozi"
+#: ../ui/about.ui:10
+msgid "http://bhepple.freeshell.org/gjots2"
+msgstr ""
 
-#~ msgid "Find Next"
-#~ msgstr "Najdi naslednje"
+#: ../ui/about.ui:20
+msgid ""
+"Rui Nibau (fr) <rui.nibau@omacronides.com>\n"
+"Robert Emil Berge (no, nb) <filoktetes@linuxophic.org>\n"
+"Сергей Безденежных (Sergey Bezdenezhnyh) (ru) <sib-mail@mtu-net.ru>\n"
+"Raimondo Giammanco (it) <rongten@member.fsf.org>\n"
+"Martin Sin (cs) <martin.sin@zshk.cz>\n"
+"Cecilio Salmeron (es) <s.cecilio@gmail.com>\n"
+"Aleksa Šušulić (sl) <susulic@gmail.com>\n"
+"Uwe Steinmann (de) <uwe@steinmann.cx>\n"
+msgstr ""
 
-#~ msgid "Create a new child "
-#~ msgstr "Ustvari novo podpostavko"
-
+#: ../ui/gjots.ui:152
 #, fuzzy
-#~ msgid " Find: "
-#~ msgstr " Najdi:"
+msgid "Exit gjots2"
+msgstr "Končaj gjots"
+
+#~ msgid "%s: Warning: running modules from %s\n"
+#~ msgstr "%s: Pozor: zaganjam module iz %s\n"
+
+#~ msgid "Could not find the gpg program - please install it and try again"
+#~ msgstr "Ni moč najti programa gpg - namestite ga in poskusite znova"
 
 #~ msgid "_Settings"
 #~ msgstr "_Nastavitve"
